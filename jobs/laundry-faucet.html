@@ -35,7 +35,8 @@
     .ap-crumb a{color:#0f4c81;text-decoration:none}
     .ap-note{color:var(--ap-muted);font-size:.92rem;margin-top:10px}
     .ap-video{padding:20px}
-    .ap-video video{width:100%;border-radius:12px;background:#000;max-height:560px;object-fit:contain}
+    .ap-video video{width:100%;display:block;border-radius:12px;background:transparent;aspect-ratio:9/16;object-fit:cover}
+    .ap-portrait-frame{max-width:430px;margin:0 auto}
     @media (max-width:860px){.ap-hero{grid-template-columns:1fr}.ap-topin{flex-direction:column;align-items:flex-start}.ap-cta{flex-direction:column;align-items:flex-start}}
   </style>
 </head>
@@ -80,10 +81,12 @@
     <section class="ap-section">
       <div class="ap-card ap-video">
         <h2>Project Video</h2>
+        <div class="ap-portrait-frame">
         <video controls playsinline preload="metadata" poster="/images/laundry-faucet-1.jpg">
           <source src="/images/laundry-faucet-broll.mp4" type="video/mp4" />
           Your browser does not support the video tag.
         </video>
+        </div>
         <p class="ap-note">B-roll: laundry faucet and granite countertop finish in Westminster, MD.</p>
       </div>
     </section>
