@@ -27,6 +27,15 @@
     .ap-cta{margin-top:24px;background:linear-gradient(135deg,#eaf4ff,#eefcf2);border:1px solid #cfe2f5;border-radius:14px;padding:18px;display:flex;justify-content:space-between;gap:14px;align-items:center}
     .ap-btn{display:inline-block;background:var(--ap-green);color:#fff !important;text-decoration:none;padding:11px 16px;border-radius:10px;font-weight:700}
     .ap-note{color:#475569;font-size:.98rem;margin-top:12px}
+
+    .ba-wrap{max-width:860px;margin:0 auto}
+    .ba-slider{position:relative;width:100%;aspect-ratio:3/4;overflow:hidden;border-radius:14px;background:#0b1020}
+    .ba-slider img{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;background:#f1f5f9}
+    .ba-after{clip-path:inset(0 0 0 50%)}
+    .ba-divider{position:absolute;top:0;bottom:0;left:50%;width:2px;background:#fff;box-shadow:0 0 0 1px rgba(0,0,0,.2)}
+    .ba-handle{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:34px;height:34px;border-radius:50%;background:#fff;border:2px solid #0f4c81;display:grid;place-items:center;color:#0f4c81;font-weight:700}
+    .ba-range{width:100%;margin-top:14px}
+    .ba-labels{display:flex;justify-content:space-between;color:#475569;font-size:.92rem;margin-top:6px}
     @media (max-width:860px){.ap-hero{grid-template-columns:1fr}.ap-topin{flex-direction:column;align-items:flex-start}.ap-cta{flex-direction:column;align-items:flex-start}}
   </style>
 </head>
@@ -61,6 +70,23 @@
       </aside>
     </section>
 
+
+    <section class="ap-section">
+      <div class="ap-card">
+        <h2>Before & After Water Heater Replacement</h2>
+        <div class="ba-wrap">
+          <div class="ba-slider" id="ba-slider">
+            <img src="/images/water-heater-replacement-1.jpg" alt="Before: leaking electric water heater" class="ba-before" />
+            <img src="/images/water-heater-replacement-2.jpg" alt="After: new Rheem heat pump water heater" class="ba-after" id="ba-after" />
+            <div class="ba-divider" id="ba-divider"></div>
+            <div class="ba-handle" id="ba-handle">↔</div>
+          </div>
+          <input class="ba-range" id="ba-range" type="range" min="0" max="100" value="50" aria-label="Before and after slider" />
+          <div class="ba-labels"><span>Before</span><span>After</span></div>
+        </div>
+      </div>
+    </section>
+
     <section class="ap-section">
       <div class="ap-card">
         <h2>Why Homeowners Upgrade to Heat Pump Water Heaters</h2>
@@ -79,5 +105,23 @@
       <p class="ap-note">Service areas: Taneytown (21787), Westminster (21157, 21158), Manchester (21102), Hampstead (21074), Finksburg (21048), New Windsor (21776), Union Bridge (21791), Sykesville (21784), Keymar (21757), and Marriottsville (21104).</p>
     </section>
   </main>
+
+  <script>
+    (function(){
+      const range=document.getElementById('ba-range');
+      const after=document.getElementById('ba-after');
+      const divider=document.getElementById('ba-divider');
+      const handle=document.getElementById('ba-handle');
+      if(!range||!after) return;
+      function setPos(v){
+        const x = Math.max(0, Math.min(100, Number(v)));
+        after.style.clipPath = `inset(0 0 0 ${x}%)`;
+        divider.style.left = x + '%';
+        handle.style.left = x + '%';
+      }
+      range.addEventListener('input', e => setPos(e.target.value));
+      setPos(range.value);
+    })();
+  </script>
 </body>
 </html>
