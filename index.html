@@ -95,7 +95,20 @@
   
     
 
-  </head>
+  
+  <style>
+    /* home-mobile-dropdown */
+    .home-mobile-menu{display:none;position:relative;margin-left:8px}
+    .home-mobile-menu-btn{background:#0f4c81;color:#fff;border:0;border-radius:8px;padding:7px 9px;font-weight:700;line-height:1}
+    .home-mobile-menu-list{display:none;position:absolute;right:0;top:36px;background:#fff;border:1px solid #e2e8f0;border-radius:10px;box-shadow:0 8px 24px rgba(2,6,23,.12);min-width:150px;z-index:60}
+    .home-mobile-menu-list a{display:block;padding:10px 12px;text-decoration:none;color:#0f4c81;font-weight:600}
+    .home-mobile-menu.open .home-mobile-menu-list{display:block}
+    @media (max-width:900px){
+      .home-mobile-menu{display:block}
+    }
+  </style>
+
+</head>
   <body>
     
     <div id="root"></div>
@@ -216,6 +229,25 @@
   setTimeout(run,400); setTimeout(run,1200);
 })();
 </script>
+
+
+  <script>
+    (function(){
+      function addMobileMenu(){
+        const nav=document.querySelector('nav');
+        if(!nav || document.querySelector('.home-mobile-menu')) return;
+        const menu=document.createElement('div');
+        menu.className='home-mobile-menu';
+        menu.innerHTML='<button class="home-mobile-menu-btn" type="button" aria-label="Open menu">▾</button><div class="home-mobile-menu-list"><a href="/services.html">Services</a><a href="/contact.html">Contact</a></div>';
+        const btn=menu.querySelector('.home-mobile-menu-btn');
+        btn.addEventListener('click',()=>menu.classList.toggle('open'));
+        document.addEventListener('click',(e)=>{ if(!menu.contains(e.target)) menu.classList.remove('open'); });
+        nav.parentElement.appendChild(menu);
+      }
+      if(document.readyState==='loading') document.addEventListener('DOMContentLoaded', addMobileMenu);
+      setTimeout(addMobileMenu,300); setTimeout(addMobileMenu,1000); setTimeout(addMobileMenu,2200);
+    })();
+  </script>
 
 </body>
 </html>
