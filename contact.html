@@ -40,12 +40,12 @@
     <h1>Contact Afternoon Plumbing LLC</h1>
     <div class="card">
       <p><strong>Phone:</strong> <a href="tel:4437892897">443-789-2897</a><br/>
-      <strong>Email:</strong> <a href="mailto:afternoonplumbingcc@gmail.com">afternoonplumbingcc@gmail.com</a><br/>
+      <strong>Email:</strong> <a id="email-link" href="#" rel="nofollow">[email protected]</a><br/>
       <strong>Primary Service Area:</strong> Westminster, MD 21157 + nearby Carroll County</p>
       <div class="cta">
         <a class="btn" href="tel:4437892897">Call Now</a>
         <a class="btn alt" href="sms:4437892897">Text for Estimate</a>
-        <a class="btn" href="mailto:afternoonplumbingcc@gmail.com?subject=Plumbing%20Estimate%20Request">Email Estimate Request</a>
+        <a class="btn" id="email-estimate-btn" href="#" rel="nofollow">Email Estimate Request</a>
       </div>
       <h2>What to include for a faster quote</h2>
       <ul>
@@ -56,5 +56,18 @@
       </ul>
     </div>
   </main>
+
+  <script>
+    (function(){
+      const user='afternoonplumbingcc';
+      const domain='gmail.com';
+      const email=user+'@'+domain;
+      const link=document.getElementById('email-link');
+      const btn=document.getElementById('email-estimate-btn');
+      if(link){ link.textContent=email; link.href='mailto:'+email; }
+      if(btn){ btn.href='mailto:'+email+'?subject='+encodeURIComponent('Plumbing Estimate Request'); }
+    })();
+  </script>
+
 </body>
 </html>
