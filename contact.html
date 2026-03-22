@@ -40,7 +40,7 @@
     <h1>Contact Afternoon Plumbing LLC</h1>
     <div class="card">
       <p><strong>Phone:</strong> <a href="tel:4437892897">443-789-2897</a><br/>
-      <strong>Email:</strong> <a id="email-link" href="#" rel="nofollow">[email protected]</a><br/>
+      <strong>Email:</strong> <a id="email-link" href="#" rel="nofollow">Click to reveal email</a><br/>
       <strong>Primary Service Area:</strong> Westminster, MD 21157 + nearby Carroll County</p>
       <div class="cta">
         <a class="btn" href="tel:4437892897">Call Now</a>
@@ -59,13 +59,24 @@
 
   <script>
     (function(){
-      const user='afternoonplumbingcc';
-      const domain='gmail.com';
-      const email=user+'@'+domain;
+      const codes=[97,102,116,101,114,110,111,111,110,112,108,117,109,98,105,110,103,99,99,64,103,109,97,105,108,46,99,111,109];
+      const email=String.fromCharCode.apply(null,codes);
       const link=document.getElementById('email-link');
       const btn=document.getElementById('email-estimate-btn');
-      if(link){ link.textContent=email; link.href='mailto:'+email; }
-      if(btn){ btn.href='mailto:'+email+'?subject='+encodeURIComponent('Plumbing Estimate Request'); }
+      function setMail(){
+        if(link){ link.textContent=email; link.href='mailto:'+email; }
+        if(btn){ btn.href='mailto:'+email+'?subject='+encodeURIComponent('Plumbing Estimate Request'); }
+      }
+      if(link){
+        link.addEventListener('click', function(e){
+          if(link.getAttribute('href')==='#'){ e.preventDefault(); setMail(); }
+        }, { once:false });
+      }
+      if(btn){
+        btn.addEventListener('click', function(e){
+          if(btn.getAttribute('href')==='#'){ e.preventDefault(); setMail(); window.location.href=btn.href; }
+        }, { once:false });
+      }
     })();
   </script>
 
