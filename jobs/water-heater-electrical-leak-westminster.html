@@ -35,14 +35,30 @@
     .ap-menu-list a{display:block;padding:10px 12px;color:#0f4c81;text-decoration:none;font-weight:600}
     .ap-menu.open .ap-menu-list{display:block}
     @media (max-width:860px){.ap-hero{grid-template-columns:1fr}.ap-topin{flex-direction:row;align-items:center;justify-content:space-between}.ap-cta{flex-direction:column;align-items:flex-start}.ap-nav{display:none}.ap-menu{display:block}}
+  
+    /* unified-nav */
+    .unav{background:#fff;border-bottom:1px solid #e2e8f0;padding:12px 0;position:sticky;top:0;z-index:50}
+    .unav-inner{max-width:1100px;margin:0 auto;padding:0 18px;display:flex;justify-content:space-between;align-items:center;gap:12px}
+    .unav-brand{display:flex;align-items:center;gap:10px;font-weight:700;text-decoration:none;color:#0f172a}
+    .unav-brand img{height:32px;width:auto}
+    .unav-links{display:flex;align-items:center;gap:14px}
+    .unav-links a{text-decoration:none;color:#0f4c81;font-weight:600}
+    .unav-call{background:#e67e22;color:#fff!important;padding:9px 12px;border-radius:9px;font-weight:700;text-decoration:none}
+    .unav-menu{display:none;position:relative}
+    .unav-menu button{background:#0f4c81;color:#fff;border:0;border-radius:8px;padding:8px 10px;font-weight:700}
+    .unav-menu-list{display:none;position:absolute;right:0;top:40px;background:#fff;border:1px solid #e2e8f0;border-radius:10px;box-shadow:0 8px 24px rgba(2,6,23,.12);min-width:150px}
+    .unav-menu-list a{display:block;padding:10px 12px;text-decoration:none;color:#0f4c81;font-weight:600}
+    .unav-menu.open .unav-menu-list{display:block}
+    @media (max-width:700px){.unav-links{display:none}.unav-menu{display:block}.unav-brand span{font-size:1rem}}
+
   </style>
 </head>
 <body>
-  <header class="ap-top">
-    <div class="ap-topin">
-      <a class="ap-brand" href="/" aria-label="Go to homepage"><img src="/images/logo.png" alt="Afternoon Plumbing logo" /><span>Afternoon Plumbing LLC</span></a>
-      <div class="ap-nav"><a href="/services.html" style="text-decoration:none;color:#0f4c81;font-weight:700">Services</a><a href="/contact.html" style="text-decoration:none;color:#0f4c81;font-weight:700">Contact</a><a class="ap-call" href="tel:4437892897">Call 443-789-2897</a></div>
-      <div class="ap-menu" id="menu-toggle"><button class="ap-menu-btn" type="button" onclick="this.parentElement.classList.toggle('open')">Menu</button><div class="ap-menu-list"><a href="/">Home</a><a href="/services.html">Services</a><a href="/contact.html">Contact</a><a href="tel:4437892897">Call</a></div></div>
+  <header class="unav">
+    <div class="unav-inner">
+      <a class="unav-brand" href="/"><img src="/images/logo.png" alt="Afternoon Plumbing logo" /><span>Afternoon Plumbing LLC</span></a>
+      <nav class="unav-links"><a href="/">Home</a><a href="/services.html">Services</a><a href="/contact.html">Contact</a><a class="unav-call" href="tel:4437892897">Call 443-789-2897</a></nav>
+      <div class="unav-menu"><button type="button" onclick="this.parentElement.classList.toggle('open')">Menu</button><div class="unav-menu-list"><a href="/">Home</a><a href="/services.html">Services</a><a href="/contact.html">Contact</a><a href="tel:4437892897">Call</a></div></div>
     </div>
   </header>
 
