@@ -142,5 +142,46 @@
 })();
 </script>
 
+
+<script>
+(function initBeforeAfterFix(){
+  function setup(){
+    const about=document.getElementById('about');
+    if(!about) return false;
+    const wraps=[...about.querySelectorAll('.cursor-ew-resize')];
+    // choose largest interactive wrapper (not tiny handle)
+    const wrapper=wraps.sort((a,b)=>b.getBoundingClientRect().width-a.getBoundingClientRect().width)[0];
+    if(!wrapper || wrapper.dataset.baFixed==='1') return !!wrapper;
+    const overlay=wrapper.querySelector('div[style*="clip-path"]');
+    const divider=wrapper.querySelector('.absolute.top-0.bottom-0.w-1');
+    const handle=divider && divider.querySelector('.absolute.top-1/2');
+    if(!overlay || !divider) return false;
+    wrapper.dataset.baFixed='1';
+    let dragging=false;
+    const setPos=(clientX)=>{
+      const rect=wrapper.getBoundingClientRect();
+      const x=Math.max(0,Math.min(rect.width, clientX-rect.left));
+      const pct=(x/rect.width)*100;
+      overlay.style.clipPath=`inset(0 ${100-pct}% 0 0)`;
+      divider.style.left=pct+'%';
+    };
+    const start=(e)=>{dragging=true; const x=e.touches?e.touches[0].clientX:e.clientX; setPos(x); e.preventDefault&&e.preventDefault();};
+    const move=(e)=>{if(!dragging) return; const x=e.touches?e.touches[0].clientX:e.clientX; setPos(x); e.preventDefault&&e.preventDefault();};
+    const end=()=>{dragging=false;};
+    wrapper.addEventListener('mousedown',start);
+    window.addEventListener('mousemove',move,{passive:false});
+    window.addEventListener('mouseup',end);
+    wrapper.addEventListener('touchstart',start,{passive:false});
+    window.addEventListener('touchmove',move,{passive:false});
+    window.addEventListener('touchend',end);
+    if(handle){handle.style.touchAction='none';}
+    wrapper.style.touchAction='none';
+    return true;
+  }
+  if(document.readyState==='loading') document.addEventListener('DOMContentLoaded', setup);
+  setTimeout(setup,300); setTimeout(setup,1200); setTimeout(setup,2500);
+})();
+</script>
+
 </body>
 </html>
