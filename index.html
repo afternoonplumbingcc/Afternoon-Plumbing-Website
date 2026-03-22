@@ -183,5 +183,26 @@
 })();
 </script>
 
+
+<script>
+(function fixBeforeImage(){
+  function run(){
+    const imgs=[...document.querySelectorAll('img')];
+    const before=imgs.find(i=>/before\s*-\s*old\s*kitchen\s*faucet/i.test(i.alt||''));
+    if(!before) return false;
+    const target='/images/Kitchen faucet in westminster before replacement single lever.jpg';
+    // force exact source if anything changed/encoded badly
+    if(!before.getAttribute('src') || !before.getAttribute('src').includes('before replacement single lever')){
+      before.setAttribute('src', target);
+    }
+    before.style.display='block';
+    before.style.visibility='visible';
+    return true;
+  }
+  if(document.readyState==='loading') document.addEventListener('DOMContentLoaded', run);
+  setTimeout(run,300); setTimeout(run,1000); setTimeout(run,2200);
+})();
+</script>
+
 </body>
 </html>
