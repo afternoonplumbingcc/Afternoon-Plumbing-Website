@@ -65,11 +65,6 @@
     .btn,.ap-btn{transition:transform .2s ease, box-shadow .2s ease, filter .2s ease}
     .btn:hover,.ap-btn:hover{transform:translateY(-1px);box-shadow:0 10px 20px rgba(15,76,129,.22);filter:brightness(1.04)}
 
-  
-    /* cursor glow */
-    .cursor-glow{position:fixed;left:0;top:0;width:220px;height:220px;pointer-events:none;z-index:1;transform:translate(-50%,-50%);border-radius:50%;background:radial-gradient(circle, rgba(15,76,129,.16) 0%, rgba(15,76,129,.08) 35%, rgba(15,76,129,0) 70%);filter:blur(6px);opacity:.85;transition:opacity .25s ease}
-    @media (max-width:900px){.cursor-glow{display:none}}
-
   </style>
 <!-- Google tag (gtag.js) -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-NY5V19HE72"></script>
@@ -135,17 +130,18 @@
     </section>
   </main>
 
+
   <script>
+    // home-mouse-bg
     (function(){
       if(window.matchMedia('(max-width: 900px)').matches) return;
-      const glow=document.createElement('div');
-      glow.className='cursor-glow';
-      document.body.appendChild(glow);
-      let raf=null, x=0, y=0;
-      function paint(){ glow.style.left=x+'px'; glow.style.top=y+'px'; raf=null; }
-      window.addEventListener('mousemove',e=>{ x=e.clientX; y=e.clientY; if(!raf) raf=requestAnimationFrame(paint); });
-      window.addEventListener('mouseleave',()=>glow.style.opacity='0');
-      window.addEventListener('mouseenter',()=>glow.style.opacity='.85');
+      let raf=null, x=50, y=50;
+      const paint=()=>{document.body.style.setProperty('--mx', x + '%');document.body.style.setProperty('--my', y + '%');raf=null;};
+      window.addEventListener('mousemove', (e)=>{
+        x=(e.clientX/window.innerWidth)*100;
+        y=(e.clientY/window.innerHeight)*100;
+        if(!raf) raf=requestAnimationFrame(paint);
+      });
     })();
   </script>
 

@@ -9,7 +9,7 @@
   <link rel="canonical" href="https://afternoonplumbing.com/contact.html" />
   <meta name="description" content="Call, text, or request an estimate from Afternoon Plumbing LLC in Westminster, MD." />
   <style>
-    body{margin:0;background:#f8fafc;color:#1f2937;font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif}
+    body{margin:0;color:#1f2937;font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;--mx:50%;--my:50%;background:radial-gradient(circle at var(--mx) var(--my), rgba(230, 126, 34, 0.15) 0%, transparent 50%), linear-gradient(135deg, #f5f5f5 0%, #e8eef4 100%)}
     .top{background:#fff;border-bottom:1px solid #e2e8f0;padding:12px 0}
     .topin{max-width:1100px;margin:0 auto;padding:0 18px;display:flex;justify-content:space-between;align-items:center}
     .brand{display:flex;align-items:center;gap:10px;font-weight:700;text-decoration:none;color:#0f172a}
@@ -86,11 +86,6 @@
     .btn,.ap-btn{transition:transform .2s ease, box-shadow .2s ease, filter .2s ease}
     .btn:hover,.ap-btn:hover{transform:translateY(-1px);box-shadow:0 10px 20px rgba(15,76,129,.22);filter:brightness(1.04)}
 
-  
-    /* cursor glow */
-    .cursor-glow{position:fixed;left:0;top:0;width:220px;height:220px;pointer-events:none;z-index:1;transform:translate(-50%,-50%);border-radius:50%;background:radial-gradient(circle, rgba(15,76,129,.16) 0%, rgba(15,76,129,.08) 35%, rgba(15,76,129,0) 70%);filter:blur(6px);opacity:.85;transition:opacity .25s ease}
-    @media (max-width:900px){.cursor-glow{display:none}}
-
   </style>
 <!-- Google tag (gtag.js) -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-NY5V19HE72"></script>
@@ -157,16 +152,16 @@
 
 
   <script>
+    // home-mouse-bg
     (function(){
       if(window.matchMedia('(max-width: 900px)').matches) return;
-      const glow=document.createElement('div');
-      glow.className='cursor-glow';
-      document.body.appendChild(glow);
-      let raf=null, x=0, y=0;
-      function paint(){ glow.style.left=x+'px'; glow.style.top=y+'px'; raf=null; }
-      window.addEventListener('mousemove',e=>{ x=e.clientX; y=e.clientY; if(!raf) raf=requestAnimationFrame(paint); });
-      window.addEventListener('mouseleave',()=>glow.style.opacity='0');
-      window.addEventListener('mouseenter',()=>glow.style.opacity='.85');
+      let raf=null, x=50, y=50;
+      const paint=()=>{document.body.style.setProperty('--mx', x + '%');document.body.style.setProperty('--my', y + '%');raf=null;};
+      window.addEventListener('mousemove', (e)=>{
+        x=(e.clientX/window.innerWidth)*100;
+        y=(e.clientY/window.innerHeight)*100;
+        if(!raf) raf=requestAnimationFrame(paint);
+      });
     })();
   </script>
 
