@@ -104,6 +104,29 @@
     .figure,.ap-gallery .figure,.ap-gallery img{border-radius:16px!important}
     .card:hover,.ap-card:hover,.service-card:hover{transform:translateY(-3px)!important;box-shadow:0 20px 44px rgba(15,23,42,.12)!important}
 
+  
+    /* shared-nav */
+    .site-nav{position:sticky;top:0;z-index:60;background:rgba(255,255,255,.9);backdrop-filter:saturate(140%) blur(10px);border-bottom:1px solid rgba(219,228,239,.95)}
+    .site-nav-inner{max-width:1160px;margin:0 auto;padding:12px 18px;display:flex;align-items:center;justify-content:space-between;gap:12px}
+    .site-brand{display:flex;align-items:center;gap:10px;text-decoration:none;color:#0f172a;font-weight:800;font-family:"Outfit",system-ui,sans-serif}
+    .site-brand img{height:34px;width:auto;filter:drop-shadow(0 6px 14px rgba(15,76,129,.10))}
+    .site-links{display:flex;align-items:center;gap:16px}
+    .site-links a{position:relative;text-decoration:none;color:#0f4c81;font-weight:700;transition:transform .18s ease,color .18s ease}
+    .site-links a:hover{transform:translateY(-1px);color:#0b3558}
+    .site-links a::after{content:'';position:absolute;left:0;bottom:-4px;width:100%;height:2px;background:linear-gradient(90deg,#e67e22,#0f4c81);transform:scaleX(0);transform-origin:left;transition:transform .22s ease;border-radius:2px}
+    .site-links a:hover::after{transform:scaleX(1)}
+    .site-call{background:linear-gradient(135deg,#e67e22,#f29a3d);color:#fff!important;padding:10px 14px;border-radius:11px;font-weight:800;box-shadow:0 12px 28px rgba(230,126,34,.24);text-decoration:none;white-space:nowrap}
+    .site-menu{display:none;position:relative}
+    .site-menu button{background:#0f4c81;color:#fff;border:0;border-radius:10px;padding:8px 10px;font-weight:800}
+    .site-menu-list{display:none;position:absolute;right:0;top:40px;background:#fff;border:1px solid #e2e8f0;border-radius:12px;box-shadow:0 16px 34px rgba(2,6,23,.14);min-width:170px;overflow:hidden}
+    .site-menu-list a{display:block;padding:10px 12px;color:#0f4c81;text-decoration:none;font-weight:700}
+    .site-menu.open .site-menu-list{display:block}
+    @media (max-width:760px){
+      .site-links{display:none}
+      .site-menu{display:block}
+      .site-brand span{font-size:1rem}
+    }
+
   </style>
 <!-- Google tag (gtag.js) -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-NY5V19HE72"></script>
@@ -115,11 +138,11 @@
   </script>
 </head>
 <body>
-  <header class="unav">
-    <div class="unav-inner">
-      <a class="unav-brand" href="/"><img src="/images/logo.png" alt="Afternoon Plumbing logo" /><span>Afternoon Plumbing LLC</span></a>
-      <nav class="unav-links"><a href="/">Home</a><a href="/services.html">Services</a><a href="/contact.html">Contact</a><a class="unav-call" href="tel:4437892897">Call 443-789-2897</a></nav>
-      <div class="unav-menu"><button type="button" onclick="this.parentElement.classList.toggle('open')">Menu</button><div class="unav-menu-list"><a href="/">Home</a><a href="/services.html">Services</a><a href="/contact.html">Contact</a><a href="tel:4437892897">Call</a></div></div>
+  <header class="site-nav">
+    <div class="site-nav-inner">
+      <a class="site-brand" href="/"><img src="/images/logo.png" alt="Afternoon Plumbing logo"/><span>Afternoon Plumbing LLC</span></a>
+      <nav class="site-links"><a href="/">Home</a><a href="/services.html">Services</a><a href="/contact.html">Contact</a><a class="site-call" href="tel:4437892897">Call 443-789-2897</a></nav>
+      <div class="site-menu"><button type="button" onclick="this.parentElement.classList.toggle('open')">Menu</button><div class="site-menu-list"><a href="/">Home</a><a href="/services.html">Services</a><a href="/contact.html">Contact</a><a href="tel:4437892897">Call</a></div></div>
     </div>
   </header>
 
