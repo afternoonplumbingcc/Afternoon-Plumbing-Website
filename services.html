@@ -377,13 +377,13 @@
     .area-card{
       padding:24px 26px;
     }
-    .faq-list{
-      margin:0;
-      padding-left:18px;
-      color:#496177;
-      line-height:1.9;
-    }
-    .faq-list strong{color:var(--brand-blue-deep)}
+    .faq-accordion{display:grid;gap:12px}
+    .faq-item{border:1px solid rgba(219,230,240,.96);border-radius:18px;background:rgba(255,255,255,.88);overflow:hidden;box-shadow:var(--shadow-soft)}
+    .faq-trigger{width:100%;display:flex;align-items:center;justify-content:space-between;gap:16px;padding:18px 20px;background:transparent;border:0;text-align:left;color:var(--brand-blue-deep);font:700 1rem/1.35 "Poppins",sans-serif;cursor:pointer}
+    .faq-trigger span:last-child{font-size:1.3rem;color:var(--brand-orange);transition:transform .2s ease}
+    .faq-item.open .faq-trigger span:last-child{transform:rotate(45deg)}
+    .faq-panel{display:none;padding:0 20px 18px;color:#4c6277;line-height:1.8}
+    .faq-item.open .faq-panel{display:block}
     .area-card p{
       margin:0 0 18px;
       color:#4f657a;
@@ -593,16 +593,25 @@
 
     <section class="section" id="faq">
       <div class="faq-card">
-        <div class="section-header" style="margin-bottom:10px;">
+        <div class="section-header" style="margin-bottom:14px;">
           <div>
             <h2>Common questions</h2>
           </div>
         </div>
-        <ul class="faq-list">
-          <li><strong>Do you provide written estimates?</strong> Yes. Clear scope and pricing before work begins.</li>
-          <li><strong>Do you install customer-supplied fixtures?</strong> Yes, when the scope is clearly defined.</li>
-          <li><strong>Do you handle urgent leaks?</strong> Yes. Call for the fastest scheduling options.</li>
-        </ul>
+        <div class="faq-accordion">
+          <div class="faq-item open">
+            <button class="faq-trigger" type="button"><span>Do you provide written estimates?</span><span>+</span></button>
+            <div class="faq-panel"><p>Yes. Clear scope and pricing before work begins so customers know what they are approving.</p></div>
+          </div>
+          <div class="faq-item">
+            <button class="faq-trigger" type="button"><span>Do you install customer-supplied fixtures?</span><span>+</span></button>
+            <div class="faq-panel"><p>Yes, when the scope is clearly defined and the install conditions make sense for the job.</p></div>
+          </div>
+          <div class="faq-item">
+            <button class="faq-trigger" type="button"><span>Do you handle urgent leaks?</span><span>+</span></button>
+            <div class="faq-panel"><p>Yes. Call for the fastest scheduling options if you have an active leak or a problem that feels time-sensitive.</p></div>
+          </div>
+        </div>
       </div>
     </section>
 
@@ -619,5 +628,16 @@
       </div>
     </section>
   </main>
+
+  <script>
+    document.querySelectorAll('.faq-trigger').forEach((btn)=>{
+      btn.addEventListener('click',()=>{
+        const item=btn.parentElement;
+        const open=item.classList.contains('open');
+        document.querySelectorAll('.faq-item').forEach(el=>el.classList.remove('open'));
+        if(!open) item.classList.add('open');
+      });
+    });
+  </script>
 </body>
 </html>
