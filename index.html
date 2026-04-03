@@ -24,10 +24,11 @@
   
   <style>
     /* home-mobile-dropdown */
-    .home-mobile-menu{display:none;position:relative;margin-left:8px}
-    .home-mobile-menu-btn{background:#0f4c81;color:#fff;border:0;border-radius:8px;padding:7px 9px;font-weight:700;line-height:1}
-    .home-mobile-menu-list{display:none;position:absolute;right:0;top:36px;background:#fff;border:1px solid #e2e8f0;border-radius:10px;box-shadow:0 8px 24px rgba(2,6,23,.12);min-width:150px;z-index:60}
-    .home-mobile-menu-list a{display:block;padding:10px 12px;text-decoration:none;color:#0f4c81;font-weight:600}
+    .home-mobile-menu{display:none;position:relative;flex:0 0 auto}
+    .home-mobile-menu-btn{display:inline-flex;align-items:center;justify-content:center;width:38px;height:38px;background:#0f4c81;color:#fff;border:0;border-radius:10px;padding:0;font-weight:700;line-height:1;box-shadow:0 8px 20px rgba(15,76,129,.18)}
+    .home-mobile-menu-list{display:none;position:absolute;right:0;top:46px;background:#fff;border:1px solid #e2e8f0;border-radius:12px;box-shadow:0 12px 28px rgba(2,6,23,.14);min-width:170px;z-index:60;overflow:hidden}
+    .home-mobile-menu-list a{display:block;padding:11px 13px;text-decoration:none;color:#0f4c81;font-weight:600}
+    .home-mobile-menu-list a + a{border-top:1px solid #eef2f7}
     .home-mobile-menu.open .home-mobile-menu-list{display:block}
     @media (max-width:900px){
       .home-mobile-menu{display:block}
@@ -193,18 +194,44 @@
   <script>
     (function(){
       function addMobileMenu(){
-        const nav=document.querySelector('nav');
-        if(!nav || document.querySelector('.home-mobile-menu')) return;
+        const navRoot=document.querySelector('nav .mx-auto') || document.querySelector('nav > div') || document.querySelector('nav');
+        if(!navRoot || document.querySelector('.home-mobile-menu')) return;
+        const phoneLink=navRoot.querySelector('a[href^="tel:"]');
+        const mobileTitle=navRoot.querySelector('.md\\:hidden.flex-1');
         const menu=document.createElement('div');
         menu.className='home-mobile-menu';
         menu.innerHTML='<button class="home-mobile-menu-btn" type="button" aria-label="Open menu">▾</button><div class="home-mobile-menu-list"><a href="/services.html">Services</a><a href="/contact.html">Contact</a></div>';
         const btn=menu.querySelector('.home-mobile-menu-btn');
-        btn.addEventListener('click',()=>menu.classList.toggle('open'));
+        btn.addEventListener('click',(e)=>{ e.stopPropagation(); menu.classList.toggle('open'); });
         document.addEventListener('click',(e)=>{ if(!menu.contains(e.target)) menu.classList.remove('open'); });
-        nav.parentElement.appendChild(menu);
+
+        if(window.innerWidth <= 900){
+          navRoot.style.display='grid';
+          navRoot.style.gridTemplateColumns='auto 1fr auto auto';
+          navRoot.style.alignItems='center';
+          navRoot.style.columnGap='10px';
+          navRoot.style.paddingLeft='12px';
+          navRoot.style.paddingRight='12px';
+          if(mobileTitle){
+            mobileTitle.style.display='block';
+            mobileTitle.style.flex='unset';
+            mobileTitle.style.textAlign='center';
+            mobileTitle.style.minWidth='0';
+          }
+          if(phoneLink){
+            phoneLink.style.marginLeft='0';
+            phoneLink.style.justifySelf='end';
+          }
+        }
+
+        if(phoneLink && phoneLink.parentElement===navRoot){
+          navRoot.insertBefore(menu, phoneLink);
+        } else {
+          navRoot.appendChild(menu);
+        }
       }
       if(document.readyState==='loading') document.addEventListener('DOMContentLoaded', addMobileMenu);
-      setTimeout(addMobileMenu,300); setTimeout(addMobileMenu,1000); setTimeout(addMobileMenu,2200);
+      setTimeout(addMobileMenu,300); setTimeout(addMobileMenu,1000); setTimeout(addMobileMenu,2200); setTimeout(addMobileMenu,4000);
     })();
   </script>
 
