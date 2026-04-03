@@ -380,10 +380,12 @@
     .faq-accordion{display:grid;gap:12px}
     .faq-item{border:1px solid rgba(219,230,240,.96);border-radius:18px;background:rgba(255,255,255,.88);overflow:hidden;box-shadow:var(--shadow-soft)}
     .faq-trigger{width:100%;display:flex;align-items:center;justify-content:space-between;gap:16px;padding:18px 20px;background:transparent;border:0;text-align:left;color:var(--brand-blue-deep);font:700 1rem/1.35 "Poppins",sans-serif;cursor:pointer}
-    .faq-trigger span:last-child{font-size:1.3rem;color:var(--brand-orange);transition:transform .2s ease}
+    .faq-trigger span:last-child{font-size:1.3rem;color:var(--brand-orange);transition:transform .25s ease}
     .faq-item.open .faq-trigger span:last-child{transform:rotate(45deg)}
-    .faq-panel{display:none;padding:0 20px 18px;color:#4c6277;line-height:1.8}
-    .faq-item.open .faq-panel{display:block}
+    .faq-panel{display:grid;grid-template-rows:0fr;transition:grid-template-rows .28s ease, opacity .22s ease;opacity:.35}
+    .faq-panel-inner{overflow:hidden;padding:0 20px;color:#4c6277;line-height:1.8;transform:translateY(-4px);transition:transform .28s ease, padding .28s ease}
+    .faq-item.open .faq-panel{grid-template-rows:1fr;opacity:1}
+    .faq-item.open .faq-panel-inner{padding:0 20px 18px;transform:translateY(0)}
     .area-card p{
       margin:0 0 18px;
       color:#4f657a;
@@ -601,15 +603,15 @@
         <div class="faq-accordion">
           <div class="faq-item open">
             <button class="faq-trigger" type="button"><span>Do you provide written estimates?</span><span>+</span></button>
-            <div class="faq-panel"><p>Yes. Clear scope and pricing before work begins so customers know what they are approving.</p></div>
+            <div class="faq-panel"><div class="faq-panel-inner"><p>Yes. Clear scope and pricing before work begins so customers know what they are approving.</p></div></div>
           </div>
           <div class="faq-item">
             <button class="faq-trigger" type="button"><span>Do you install customer-supplied fixtures?</span><span>+</span></button>
-            <div class="faq-panel"><p>Yes, when the scope is clearly defined and the install conditions make sense for the job.</p></div>
+            <div class="faq-panel"><div class="faq-panel-inner"><p>Yes, when the scope is clearly defined and the install conditions make sense for the job.</p></div></div>
           </div>
           <div class="faq-item">
             <button class="faq-trigger" type="button"><span>Do you handle urgent leaks?</span><span>+</span></button>
-            <div class="faq-panel"><p>Yes. Call for the fastest scheduling options if you have an active leak or a problem that feels time-sensitive.</p></div>
+            <div class="faq-panel"><div class="faq-panel-inner"><p>Yes. Call for the fastest scheduling options if you have an active leak or a problem that feels time-sensitive.</p></div></div>
           </div>
         </div>
       </div>
