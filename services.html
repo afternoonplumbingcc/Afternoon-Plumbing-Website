@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Plumbing Services in Westminster MD | Afternoon Plumbing LLC</title>
   <link rel="canonical" href="https://afternoonplumbing.com/services.html" />
-  <meta name="description" content="Explore core plumbing services and real project pages from Afternoon Plumbing LLC in Westminster, MD." />
+  <meta name="description" content="Explore plumbing services from Afternoon Plumbing LLC in Westminster, MD, including water heaters, well pumps, water treatment, and exterior plumbing." />
   <link rel="icon" type="image/png" href="/images/logo.png" />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -16,8 +16,6 @@
       --brand-blue-deep:#10263d;
       --brand-orange:#e67e22;
       --brand-orange-soft:#f6a14d;
-      --surface:#ffffff;
-      --surface-soft:#f8fbff;
       --ink:#18324d;
       --muted:#667a8f;
       --line:#dbe6f0;
@@ -28,7 +26,6 @@
       --radius-md:14px;
       --max:1180px;
     }
-
     *{box-sizing:border-box}
     html{scroll-behavior:smooth}
     body{
@@ -41,342 +38,73 @@
         linear-gradient(180deg,#fbfdff 0%, #f3f8fc 100%);
       min-height:100vh;
     }
-
     a{color:inherit}
     img{max-width:100%;display:block}
 
-    .nav{
-      position:sticky;
-      top:0;
-      z-index:60;
-      border-bottom:1px solid rgba(219,230,240,.9);
-      background:rgba(255,255,255,.84);
-      backdrop-filter:blur(12px) saturate(140%);
-    }
-    .nav-inner{
-      max-width:var(--max);
-      margin:0 auto;
-      padding:14px 20px;
-      display:grid;
-      grid-template-columns:auto 1fr auto;
-      align-items:center;
-      gap:18px;
-    }
-    .brand{
-      display:flex;
-      align-items:center;
-      gap:12px;
-      text-decoration:none;
-      font-family:"Poppins",sans-serif;
-      font-weight:700;
-      color:var(--brand-blue);
-      letter-spacing:-.02em;
-      min-width:max-content;
-    }
+    .nav{position:sticky;top:0;z-index:60;border-bottom:1px solid rgba(219,230,240,.9);background:rgba(255,255,255,.84);backdrop-filter:blur(12px) saturate(140%)}
+    .nav-inner{max-width:var(--max);margin:0 auto;padding:14px 20px;display:grid;grid-template-columns:auto 1fr auto;align-items:center;gap:18px}
+    .brand{display:flex;align-items:center;gap:12px;text-decoration:none;font-family:"Poppins",sans-serif;font-weight:700;color:var(--brand-blue);letter-spacing:-.02em;min-width:max-content}
     .brand img{height:40px;width:auto}
-    .nav-links{
-      display:flex;
-      align-items:center;
-      justify-content:center;
-      gap:28px;
-      justify-self:center;
-    }
-    .nav-links a{
-      text-decoration:none;
-      font-size:14px;
-      font-weight:600;
-      color:#496177;
-      position:relative;
-      transition:color .2s ease, transform .2s ease;
-    }
+    .nav-links{display:flex;align-items:center;justify-content:center;gap:28px;justify-self:center}
+    .nav-links a{text-decoration:none;font-size:14px;font-weight:600;color:#496177;position:relative;transition:color .2s ease, transform .2s ease}
     .nav-links a:hover{color:var(--brand-blue);transform:translateY(-1px)}
-    .nav-links a::after{
-      content:"";
-      position:absolute;
-      left:0;
-      bottom:-6px;
-      width:100%;
-      height:2px;
-      border-radius:999px;
-      background:linear-gradient(90deg,var(--brand-orange),var(--brand-blue));
-      transform:scaleX(0);
-      transform-origin:left;
-      transition:transform .22s ease;
-    }
+    .nav-links a::after{content:"";position:absolute;left:0;bottom:-6px;width:100%;height:2px;border-radius:999px;background:linear-gradient(90deg,var(--brand-orange),var(--brand-blue));transform:scaleX(0);transform-origin:left;transition:transform .22s ease}
     .nav-links a:hover::after{transform:scaleX(1)}
-    .nav-call{
-      justify-self:end;
-      text-decoration:none;
-      white-space:nowrap;
-      background:linear-gradient(135deg,var(--brand-orange),var(--brand-orange-soft));
-      color:#fff!important;
-      font-weight:700;
-      font-size:14px;
-      padding:11px 15px;
-      border-radius:14px;
-      box-shadow:0 16px 30px rgba(230,126,34,.24);
-      transition:transform .2s ease, box-shadow .2s ease;
-    }
+    .nav-call{justify-self:end;text-decoration:none;white-space:nowrap;background:linear-gradient(135deg,var(--brand-orange),var(--brand-orange-soft));color:#fff!important;font-weight:700;font-size:14px;padding:11px 15px;border-radius:14px;box-shadow:0 16px 30px rgba(230,126,34,.24);transition:transform .2s ease, box-shadow .2s ease}
     .nav-call:hover{transform:translateY(-1px);box-shadow:0 20px 36px rgba(230,126,34,.28)}
 
-    .page{
-      max-width:var(--max);
-      margin:0 auto;
-      padding:34px 20px 72px;
-    }
-
-    .hero{
-      display:grid;
-      grid-template-columns:minmax(0,1.1fr) minmax(340px,.9fr);
-      gap:22px;
-      align-items:stretch;
-    }
-    .hero-copy,
-    .hero-stack,
-    .panel,
-    .service-card,
-    .job-card,
-    .faq-card,
-    .area-card{
-      background:rgba(255,255,255,.92);
-      border:1px solid rgba(219,230,240,.92);
-      box-shadow:var(--shadow);
-      border-radius:var(--radius-xl);
-    }
-    .hero-copy{
-      padding:34px;
-      position:relative;
-      overflow:hidden;
-      background:
-        radial-gradient(circle at 100% 0%, rgba(230,126,34,.12), transparent 36%),
-        linear-gradient(180deg, rgba(255,255,255,.98), rgba(255,255,255,.94));
-    }
-    .hero-copy::before{
-      content:"";
-      position:absolute;
-      inset:auto -40px -60px auto;
-      width:180px;
-      height:180px;
-      background:radial-gradient(circle, rgba(26,58,92,.08), transparent 70%);
-      pointer-events:none;
-    }
-    .eyebrow{
-      display:inline-flex;
-      align-items:center;
-      gap:8px;
-      font-family:"Poppins",sans-serif;
-      font-size:.74rem;
-      font-weight:700;
-      letter-spacing:.12em;
-      text-transform:uppercase;
-      color:var(--brand-blue);
-      background:linear-gradient(135deg,#edf5fd,#fff1e3);
-      border:1px solid rgba(26,58,92,.08);
-      padding:8px 12px;
-      border-radius:999px;
-    }
-    h1,h2,h3{
-      font-family:"Poppins",sans-serif;
-      color:var(--brand-blue-deep);
-      letter-spacing:-.03em;
-    }
-    h1{
-      margin:16px 0 12px;
-      font-size:clamp(2.2rem,4vw,3.9rem);
-      line-height:1.02;
-    }
-    .lede{
-      font-size:1.05rem;
-      line-height:1.78;
-      color:#4e6377;
-      max-width:58ch;
-      margin:0;
-    }
-    .hero-actions{
-      display:flex;
-      flex-wrap:wrap;
-      gap:12px;
-      margin-top:24px;
-    }
-    .btn{
-      display:inline-flex;
-      align-items:center;
-      justify-content:center;
-      gap:8px;
-      text-decoration:none;
-      border:none;
-      border-radius:14px;
-      padding:13px 18px;
-      font-weight:700;
-      font-size:15px;
-      transition:transform .2s ease, box-shadow .2s ease, background .2s ease;
-    }
-    .btn-primary{
-      background:linear-gradient(135deg,var(--brand-blue),#234f7e);
-      color:#fff;
-      box-shadow:0 16px 28px rgba(26,58,92,.22);
-    }
+    .page{max-width:var(--max);margin:0 auto;padding:34px 20px 72px}
+    .hero{display:grid;grid-template-columns:minmax(0,1.08fr) minmax(340px,.92fr);gap:22px;align-items:stretch}
+    .hero-copy,.hero-stack,.panel,.service-card,.faq-card,.area-card,.cta-card,.feature-card{background:rgba(255,255,255,.92);border:1px solid rgba(219,230,240,.92);box-shadow:var(--shadow);border-radius:var(--radius-xl)}
+    .hero-copy{padding:34px;position:relative;overflow:hidden;background:radial-gradient(circle at 100% 0%, rgba(230,126,34,.12), transparent 36%),linear-gradient(180deg, rgba(255,255,255,.98), rgba(255,255,255,.94))}
+    .hero-copy::before{content:"";position:absolute;inset:auto -40px -60px auto;width:180px;height:180px;background:radial-gradient(circle, rgba(26,58,92,.08), transparent 70%);pointer-events:none}
+    .eyebrow{display:inline-flex;align-items:center;gap:8px;font-family:"Poppins",sans-serif;font-size:.74rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--brand-blue);background:linear-gradient(135deg,#edf5fd,#fff1e3);border:1px solid rgba(26,58,92,.08);padding:8px 12px;border-radius:999px}
+    h1,h2,h3{font-family:"Poppins",sans-serif;color:var(--brand-blue-deep);letter-spacing:-.03em}
+    h1{margin:16px 0 12px;font-size:clamp(2.2rem,4vw,3.9rem);line-height:1.02}
+    .lede{font-size:1.05rem;line-height:1.78;color:#4e6377;max-width:58ch;margin:0}
+    .hero-actions{display:flex;flex-wrap:wrap;gap:12px;margin-top:24px}
+    .btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;text-decoration:none;border:none;border-radius:14px;padding:13px 18px;font-weight:700;font-size:15px;transition:transform .2s ease, box-shadow .2s ease, background .2s ease}
+    .btn-primary{background:linear-gradient(135deg,var(--brand-blue),#234f7e);color:#fff;box-shadow:0 16px 28px rgba(26,58,92,.22)}
     .btn-primary:hover{transform:translateY(-1px);box-shadow:0 20px 34px rgba(26,58,92,.28)}
-    .btn-secondary{
-      background:rgba(255,255,255,.86);
-      color:var(--brand-blue);
-      border:1px solid rgba(26,58,92,.12);
-      box-shadow:var(--shadow-soft);
-    }
+    .btn-secondary{background:rgba(255,255,255,.86);color:var(--brand-blue);border:1px solid rgba(26,58,92,.12);box-shadow:var(--shadow-soft)}
     .btn-secondary:hover{transform:translateY(-1px)}
 
-    .hero-stack{
-      padding:14px;
-      display:grid;
-      gap:12px;
-      background:linear-gradient(180deg,rgba(255,255,255,.95),rgba(246,250,255,.95));
-    }
-    .hero-shot{
-      position:relative;
-      min-height:234px;
-      border-radius:22px;
-      overflow:hidden;
-      background:#e9f0f7;
-      border:1px solid rgba(219,230,240,.96);
-    }
-    .hero-shot img{
-      width:100%;
-      height:100%;
-      object-fit:cover;
-      transition:transform .5s ease;
-    }
+    .hero-stack{padding:14px;display:grid;gap:12px;background:linear-gradient(180deg,rgba(255,255,255,.95),rgba(246,250,255,.95))}
+    .hero-shot{position:relative;min-height:234px;border-radius:22px;overflow:hidden;background:#e9f0f7;border:1px solid rgba(219,230,240,.96)}
+    .hero-shot img{width:100%;height:100%;object-fit:cover;transition:transform .5s ease}
     .hero-shot:hover img{transform:scale(1.03)}
-    .hero-tag{
-      position:absolute;
-      left:14px;
-      top:14px;
-      background:rgba(16,38,61,.88);
-      color:#fff;
-      padding:8px 10px;
-      border-radius:10px;
-      font-size:.75rem;
-      font-weight:700;
-      letter-spacing:.08em;
-      text-transform:uppercase;
-      font-family:"Poppins",sans-serif;
-    }
+    .hero-tag{position:absolute;left:14px;top:14px;background:rgba(16,38,61,.88);color:#fff;padding:8px 10px;border-radius:10px;font-size:.75rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;font-family:"Poppins",sans-serif}
 
-    .stats{
-      display:grid;
-      grid-template-columns:repeat(4,minmax(0,1fr));
-      gap:14px;
-      margin-top:18px;
-    }
-    .stat{
-      padding:16px;
-      border-radius:18px;
-      background:rgba(255,255,255,.8);
-      border:1px solid rgba(219,230,240,.9);
-      box-shadow:var(--shadow-soft);
-    }
-    .stat strong{
-      display:block;
-      font-family:"Poppins",sans-serif;
-      font-size:1.05rem;
-      color:var(--brand-blue-deep);
-      margin-bottom:6px;
-    }
+    .stats{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:14px;margin-top:18px}
+    .stat{padding:16px;border-radius:18px;background:rgba(255,255,255,.8);border:1px solid rgba(219,230,240,.9);box-shadow:var(--shadow-soft)}
+    .stat strong{display:block;font-family:"Poppins",sans-serif;font-size:1.05rem;color:var(--brand-blue-deep);margin-bottom:6px}
     .stat span{color:var(--muted);font-size:.95rem;line-height:1.45}
 
-    .section{
-      margin-top:26px;
-    }
-    .section-header{
-      display:flex;
-      align-items:end;
-      justify-content:space-between;
-      gap:16px;
-      margin-bottom:14px;
-    }
+    .section{margin-top:26px}
+    .section-header{display:flex;align-items:end;justify-content:space-between;gap:16px;margin-bottom:14px}
     .section-header p{margin:0;color:var(--muted);max-width:58ch;line-height:1.7}
     .section-header h2{margin:0;font-size:clamp(1.5rem,2vw,2.2rem)}
-
     .panel{padding:24px}
 
-    .service-grid,
-    .job-grid{
-      display:grid;
-      grid-template-columns:repeat(2,minmax(0,1fr));
-      gap:18px;
-    }
-
-    .service-card,
-    .job-card{
-      padding:14px;
-      display:flex;
-      flex-direction:column;
-      gap:14px;
-      transition:transform .22s ease, box-shadow .22s ease, border-color .22s ease;
-    }
-    .service-card:hover,
-    .job-card:hover{
-      transform:translateY(-4px);
-      box-shadow:0 26px 44px rgba(16,38,61,.13);
-      border-color:#c7d8e8;
-    }
-    .card-image{
-      border-radius:18px;
-      overflow:hidden;
-      height:230px;
-      background:#e9f0f7;
-      border:1px solid rgba(219,230,240,.95);
-    }
-    .card-image img{
-      width:100%;
-      height:100%;
-      object-fit:cover;
-      transition:transform .45s ease;
-    }
-    .service-card:hover .card-image img,
-    .job-card:hover .card-image img{transform:scale(1.04)}
+    .service-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px}
+    .service-card{padding:14px;display:flex;flex-direction:column;gap:14px;transition:transform .22s ease, box-shadow .22s ease, border-color .22s ease}
+    .service-card:hover{transform:translateY(-4px);box-shadow:0 26px 44px rgba(16,38,61,.13);border-color:#c7d8e8}
+    .card-image{border-radius:18px;overflow:hidden;height:230px;background:#e9f0f7;border:1px solid rgba(219,230,240,.95)}
+    .card-image img{width:100%;height:100%;object-fit:cover;transition:transform .45s ease}
+    .service-card:hover .card-image img{transform:scale(1.04)}
     .card-copy{padding:2px 4px 4px}
-    .card-kicker{
-      display:inline-block;
-      margin-bottom:8px;
-      color:var(--brand-orange);
-      font-size:.78rem;
-      font-weight:700;
-      letter-spacing:.08em;
-      text-transform:uppercase;
-      font-family:"Poppins",sans-serif;
-    }
-    .card-copy h3{
-      margin:0 0 8px;
-      font-size:1.24rem;
-      line-height:1.16;
-    }
-    .card-copy p{
-      margin:0 0 16px;
-      color:var(--muted);
-      line-height:1.7;
-    }
+    .card-kicker{display:inline-block;margin-bottom:8px;color:var(--brand-orange);font-size:.78rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;font-family:"Poppins",sans-serif}
+    .card-copy h3{margin:0 0 8px;font-size:1.24rem;line-height:1.16}
+    .card-copy p{margin:0 0 16px;color:var(--muted);line-height:1.7}
+    .mini-points{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:14px}
+    .mini-points span{display:inline-flex;align-items:center;padding:8px 11px;border-radius:999px;font-size:.85rem;color:#4e6377;background:#f6faff;border:1px solid rgba(219,230,240,.9)}
 
-    .mini-points{
-      display:flex;
-      flex-wrap:wrap;
-      gap:10px;
-      margin-bottom:14px;
-    }
-    .mini-points span{
-      display:inline-flex;
-      align-items:center;
-      padding:8px 11px;
-      border-radius:999px;
-      font-size:.85rem;
-      color:#4e6377;
-      background:#f6faff;
-      border:1px solid rgba(219,230,240,.9);
-    }
+    .feature-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:18px}
+    .feature-card{padding:24px}
+    .feature-card p{color:var(--muted);line-height:1.8}
+    .feature-list{margin:16px 0 0;padding-left:18px;color:#4f657a;line-height:1.9}
 
-    .faq-card,
-    .area-card{
-      padding:24px 26px;
-    }
+    .faq-card,.area-card,.cta-card{padding:24px 26px}
     .faq-accordion{display:grid;gap:12px}
     .faq-item{border:1px solid rgba(219,230,240,.96);border-radius:18px;background:rgba(255,255,255,.88);overflow:hidden;box-shadow:var(--shadow-soft)}
     .faq-trigger{width:100%;display:flex;align-items:center;justify-content:space-between;gap:16px;padding:18px 20px;background:transparent;border:0;text-align:left;color:var(--brand-blue-deep);font:700 1rem/1.35 "Poppins",sans-serif;cursor:pointer}
@@ -386,38 +114,42 @@
     .faq-panel-inner{overflow:hidden;padding:0 20px;color:#4c6277;line-height:1.8;transform:translateY(-4px);transition:transform .28s ease, padding .28s ease}
     .faq-item.open .faq-panel{grid-template-rows:1fr;opacity:1}
     .faq-item.open .faq-panel-inner{padding:0 20px 18px;transform:translateY(0)}
-    .area-card p{
-      margin:0 0 18px;
-      color:#4f657a;
-      line-height:1.8;
-      max-width:68ch;
-    }
 
-    .subtle-note{
-      margin-top:8px;
-      color:#71859a;
-      font-size:.92rem;
-    }
+    .area-card p,.cta-card p{margin:0 0 18px;color:#4f657a;line-height:1.8;max-width:68ch}
 
     @media (max-width:980px){
       .hero{grid-template-columns:1fr}
       .stats{grid-template-columns:repeat(2,minmax(0,1fr))}
-      .service-grid,.job-grid{grid-template-columns:1fr 1fr}
+      .service-grid,.feature-grid{grid-template-columns:1fr}
     }
-
     @media (max-width:760px){
       .nav-inner{padding:12px 16px;grid-template-columns:auto auto}
       .brand span{display:none}
       .nav-links{display:none}
       .nav-call{display:inline-flex}
       .page{padding:24px 16px 56px}
-      .hero-copy,.panel,.faq-card,.area-card{padding:20px}
-      .service-grid,.job-grid{grid-template-columns:1fr}
+      .hero-copy,.panel,.faq-card,.area-card,.cta-card,.feature-card{padding:20px}
+      .service-grid{grid-template-columns:1fr}
       .stats{grid-template-columns:1fr}
       h1{font-size:2.3rem}
       .card-image{height:210px}
       .hero-shot{min-height:210px}
     }
+  
+    /* shared-site-nav */
+    .site-nav{position:sticky;top:0;z-index:60;border-bottom:1px solid rgba(219,230,240,.9);background:rgba(255,255,255,.84);backdrop-filter:blur(12px) saturate(140%)}
+    .site-nav-inner{max-width:1180px;margin:0 auto;padding:14px 20px;display:grid;grid-template-columns:auto 1fr auto;align-items:center;gap:18px}
+    .site-brand{display:flex;align-items:center;gap:12px;text-decoration:none;font-family:"Poppins",sans-serif;font-weight:700;color:#1a3a5c;letter-spacing:-.02em;min-width:max-content}
+    .site-brand img{height:40px;width:auto}
+    .site-nav-links{display:flex;align-items:center;justify-content:center;gap:28px;justify-self:center}
+    .site-nav-links a{text-decoration:none;font-size:14px;font-weight:600;color:#496177;position:relative;transition:color .2s ease,transform .2s ease}
+    .site-nav-links a:hover{color:#1a3a5c;transform:translateY(-1px)}
+    .site-nav-links a::after{content:"";position:absolute;left:0;bottom:-6px;width:100%;height:2px;border-radius:999px;background:linear-gradient(90deg,#e67e22,#1a3a5c);transform:scaleX(0);transform-origin:left;transition:transform .22s ease}
+    .site-nav-links a:hover::after{transform:scaleX(1)}
+    .site-nav-call{justify-self:end;text-decoration:none;white-space:nowrap;background:linear-gradient(135deg,#e67e22,#f6a14d);color:#fff!important;font-weight:700;font-size:14px;padding:11px 15px;border-radius:14px;box-shadow:0 16px 30px rgba(230,126,34,.24);transition:transform .2s ease,box-shadow .2s ease}
+    .site-nav-call:hover{transform:translateY(-1px);box-shadow:0 20px 36px rgba(230,126,34,.28)}
+    @media (max-width:760px){.site-nav-inner{padding:12px 16px;grid-template-columns:auto auto}.site-brand span{display:none}.site-nav-links{display:none}.site-nav-call{display:inline-flex}}
+
   </style>
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-NY5V19HE72"></script>
   <script>
@@ -453,15 +185,15 @@
   </script>
 </head>
 <body>
-  <header class="nav">
-    <div class="nav-inner">
-      <a class="brand" href="/"><img src="/images/logo.png" alt="Afternoon Plumbing logo"><span>Afternoon Plumbing LLC</span></a>
-      <nav class="nav-links">
+  <header class="site-nav">
+    <div class="site-nav-inner">
+      <a class="site-brand" href="/"><img src="/images/logo.png" alt="Afternoon Plumbing logo"><span>Afternoon Plumbing LLC</span></a>
+      <nav class="site-nav-links">
         <a href="/">Home</a>
         <a href="/services.html">Services</a>
         <a href="/contact.html">Contact</a>
-        <a class="nav-call" href="tel:4437892897">Call 443-789-2897</a>
       </nav>
+      <a class="site-nav-call" href="tel:4437892897">Call 443-789-2897</a>
     </div>
   </header>
 
@@ -469,17 +201,17 @@
     <section class="hero">
       <article class="hero-copy">
         <span class="eyebrow">Service hub</span>
-        <h1>Plumbing services that feel as clean and polished as the finished job.</h1>
-        <p class="lede">Browse the core services Afternoon Plumbing is known for in Westminster, MD, along with recent project pages that show how problems looked before, how they were fixed, and what the finished result felt like.</p>
+        <h1>Plumbing services in Westminster, MD that feel clear, clean, and professionally handled from the first call.</h1>
+        <p class="lede">Afternoon Plumbing helps homeowners with water heaters, well pump issues, water treatment equipment, and exterior plumbing work across Westminster and nearby Carroll County communities.</p>
         <div class="hero-actions">
           <a class="btn btn-primary" href="#core-services">Explore core services</a>
-          <a class="btn btn-secondary" href="#project-blogs">See recent project pages</a>
+          <a class="btn btn-secondary" href="/contact.html">Request an estimate</a>
         </div>
         <div class="stats">
-          <div class="stat"><strong>Owner-operated</strong><span>Clear communication and clean work from a local shop that takes pride in the finish.</span></div>
-          <div class="stat"><strong>Water system strength</strong><span>Strong fit for heaters, softeners, filtration, and problem-solving in real homes.</span></div>
-          <div class="stat"><strong>Real project proof</strong><span>Service pages backed by actual installations, repair cases, and photo-driven examples.</span></div>
-          <div class="stat"><strong>Fast direct contact</strong><span>Call straight from the page when you need pricing, scheduling, or a second opinion.</span></div>
+          <div class="stat"><strong>Owner-operated</strong><span>Local service with direct communication and clean workmanship.</span></div>
+          <div class="stat"><strong>Water system focus</strong><span>Strong fit for heaters, treatment equipment, and problem-solving in real homes.</span></div>
+          <div class="stat"><strong>Fast direct contact</strong><span>Call directly when you need scheduling, pricing, or a second opinion.</span></div>
+          <div class="stat"><strong>Local coverage</strong><span>Serving Westminster and nearby Carroll County communities.</span></div>
         </div>
       </article>
 
@@ -489,8 +221,8 @@
           <img src="/images/water-heater-replacement-2.jpg" alt="Clean water heater replacement installed by Afternoon Plumbing" loading="eager" decoding="sync">
         </div>
         <div class="hero-shot">
-          <span class="hero-tag">Water treatment</span>
-          <img src="/images/filter-comparison.jpg" alt="Water treatment and filtration equipment by Afternoon Plumbing" loading="eager" decoding="sync">
+          <span class="hero-tag">Water filtration</span>
+          <img src="/images/filter-comparison.jpg" alt="Whole-house water filter comparison and treatment equipment by Afternoon Plumbing" loading="eager" decoding="sync">
         </div>
       </aside>
     </section>
@@ -498,8 +230,8 @@
     <section class="section" id="core-services">
       <div class="section-header">
         <div>
-          <h2>Core services</h2>
-          <p>These pages are built to answer the real questions homeowners ask before they call, while also showing the kind of work and finish quality they can expect.</p>
+          <h2>Core plumbing services</h2>
+          <p>These core pages help customers quickly understand what you do, what problems you solve, and which service page to open next.</p>
         </div>
       </div>
       <div class="panel">
@@ -509,41 +241,41 @@
             <div class="card-copy">
               <span class="card-kicker">Hot water</span>
               <h3>Water Heater Replacement</h3>
-              <p>Clean replacement work for failing heaters, leaking tanks, and aging systems that need a more dependable setup.</p>
+              <p>Replacement work for leaking, failing, or aging water heaters with a clean finished install and dependable startup.</p>
               <div class="mini-points"><span>Clean installs</span><span>Startup testing</span><span>Upgrade-ready</span></div>
               <a class="btn btn-primary" href="/water-heater-replacement-westminster-md.html">Open service page</a>
             </div>
           </article>
 
           <article class="service-card">
-            <div class="card-image"><img src="/images/water-heater-electrical-leak-2.jpg" alt="Plumbing equipment and diagnostic-style image for well pump service" loading="lazy" decoding="async"></div>
+            <div class="card-image"><img src="/images/water-heater-electrical-leak-2.jpg" alt="Plumbing system troubleshooting image used for well pump repair and replacement service" loading="lazy" decoding="async"></div>
             <div class="card-copy">
               <span class="card-kicker">Water supply</span>
               <h3>Well Pump Repair &amp; Replacement</h3>
-              <p>No-water issues, pressure problems, and well system troubleshooting with a practical replacement path when repairs stop making sense.</p>
+              <p>Help for no-water problems, pressure issues, and pump system troubleshooting when repair or replacement decisions need to be made clearly.</p>
               <div class="mini-points"><span>No-water diagnostics</span><span>Pressure issues</span><span>Repair or replace</span></div>
               <a class="btn btn-primary" href="/well-pump-repair-westminster-md.html">Open service page</a>
             </div>
           </article>
 
           <article class="service-card">
-            <div class="card-image"><img src="/images/filter-comparison.jpg" alt="Water softener and filtration service by Afternoon Plumbing" loading="lazy" decoding="async"></div>
+            <div class="card-image"><img src="/images/filter-comparison.jpg" alt="Whole-house water filtration equipment installed by Afternoon Plumbing" loading="lazy" decoding="async"></div>
             <div class="card-copy">
               <span class="card-kicker">Water quality</span>
-              <h3>Water Softener Installation</h3>
-              <p>Hard-water treatment and filtration setups designed to improve feel, protect fixtures, and make the whole home water system work better.</p>
-              <div class="mini-points"><span>Softener installs</span><span>Filtration focus</span><span>Fixture protection</span></div>
+              <h3>Water Filtration &amp; Treatment</h3>
+              <p>Whole-house filtration, water treatment equipment, and water quality improvements designed to protect fixtures and improve everyday water use.</p>
+              <div class="mini-points"><span>Filtration focus</span><span>Whole-house treatment</span><span>Fixture protection</span></div>
               <a class="btn btn-primary" href="/water-softener-installation-westminster-md.html">Open service page</a>
             </div>
           </article>
 
           <article class="service-card">
-            <div class="card-image"><img src="/images/laundry-faucet-1.jpg" alt="Exterior plumbing style image used for frost-free hose bib replacement service" loading="lazy" decoding="async"></div>
+            <div class="card-image"><img src="/images/laundry-faucet-1.jpg" alt="Exterior plumbing style image for frost-free hose bib replacement service" loading="lazy" decoding="async"></div>
             <div class="card-copy">
               <span class="card-kicker">Exterior plumbing</span>
               <h3>Frost-Free Hose Bib Replacement</h3>
-              <p>Outdoor faucet replacement work that helps reduce recurring leaks, freeze damage, and the frustration of unreliable exterior plumbing.</p>
-              <div class="mini-points"><span>Freeze damage prevention</span><span>Cleaner curb-side finish</span><span>Leak reduction</span></div>
+              <p>Outdoor faucet replacement work that helps reduce freeze damage, recurring leaks, and unreliable exterior plumbing connections.</p>
+              <div class="mini-points"><span>Freeze protection</span><span>Leak reduction</span><span>Cleaner exterior finish</span></div>
               <a class="btn btn-primary" href="/hose-bib-replacement-westminster-md.html">Open service page</a>
             </div>
           </article>
@@ -551,45 +283,47 @@
       </div>
     </section>
 
-    <section class="section" id="project-blogs">
+    <section class="section" id="water-quality-focus">
       <div class="section-header">
         <div>
-          <h2>Recent project pages</h2>
-          <p>These pages help the site feel more human and more trustworthy by showing what the work actually looked like on the job, not just generic service copy.</p>
+          <h2>Water quality focus</h2>
+          <p>Since water treatment is a strong lead opportunity, this page should call extra attention to filtration and conditioning work without cluttering the rest of the layout.</p>
         </div>
       </div>
-      <div class="panel">
-        <div class="job-grid">
-          <article class="job-card">
-            <div class="card-image"><img src="/images/water-heater-replacement-2.jpg" alt="Water heater replacement case study by Afternoon Plumbing" loading="lazy" decoding="async"></div>
-            <div class="card-copy">
-              <span class="card-kicker">Recent job</span>
-              <h3>Water Heater Replacement Case</h3>
-              <p>A photo-backed project page showing a cleaner finished install, practical upgrade value, and the kind of result customers actually care about.</p>
-              <a class="btn btn-secondary" href="/jobs/water-heater-replacement-westminster.html">View project page</a>
-            </div>
-          </article>
+      <div class="feature-grid">
+        <article class="feature-card">
+          <h3>Water filtration and conditioning deserve their own attention.</h3>
+          <p>Customers searching for better water quality are often looking for different things: hard-water treatment, filtration, iron issues, odor reduction, or whole-house water improvement. Highlighting this category clearly helps both conversions and search relevance.</p>
+          <ul class="feature-list">
+            <li>Whole-house filtration systems</li>
+            <li>Water softener installations</li>
+            <li>Equipment upgrades and replacements</li>
+            <li>Water quality improvement discussions during estimate calls</li>
+          </ul>
+        </article>
+        <article class="feature-card">
+          <h3>Why this helps SEO</h3>
+          <p>A cleaner service hub makes it easier for search engines to understand the page intent, and easier for customers to choose the right service page instead of bouncing through unrelated project content.</p>
+          <ul class="feature-list">
+            <li>Clearer page purpose</li>
+            <li>Stronger internal linking</li>
+            <li>Less visual clutter</li>
+            <li>Better service keyword targeting</li>
+          </ul>
+        </article>
+      </div>
+    </section>
 
-          <article class="job-card">
-            <div class="card-image"><img src="/images/water-heater-electrical-leak-2.jpg" alt="Electrical leak warning case study by Afternoon Plumbing" loading="lazy" decoding="async"></div>
-            <div class="card-copy">
-              <span class="card-kicker">Problem warning</span>
-              <h3>Electrical Leak Warning Case</h3>
-              <p>A homeowner-focused example that explains why seemingly small leaks around a heater can point to bigger electrical-section concerns.</p>
-              <a class="btn btn-secondary" href="/jobs/water-heater-electrical-leak-westminster.html">View project page</a>
-            </div>
-          </article>
-
-          <article class="job-card">
-            <div class="card-image"><img src="/images/laundry-faucet-2.jpg" alt="Laundry room remodel plumbing finish by Afternoon Plumbing" loading="lazy" decoding="async"></div>
-            <div class="card-copy">
-              <span class="card-kicker">Remodel finish</span>
-              <h3>Laundry Remodel Plumbing Finish</h3>
-              <p>A cleaner, more premium-feeling remodel page with finished fixtures, countertop work, and detail shots that help sell quality.</p>
-              <a class="btn btn-secondary" href="/jobs/laundry-faucet.html">View project page</a>
-            </div>
-          </article>
+    <section class="section" id="service-area">
+      <div class="area-card">
+        <div class="section-header" style="margin-bottom:8px;">
+          <div>
+            <h2>Service area</h2>
+            <p>Afternoon Plumbing serves Westminster and nearby communities with a direct local service model.</p>
+          </div>
         </div>
+        <p>Taneytown (21787), Westminster (21157, 21158), Manchester (21102), Hampstead (21074), Finksburg (21048), New Windsor (21776), Union Bridge (21791), Sykesville (21784), Keymar (21757), and Marriottsville (21104).</p>
+        <a class="btn btn-primary" href="/contact.html">Request an estimate</a>
       </div>
     </section>
 
@@ -617,16 +351,15 @@
       </div>
     </section>
 
-    <section class="section" id="service-area">
-      <div class="area-card">
+    <section class="section" id="request-estimate">
+      <div class="cta-card">
         <div class="section-header" style="margin-bottom:8px;">
           <div>
-            <h2>Service area</h2>
-            <p>Afternoon Plumbing serves Westminster and nearby Carroll County communities with a direct, local service model.</p>
+            <h2>Request an estimate</h2>
+            <p>If you know the service you need, open the dedicated page above. If you just want to talk it through, call or use the contact page and we can point you in the right direction.</p>
           </div>
         </div>
-        <p>Taneytown (21787), Westminster (21157, 21158), Manchester (21102), Hampstead (21074), Finksburg (21048), New Windsor (21776), Union Bridge (21791), Sykesville (21784), Keymar (21757), and Marriottsville (21104).</p>
-        <a class="btn btn-primary" href="/contact.html">Request an estimate</a>
+        <a class="btn btn-primary" href="/contact.html">Go to contact page</a>
       </div>
     </section>
   </main>
