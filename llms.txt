@@ -9,9 +9,14 @@
 ## Core Services
 - Water heater replacement and installation
 - Well pump services
-- Water softener and whole-house filtration
+- Water softener, filtration, and water treatment
 - Leak diagnostics and repair
 - Faucet, valve, and fixture installs
+- Frost-free hose bib replacement
+
+## FAQ Hub
+- FAQ page: https://afternoonplumbing.com/faq.html
+- Includes common questions about estimates, scheduling, water heaters, well pumps, water treatment, emergency issues, and service area coverage.
 
 ## Service Area
 Taneytown (21787), Westminster (21157, 21158), Manchester (21102), Hampstead (21074), Finksburg (21048), New Windsor (21776), Union Bridge (21791), Sykesville (21784), Keymar (21757), Marriottsville (21104)
