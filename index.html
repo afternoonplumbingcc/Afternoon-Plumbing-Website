@@ -217,7 +217,7 @@ src="https://www.facebook.com/tr?id=4424110844582646&ev=PageView&noscript=1"
         const mobileTitle=navRoot.querySelector('.md\\:hidden.flex-1');
         const menu=document.createElement('div');
         menu.className='home-mobile-menu';
-        menu.innerHTML='<button class="home-mobile-menu-btn" type="button" aria-label="Open menu">▾</button><div class="home-mobile-menu-list"><a href="/services.html">Services</a><a href="/contact.html">Contact</a></div>';
+        menu.innerHTML='<button class="home-mobile-menu-btn" type="button" aria-label="Open menu">▾</button><div class="home-mobile-menu-list"><a href="/services.html">Services</a><a href="/faq.html">FAQ</a><a href="/contact.html">Contact</a></div>';
         const btn=menu.querySelector('.home-mobile-menu-btn');
         btn.addEventListener('click',(e)=>{ e.stopPropagation(); menu.classList.toggle('open'); });
         document.addEventListener('click',(e)=>{ if(!menu.contains(e.target)) menu.classList.remove('open'); });
