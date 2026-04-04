@@ -19,4 +19,7 @@
 - Includes common questions about estimates, scheduling, water heaters, well pumps, water treatment, emergency issues, and service area coverage.
 
 ## Service Area
-Taneytown (21787), Westminster (21157, 21158), Manchester (21102), Hampstead (21074), Finksburg (21048), New Windsor (21776), Union Bridge (21791), Sykesville (21784), Keymar (21757), Marriottsville (21104)
+- Carroll County: Taneytown (21787), Westminster (21157, 21158), Manchester (21102), Hampstead (21074), Finksburg (21048), New Windsor (21776), Union Bridge (21791), Sykesville (21784), Keymar (21757), Marriottsville (21104)
+- Baltimore County: Upperco (21155), Reisterstown (21136), Glyndon (21071), Towson (21204, 21252, 21286), Randallstown (21133), Hunt Valley (21031), Pikesville (21208)
+- Frederick County: Libertytown (21762), Mount Airy (21771), Frederick (21701, 21702, 21703, 21704, 21705), Woodsboro (21798), New Market (21774), Rocky Ridge (21778), Walkersville (21793), Monrovia (21770)
+- Howard County: Columbia (21044, 21045, 21046), Elkridge (21075), Laurel (20723), Woodbine (21797), Cooksville (21723), Woodstock (21163), West Friendship (21794), Glenwood (21738), Ellicott City (21042, 21043)
