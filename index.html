@@ -194,13 +194,22 @@ src="https://www.facebook.com/tr?id=4424110844582646&ev=PageView&noscript=1"
   function run(){
     const navButtons=[...document.querySelectorAll('nav button')];
     if(!navButtons.length) return;
+    let contactBtn=null;
     navButtons.forEach(btn=>{
       const txt=(btn.textContent||'').trim().toLowerCase();
       if(txt==='services') btn.onclick=()=>{ window.location.href='/services.html'; };
-      if(txt==='contact') btn.onclick=()=>{ window.location.href='/contact.html'; };
+      if(txt==='contact') { btn.onclick=()=>{ window.location.href='/contact.html'; }; contactBtn=btn; }
       if(txt==='gallery' || txt==='portfolio') btn.onclick=()=>{ window.location.href='/services.html'; };
-      if(txt==='faq') btn.onclick=()=>{ window.location.href='/services.html#faq'; };
+      if(txt==='faq') btn.onclick=()=>{ window.location.href='/faq.html'; };
     });
+    const nav=contactBtn && contactBtn.parentElement;
+    if(nav && !nav.querySelector('[data-home-faq-link="1"]')){
+      const faqBtn=contactBtn.cloneNode(true);
+      faqBtn.textContent='FAQ';
+      faqBtn.setAttribute('data-home-faq-link','1');
+      faqBtn.onclick=()=>{ window.location.href='/faq.html'; };
+      nav.insertBefore(faqBtn, contactBtn);
+    }
   }
   if(document.readyState==='loading') document.addEventListener('DOMContentLoaded', run);
   setTimeout(run,400); setTimeout(run,1200);
