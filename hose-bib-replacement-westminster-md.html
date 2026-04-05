@@ -28,7 +28,22 @@
     .grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:16px}
     .card{background:#fff;border:1px solid var(--line);border-radius:16px;padding:18px;box-shadow:0 10px 24px rgba(11,40,66,.07)}
     .btn{display:inline-block;background:var(--blue);color:#fff;text-decoration:none;padding:10px 14px;border-radius:10px;font-weight:700}
-    @media (max-width:860px){.links{display:none}.grid{grid-template-columns:1fr}}
+    .ba-card{grid-column:1 / -1;padding:20px}
+    .ba-top{display:flex;align-items:end;justify-content:space-between;gap:12px;flex-wrap:wrap;margin-bottom:14px}
+    .ba-top p{margin:0;color:var(--muted);max-width:58ch;line-height:1.7}
+    .ba-frame{position:relative;overflow:hidden;border-radius:18px;border:1px solid var(--line);background:#e8eef5;aspect-ratio:16/9;box-shadow:inset 0 0 0 1px rgba(255,255,255,.28)}
+    .ba-frame img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block}
+    .ba-after{clip-path:inset(0 calc(100% - var(--pos,52%)) 0 0)}
+    .ba-divider{position:absolute;top:0;bottom:0;left:var(--pos,52%);width:0;transform:translateX(-1px);border-left:2px solid rgba(255,255,255,.94);box-shadow:0 0 0 1px rgba(15,23,42,.06)}
+    .ba-handle{position:absolute;left:var(--pos,52%);top:50%;transform:translate(-50%,-50%);width:48px;height:48px;border-radius:999px;background:rgba(255,255,255,.94);border:1px solid rgba(217,228,240,.95);box-shadow:0 12px 26px rgba(11,40,66,.16);display:grid;place-items:center;font:800 1rem "Outfit",sans-serif;color:var(--blue)}
+    .ba-label{position:absolute;top:14px;padding:7px 10px;border-radius:999px;background:rgba(11,40,66,.82);color:#fff;font:700 .75rem "Outfit",sans-serif;letter-spacing:.08em;text-transform:uppercase}
+    .ba-label.before{left:14px}
+    .ba-label.after{right:14px}
+    .ba-range{margin-top:16px;width:100%;appearance:none;height:6px;border-radius:999px;background:linear-gradient(90deg,#d8e3ee,#c4d5e6);outline:none}
+    .ba-range::-webkit-slider-thumb{appearance:none;width:22px;height:22px;border-radius:50%;background:#fff;border:2px solid var(--blue);box-shadow:0 8px 18px rgba(11,40,66,.14);cursor:pointer}
+    .ba-range::-moz-range-thumb{width:22px;height:22px;border-radius:50%;background:#fff;border:2px solid var(--blue);box-shadow:0 8px 18px rgba(11,40,66,.14);cursor:pointer}
+    .ba-note{margin-top:10px;color:var(--muted);font-size:.95rem;line-height:1.7}
+    @media (max-width:860px){.links{display:none}.grid{grid-template-columns:1fr}.ba-frame{aspect-ratio:4/5}.ba-handle{width:42px;height:42px}}
   
     /* modern-page-shell */
     :root{--page-bg:#f5f7fb;--page-ink:#0f172a;--page-muted:#64748b;--page-line:#dbe4ef;--page-card:#ffffff;--page-blue:#0f4c81;--page-blue-dark:#0b3558;--page-accent:#e67e22;--page-shadow:0 18px 42px rgba(15,23,42,.10)}
@@ -208,6 +223,27 @@ src="https://www.facebook.com/tr?id=4424110844582646&ev=PageView&noscript=1"
       <div style="margin-top:12px"><a class="btn" href="tel:4437892897">Call for Hose Bib Service</a></div>
     </section>
 
+    <section class="grid" style="margin-top:18px">
+      <article class="card ba-card">
+        <div class="ba-top">
+          <div>
+            <h2 style="margin:0 0 6px;font-family:Outfit,sans-serif">Before and after hose bib replacement</h2>
+            <p>Real project photos showing an older outdoor faucet before replacement and the cleaner finished result after the new hose bib was installed.</p>
+          </div>
+        </div>
+        <div class="ba-frame" style="--pos:52%" data-ba-frame>
+          <img src="/images/hose-bib-before.jpg" alt="Old exterior hose bib before replacement" loading="lazy" decoding="async">
+          <img class="ba-after" src="/images/hose-bib-after.jpg" alt="New exterior hose bib after replacement" loading="lazy" decoding="async">
+          <span class="ba-label before">Before</span>
+          <span class="ba-label after">After</span>
+          <span class="ba-divider" aria-hidden="true"></span>
+          <span class="ba-handle" aria-hidden="true">↔</span>
+        </div>
+        <input class="ba-range" type="range" min="0" max="100" value="52" aria-label="Before and after comparison slider" data-ba-range>
+        <p class="ba-note">Drag the slider to compare the original hose bib with the completed replacement.</p>
+      </article>
+    </section>
+
     <section class="grid">
       <article class="card">
         <h2 style="margin-top:0;font-family:Outfit,sans-serif">What’s Included</h2>
@@ -251,6 +287,6 @@ src="https://www.facebook.com/tr?id=4424110844582646&ev=PageView&noscript=1"
       </article>
     </section>
   </main>
-<script>document.querySelectorAll('.site-nav-menu-btn').forEach((btn)=>{btn.addEventListener('click',(e)=>{e.stopPropagation();const menu=btn.parentElement;menu.classList.toggle('open');});});document.addEventListener('click',(e)=>{document.querySelectorAll('.site-nav-menu').forEach((menu)=>{if(!menu.contains(e.target))menu.classList.remove('open');});});</script>
+<script>document.querySelectorAll('.site-nav-menu-btn').forEach((btn)=>{btn.addEventListener('click',(e)=>{e.stopPropagation();const menu=btn.parentElement;menu.classList.toggle('open');});});document.addEventListener('click',(e)=>{document.querySelectorAll('.site-nav-menu').forEach((menu)=>{if(!menu.contains(e.target))menu.classList.remove('open');});});document.querySelectorAll('[data-ba-range]').forEach((range)=>{const frame=range.parentElement.querySelector('[data-ba-frame]');const sync=()=>frame.style.setProperty('--pos',range.value+'%');range.addEventListener('input',sync);sync();});</script>
 </body>
 </html>
