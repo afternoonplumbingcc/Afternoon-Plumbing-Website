@@ -15,6 +15,14 @@
     .card{background:#fff;border:1px solid #e2e8f0;border-radius:14px;padding:20px;box-shadow:0 8px 24px rgba(2,6,23,.05)}
     .cta{margin-top:14px;display:flex;gap:10px;flex-wrap:wrap}.btn{display:inline-block;background:#0f4c81;color:#fff;text-decoration:none;padding:10px 14px;border-radius:10px;font-weight:700}
     .btn.alt{background:#1f7a3f}
+    /* Before/After Slider */
+    .ba-container{position:relative;max-width:100%;overflow:hidden;border-radius:12px;margin:20px 0;user-select:none}
+    .ba-image{position:absolute;top:0;left:0;width:100%;height:100%;object-fit:cover}
+    .ba-overlay{position:absolute;top:0;left:0;width:50%;height:100%;overflow:hidden;border-right:3px solid #fff}
+    .ba-slider{position:absolute;top:0;width:4px;height:100%;background:#fff;cursor:ew-resize;z-index:10}
+    .ba-handle{position:absolute;top:50%;transform:translate(-50%,-50%);width:40px;height:40px;background:#fff;border-radius:50%;box-shadow:0 2px 8px rgba(0,0,0,.2);display:flex;align-items:center;justify-content:center;color:#0f4c81}
+    .ba-label{position:absolute;bottom:12px;padding:6px 12px;background:rgba(0,0,0,.6);color:#fff;border-radius:6px;font-size:14px;font-weight:600}
+    .ba-label.before{left:12px}.ba-label.after{right:12px}
      /* Mobile image enhancements */
     @media (max-width: 768px) {
       .card img, .hero-img, .service-card img, .mini img {
@@ -36,6 +44,18 @@
     <div class="card">
       <p>Upgrading to frost-free hose bibs helps reduce winter freeze damage and recurring leaks around exterior walls.</p>
       <p>We provide clean replacement work and test for proper shutoff and leak-free performance before completion.</p>
+      <h2>Before & After</h2>
+      <div class="ba-container" id="ba-slider">
+        <img class="ba-image" src="/images/hosebib-before.jpg" alt="Hose bib before replacement" />
+        <div class="ba-overlay">
+          <img class="ba-image" src="/images/hosebib-after.jpg" alt="Hose bib after replacement" />
+        </div>
+        <div class="ba-slider" style="left: 50%">
+          <div class="ba-handle">↵</div>
+        </div>
+        <span class="ba-label before">Before</span>
+        <span class="ba-label after">After</span>
+      </div>
       <h2>Service Area</h2>
       <p>Taneytown (21787), Westminster (21157, 21158), Manchester (21102), Hampstead (21074), Finksburg (21048), New Windsor (21776), Union Bridge (21791), Sykesville (21784), Keymar (21757), Marriottsville (21104).</p>
       <div class="cta">
@@ -44,5 +64,64 @@
       </div>
     </div>
   </main>
+  <script>
+    (function() {
+      const container = document.getElementById('ba-slider');
+      if (!container) return;
+      const overlay = container.querySelector('.ba-overlay');
+      const slider = container.querySelector('.ba-slider');
+      const handle = slider.querySelector('.ba-handle');
+      let isDragging = false;
+
+      function updateSlider(x) {
+        const rect = container.getBoundingClientRect();
+        let pos = x - rect.left;
+        pos = Math.max(0, Math.min(pos, rect.width));
+        const percent = (pos / rect.width) * 100;
+        overlay.style.width = percent + '%';
+        slider.style.left = percent + '%';
+      }
+
+      container.addEventListener('mousedown', function(e) {
+        if (e.target === handle || handle.contains(e.target)) {
+          isDragging = true;
+        }
+      });
+
+      document.addEventListener('mousemove', function(e) {
+        if (isDragging) {
+          updateSlider(e.clientX);
+        }
+      });
+
+      document.addEventListener('mouseup', function() {
+        isDragging = false;
+      });
+
+      // Touch support
+      container.addEventListener('touchstart', function(e) {
+        if (e.target === handle || handle.contains(e.target)) {
+          isDragging = true;
+        }
+      }, {passive: true});
+
+      document.addEventListener('touchmove', function(e) {
+        if (isDragging && e.touches.length === 1) {
+          updateSlider(e.touches[0].clientX);
+        }
+      }, {passive: true});
+
+      document.addEventListener('touchend', function() {
+        isDragging = false;
+      });
+
+      // Click anywhere to jump
+      container.addEventListener('click', function(e) {
+        if (!isDragging) {
+          updateSlider(e.clientX);
+        }
+      });
+    })();
+  </script>
 </body>
 </html>
