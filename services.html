@@ -140,7 +140,7 @@
     .site-nav{position:sticky;top:0;z-index:60;border-bottom:1px solid rgba(219,230,240,.9);background:rgba(255,255,255,.84);backdrop-filter:blur(12px) saturate(140%)}
     .site-nav-inner{max-width:1180px;margin:0 auto;padding:14px 20px;display:grid;grid-template-columns:auto 1fr auto;align-items:center;gap:18px}
     .site-brand{display:flex;align-items:center;gap:12px;text-decoration:none;font-family:"Poppins",sans-serif;font-weight:700;color:#1a3a5c;letter-spacing:-.02em;min-width:max-content}
-    .site-brand img{height:40px;width:auto}
+    .site-brand img{height:28px;width:auto}
     .site-nav-links{display:flex;align-items:center;justify-content:center;gap:28px;justify-self:center}
     .site-nav-links a{text-decoration:none;font-size:14px;font-weight:600;color:#496177;position:relative;transition:color .2s ease,transform .2s ease}
     .site-nav-links a:hover{color:#1a3a5c;transform:translateY(-1px)}
@@ -155,7 +155,7 @@
     .site-nav{position:sticky;top:0;z-index:60;border-bottom:1px solid rgba(219,230,240,.9);background:rgba(255,255,255,.84);backdrop-filter:blur(12px) saturate(140%)}
     .site-nav-inner{max-width:1180px;margin:0 auto;padding:14px 20px;display:grid;grid-template-columns:auto 1fr auto;align-items:center;gap:18px}
     .site-brand{display:flex;align-items:center;gap:12px;text-decoration:none;font-family:"Poppins",sans-serif;font-weight:700;font-size:1rem;color:#1a3a5c;letter-spacing:-.02em;min-width:max-content}
-    .site-brand img{height:40px;width:auto}
+    .site-brand img{height:28px;width:auto}
     .site-nav-links{display:flex;align-items:center;justify-content:center;gap:28px;justify-self:center}
     .site-nav-links a{text-decoration:none;font-family:"Inter",system-ui,-apple-system,Segoe UI,Roboto,sans-serif;font-size:14px;font-weight:600;line-height:1;color:#496177;position:relative;transition:color .2s ease,transform .2s ease}
     .site-nav-links a:hover,.site-nav-links a.active{color:#1a3a5c;transform:translateY(-1px)}
@@ -227,11 +227,11 @@ src="https://www.facebook.com/tr?id=4424110844582646&ev=PageView&noscript=1"
     <div class="site-nav-inner">
       <a class="site-brand" href="/"><img src="/images/logo.png" alt="Afternoon Plumbing logo"><span>Afternoon Plumbing LLC</span></a>
       <nav class="site-nav-links">
-        <a href="/services.html">Services</a>
+        <a class="active" href="/services.html" aria-current="page">Services</a>
         <a href="/faq.html">FAQ</a>
         <a href="/contact.html">Contact</a>
       </nav>
-      <div class="site-nav-menu"><button class="site-nav-menu-btn" type="button" aria-label="Open menu">▾</button><div class="site-nav-menu-list"><a href="/services.html">Services</a><a href="/faq.html">FAQ</a><a href="/contact.html">Contact</a></div></div>
+      <div class="site-nav-menu"><button class="site-nav-menu-btn" type="button" aria-label="Open menu">▾</button><div class="site-nav-menu-list"><a class="active" href="/services.html" aria-current="page">Services</a><a href="/faq.html">FAQ</a><a href="/contact.html">Contact</a></div></div>
       <a class="site-nav-call" href="tel:4437892897">Call 443-789-2897</a>
     </div>
   </header>
@@ -287,7 +287,7 @@ src="https://www.facebook.com/tr?id=4424110844582646&ev=PageView&noscript=1"
           </article>
 
           <article class="service-card">
-            <div class="card-image"><img src="/images/water-heater-electrical-leak-2.jpg" alt="Plumbing system troubleshooting image used for well pump repair and replacement service" loading="lazy" decoding="async"></div>
+            <div class="card-image"><img src="/images/water-treatment-system.jpg" alt="Water treatment system installation by Afternoon Plumbing - we service well pump systems and water equipment" loading="lazy" decoding="async"></div>
             <div class="card-copy">
               <span class="card-kicker">Water supply</span>
               <h3>Well Pump Repair &amp; Replacement</h3>
@@ -305,6 +305,17 @@ src="https://www.facebook.com/tr?id=4424110844582646&ev=PageView&noscript=1"
               <p>Whole-house filtration, water treatment equipment, and water quality improvements designed to protect fixtures and improve everyday water use.</p>
               <div class="mini-points"><span>Filtration focus</span><span>Whole-house treatment</span><span>Fixture protection</span></div>
               <a class="btn btn-primary" href="/water-softener-installation-westminster-md.html">Open service page</a>
+            </div>
+          </article>
+
+          <article class="service-card">
+            <div class="card-image"><img src="/images/filter-comparison.jpg" alt="Acid neutralizer system for protecting plumbing from acidic well water" loading="lazy" decoding="async"></div>
+            <div class="card-copy">
+              <span class="card-kicker">Water treatment</span>
+              <h3>Acid Neutralizer Installation</h3>
+              <p>Protect your well water system from corrosive acidic water with calcite-based neutralizer systems. Local expertise for Westminster and Carroll County.</p>
+              <div class="mini-points"><span>pH correction</span><span>Plumbing protection</span><span>Low maintenance</span></div>
+              <a class="btn btn-primary" href="/acid-neutralizer-installation-westminster-md.html">Open service page</a>
             </div>
           </article>
 
@@ -371,7 +382,9 @@ src="https://www.facebook.com/tr?id=4424110844582646&ev=PageView&noscript=1"
         <div class="section-header" style="margin-bottom:14px;">
           <div>
             <h2>Common questions</h2>
+            <p>Need a deeper answer about estimates, emergencies, water heaters, or water treatment? The full FAQ page covers the most common homeowner questions in one place.</p>
           </div>
+          <a class="btn btn-secondary" href="/faq.html">Open full FAQ</a>
         </div>
         <div class="faq-accordion">
           <div class="faq-item open">
