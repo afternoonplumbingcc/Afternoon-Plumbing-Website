@@ -162,6 +162,18 @@
     @media(max-width:860px){
       .hero h1{font-size:1.8rem}
     }
+     /* Mobile image enhancements */
+    @media (max-width: 768px) {
+      .card img, .hero-img, .service-card img, .mini img {
+        max-width: 100% !important;
+        height: auto !important;
+        min-height: 200px;
+        object-fit: cover;
+      }
+      .ba-frame { min-height: 320px !important; }
+      h1 { font-size: 1.8rem !important; }
+      .hero { padding: 20px !important; }
+    }
   </style>
   <!-- Structured Data -->
   <script type="application/ld+json">

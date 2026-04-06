@@ -15,6 +15,18 @@
     .card{background:#fff;border:1px solid #e2e8f0;border-radius:14px;padding:20px;box-shadow:0 8px 24px rgba(2,6,23,.05)}
     .cta{margin-top:14px;display:flex;gap:10px;flex-wrap:wrap}.btn{display:inline-block;background:#0f4c81;color:#fff;text-decoration:none;padding:10px 14px;border-radius:10px;font-weight:700}
     .btn.alt{background:#1f7a3f}
+     /* Mobile image enhancements */
+    @media (max-width: 768px) {
+      .card img, .hero-img, .service-card img, .mini img {
+        max-width: 100% !important;
+        height: auto !important;
+        min-height: 200px;
+        object-fit: cover;
+      }
+      .ba-frame { min-height: 320px !important; }
+      h1 { font-size: 1.8rem !important; }
+      .hero { padding: 20px !important; }
+    }
   </style>
 </head>
 <body>
