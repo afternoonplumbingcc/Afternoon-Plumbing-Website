@@ -17,16 +17,17 @@
     .btn.alt{background:#1f7a3f}
     /* Before/After Slider - Enhanced for Accessibility, Mobile, and Performance */
     .ba-container{position:relative;max-width:100%;overflow:hidden;border-radius:12px;margin:20px 0;user-select:none;height:450px;min-height:300px;background:#000}
-    .ba-image{position:absolute;top:0;left:0;width:100%;height:100%;object-fit:cover;transition:opacity .3s ease}
-    .ba-overlay{position:absolute;top:0;left:0;width:50%;height:100%;overflow:hidden;border-right:3px solid #fff;will-change:width}
-    .ba-slider{position:absolute;top:0;width:4px;height:100%;background:#fff;cursor:ew-resize;z-index:10;transition:left .05s ease-out}
+    .ba-image{position:absolute;top:0;left:0;width:100%;height:100%;object-fit:cover}
+    .ba-base{z-index:1}
+    .ba-overlay{position:absolute;top:0;left:0;width:50%;height:100%;overflow:hidden;z-index:2;will-change:width}
+    .ba-slider{position:absolute;top:0;width:4px;height:100%;background:#fff;cursor:ew-resize;z-index:3;transition:left .05s ease-out}
     .ba-handle{position:absolute;top:50%;transform:translate(-50%,-50%);width:48px;height:48px;min-width:48px;min-height:48px;background:#fff;border:3px solid #0f4c81;border-radius:50%;box-shadow:0 4px 12px rgba(0,0,0,.3);display:flex;align-items:center;justify-content:center;color:#0f4c81;font-size:20px;font-weight:bold}
     .ba-handle:focus{outline:3px solid #2563eb;outline-offset:2px}
     .ba-handle:hover{background:#f0f9ff}
-    .ba-label{position:absolute;bottom:12px;padding:6px 12px;background:rgba(0,0,0,.7);color:#fff;border-radius:6px;font-size:14px;font-weight:600;pointer-events:none;backdrop-filter:blur(4px)}
-    .ba-label.before{left:12px}.ba-label.after{right:12px}
+    .ba-label{position:absolute;bottom:12px;padding:6px 12px;background:rgba(0,0,0,.7);color:#fff;border-radius:6px;font-size:14px;font-weight:600;pointer-events:none;backdrop-filter:blur(4px);z-index:4}
+    .ba-label.ba-label--before{left:12px}.ba-label.ba-label--after{right:12px}
     .ba-slider:focus{outline:none}
-    .ba-instructions{position:absolute;top:12px;left:50%;transform:translateX(-50%);padding:6px 12px;background:rgba(0,0,0,.6);color:#fff;border-radius:6px;font-size:12px;backdrop-filter:blur(4px);opacity:.8;transition:opacity .3s}
+    .ba-instructions{position:absolute;top:12px;left:50%;transform:translateX(-50%);padding:6px 12px;background:rgba(0,0,0,.6);color:#fff;border-radius:6px;font-size:12px;backdrop-filter:blur(4px);opacity:.8;transition:opacity .3s;z-index:4}
     .ba-instructions:focus-within{opacity:1}
     /* Hide instructions on very small screens to save space */
     @media (max-width: 480px) {
@@ -62,17 +63,19 @@
       <p>Upgrading to frost-free hose bibs helps reduce winter freeze damage and recurring leaks around exterior walls.</p>
       <p>We provide clean replacement work and test for proper shutoff and leak-free performance before completion.</p>
       <h2>Before & After</h2>
-      <div class="ba-container" id="ba-slider" role="img" aria-label="Before and after comparison of hose bib replacement showing old leaking faucet and new frost-free installation" tabindex="0">
-        <div class="ba-instructions" aria-live="polite">Drag the slider or use arrow keys to compare</div>
-        <img class="ba-image" loading="lazy" width="1024" height="1771" src="/images/hosebib-before.jpg" alt="Hose bib before replacement - old faucet with rust and leaks" />
+      <div class="ba-container" id="ba-slider" role="img" aria-label="Before and after comparison of hose bib replacement" tabindex="0">
+        <div class="ba-instructions" aria-live="polite">Drag the slider to compare</div>
+        <!-- After image is the base (full coverage, visible on right) -->
+        <img class="ba-image ba-base" loading="lazy" width="1024" height="1771" src="/images/hosebib-after.jpg" alt="Hose bib after replacement - new frost-free sillcock" />
+        <!-- Before image is in overlay (clipped, shows on left) -->
         <div class="ba-overlay">
-          <img class="ba-image" loading="lazy" width="1024" height="1771" src="/images/hosebib-after.jpg" alt="Hose bib after replacement - new frost-free sillcock with clean installation" />
+          <img class="ba-image" loading="lazy" width="1024" height="1771" src="/images/hosebib-before.jpg" alt="Hose bib before replacement - old leaking faucet" />
         </div>
-        <div class="ba-slider" style="left: 50%" role="slider" aria-label="Comparison slider" aria-valuemin="0" aria-valuemax="100" aria-valuenow="50" aria-valuetext="50 percent" tabindex="0">
-          <div class="ba-handle" aria-hidden="true" role="presentation">↵</div>
+        <div class="ba-slider" role="slider" aria-label="Comparison slider" aria-valuemin="0" aria-valuemax="100" aria-valuenow="50" tabindex="0">
+          <div class="ba-handle" aria-hidden="true">↔</div>
         </div>
-        <span class="ba-label before">Before</span>
-        <span class="ba-label after">After</span>
+        <span class="ba-label ba-label--before">Before</span>
+        <span class="ba-label ba-label--after">After</span>
       </div>
       <h2>Service Area</h2>
       <p>Taneytown (21787), Westminster (21157, 21158), Manchester (21102), Hampstead (21074), Finksburg (21048), New Windsor (21776), Union Bridge (21791), Sykesville (21784), Keymar (21757), Marriottsville (21104).</p>
