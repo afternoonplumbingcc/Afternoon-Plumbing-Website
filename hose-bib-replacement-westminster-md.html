@@ -15,14 +15,23 @@
     .card{background:#fff;border:1px solid #e2e8f0;border-radius:14px;padding:20px;box-shadow:0 8px 24px rgba(2,6,23,.05)}
     .cta{margin-top:14px;display:flex;gap:10px;flex-wrap:wrap}.btn{display:inline-block;background:#0f4c81;color:#fff;text-decoration:none;padding:10px 14px;border-radius:10px;font-weight:700}
     .btn.alt{background:#1f7a3f}
-    /* Before/After Slider */
-    .ba-container{position:relative;max-width:100%;overflow:hidden;border-radius:12px;margin:20px 0;user-select:none;height:450px;min-height:300px}
-    .ba-image{position:absolute;top:0;left:0;width:100%;height:100%;object-fit:cover}
-    .ba-overlay{position:absolute;top:0;left:0;width:50%;height:100%;overflow:hidden;border-right:3px solid #fff}
-    .ba-slider{position:absolute;top:0;width:4px;height:100%;background:#fff;cursor:ew-resize;z-index:10}
-    .ba-handle{position:absolute;top:50%;transform:translate(-50%,-50%);width:40px;height:40px;background:#fff;border-radius:50%;box-shadow:0 2px 8px rgba(0,0,0,.2);display:flex;align-items:center;justify-content:center;color:#0f4c81}
-    .ba-label{position:absolute;bottom:12px;padding:6px 12px;background:rgba(0,0,0,.6);color:#fff;border-radius:6px;font-size:14px;font-weight:600}
+    /* Before/After Slider - Enhanced for Accessibility, Mobile, and Performance */
+    .ba-container{position:relative;max-width:100%;overflow:hidden;border-radius:12px;margin:20px 0;user-select:none;height:450px;min-height:300px;background:#000}
+    .ba-image{position:absolute;top:0;left:0;width:100%;height:100%;object-fit:cover;transition:opacity .3s ease}
+    .ba-overlay{position:absolute;top:0;left:0;width:50%;height:100%;overflow:hidden;border-right:3px solid #fff;will-change:width}
+    .ba-slider{position:absolute;top:0;width:4px;height:100%;background:#fff;cursor:ew-resize;z-index:10;transition:left .05s ease-out}
+    .ba-handle{position:absolute;top:50%;transform:translate(-50%,-50%);width:48px;height:48px;min-width:48px;min-height:48px;background:#fff;border:3px solid #0f4c81;border-radius:50%;box-shadow:0 4px 12px rgba(0,0,0,.3);display:flex;align-items:center;justify-content:center;color:#0f4c81;font-size:20px;font-weight:bold}
+    .ba-handle:focus{outline:3px solid #2563eb;outline-offset:2px}
+    .ba-handle:hover{background:#f0f9ff}
+    .ba-label{position:absolute;bottom:12px;padding:6px 12px;background:rgba(0,0,0,.7);color:#fff;border-radius:6px;font-size:14px;font-weight:600;pointer-events:none;backdrop-filter:blur(4px)}
     .ba-label.before{left:12px}.ba-label.after{right:12px}
+    .ba-slider:focus{outline:none}
+    .ba-instructions{position:absolute;top:12px;left:50%;transform:translateX(-50%);padding:6px 12px;background:rgba(0,0,0,.6);color:#fff;border-radius:6px;font-size:12px;backdrop-filter:blur(4px);opacity:.8;transition:opacity .3s}
+    .ba-instructions:focus-within{opacity:1}
+    /* Hide instructions on very small screens to save space */
+    @media (max-width: 480px) {
+      .ba-instructions{display:none}
+    }
      /* Mobile image enhancements */
     @media (max-width: 768px) {
       .card img, .hero-img, .service-card img, .mini img {
@@ -31,9 +40,17 @@
         min-height: 200px;
         object-fit: cover;
       }
-      .ba-container { min-height: 320px !important; height: auto !important; }
+      .ba-container { min-height: 320px !important; height: auto !important; touch-action: pan-y pinch-zoom; }
       h1 { font-size: 1.8rem !important; }
       .hero { padding: 20px !important; }
+    }
+    /* Tablet adjustments */
+    @media (min-width: 769px) and (max-width: 1024px) {
+      .ba-container { height: 400px; }
+    }
+    /* Reduce motion for users who prefer it */
+    @media (prefers-reduced-motion: reduce) {
+      .ba-slider, .ba-image { transition: none !important; }
     }
   </style>
 </head>
@@ -45,13 +62,14 @@
       <p>Upgrading to frost-free hose bibs helps reduce winter freeze damage and recurring leaks around exterior walls.</p>
       <p>We provide clean replacement work and test for proper shutoff and leak-free performance before completion.</p>
       <h2>Before & After</h2>
-      <div class="ba-container" id="ba-slider">
-        <img class="ba-image" src="/images/hosebib-before.jpg" alt="Hose bib before replacement" />
+      <div class="ba-container" id="ba-slider" role="img" aria-label="Before and after comparison of hose bib replacement showing old leaking faucet and new frost-free installation" tabindex="0">
+        <div class="ba-instructions" aria-live="polite">Drag the slider or use arrow keys to compare</div>
+        <img class="ba-image" loading="lazy" width="1024" height="1771" src="/images/hosebib-before.jpg" alt="Hose bib before replacement - old faucet with rust and leaks" />
         <div class="ba-overlay">
-          <img class="ba-image" src="/images/hosebib-after.jpg" alt="Hose bib after replacement" />
+          <img class="ba-image" loading="lazy" width="1024" height="1771" src="/images/hosebib-after.jpg" alt="Hose bib after replacement - new frost-free sillcock with clean installation" />
         </div>
-        <div class="ba-slider" style="left: 50%">
-          <div class="ba-handle">↵</div>
+        <div class="ba-slider" style="left: 50%" role="slider" aria-label="Comparison slider" aria-valuemin="0" aria-valuemax="100" aria-valuenow="50" aria-valuetext="50 percent" tabindex="0">
+          <div class="ba-handle" aria-hidden="true" role="presentation">↵</div>
         </div>
         <span class="ba-label before">Before</span>
         <span class="ba-label after">After</span>
@@ -71,55 +89,171 @@
       const overlay = container.querySelector('.ba-overlay');
       const slider = container.querySelector('.ba-slider');
       const handle = slider.querySelector('.ba-handle');
+      const instructions = container.querySelector('.ba-instructions');
       let isDragging = false;
+      let rafId = null;
+      let lastX = 0;
 
-      function updateSlider(x) {
+      // Check for reduced motion preference
+      const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+      // Throttled update using requestAnimationFrame for performance
+      function scheduleUpdate(x) {
+        lastX = x;
+        if (rafId) cancelAnimationFrame(rafId);
+        rafId = requestAnimationFrame(() => {
+          updateSlider(lastX);
+          rafId = null;
+        });
+      }
+
+      function updateSlider(x, isKeyboard = false) {
         const rect = container.getBoundingClientRect();
         let pos = x - rect.left;
         pos = Math.max(0, Math.min(pos, rect.width));
-        const percent = (pos / rect.width) * 100;
-        overlay.style.width = percent + '%';
-        slider.style.left = percent + '%';
+        const percent = Math.round((pos / rect.width) * 100);
+
+        // Update visual slider position
+        if (!prefersReducedMotion) {
+          overlay.style.width = percent + '%';
+          slider.style.left = percent + '%';
+        } else {
+          // Immediate update for reduced motion
+          overlay.style.width = percent + '%';
+          slider.style.left = percent + '%';
+        }
+
+        // Update ARIA attributes for screen readers
+        slider.setAttribute('aria-valuenow', percent);
+        slider.setAttribute('aria-valuetext', percent + ' percent');
+
+        // Announce position change to screen readers
+        if (instructions && !isKeyboard) {
+          instructions.textContent = `Comparison: ${percent}% before, ${100 - percent}% after`;
+        }
       }
 
-      container.addEventListener('mousedown', function(e) {
-        if (e.target === handle || handle.contains(e.target)) {
-          isDragging = true;
+      function getClientX(e) {
+        if (e.touches && e.touches.length > 0) {
+          return e.touches[0].clientX;
         }
-      });
+        return e.clientX;
+      }
+
+      // Mouse events
+      container.addEventListener('mousedown', function(e) {
+        if (e.target === handle || handle.contains(e.target) || e.target === container || e.target === overlay || e.target.closest('.ba-overlay')) {
+          isDragging = true;
+          container.setAttribute('aria-grabbed', 'true');
+          e.preventDefault();
+          scheduleUpdate(getClientX(e));
+        }
+      }, { passive: false });
 
       document.addEventListener('mousemove', function(e) {
         if (isDragging) {
-          updateSlider(e.clientX);
+          scheduleUpdate(getClientX(e));
         }
-      });
+      }, { passive: false });
 
       document.addEventListener('mouseup', function() {
-        isDragging = false;
+        if (isDragging) {
+          isDragging = false;
+          container.setAttribute('aria-grabbed', 'false');
+        }
       });
 
-      // Touch support
+      // Touch events with proper passive handling
       container.addEventListener('touchstart', function(e) {
-        if (e.target === handle || handle.contains(e.target)) {
+        if (e.target === handle || handle.contains(e.target) || e.target === container || e.target === overlay || e.target.closest('.ba-overlay')) {
           isDragging = true;
+          container.setAttribute('aria-grabbed', 'true');
+          // Need to prevent default to stop page scrolling while dragging
+          if (e.cancelable) e.preventDefault();
+          scheduleUpdate(getClientX(e));
         }
-      }, {passive: true});
+      }, { passive: false });
 
       document.addEventListener('touchmove', function(e) {
         if (isDragging && e.touches.length === 1) {
-          updateSlider(e.touches[0].clientX);
+          if (e.cancelable) e.preventDefault();
+          scheduleUpdate(getClientX(e));
         }
-      }, {passive: true});
+      }, { passive: false });
 
       document.addEventListener('touchend', function() {
-        isDragging = false;
+        if (isDragging) {
+          isDragging = false;
+          container.setAttribute('aria-grabbed', 'false');
+        }
       });
 
-      // Click anywhere to jump
+      // Click/tap to jump
       container.addEventListener('click', function(e) {
-        if (!isDragging) {
-          updateSlider(e.clientX);
+        // Only handle if not dragging to avoid double-handling
+        if (!isDragging && (e.target === container || e.target.closest('.ba-container'))) {
+          updateSlider(getClientX(e));
         }
+      });
+
+      // Keyboard navigation for accessibility
+      slider.addEventListener('keydown', function(e) {
+        const step = 5; // percentage step for arrow keys
+        const currentPercent = parseInt(slider.getAttribute('aria-valuenow')) || 50;
+        let newPercent = currentPercent;
+
+        switch (e.key) {
+          case 'ArrowRight':
+          case 'ArrowUp':
+            newPercent = Math.min(100, currentPercent + step);
+            e.preventDefault();
+            break;
+          case 'ArrowLeft':
+          case 'ArrowDown':
+            newPercent = Math.max(0, currentPercent - step);
+            e.preventDefault();
+            break;
+          case 'Home':
+            newPercent = 0;
+            e.preventDefault();
+            break;
+          case 'End':
+            newPercent = 100;
+            e.preventDefault();
+            break;
+          default:
+            return; // Exit if not an arrow key
+        }
+
+        // Calculate x coordinate based on percentage
+        const rect = container.getBoundingClientRect();
+        const x = rect.left + (newPercent / 100) * rect.width;
+        updateSlider(x, true);
+
+        // Announce keyboard move
+        if (instructions) {
+          instructions.textContent = `Moved to ${newPercent}% before, ${100 - newPercent}% after (keyboard)`;
+        }
+      });
+
+      // Handle keyboard focus for container as well
+      container.addEventListener('keydown', function(e) {
+        // If container has focus and arrow keys are pressed, move slider
+        if (e.key === 'ArrowLeft' || e.key === 'ArrowRight' || e.key === 'ArrowUp' || e.key === 'ArrowDown' || e.key === 'Home' || e.key === 'End') {
+          // Forward to slider's keydown handler
+          slider.focus();
+          slider.dispatchEvent(new KeyboardEvent('keydown', { key: e.key, bubbles: true, cancelable: true }));
+          e.preventDefault();
+        }
+      });
+
+      // Initial setup: ensure slider is at 50%
+      const initialRect = container.getBoundingClientRect();
+      updateSlider(initialRect.left + initialRect.width * 0.5);
+
+      // Cleanup on page unload
+      window.addEventListener('beforeunload', function() {
+        if (rafId) cancelAnimationFrame(rafId);
       });
     })();
   </script>
