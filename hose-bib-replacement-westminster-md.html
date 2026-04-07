@@ -39,9 +39,14 @@
     }
     .ba-before { z-index: 1; }
     .ba-after {
+      position: absolute;
+      top: 0;
+      right: 0;
+      width: 50%;
+      height: 100%;
+      object-fit: cover;
       z-index: 2;
-      clip-path: inset(0 50% 0 0);
-      will-change: clip-path;
+      will-change: width;
     }
     .ba-slider {
       position: absolute;
@@ -203,26 +208,24 @@
         pos = Math.max(0, Math.min(pos, rect.width));
         const percent = Math.round((pos / rect.width) * 100);
 
-        // Update visual slider position
+        // Update visual slider position (split line)
         if (!prefersReducedMotion) {
           slider.style.left = percent + '%';
         } else {
           slider.style.left = percent + '%';
         }
 
-        // Update clip-path on after image to reveal left portion
-        const clipRight = 100 - percent;
-        afterImg.style.clipPath = `inset(0 ${clipRight}% 0 0)`;
+        // Update after image width to cover the right side
+        const afterWidth = 100 - percent;
+        afterImg.style.width = afterWidth + '%';
 
         // Update ARIA attributes for screen readers
         slider.setAttribute('aria-valuenow', percent);
-        slider.setAttribute('aria-valuetext', `${percent}% after, ${100 - percent}% before`);
+        slider.setAttribute('aria-valuetext', `${percent}% before, ${afterWidth}% after`);
 
         // Announce position change to screen readers
         if (instructions && !isKeyboard) {
-          const afterPercent = percent;
-          const beforePercent = 100 - percent;
-          instructions.textContent = `Comparison: ${afterPercent}% after, ${beforePercent}% before`;
+          instructions.textContent = `Comparison: ${percent}% before, ${afterWidth}% after`;
         }
       }
 
