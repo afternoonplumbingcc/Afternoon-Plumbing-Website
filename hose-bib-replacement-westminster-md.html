@@ -1,347 +1,174 @@
-<!doctype html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Hose Bib Replacement Westminster MD | Afternoon Plumbing LLC</title>
-  <meta name="description" content="Leaking or frozen outdoor faucets? We replace hose bibs with frost-free options in Westminster, MD." />
-  <style>
-    body{margin:0;background:#f8fafc;color:#1f2937;font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif}
-    .top{background:#fff;border-bottom:1px solid #e2e8f0;padding:12px 0}
-    .topin{max-width:1100px;margin:0 auto;padding:0 18px;display:flex;justify-content:space-between;align-items:center;gap:10px}
-    .brand{display:flex;align-items:center;gap:10px;font-weight:700;text-decoration:none;color:#0f172a}
-    .brand img{height:32px}.nav a{margin-left:14px;text-decoration:none;color:#0f4c81;font-weight:600}
-    .wrap{max-width:1000px;margin:0 auto;padding:26px 18px 50px}
-    .card{background:#fff;border:1px solid #e2e8f0;border-radius:14px;padding:20px;box-shadow:0 8px 24px rgba(2,6,23,.05)}
-    .cta{margin-top:14px;display:flex;gap:10px;flex-wrap:wrap}.btn{display:inline-block;background:#0f4c81;color:#fff;text-decoration:none;padding:10px 14px;border-radius:10px;font-weight:700}
-    .btn.alt{background:#1f7a3f}
-    /* Before/After Slider - Modern clip-path implementation */
-    .ba-container {
-      position: relative;
-      max-width: 100%;
-      overflow: hidden;
-      border-radius: 12px;
-      margin: 20px 0;
-      user-select: none;
-      aspect-ratio: 1816 / 3930;
-      height: auto;
-      min-height: 300px;
-      max-height: 450px;
-      background: #000;
-      touch-action: none;
-    }
-    .ba-image {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      object-position: center;
-      pointer-events: none;
-    }
-    .ba-before { z-index: 1; }
-    .ba-after {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      z-index: 2;
-      clip-path: inset(0 100% 0 0);
-      -webkit-clip-path: inset(0 100% 0 0);
-      will-change: clip-path;
-    }
-    .ba-slider {
-      position: absolute;
-      top: 0;
-      left: 50%;
-      width: 4px;
-      height: 100%;
-      background: #fff;
-      cursor: ew-resize;
-      z-index: 3;
-      transition: left 0.05s ease-out;
-    }
-    .ba-slider:focus {
-      outline: none;
-    }
-    .ba-slider:focus-visible {
-      outline: 2px solid #2563eb;
-      outline-offset: 2px;
-    }
-    .ba-handle {
-      position: absolute;
-      top: 50%;
-      left: 0;
-      transform: translate(-50%, -50%);
-      width: 48px;
-      height: 48px;
-      min-width: 48px;
-      min-height: 48px;
-      background: #fff;
-      border: 3px solid #0f4c81;
-      border-radius: 50%;
-      box-shadow: 0 4px 12px rgba(0,0,0,.3);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: #0f4c81;
-      font-size: 20px;
-      font-weight: bold;
-    }
-    .ba-handle:focus {
-      outline: 3px solid #2563eb;
-      outline-offset: 2px;
-    }
-    .ba-handle:hover {
-      background: #f0f9ff;
-    }
-    .ba-label {
-      position: absolute;
-      bottom: 12px;
-      padding: 6px 12px;
-      background: rgba(0,0,0,.7);
-      color: #fff;
-      border-radius: 6px;
-      font-size: 14px;
-      font-weight: 600;
-      pointer-events: none;
-      backdrop-filter: blur(4px);
-      z-index: 4;
-    }
-    .ba-label.ba-label--before { left: 12px; }
-    .ba-label.ba-label--after { right: 12px; }
-    .ba-instructions {
-      position: absolute;
-      top: 12px;
-      left: 50%;
-      transform: translateX(-50%);
-      padding: 6px 12px;
-      background: rgba(0,0,0,.6);
-      color: #fff;
-      border-radius: 6px;
-      font-size: 12px;
-      backdrop-filter: blur(4px);
-      opacity: .8;
-      transition: opacity .3s;
-      z-index: 4;
-    }
-    .ba-instructions:focus-within {
-      opacity: 1;
-    }
-    @media (max-width: 480px) {
-      .ba-instructions { display: none; }
-    }
-     /* Mobile image enhancements */
-    @media (max-width: 768px) {
-      .card img, .hero-img, .service-card img, .mini img {
-        max-width: 100% !important;
-        height: auto !important;
-        min-height: 200px;
-        object-fit: cover;
-      }
-      .ba-container { min-height: 320px !important; touch-action: none; }
-      h1 { font-size: 1.8rem !important; }
-      .hero { padding: 20px !important; }
-    }
-    /* Tablet adjustments */
-    @media (min-width: 769px) and (max-width: 1024px) {
-      .ba-container { height: 400px; }
-    }
-    /* Reduce motion for users who prefer it */
-    @media (prefers-reduced-motion: reduce) {
-      .ba-slider, .ba-image { transition: none !important; }
-    }
-  </style>
+    <!doctype html>
+    <html lang="en">
+    <head>
+      <meta charset="UTF-8" />
+      <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <title>Hose Bib Replacement | Westminster MD | Afternoon Plumbing</title>
+      <meta name="description" content="Frost-free hose bib replacement in Westminster, MD for leaking or freeze-damaged outdoor faucets." />
+      <link rel="canonical" href="https://afternoonplumbing.com/hose-bib-replacement-westminster-md.html" />
+      <link rel="icon" type="image/png" href="/images/logo.png" />
+      <meta property="og:title" content="Hose Bib Replacement | Westminster MD | Afternoon Plumbing" />
+      <meta property="og:description" content="Frost-free hose bib replacement in Westminster, MD for leaking or freeze-damaged outdoor faucets." />
+      <meta property="og:type" content="website" />
+      <meta property="og:url" content="https://afternoonplumbing.com/hose-bib-replacement-westminster-md.html" />
+      <meta property="og:image" content="https://afternoonplumbing.com/images/logo.png" />
+      <meta name="theme-color" content="#1a3a5c" />
+      <link rel="stylesheet" href="/styles/glass-site.css" />
+      <script src="/scripts/glass-site.js" defer></script>
+      <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Service",
+  "name": "Hose Bib Replacement",
+  "description": "Frost-free hose bib replacement in Westminster, Maryland.",
+  "url": "https://afternoonplumbing.com/hose-bib-replacement-westminster-md.html",
+  "provider": {
+    "@type": "Plumber",
+    "name": "Afternoon Plumbing",
+    "telephone": "+1-443-789-2897",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "1315 Conquistador Dr",
+      "addressLocality": "Westminster",
+      "addressRegion": "MD",
+      "postalCode": "21157",
+      "addressCountry": "US"
+    },
+    "geo": {
+      "@type": "GeoCoordinates",
+      "latitude": 39.607776,
+      "longitude": -76.9476267
+    },
+    "areaServed": "Westminster, Maryland and surrounding Carroll County communities",
+    "url": "https://afternoonplumbing.com/"
+  },
+  "areaServed": {
+    "@type": "City",
+    "name": "Westminster"
+  }
+}
+</script>
 </head>
-<body>
-  <header class="top"><div class="topin"><a class="brand" href="/"><img src="/images/logo.png" alt="Afternoon Plumbing logo" /><span>Afternoon Plumbing LLC</span></a><nav class="nav"><a href="/">Home</a><a href="/services.html">Services</a><a href="/contact.html">Contact</a></nav></div></header>
-  <main class="wrap">
-    <h1>Frost-Free Hose Bib Replacement in Westminster, MD</h1>
-    <div class="card">
-      <p>Upgrading to frost-free hose bibs helps reduce winter freeze damage and recurring leaks around exterior walls.</p>
-      <p>We provide clean replacement work and test for proper shutoff and leak-free performance before completion.</p>
-      <h2>Before & After</h2>
-      <div class="ba-container" id="ba-slider" role="img" aria-label="Before and after comparison of hose bib replacement" tabindex="0">
-        <div class="ba-instructions" aria-live="polite">Drag the slider to compare</div>
-        <img class="ba-image ba-before" loading="lazy" width="1024" height="1771" src="/images/hosebib-after.jpg" alt="Hose bib before replacement - old leaking faucet" />
-        <img class="ba-image ba-after" loading="lazy" width="1024" height="1771" src="/images/hosebib-before.jpg" alt="Hose bib after replacement - new frost-free sillcock" />
-        <div class="ba-slider" role="slider" aria-label="Comparison slider" aria-valuemin="0" aria-valuemax="100" aria-valuenow="50" tabindex="0">
-          <div class="ba-handle" aria-hidden="true">↔</div>
-        </div>
-        <span class="ba-label ba-label--before">Before</span>
-        <span class="ba-label ba-label--after">After</span>
-      </div>
-      <h2>Service Area</h2>
-      <p>Taneytown (21787), Westminster (21157, 21158), Manchester (21102), Hampstead (21074), Finksburg (21048), New Windsor (21776), Union Bridge (21791), Sykesville (21784), Keymar (21757), Marriottsville (21104).</p>
-      <div class="cta">
-        <a class="btn" href="tel:4437892897">Call 443-789-2897</a>
-        <a class="btn alt" href="/contact.html">Request Estimate</a>
+    <body>
+    <header class="site-nav">
+  <div class="site-nav-inner">
+    <a class="site-brand" href="/"><img src="/images/logo.png" alt="Afternoon Plumbing logo" /><span>Afternoon Plumbing LLC</span></a>
+    <nav class="site-nav-links" aria-label="Primary">
+      <a class="active" aria-current="page" href="/services.html">Services</a>
+      <a class="" href="/faq.html">FAQ</a>
+      <a class="" href="/contact.html">Contact</a>
+    </nav>
+    <div class="site-nav-menu">
+      <button class="site-nav-menu-btn" type="button" aria-label="Open menu">☰</button>
+      <div class="site-nav-menu-list">
+        <a class="active" aria-current="page" href="/services.html">Services</a>
+        <a class="" href="/faq.html">FAQ</a>
+        <a class="" href="/contact.html">Contact</a>
       </div>
     </div>
-  </main>
-  <script>
-    (function() {
-      const container = document.getElementById('ba-slider');
-      if (!container) return;
-      const afterImg = container.querySelector('.ba-after');
-      const slider = container.querySelector('.ba-slider');
-      const handle = slider.querySelector('.ba-handle');
-      const instructions = container.querySelector('.ba-instructions');
-      let isDragging = false;
-      let rafId = null;
-      let lastX = 0;
+    <a class="site-nav-call" href="tel:4437892897">Call 443-789-2897</a>
+  </div>
+</header>
 
-      // Check for reduced motion preference
-      const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-      // Throttled update using requestAnimationFrame for performance
-      function scheduleUpdate(x) {
-        lastX = x;
-        if (rafId) cancelAnimationFrame(rafId);
-        rafId = requestAnimationFrame(() => {
-          updateSlider(lastX);
-          rafId = null;
-        });
-      }
+<main class="page-shell">
+  <section class="compare-grid">
+    <article class="hero-panel">
+      <span class="kicker">Exterior plumbing</span>
+      <h1>Frost-free hose bib replacement with a real before-and-after, not stock filler.</h1>
+      <p class="lede">If an outdoor faucet keeps leaking, has freeze damage, or is old enough that replacement makes more sense than patching it again, Afternoon Plumbing can swap it for a cleaner frost-free setup.</p>
+      <div class="actions" style="margin-top:22px;">
+        <a class="btn btn-accent" href="tel:4437892897">Call 443-789-2897</a>
+        <a class="btn btn-secondary" href="/contact.html">Request an estimate</a>
+      </div>
+      <div class="quick-grid section">
+        <div class="quick-stat"><strong>Freeze protection</strong><span>Better setup for winter conditions.</span></div>
+        <div class="quick-stat"><strong>Leak reduction</strong><span>Replace worn or damaged outdoor faucets.</span></div>
+        <div class="quick-stat"><strong>Real project</strong><span>Before-and-after images from actual work.</span></div>
+        <div class="quick-stat"><strong>Westminster area</strong><span>Serving local homes across Carroll County.</span></div>
+      </div>
+    </article>
+    <aside class="glass-card">
+      <div class="compare-frame">
+        <div class="compare" data-compare aria-label="Before and after hose bib replacement comparison">
+          <div class="compare-instruction">Drag or tap to compare</div>
+          <img src="/images/hose-bib-before.jpg" alt="Old leaking hose bib before replacement" />
+          <div class="compare-after-wrap">
+            <img src="/images/hose-bib-after.jpg" alt="New frost-free hose bib after replacement" />
+          </div>
+          <div class="compare-handle"><div class="compare-knob">↔</div></div>
+          <span class="compare-label">Before</span>
+          <span class="compare-label after">After</span>
+        </div>
+      </div>
+    </aside>
+  </section>
 
-      function updateSlider(x, isKeyboard = false) {
-        const rect = container.getBoundingClientRect();
-        let pos = x - rect.left;
-        pos = Math.max(0, Math.min(pos, rect.width));
-        const percent = Math.round((pos / rect.width) * 100);
+  <section class="section">
+    <div class="dual-grid">
+      <article class="glass-panel">
+        <span class="section-kicker">When replacement makes sense</span>
+        <h2 style="margin-top:12px;">Common reasons to replace instead of repair</h2>
+        <ul class="check-list" style="margin-top:18px;">
+          <li>The faucet keeps leaking and has already been patched before</li>
+          <li>Freeze damage has affected the body or shutoff area</li>
+          <li>A frost-free upgrade is the smarter long-term choice</li>
+          <li>The exterior finish or connection looks rough and needs a cleaner reset</li>
+        </ul>
+      </article>
+      <article class="glass-panel">
+        <span class="section-kicker">What frost-free means</span>
+        <h2 style="margin-top:12px;">The shutoff point sits farther back inside the wall.</h2>
+        <p class="section-copy" style="margin-top:12px;">That design helps reduce freeze-related damage compared with older styles that shut off closer to the exterior handle.</p>
+      </article>
+    </div>
+  </section>
 
-        // Update visual slider position (split line)
-        if (!prefersReducedMotion) {
-          slider.style.left = percent + '%';
-        } else {
-          slider.style.left = percent + '%';
-        }
-
-        // Update after image clipping (reveal from left)
-        const clipRight = 100 - percent;
-        afterImg.style.clipPath = `inset(0 ${clipRight}% 0 0)`;
-        afterImg.style.webkitClipPath = `inset(0 ${clipRight}% 0 0)`;
-
-        // Update ARIA attributes for screen readers
-        slider.setAttribute('aria-valuenow', percent);
-        slider.setAttribute('aria-valuetext', `${percent}% before, ${100 - percent}% after`);
-
-        // Announce position change to screen readers
-        if (instructions && !isKeyboard) {
-          instructions.textContent = `Comparison: ${percent}% before, ${100 - percent}% after`;
-        }
-      }
-
-      function getClientX(e) {
-        if (e.touches && e.touches.length > 0) {
-          return e.touches[0].clientX;
-        }
-        return e.clientX;
-      }
-
-      // Mouse events
-      container.addEventListener('mousedown', function(e) {
-        if (e.target === handle || handle.contains(e.target) || e.target === container) {
-          isDragging = true;
-          container.setAttribute('aria-grabbed', 'true');
-          e.preventDefault();
-          scheduleUpdate(getClientX(e));
-        }
-      }, { passive: false });
-
-      document.addEventListener('mousemove', function(e) {
-        if (isDragging) {
-          scheduleUpdate(getClientX(e));
-        }
-      }, { passive: false });
-
-      document.addEventListener('mouseup', function() {
-        if (isDragging) {
-          isDragging = false;
-          container.setAttribute('aria-grabbed', 'false');
-        }
-      });
-
-      // Touch events
-      container.addEventListener('touchstart', function(e) {
-        if (e.target === handle || handle.contains(e.target) || e.target === container) {
-          isDragging = true;
-          container.setAttribute('aria-grabbed', 'true');
-          if (e.cancelable) e.preventDefault();
-          scheduleUpdate(getClientX(e));
-        }
-      }, { passive: false });
-
-      document.addEventListener('touchmove', function(e) {
-        if (isDragging && e.touches.length === 1) {
-          if (e.cancelable) e.preventDefault();
-          scheduleUpdate(getClientX(e));
-        }
-      }, { passive: false });
-
-      document.addEventListener('touchend', function() {
-        if (isDragging) {
-          isDragging = false;
-          container.setAttribute('aria-grabbed', 'false');
-        }
-      });
-
-      // Click/tap to jump
-      container.addEventListener('click', function(e) {
-        if (!isDragging && (e.target === container || e.target.closest('.ba-container'))) {
-          updateSlider(getClientX(e));
-        }
-      });
-
-      // Keyboard navigation
-      slider.addEventListener('keydown', function(e) {
-        const step = 5;
-        const currentPercent = parseInt(slider.getAttribute('aria-valuenow')) || 50;
-        let newPercent = currentPercent;
-
-        switch (e.key) {
-          case 'ArrowRight':
-          case 'ArrowUp':
-            newPercent = Math.min(100, currentPercent + step);
-            e.preventDefault();
-            break;
-          case 'ArrowLeft':
-          case 'ArrowDown':
-            newPercent = Math.max(0, currentPercent - step);
-            e.preventDefault();
-            break;
-          case 'Home':
-            newPercent = 0;
-            e.preventDefault();
-            break;
-          case 'End':
-            newPercent = 100;
-            e.preventDefault();
-            break;
-          default:
-            return;
-        }
-
-        const rect = container.getBoundingClientRect();
-        const x = rect.left + (newPercent / 100) * rect.width;
-        updateSlider(x, true);
-      });
-
-      container.addEventListener('keydown', function(e) {
-        if (e.key === 'ArrowLeft' || e.key === 'ArrowRight' || e.key === 'ArrowUp' || e.key === 'ArrowDown' || e.key === 'Home' || e.key === 'End') {
-          slider.focus();
-          slider.dispatchEvent(new KeyboardEvent('keydown', { key: e.key, bubbles: true, cancelable: true }));
-          e.preventDefault();
-        }
-      });
-
-      // Initial position
-      const initialRect = container.getBoundingClientRect();
-      updateSlider(initialRect.left + initialRect.width * 0.5);
-    })();
-  </script>
+  <section class="section">
+    <div class="split-grid">
+      <article class="glass-panel">
+        <span class="section-kicker">Service area</span>
+        <h2 style="margin-top:12px;">Local exterior plumbing work</h2>
+        <p class="section-copy" style="margin-top:12px;">Afternoon Plumbing handles hose bib replacements in Westminster, Taneytown, Manchester, Hampstead, Finksburg, New Windsor, Union Bridge, Sykesville, Keymar, and nearby Carroll County communities.</p>
+      </article>
+      <article class="quote-card">
+        <span class="tag" style="background:rgba(255,255,255,.18);color:#fff;border-color:rgba(255,255,255,.24);">Related FAQ</span>
+        <h2 style="margin-top:12px;color:#fff;">Need the quick answer first?</h2>
+        <p style="margin-top:12px;">The FAQ page covers when an outdoor faucet should be replaced and what frost-free actually means.</p>
+        <div class="actions" style="margin-top:18px;"><a class="btn btn-secondary" href="/faq.html#hose-bibs">Read hose bib FAQ</a></div>
+      </article>
+    </div>
+  </section>
+</main>
+<footer class="site-footer">
+  <div class="site-footer-inner">
+    <div class="footer-panel">
+      <div class="footer-grid">
+        <div>
+          <h3>Afternoon Plumbing LLC</h3>
+          <p>Owner-operated plumbing service focused on water heaters, well pump problems, water treatment equipment, and clean residential service work in Westminster, Maryland.</p>
+          <p class="footer-note">Serving Westminster, Taneytown, Manchester, Hampstead, Finksburg, New Windsor, Union Bridge, Sykesville, Keymar, and nearby Carroll County communities.</p>
+        </div>
+        <div>
+          <h3>Quick links</h3>
+          <ul>
+            <li><a href="/services.html">Services</a></li>
+            <li><a href="/faq.html">FAQ</a></li>
+            <li><a href="/contact.html">Contact</a></li>
+            <li><a href="/water-softener-installation-westminster-md.html">Water treatment</a></li>
+          </ul>
+        </div>
+        <div>
+          <h3>Call or text</h3>
+          <ul>
+            <li><a href="tel:4437892897">443-789-2897</a></li>
+            <li><a href="sms:4437892897">Send a text</a></li>
+            <li><a href="mailto:afternoonplumbingcc@gmail.com">afternoonplumbingcc@gmail.com</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
 </body>
 </html>

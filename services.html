@@ -1,201 +1,30 @@
-<!doctype html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Plumbing Services | Westminster MD | Afternoon Plumbing</title>
-  <link rel="canonical" href="https://afternoonplumbing.com/services.html" />
-  <meta name="description" content="Explore plumbing services from Afternoon Plumbing LLC in Westminster, MD, including water heaters, well pumps, water treatment, and exterior plumbing." />
-  <link rel="icon" type="image/png" href="/images/logo.png" />
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-  <style>
-    :root{
-      --brand-blue:#1a3a5c;
-      --brand-blue-deep:#10263d;
-      --brand-orange:#e67e22;
-      --brand-orange-soft:#f6a14d;
-      --ink:#18324d;
-      --muted:#667a8f;
-      --line:#dbe6f0;
-      --shadow:0 22px 44px rgba(16,38,61,.10);
-      --shadow-soft:0 14px 28px rgba(16,38,61,.08);
-      --radius-xl:28px;
-      --radius-lg:20px;
-      --radius-md:14px;
-      --max:1180px;
-    }
-    *{box-sizing:border-box}
-    html{scroll-behavior:smooth}
-    body{
-      margin:0;
-      font-family:"Inter",system-ui,-apple-system,Segoe UI,Roboto,sans-serif;
-      color:var(--ink);
-      background:
-        radial-gradient(circle at 82% 0%, rgba(230,126,34,.16), transparent 32%),
-        radial-gradient(circle at 0% 18%, rgba(26,58,92,.12), transparent 35%),
-        linear-gradient(180deg,#fbfdff 0%, #f3f8fc 100%);
-      min-height:100vh;
-    }
-    a{color:inherit}
-    img{max-width:100%;display:block}
-
-    .nav{position:sticky;top:0;z-index:60;border-bottom:1px solid rgba(219,230,240,.9);background:rgba(255,255,255,.84);backdrop-filter:blur(12px) saturate(140%)}
-    .nav-inner{max-width:var(--max);margin:0 auto;padding:14px 20px;display:grid;grid-template-columns:auto 1fr auto;align-items:center;gap:18px}
-    .brand{display:flex;align-items:center;gap:12px;text-decoration:none;font-family:"Poppins",sans-serif;font-weight:700;color:var(--brand-blue);letter-spacing:-.02em;min-width:max-content}
-    .brand img{height:40px;width:auto}
-    .nav-links{display:flex;align-items:center;justify-content:center;gap:28px;justify-self:center}
-    .nav-links a{text-decoration:none;font-size:14px;font-weight:600;color:#496177;position:relative;transition:color .2s ease, transform .2s ease}
-    .nav-links a:hover{color:var(--brand-blue);transform:translateY(-1px)}
-    .nav-links a::after{content:"";position:absolute;left:0;bottom:-6px;width:100%;height:2px;border-radius:999px;background:linear-gradient(90deg,var(--brand-orange),var(--brand-blue));transform:scaleX(0);transform-origin:left;transition:transform .22s ease}
-    .nav-links a:hover::after{transform:scaleX(1)}
-    .nav-call{justify-self:end;text-decoration:none;white-space:nowrap;background:linear-gradient(135deg,var(--brand-orange),var(--brand-orange-soft));color:#fff!important;font-weight:700;font-size:14px;padding:11px 15px;border-radius:14px;box-shadow:0 16px 30px rgba(230,126,34,.24);transition:transform .2s ease, box-shadow .2s ease}
-    .nav-call:hover{transform:translateY(-1px);box-shadow:0 20px 36px rgba(230,126,34,.28)}
-
-    .page{max-width:var(--max);margin:0 auto;padding:34px 20px 72px}
-    .hero{display:grid;grid-template-columns:minmax(0,1.08fr) minmax(340px,.92fr);gap:22px;align-items:stretch}
-    .hero-copy,.hero-stack,.panel,.service-card,.faq-card,.area-card,.cta-card,.feature-card{background:rgba(255,255,255,.92);border:1px solid rgba(219,230,240,.92);box-shadow:var(--shadow);border-radius:var(--radius-xl)}
-    .hero-copy{padding:34px;position:relative;overflow:hidden;background:radial-gradient(circle at 100% 0%, rgba(230,126,34,.12), transparent 36%),linear-gradient(180deg, rgba(255,255,255,.98), rgba(255,255,255,.94))}
-    .hero-copy::before{content:"";position:absolute;inset:auto -40px -60px auto;width:180px;height:180px;background:radial-gradient(circle, rgba(26,58,92,.08), transparent 70%);pointer-events:none}
-    .eyebrow{display:inline-flex;align-items:center;gap:8px;font-family:"Poppins",sans-serif;font-size:.74rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--brand-blue);background:linear-gradient(135deg,#edf5fd,#fff1e3);border:1px solid rgba(26,58,92,.08);padding:8px 12px;border-radius:999px}
-    h1,h2,h3{font-family:"Poppins",sans-serif;color:var(--brand-blue-deep);letter-spacing:-.03em}
-    h1{margin:16px 0 12px;font-size:clamp(2.2rem,4vw,3.9rem);line-height:1.02}
-    .lede{font-size:1.05rem;line-height:1.78;color:#4e6377;max-width:58ch;margin:0}
-    .hero-actions{display:flex;flex-wrap:wrap;gap:12px;margin-top:24px}
-    .btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;text-decoration:none;border:none;border-radius:14px;padding:13px 18px;font-weight:700;font-size:15px;transition:transform .2s ease, box-shadow .2s ease, background .2s ease}
-    .btn-primary{background:linear-gradient(135deg,var(--brand-blue),#234f7e);color:#fff;box-shadow:0 16px 28px rgba(26,58,92,.22)}
-    .btn-primary:hover{transform:translateY(-1px);box-shadow:0 20px 34px rgba(26,58,92,.28)}
-    .btn-secondary{background:rgba(255,255,255,.86);color:var(--brand-blue);border:1px solid rgba(26,58,92,.12);box-shadow:var(--shadow-soft)}
-    .btn-secondary:hover{transform:translateY(-1px)}
-
-    .hero-stack{padding:14px;display:grid;gap:12px;background:linear-gradient(180deg,rgba(255,255,255,.95),rgba(246,250,255,.95))}
-    .hero-shot{position:relative;min-height:234px;border-radius:22px;overflow:hidden;background:#e9f0f7;border:1px solid rgba(219,230,240,.96)}
-    .hero-shot img{width:100%;height:100%;object-fit:cover;transition:transform .5s ease}
-    .hero-shot:hover img{transform:scale(1.03)}
-    .hero-tag{position:absolute;left:14px;top:14px;background:rgba(16,38,61,.88);color:#fff;padding:8px 10px;border-radius:10px;font-size:.75rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;font-family:"Poppins",sans-serif}
-
-    .stats{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:14px;margin-top:18px}
-    .stat{padding:16px;border-radius:18px;background:rgba(255,255,255,.8);border:1px solid rgba(219,230,240,.9);box-shadow:var(--shadow-soft)}
-    .stat strong{display:block;font-family:"Poppins",sans-serif;font-size:1.05rem;color:var(--brand-blue-deep);margin-bottom:6px}
-    .stat span{color:var(--muted);font-size:.95rem;line-height:1.45}
-
-    .section{margin-top:26px}
-    .section-header{display:flex;align-items:end;justify-content:space-between;gap:16px;margin-bottom:14px}
-    .section-header p{margin:0;color:var(--muted);max-width:58ch;line-height:1.7}
-    .section-header h2{margin:0;font-size:clamp(1.5rem,2vw,2.2rem)}
-    .panel{padding:24px}
-
-    .service-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px}
-    .service-card{padding:14px;display:flex;flex-direction:column;gap:14px;transition:transform .22s ease, box-shadow .22s ease, border-color .22s ease}
-    .service-card:hover{transform:translateY(-4px);box-shadow:0 26px 44px rgba(16,38,61,.13);border-color:#c7d8e8}
-    .card-image{border-radius:18px;overflow:hidden;height:230px;background:#e9f0f7;border:1px solid rgba(219,230,240,.95)}
-    .card-image img{width:100%;height:100%;object-fit:cover;transition:transform .45s ease}
-    .service-card:hover .card-image img{transform:scale(1.04)}
-    .card-copy{padding:2px 4px 4px}
-    .card-kicker{display:inline-block;margin-bottom:8px;color:var(--brand-orange);font-size:.78rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;font-family:"Poppins",sans-serif}
-    .card-copy h3{margin:0 0 8px;font-size:1.24rem;line-height:1.16}
-    .card-copy p{margin:0 0 16px;color:var(--muted);line-height:1.7}
-    .mini-points{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:14px}
-    .mini-points span{display:inline-flex;align-items:center;padding:8px 11px;border-radius:999px;font-size:.85rem;color:#4e6377;background:#f6faff;border:1px solid rgba(219,230,240,.9)}
-
-    .feature-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:18px}
-    .feature-card{padding:24px}
-    .feature-card p{color:var(--muted);line-height:1.8}
-    .feature-list{margin:16px 0 0;padding-left:18px;color:#4f657a;line-height:1.9}
-
-    .faq-card,.area-card,.cta-card{padding:24px 26px}
-    .faq-accordion{display:grid;gap:12px}
-    .faq-item{border:1px solid rgba(219,230,240,.96);border-radius:18px;background:rgba(255,255,255,.88);overflow:hidden;box-shadow:var(--shadow-soft)}
-    .faq-trigger{width:100%;display:flex;align-items:center;justify-content:space-between;gap:16px;padding:18px 20px;background:transparent;border:0;text-align:left;color:var(--brand-blue-deep);font:700 1rem/1.35 "Poppins",sans-serif;cursor:pointer}
-    .faq-trigger span:last-child{font-size:1.3rem;color:var(--brand-orange);transition:transform .24s cubic-bezier(.22,1,.36,1)}
-    .faq-item.open .faq-trigger span:last-child{transform:rotate(45deg)}
-    .faq-panel{display:grid;grid-template-rows:0fr;transition:grid-template-rows .24s cubic-bezier(.22,1,.36,1), opacity .18s cubic-bezier(.22,1,.36,1);opacity:.18}
-    .faq-panel-inner{overflow:hidden;padding:0 20px;color:#4c6277;line-height:1.8;transform:translateY(-10px) scale(.985);transform-origin:top center;transition:transform .24s cubic-bezier(.22,1,.36,1), padding .24s cubic-bezier(.22,1,.36,1)}
-    .faq-item.open .faq-panel{grid-template-rows:1fr;opacity:1}
-    .faq-item.open .faq-panel-inner{padding:0 20px 18px;transform:translateY(0) scale(1)}
-
-    .area-card p,.cta-card p{margin:0 0 18px;color:#4f657a;line-height:1.8;max-width:68ch}
-
-    @media (max-width:980px){
-      .hero{grid-template-columns:1fr}
-      .stats{grid-template-columns:repeat(2,minmax(0,1fr))}
-      .service-grid,.feature-grid{grid-template-columns:1fr}
-    }
-    @media (max-width:760px){
-      .nav-inner{padding:12px 16px;grid-template-columns:auto auto}
-      .brand span{display:none}
-      .nav-links{display:none}
-      .nav-call{display:inline-flex}
-      .page{padding:24px 16px 56px}
-      .hero-copy,.panel,.faq-card,.area-card,.cta-card,.feature-card{padding:20px}
-      .service-grid{grid-template-columns:1fr}
-      .stats{grid-template-columns:1fr}
-      h1{font-size:2.3rem}
-      .card-image{height:210px}
-      .hero-shot{min-height:210px}
-    }
-  
-    /* shared-site-nav */
-    .site-nav{position:sticky;top:0;z-index:60;border-bottom:1px solid rgba(219,230,240,.9);background:rgba(255,255,255,.84);backdrop-filter:blur(12px) saturate(140%)}
-    .site-nav-inner{max-width:1180px;margin:0 auto;padding:14px 20px;display:grid;grid-template-columns:auto 1fr auto;align-items:center;gap:18px}
-    .site-brand{display:flex;align-items:center;gap:12px;text-decoration:none;font-family:"Poppins",sans-serif;font-weight:700;color:#1a3a5c;letter-spacing:-.02em;min-width:max-content}
-    .site-brand img{height:28px;width:auto}
-    .site-nav-links{display:flex;align-items:center;justify-content:center;gap:28px;justify-self:center}
-    .site-nav-links a{text-decoration:none;font-size:14px;font-weight:600;color:#496177;position:relative;transition:color .2s ease,transform .2s ease}
-    .site-nav-links a:hover{color:#1a3a5c;transform:translateY(-1px)}
-    .site-nav-links a::after{content:"";position:absolute;left:0;bottom:-6px;width:100%;height:2px;border-radius:999px;background:linear-gradient(90deg,#e67e22,#1a3a5c);transform:scaleX(0);transform-origin:left;transition:transform .22s ease}
-    .site-nav-links a:hover::after{transform:scaleX(1)}
-    .site-nav-call{justify-self:end;text-decoration:none;white-space:nowrap;background:linear-gradient(135deg,#e67e22,#f6a14d);color:#fff!important;font-weight:700;font-size:14px;padding:11px 15px;border-radius:14px;box-shadow:0 16px 30px rgba(230,126,34,.24);transition:transform .2s ease,box-shadow .2s ease}
-    .site-nav-call:hover{transform:translateY(-1px);box-shadow:0 20px 36px rgba(230,126,34,.28)}
-    .site-nav-menu{display:none;position:relative}.site-nav-menu-btn{display:inline-flex;align-items:center;justify-content:center;width:38px;height:38px;background:#1a3a5c;color:#fff;border:0;border-radius:10px;padding:0;font-weight:700;line-height:1;box-shadow:0 8px 20px rgba(15,76,129,.18)}.site-nav-menu-list{display:none;position:absolute;right:0;top:46px;background:#fff;border:1px solid #e2e8f0;border-radius:12px;box-shadow:0 12px 28px rgba(2,6,23,.14);min-width:170px;z-index:70;overflow:hidden}.site-nav-menu-list a{display:block;padding:11px 13px;text-decoration:none;color:#0f4c81;font-weight:600}.site-nav-menu-list a+a{border-top:1px solid #eef2f7}.site-nav-menu.open .site-nav-menu-list{display:block}@media (max-width:760px){.site-nav-inner{padding:12px 16px;grid-template-columns:auto 1fr auto auto;align-items:center;column-gap:10px}.site-brand{min-width:0}.site-brand span{display:block;font-size:1rem;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.site-nav-links{display:none}.site-nav-menu{display:block}.site-nav-call{display:inline-flex;justify-self:end;font-size:13px;padding:10px 12px}}
-
-  
-    /* final-shared-nav */
-    .site-nav{position:sticky;top:0;z-index:60;border-bottom:1px solid rgba(219,230,240,.9);background:rgba(255,255,255,.84);backdrop-filter:blur(12px) saturate(140%)}
-    .site-nav-inner{max-width:1180px;margin:0 auto;padding:14px 20px;display:grid;grid-template-columns:auto 1fr auto;align-items:center;gap:18px}
-    .site-brand{display:flex;align-items:center;gap:12px;text-decoration:none;font-family:"Poppins",sans-serif;font-weight:700;font-size:1rem;color:#1a3a5c;letter-spacing:-.02em;min-width:max-content}
-    .site-brand img{height:28px;width:auto}
-    .site-nav-links{display:flex;align-items:center;justify-content:center;gap:28px;justify-self:center}
-    .site-nav-links a{text-decoration:none;font-family:"Inter",system-ui,-apple-system,Segoe UI,Roboto,sans-serif;font-size:14px;font-weight:600;line-height:1;color:#496177;position:relative;transition:color .2s ease,transform .2s ease}
-    .site-nav-links a:hover,.site-nav-links a.active{color:#1a3a5c;transform:translateY(-1px)}
-    .site-nav-links a::after{content:"";position:absolute;left:0;bottom:-6px;width:100%;height:2px;border-radius:999px;background:linear-gradient(90deg,#e67e22,#1a3a5c);transform:scaleX(0);transform-origin:left;transition:transform .22s ease}
-    .site-nav-links a:hover::after,.site-nav-links a.active::after{transform:scaleX(1)}
-    .site-nav-menu{display:none;position:relative}
-    .site-nav-menu-btn{display:inline-flex;align-items:center;justify-content:center;width:38px;height:38px;background:#1a3a5c;color:#fff;border:0;border-radius:10px;padding:0;font-weight:700;line-height:1;box-shadow:0 8px 20px rgba(15,76,129,.18)}
-    .site-nav-menu-list{display:none;position:absolute;right:0;top:46px;background:#fff;border:1px solid #e2e8f0;border-radius:12px;box-shadow:0 12px 28px rgba(2,6,23,.14);min-width:170px;z-index:70;overflow:hidden}
-    .site-nav-menu-list a{display:block;padding:11px 13px;text-decoration:none;font-family:"Inter",system-ui,-apple-system,Segoe UI,Roboto,sans-serif;font-size:14px;font-weight:600;line-height:1.2;color:#0f4c81}
-    .site-nav-menu-list a+a{border-top:1px solid #eef2f7}
-    .site-nav-menu.open .site-nav-menu-list{display:block}
-    .site-nav-call{justify-self:end;text-decoration:none;white-space:nowrap;font-family:"Inter",system-ui,-apple-system,Segoe UI,Roboto,sans-serif;background:linear-gradient(135deg,#e67e22,#f6a14d);color:#fff!important;font-weight:700;font-size:14px;line-height:1;padding:11px 15px;border-radius:14px;box-shadow:0 16px 30px rgba(230,126,34,.24);transition:transform .2s ease,box-shadow .2s ease}
-    .site-nav-call:hover{transform:translateY(-1px);box-shadow:0 20px 36px rgba(230,126,34,.28)}
-    @media (max-width:760px){.site-nav-inner{padding:12px 16px;grid-template-columns:auto 1fr auto auto;align-items:center;column-gap:10px}.site-brand{min-width:0}.site-brand span{display:block;font-size:1rem;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.site-nav-links{display:none}.site-nav-menu{display:block}.site-nav-call{display:inline-flex;justify-self:end;font-size:13px;padding:10px 12px}}
-
-     /* Mobile optimizations */
-    @media (max-width: 768px) {
-      .contact-card { padding: 14px !important; }
-      .btn { padding: 12px 14px !important; font-size: 16px !important; }
-      .phone { font-size: 1.8rem !important; }
-      .hero-highlight { padding: 20px !important; }
-      .site-brand img { height: 24px !important; }
-    }
-  </style>
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-NY5V19HE72"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-    gtag('config', 'G-NY5V19HE72');
-  </script>
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
+    <!doctype html>
+    <html lang="en">
+    <head>
+      <meta charset="UTF-8" />
+      <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <title>Plumbing Services | Westminster MD | Afternoon Plumbing</title>
+      <meta name="description" content="Explore Afternoon Plumbing services in Westminster, MD, including water heaters, well pumps, water treatment, and exterior plumbing." />
+      <link rel="canonical" href="https://afternoonplumbing.com/services.html" />
+      <link rel="icon" type="image/png" href="/images/logo.png" />
+      <meta property="og:title" content="Plumbing Services | Westminster MD | Afternoon Plumbing" />
+      <meta property="og:description" content="Explore Afternoon Plumbing services in Westminster, MD, including water heaters, well pumps, water treatment, and exterior plumbing." />
+      <meta property="og:type" content="website" />
+      <meta property="og:url" content="https://afternoonplumbing.com/services.html" />
+      <meta property="og:image" content="https://afternoonplumbing.com/images/logo.png" />
+      <meta name="theme-color" content="#1a3a5c" />
+      <link rel="stylesheet" href="/styles/glass-site.css" />
+      <script src="/scripts/glass-site.js" defer></script>
+      <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "CollectionPage",
+  "name": "Afternoon Plumbing Services",
+  "description": "Service hub for Afternoon Plumbing in Westminster, Maryland.",
+  "url": "https://afternoonplumbing.com/services.html",
+  "about": {
     "@type": "Plumber",
     "name": "Afternoon Plumbing",
-    "url": "https://afternoonplumbing.com/",
-    "sameAs": [
-      "https://maps.google.com/?cid=18227209709633935350"
-    ],
     "telephone": "+1-443-789-2897",
     "address": {
       "@type": "PostalAddress",
@@ -209,231 +38,205 @@
       "@type": "GeoCoordinates",
       "latitude": 39.607776,
       "longitude": -76.9476267
-    }
+    },
+    "areaServed": "Westminster, Maryland and surrounding Carroll County communities",
+    "url": "https://afternoonplumbing.com/"
   }
-  </script>
-<!-- Meta Pixel Code -->
-<script>
-!function(f,b,e,v,n,t,s)
-{if(f.fbq)return;n=f.fbq=function(){n.callMethod?
-n.callMethod.apply(n,arguments):n.queue.push(arguments)};
-if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
-n.queue=[];t=b.createElement(e);t.async=!0;
-t.src=v;s=b.getElementsByTagName(e)[0];
-s.parentNode.insertBefore(t,s)}(window, document,'script',
-'https://connect.facebook.net/en_US/fbevents.js');
-fbq('init', '4424110844582646');
-fbq('track', 'PageView');
+}
 </script>
-<noscript><img height="1" width="1" style="display:none"
-src="https://www.facebook.com/tr?id=4424110844582646&ev=PageView&noscript=1"
-/></noscript>
-<!-- End Meta Pixel Code -->
 </head>
-<body>
-  <header class="site-nav">
-    <div class="site-nav-inner">
-      <a class="site-brand" href="/"><img src="/images/logo.png" alt="Afternoon Plumbing logo"><span>Afternoon Plumbing LLC</span></a>
-      <nav class="site-nav-links">
-        <a class="active" href="/services.html" aria-current="page">Services</a>
-        <a href="/faq.html">FAQ</a>
-        <a href="/contact.html">Contact</a>
-      </nav>
-      <div class="site-nav-menu"><button class="site-nav-menu-btn" type="button" aria-label="Open menu">▾</button><div class="site-nav-menu-list"><a class="active" href="/services.html" aria-current="page">Services</a><a href="/faq.html">FAQ</a><a href="/contact.html">Contact</a></div></div>
-      <a class="site-nav-call" href="tel:4437892897">Call 443-789-2897</a>
+    <body>
+    <header class="site-nav">
+  <div class="site-nav-inner">
+    <a class="site-brand" href="/"><img src="/images/logo.png" alt="Afternoon Plumbing logo" /><span>Afternoon Plumbing LLC</span></a>
+    <nav class="site-nav-links" aria-label="Primary">
+      <a class="active" aria-current="page" href="/services.html">Services</a>
+      <a class="" href="/faq.html">FAQ</a>
+      <a class="" href="/contact.html">Contact</a>
+    </nav>
+    <div class="site-nav-menu">
+      <button class="site-nav-menu-btn" type="button" aria-label="Open menu">☰</button>
+      <div class="site-nav-menu-list">
+        <a class="active" aria-current="page" href="/services.html">Services</a>
+        <a class="" href="/faq.html">FAQ</a>
+        <a class="" href="/contact.html">Contact</a>
+      </div>
     </div>
-  </header>
+    <a class="site-nav-call" href="tel:4437892897">Call 443-789-2897</a>
+  </div>
+</header>
 
-  <main class="page">
-    <section class="hero">
-      <article class="hero-copy">
-        <span class="eyebrow">Service hub</span>
-        <h1>Plumbing services in Westminster, MD that feel clear, clean, and professionally handled from the first call.</h1>
-        <p class="lede">Afternoon Plumbing helps homeowners with water heaters, well pump issues, water treatment equipment, and exterior plumbing work across Westminster and nearby Carroll County communities.</p>
-        <div class="hero-actions">
-          <a class="btn btn-primary" href="#core-services">Explore core services</a>
-          <a class="btn btn-secondary" href="/contact.html">Request an estimate</a>
+
+<main class="page-shell">
+  <section class="hero-grid">
+    <article class="hero-panel">
+      <span class="kicker">Glass service hub</span>
+      <h1>Every non-home page, rebuilt to feel cleaner, sharper, and easier to trust.</h1>
+      <p class="lede">Afternoon Plumbing helps homeowners in Westminster with water heaters, well pumps, water quality equipment, and exterior plumbing. This service hub makes it easier to choose the right page fast, without visual clutter or generic filler.</p>
+      <div class="actions" style="margin-top:22px;">
+        <a class="btn btn-primary" href="#service-grid">Explore services</a>
+        <a class="btn btn-secondary" href="/contact.html">Request an estimate</a>
+      </div>
+      <div class="stats-grid section">
+        <div class="metric"><strong>Owner-operated</strong><span>Direct communication and practical recommendations from a local plumbing business.</span></div>
+        <div class="metric"><strong>Water-system heavy</strong><span>Strong fit for water heaters, treatment equipment, and well-related plumbing issues.</span></div>
+        <div class="metric"><strong>Clear next step</strong><span>Call, text, or open the exact service page that matches the issue in your home.</span></div>
+      </div>
+    </article>
+    <aside class="info-stack">
+      <div>
+        <span class="tag">Service area</span>
+        <h3 style="margin-top:12px;">Westminster first, nearby Carroll County next.</h3>
+        <p>Afternoon Plumbing serves Westminster plus nearby Carroll County communities including Taneytown, Manchester, Hampstead, Finksburg, New Windsor, Union Bridge, Sykesville, Keymar, and Marriottsville.</p>
+      </div>
+      <div>
+        <span class="tag">Popular calls</span>
+        <ul>
+          <li>Water heater replacement and emergency hot-water issues</li>
+          <li>Water softener, filtration, and acid neutralizer installs</li>
+          <li>Well pump troubleshooting and no-water calls</li>
+          <li>Frost-free hose bib replacements</li>
+        </ul>
+      </div>
+      <div class="quote-card">
+        <span class="tag" style="background:rgba(255,255,255,.18);color:#fff;border-color:rgba(255,255,255,.24);">Fastest path</span>
+        <h3 style="margin-top:12px;">Need help right now?</h3>
+        <p>Call or text <a href="tel:4437892897" style="color:#fff;font-weight:800;text-decoration:none;">443-789-2897</a>. If you already know the service, open the matching page below and then reach out.</p>
+      </div>
+    </aside>
+  </section>
+
+  <section class="section" id="service-grid">
+    <div class="section-head">
+      <div>
+        <span class="section-kicker">Core service pages</span>
+        <h2 style="margin-top:12px;">The pages homeowners should land on most.</h2>
+      </div>
+      <p>Each card below leads to a focused page with cleaner hierarchy, relevant FAQs, and stronger calls to action.</p>
+    </div>
+    <div class="service-grid">
+      <article class="service-tile">
+        <div class="service-media top-focus"><span class="media-tag">Hot water</span><img src="/images/Rheem heat pump water heater installed plumbed into a condensate pump in westminster.jpg" alt="Water heater installation completed by Afternoon Plumbing" /></div>
+        <div>
+          <span class="tag">Water heater service</span>
+          <h3 style="margin-top:12px;">Water Heater Replacement</h3>
+          <p>For leaking tanks, aging heaters, no-hot-water calls, and upgrade conversations around tank, tankless, and heat pump units.</p>
         </div>
-        <div class="stats">
-          <div class="stat"><strong>Owner-operated</strong><span>Local service with direct communication and clean workmanship.</span></div>
-          <div class="stat"><strong>Water system focus</strong><span>Strong fit for heaters, treatment equipment, and problem-solving in real homes.</span></div>
-          <div class="stat"><strong>Fast direct contact</strong><span>Call directly when you need scheduling, pricing, or a second opinion.</span></div>
-          <div class="stat"><strong>Local coverage</strong><span>Serving Westminster and nearby Carroll County communities.</span></div>
-        </div>
+        <div class="pill-row"><span class="pill-link">Same-day when possible</span><span class="pill-link">Tank and tankless</span></div>
+        <div class="actions"><a class="btn btn-primary" href="/water-heater-replacement-westminster-md.html">Open service page</a></div>
       </article>
 
-      <aside class="hero-stack">
-        <div class="hero-shot">
-          <span class="hero-tag">Water heater</span>
-          <img src="/images/water-heater-replacement-2.jpg" alt="Clean water heater replacement installed by Afternoon Plumbing" loading="eager" decoding="sync">
-        </div>
-        <div class="hero-shot">
-          <span class="hero-tag">Water filtration</span>
-          <img src="/images/filter-comparison.jpg" alt="Whole-house water filter comparison and treatment equipment by Afternoon Plumbing" loading="eager" decoding="sync">
-        </div>
-      </aside>
-    </section>
-
-    <section class="section" id="core-services">
-      <div class="section-header">
+      <article class="service-tile">
+        <div class="service-media"><span class="media-tag">Water quality</span><img src="/images/water-softener-heater.jpg" alt="Water treatment equipment installed in a home mechanical area" /></div>
         <div>
-          <h2>Core plumbing services</h2>
-          <p>These core pages help customers quickly understand what you do, what problems you solve, and which service page to open next.</p>
+          <span class="tag">Soft water and filtration</span>
+          <h3 style="margin-top:12px;">Water Softeners &amp; Treatment</h3>
+          <p>For hard water, scaling, fixture spotting, and equipment setups that improve whole-house water quality.</p>
         </div>
-      </div>
-      <div class="panel">
-        <div class="service-grid">
-          <article class="service-card">
-            <div class="card-image"><img src="/images/water-heater-replacement-2.jpg" alt="Water heater replacement by Afternoon Plumbing" loading="lazy" decoding="async"></div>
-            <div class="card-copy">
-              <span class="card-kicker">Hot water</span>
-              <h3>Water Heater Replacement</h3>
-              <p>Replacement work for leaking, failing, or aging water heaters with a clean finished install and dependable startup.</p>
-              <div class="mini-points"><span>Clean installs</span><span>Startup testing</span><span>Upgrade-ready</span></div>
-              <a class="btn btn-primary" href="/water-heater-replacement-westminster-md.html">Open service page</a>
-            </div>
-          </article>
+        <div class="pill-row"><span class="pill-link">Free water test</span><span class="pill-link">Whole-house options</span></div>
+        <div class="actions"><a class="btn btn-primary" href="/water-softener-installation-westminster-md.html">Open service page</a></div>
+      </article>
 
-          <article class="service-card">
-            <div class="card-image"><img src="/images/water-treatment-system.jpg" alt="Water treatment system installation by Afternoon Plumbing - we service well pump systems and water equipment" loading="lazy" decoding="async"></div>
-            <div class="card-copy">
-              <span class="card-kicker">Water supply</span>
-              <h3>Well Pump Repair &amp; Replacement</h3>
-              <p>Help for no-water problems, pressure issues, and pump system troubleshooting when repair or replacement decisions need to be made clearly.</p>
-              <div class="mini-points"><span>No-water diagnostics</span><span>Pressure issues</span><span>Repair or replace</span></div>
-              <a class="btn btn-primary" href="/well-pump-repair-westminster-md.html">Open service page</a>
-            </div>
-          </article>
-
-          <article class="service-card">
-            <div class="card-image"><img src="/images/filter-comparison.jpg" alt="Whole-house water filtration equipment installed by Afternoon Plumbing" loading="lazy" decoding="async"></div>
-            <div class="card-copy">
-              <span class="card-kicker">Water quality</span>
-              <h3>Water Filtration &amp; Treatment</h3>
-              <p>Whole-house filtration, water treatment equipment, and water quality improvements designed to protect fixtures and improve everyday water use.</p>
-              <div class="mini-points"><span>Filtration focus</span><span>Whole-house treatment</span><span>Fixture protection</span></div>
-              <a class="btn btn-primary" href="/water-softener-installation-westminster-md.html">Open service page</a>
-            </div>
-          </article>
-
-          <article class="service-card">
-            <div class="card-image"><img src="/images/filter-comparison.jpg" alt="Acid neutralizer system for protecting plumbing from acidic well water" loading="lazy" decoding="async"></div>
-            <div class="card-copy">
-              <span class="card-kicker">Water treatment</span>
-              <h3>Acid Neutralizer Installation</h3>
-              <p>Protect your well water system from corrosive acidic water with calcite-based neutralizer systems. Local expertise for Westminster and Carroll County.</p>
-              <div class="mini-points"><span>pH correction</span><span>Plumbing protection</span><span>Low maintenance</span></div>
-              <a class="btn btn-primary" href="/acid-neutralizer-installation-westminster-md.html">Open service page</a>
-            </div>
-          </article>
-
-          <article class="service-card">
-            <div class="card-image"><img src="/images/laundry-faucet-1.jpg" alt="Exterior plumbing style image for frost-free hose bib replacement service" loading="lazy" decoding="async"></div>
-            <div class="card-copy">
-              <span class="card-kicker">Exterior plumbing</span>
-              <h3>Frost-Free Hose Bib Replacement</h3>
-              <p>Outdoor faucet replacement work that helps reduce freeze damage, recurring leaks, and unreliable exterior plumbing connections.</p>
-              <div class="mini-points"><span>Freeze protection</span><span>Leak reduction</span><span>Cleaner exterior finish</span></div>
-              <a class="btn btn-primary" href="/hose-bib-replacement-westminster-md.html">Open service page</a>
-            </div>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <section class="section" id="water-quality-focus">
-      <div class="section-header">
+      <article class="service-tile">
+        <div class="service-media"><span class="media-tag">Acidic water</span><img src="/images/filter-comparison.jpg" alt="Water treatment equipment comparison in a residential mechanical area" /></div>
         <div>
-          <h2>Water quality focus</h2>
-          <p>Since water treatment is a strong lead opportunity, this page should call extra attention to filtration and conditioning work without cluttering the rest of the layout.</p>
+          <span class="tag">pH correction</span>
+          <h3 style="margin-top:12px;">Acid Neutralizer Installation</h3>
+          <p>For blue-green staining, low-pH well water, and protecting copper lines, fixtures, and appliances from corrosion.</p>
         </div>
+        <div class="pill-row"><span class="pill-link">Calcite systems</span><span class="pill-link">Ongoing top-ups</span></div>
+        <div class="actions"><a class="btn btn-primary" href="/acid-neutralizer-installation-westminster-md.html">Open service page</a></div>
+      </article>
+
+      <article class="service-tile">
+        <div class="service-media"><span class="media-tag">No-water calls</span><img src="/images/water-treatment-system.jpg" alt="Home mechanical equipment in a plumbing service area" /></div>
+        <div>
+          <span class="tag">Well system support</span>
+          <h3 style="margin-top:12px;">Well Pump Repair &amp; Replacement</h3>
+          <p>For no-water emergencies, pressure issues, pump troubleshooting, and repair-versus-replacement decisions.</p>
+        </div>
+        <div class="pill-row"><span class="pill-link">Emergency priority</span><span class="pill-link">Pressure tanks too</span></div>
+        <div class="actions"><a class="btn btn-primary" href="/well-pump-repair-westminster-md.html">Open service page</a></div>
+      </article>
+
+      <article class="service-tile">
+        <div class="service-media"><span class="media-tag">Exterior plumbing</span><img src="/images/hose-bib-after.jpg" alt="New frost-free hose bib installed on an exterior wall" /></div>
+        <div>
+          <span class="tag">Freeze protection</span>
+          <h3 style="margin-top:12px;">Frost-Free Hose Bib Replacement</h3>
+          <p>For leaking outdoor faucets, freeze damage, and clean exterior faucet replacements with better long-term protection.</p>
+        </div>
+        <div class="pill-row"><span class="pill-link">Real before/after</span><span class="pill-link">Frost-free upgrades</span></div>
+        <div class="actions"><a class="btn btn-primary" href="/hose-bib-replacement-westminster-md.html">Open service page</a></div>
+      </article>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="dual-grid">
+      <article class="glass-panel">
+        <span class="section-kicker">Why this layout works</span>
+        <h2 style="margin-top:12px;">Glassmorphism, but still practical.</h2>
+        <p class="section-copy" style="margin-top:12px;">The redesign keeps the brand colors from the homepage, then adds frosted panels, softer depth, stronger spacing, and cleaner action paths. It feels more premium without making the business look fake or overly trendy.</p>
+        <ul class="check-list" style="margin-top:18px;">
+          <li>Mobile-first structure with thumb-friendly calls to action</li>
+          <li>Consistent navigation and footer across every non-home page</li>
+          <li>Service pages that stay focused instead of mixing everything together</li>
+        </ul>
+      </article>
+      <article class="glass-panel">
+        <span class="section-kicker">Lead-gen angle</span>
+        <h2 style="margin-top:12px;">Water quality still gets extra visibility.</h2>
+        <p class="section-copy" style="margin-top:12px;">Since water softeners, filtration, and conditioning are a major opportunity, the service hub calls attention to that category without turning the entire site into one giant sales wall.</p>
+        <div class="callout">
+          <strong>Best next click:</strong>
+          <span>Open the water treatment page if the customer mentions hard water, staining, odor, or equipment replacement.</span>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="cta-band">
+      <span class="section-kicker">Need an estimate?</span>
+      <h2 style="margin-top:12px;">Call, text, or open the right page and reach out.</h2>
+      <p style="margin-top:12px;">If you already know what the problem is, use the service pages above. If not, contact Afternoon Plumbing directly and describe what is going on.</p>
+      <div class="actions" style="margin-top:20px;">
+        <a class="btn btn-accent" href="tel:4437892897">Call 443-789-2897</a>
+        <a class="btn btn-secondary" href="/contact.html">Go to contact page</a>
       </div>
-      <div class="feature-grid">
-        <article class="feature-card">
-          <h3>Water filtration and conditioning deserve their own attention.</h3>
-          <p>Customers searching for better water quality are often looking for different things: hard-water treatment, filtration, iron issues, odor reduction, or whole-house water improvement. Highlighting this category clearly helps both conversions and search relevance.</p>
-          <ul class="feature-list">
-            <li>Whole-house filtration systems</li>
-            <li>Water softener installations</li>
-            <li>Equipment upgrades and replacements</li>
-            <li>Water quality improvement discussions during estimate calls</li>
+    </div>
+  </section>
+</main>
+<footer class="site-footer">
+  <div class="site-footer-inner">
+    <div class="footer-panel">
+      <div class="footer-grid">
+        <div>
+          <h3>Afternoon Plumbing LLC</h3>
+          <p>Owner-operated plumbing service focused on water heaters, well pump problems, water treatment equipment, and clean residential service work in Westminster, Maryland.</p>
+          <p class="footer-note">Serving Westminster, Taneytown, Manchester, Hampstead, Finksburg, New Windsor, Union Bridge, Sykesville, Keymar, and nearby Carroll County communities.</p>
+        </div>
+        <div>
+          <h3>Quick links</h3>
+          <ul>
+            <li><a href="/services.html">Services</a></li>
+            <li><a href="/faq.html">FAQ</a></li>
+            <li><a href="/contact.html">Contact</a></li>
+            <li><a href="/water-softener-installation-westminster-md.html">Water treatment</a></li>
           </ul>
-        </article>
-        <article class="feature-card">
-          <h3>Why this helps SEO</h3>
-          <p>A cleaner service hub makes it easier for search engines to understand the page intent, and easier for customers to choose the right service page instead of bouncing through unrelated project content.</p>
-          <ul class="feature-list">
-            <li>Clearer page purpose</li>
-            <li>Stronger internal linking</li>
-            <li>Less visual clutter</li>
-            <li>Better service keyword targeting</li>
+        </div>
+        <div>
+          <h3>Call or text</h3>
+          <ul>
+            <li><a href="tel:4437892897">443-789-2897</a></li>
+            <li><a href="sms:4437892897">Send a text</a></li>
+            <li><a href="mailto:afternoonplumbingcc@gmail.com">afternoonplumbingcc@gmail.com</a></li>
           </ul>
-        </article>
-      </div>
-    </section>
-
-    <section class="section" id="service-area">
-      <div class="area-card">
-        <div class="section-header" style="margin-bottom:8px;">
-          <div>
-            <h2>Service area</h2>
-            <p>Afternoon Plumbing serves Westminster and nearby communities with a direct local service model.</p>
-          </div>
-        </div>
-        <p>Taneytown (21787), Westminster (21157, 21158), Manchester (21102), Hampstead (21074), Finksburg (21048), New Windsor (21776), Union Bridge (21791), Sykesville (21784), Keymar (21757), and Marriottsville (21104).</p>
-        <a class="btn btn-primary" href="/contact.html">Request an estimate</a>
-      </div>
-    </section>
-
-    <section class="section" id="faq">
-      <div class="faq-card">
-        <div class="section-header" style="margin-bottom:14px;">
-          <div>
-            <h2>Common questions</h2>
-            <p>Need a deeper answer about estimates, emergencies, water heaters, or water treatment? The full FAQ page covers the most common homeowner questions in one place.</p>
-          </div>
-          <a class="btn btn-secondary" href="/faq.html">Open full FAQ</a>
-        </div>
-        <div class="faq-accordion">
-          <div class="faq-item open">
-            <button class="faq-trigger" type="button"><span>Do you provide written estimates?</span><span>+</span></button>
-            <div class="faq-panel"><div class="faq-panel-inner"><p>Yes. Clear scope and pricing before work begins so customers know what they are approving.</p></div></div>
-          </div>
-          <div class="faq-item">
-            <button class="faq-trigger" type="button"><span>Do you install customer-supplied fixtures?</span><span>+</span></button>
-            <div class="faq-panel"><div class="faq-panel-inner"><p>Yes, when the scope is clearly defined and the install conditions make sense for the job.</p></div></div>
-          </div>
-          <div class="faq-item">
-            <button class="faq-trigger" type="button"><span>Do you handle urgent leaks?</span><span>+</span></button>
-            <div class="faq-panel"><div class="faq-panel-inner"><p>Yes. Call for the fastest scheduling options if you have an active leak or a problem that feels time-sensitive.</p></div></div>
-          </div>
         </div>
       </div>
-    </section>
-
-    <section class="section" id="request-estimate">
-      <div class="cta-card">
-        <div class="section-header" style="margin-bottom:8px;">
-          <div>
-            <h2>Request an estimate</h2>
-            <p>If you know the service you need, open the dedicated page above. If you just want to talk it through, call or use the contact page and we can point you in the right direction.</p>
-          </div>
-        </div>
-        <a class="btn btn-primary" href="/contact.html">Go to contact page</a>
-      </div>
-    </section>
-  </main>
-
-  <script>
-    document.querySelectorAll('.faq-trigger').forEach((btn)=>{
-      btn.addEventListener('click',()=>{
-        const item=btn.parentElement;
-        const open=item.classList.contains('open');
-        document.querySelectorAll('.faq-item').forEach(el=>el.classList.remove('open'));
-        if(!open) item.classList.add('open');
-      });
-    });
-  </script>
-<script>document.querySelectorAll('.site-nav-menu-btn').forEach((btn)=>{btn.addEventListener('click',(e)=>{e.stopPropagation();const menu=btn.parentElement;menu.classList.toggle('open');});});document.addEventListener('click',(e)=>{document.querySelectorAll('.site-nav-menu').forEach((menu)=>{if(!menu.contains(e.target))menu.classList.remove('open');});});</script>
+    </div>
+  </div>
+</footer>
 </body>
 </html>
