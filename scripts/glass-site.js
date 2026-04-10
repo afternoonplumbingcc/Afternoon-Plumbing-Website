@@ -1,20 +1,49 @@
 (function(){
-  const menuButtons = document.querySelectorAll('.site-nav-menu-btn');
-  menuButtons.forEach((btn)=>{
+  const menus = document.querySelectorAll('.site-nav-menu');
+
+  const closeMenu = (menu)=>{
+    if(!menu) return;
+    menu.classList.remove('open');
+    const btn = menu.querySelector('.site-nav-menu-btn');
+    if(btn) btn.setAttribute('aria-expanded','false');
+  };
+
+  const openMenu = (menu)=>{
+    if(!menu) return;
+    menu.classList.add('open');
+    const btn = menu.querySelector('.site-nav-menu-btn');
+    if(btn) btn.setAttribute('aria-expanded','true');
+  };
+
+  menus.forEach((menu, index)=>{
+    const btn = menu.querySelector('.site-nav-menu-btn');
+    const list = menu.querySelector('.site-nav-menu-list');
+    if(!btn || !list) return;
+    const listId = list.id || `site-nav-menu-list-${index + 1}`;
+    list.id = listId;
+    btn.setAttribute('aria-expanded','false');
+    btn.setAttribute('aria-controls', listId);
+    btn.setAttribute('aria-haspopup','true');
+
     btn.addEventListener('click',(event)=>{
       event.stopPropagation();
-      const menu = btn.closest('.site-nav-menu');
-      if(!menu) return;
-      document.querySelectorAll('.site-nav-menu').forEach((item)=>{
-        if(item !== menu) item.classList.remove('open');
-      });
-      menu.classList.toggle('open');
+      const isOpen = menu.classList.contains('open');
+      menus.forEach((item)=>{ if(item !== menu) closeMenu(item); });
+      if(isOpen) closeMenu(menu);
+      else openMenu(menu);
     });
   });
+
   document.addEventListener('click',(event)=>{
-    document.querySelectorAll('.site-nav-menu').forEach((menu)=>{
-      if(!menu.contains(event.target)) menu.classList.remove('open');
+    menus.forEach((menu)=>{
+      if(!menu.contains(event.target)) closeMenu(menu);
     });
+  });
+
+  document.addEventListener('keydown',(event)=>{
+    if(event.key === 'Escape') {
+      menus.forEach((menu)=> closeMenu(menu));
+    }
   });
 
   document.querySelectorAll('[data-compare]').forEach((root)=>{

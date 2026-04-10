@@ -505,6 +505,39 @@ details.faq-item{
 .inline-links a{text-decoration:none;color:var(--brand);font-weight:800}
 .inline-links a:hover{text-decoration:underline}
 
+.contact-action-group,
+.footer-action-group{
+  display:flex;
+  flex-wrap:wrap;
+  gap:10px;
+  margin-top:16px;
+}
+.contact-action-group .btn,
+.footer-action-group .btn,
+.footer-email-chip{
+  min-height:44px;
+}
+.footer-email-chip{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  gap:8px;
+  text-decoration:none;
+  border-radius:999px;
+  font-weight:800;
+  padding:12px 16px;
+  color:var(--brand);
+  background:rgba(255,255,255,.82);
+  border:1px solid rgba(172,201,223,.75);
+  box-shadow:var(--shadow-soft);
+  transition:transform .2s ease,box-shadow .2s ease,border-color .2s ease;
+}
+.footer-email-chip:hover{
+  transform:translateY(-1px);
+  box-shadow:var(--shadow);
+  border-color:rgba(138,177,206,.9);
+}
+
 .site-footer{padding:0 16px 28px}
 .site-footer-inner{max-width:var(--max);margin:0 auto}
 .footer-grid{grid-template-columns:1.3fr .85fr .85fr}
