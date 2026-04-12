@@ -49,8 +49,38 @@ _Learn about the person you're helping. Update this as you go._
 - Shake setup: prefers RTD for convenience, but currently has plenty of protein powder available
 - Prefers batch cooking and cooler-safe meals for work
 - No food allergies
-- Often has Greek yogurt available
 - Lives with parents + two brothers (shared kitchen)
+- **Girlfriend's food preferences:**
+
+  **Vegetables and starches:**
+  ✅ Likes: onions, potatoes, tomatoes, rice, cilantro, broccoli, cabbage, spinach, cauliflower, collard greens, carrots, celery, corn, sweet potatoes, zucchini, cucumber, green beans, romaine lettuce, butternut squash.
+  ❌ Dislikes: asparagus, okra, Brussels sprouts, peas, beets, mushrooms, peppers.
+  ☑️ Kale only if prepared well (‘fixed good’).
+
+  **Fruits:**
+  ✅ Likes: strawberries, pineapple, bananas, oranges, kiwis, pears, red grapes, cut-up apples, tangerines, cinnamon applesauce. Peaches only in summer.
+  ❌ Dislikes/avoids: blackberries, grapefruit, mango, cherries, cantaloupe, watermelon, blueberries, Granny Smith apples.
+
+  **Proteins:**
+  ✅ Likes: beef, chicken, fish, shrimp, turkey, pork, deli turkey, rotisserie chicken, bison, edamame, eggs, walnuts, plant-based protein powder.
+  ❌ Dislikes: goat, deer meat, black beans, pinto beans, chickpeas, tofu, tuna, cottage cheese.
+  ☑️ Kidney beans only in chili.
+
+  **Carbs & grains:**
+  ✅ Likes: oats, brown rice, pasta, Dave’s Whole Grain Bread.
+
+  **Condiments, sauces & seasonings:**
+  ✅ Likes: peanut butter, almond butter, pico de gallo, lemon juice, lime juice, soy sauce, garlic powder, onion powder, coconut aminos (to try).
+  ❌ Dislikes: mustard.
+
+  **Dairy & beverages:**
+  ✅ Likes: almond milk.
+  ❌ Dislikes: Greek yogurt, cottage cheese.
+
+  **Other notes:**
+  - Prefers apples only when cut up.
+  - Peaches only in summer.
+  - Willing to try coconut aminos.
 
 ## Sleep & Routine
 
