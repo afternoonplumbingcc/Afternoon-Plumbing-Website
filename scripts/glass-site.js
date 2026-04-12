@@ -57,7 +57,7 @@
       let x = clientX - rect.left;
       x = Math.max(0, Math.min(rect.width, x));
       const percent = (x / rect.width) * 100;
-      afterBg.style.width = percent + '%';
+      afterBg.style.clipPath = `inset(0 ${100 - percent}% 0 0)`;
       handle.style.left = percent + '%';
       root.setAttribute('aria-valuenow', Math.round(percent));
     };
