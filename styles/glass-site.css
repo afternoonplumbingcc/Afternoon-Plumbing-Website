@@ -464,24 +464,16 @@ details.faq-item{
 
 .compare-frame{min-height:340px;background:#000}
 .compare{position:relative;user-select:none;touch-action:none}
-.compare figure{position:relative;width:100%;height:400px;max-height:400px;overflow:hidden;margin:0}
-.compare-before-bg,.compare-after-bg{
+.compare figure{position:relative;width:100%;height:400px;max-height:400px;overflow:hidden;margin:0;background-image:url(/images/hose-bib-before.jpg);background-size:cover;background-repeat:no-repeat;background-position:center}
+.compare-after-bg{
+  background-image:url(/images/hose-bib-after.jpg);
   background-size:cover;
   background-repeat:no-repeat;
   background-position:center;
   position:absolute;
-  inset:0;
-  width:100%;
-  height:100%;
-  will-change:transform,clip-path;
-}
-.compare-before-bg{
-  z-index:1;
-}
-.compare-after-bg{
-  z-index:2;
-  overflow:hidden;
-  clip-path:inset(0 50% 0 0);
+  top:0;bottom:0;left:0;
+  width:50%;
+  box-shadow:0 0 0 2px rgba(255,255,255,.95);
 }
 .compare-handle{
   position:absolute;
