@@ -573,6 +573,12 @@ details.faq-item{
 .noindex-note{font-size:.9rem;color:#6b88a3}
 .centered{text-align:center}
 
+@media (min-width:981px){
+  .compare-before-bg{
+    transform:translateY(15px) !important;
+  }
+}
+
 @media (max-width:980px){
   .hero-grid,.split-grid,.dual-grid,.service-grid,.tile-grid,.stats-grid,.quick-grid,.links-grid,.contact-grid,.compare-grid,.footer-grid,.detail-grid{grid-template-columns:1fr}
   .compare figure{height:400px;max-height:400px}
