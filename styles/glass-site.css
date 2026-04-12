@@ -471,7 +471,6 @@ details.faq-item{
   top:0;bottom:0;left:50%;
   width:4px;
   background:rgba(255,255,255,.96);
-  transform:translateX(-50%);
   box-shadow:0 0 0 1px rgba(20,46,72,.22);
   pointer-events:auto;
   z-index:3;
