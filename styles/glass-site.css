@@ -575,7 +575,7 @@ details.faq-item{
 
 @media (min-width:981px){
   .compare-before-bg{
-    transform:translateY(15px) !important;
+    transform:translateY(25px) !important;
   }
 }
 
