@@ -47,9 +47,9 @@
   });
 
   document.querySelectorAll('[data-compare]').forEach((root)=>{
-    const afterWrap = root.querySelector('.compare-after-wrap');
+    const afterBg = root.querySelector('.compare-after-bg');
     const handle = root.querySelector('.compare-handle');
-    if(!afterWrap || !handle) return;
+    if(!afterBg || !handle) return;
     let dragging = false;
 
     const setPosition = (clientX)=>{
@@ -57,7 +57,7 @@
       let x = clientX - rect.left;
       x = Math.max(0, Math.min(rect.width, x));
       const percent = (x / rect.width) * 100;
-      afterWrap.style.width = percent + '%';
+      afterBg.style.width = percent + '%';
       handle.style.left = percent + '%';
       root.setAttribute('aria-valuenow', Math.round(percent));
     };
