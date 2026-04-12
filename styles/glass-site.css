@@ -478,7 +478,7 @@ details.faq-item{
 .compare-before-bg{
   background-image:url(/images/hose-bib-before.jpg);
   z-index:1;
-  transform:translateY(30px);
+  transform:translateY(16px);
 }
 .compare-after-bg{
   background-image:url(/images/hose-bib-after.jpg);
