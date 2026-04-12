@@ -464,7 +464,7 @@ details.faq-item{
 
 .compare-frame{min-height:340px;background:#000}
 .compare{position:relative;height:100%;min-height:340px;user-select:none;touch-action:none}
-.compare img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.compare img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block;max-width:none;min-width:100%;min-height:100%}
 .compare-after-wrap{position:absolute;inset:0 auto 0 0;width:50%;overflow:hidden;border-right:2px solid rgba(255,255,255,.95)}
 .compare-handle{
   position:absolute;
