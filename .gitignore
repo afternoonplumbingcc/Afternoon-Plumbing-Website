@@ -1,0 +1,4 @@
+.env.local
+.clawhub/
+.learnings/
+memory/
