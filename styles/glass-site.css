@@ -31,6 +31,7 @@ body{
   min-height:100vh;
   font-family:"Manrope",system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
   color:var(--ink);
+  font-size:15px; /* base font size for non-home pages */
   background:
     radial-gradient(circle at 12% 12%, rgba(43,105,153,.18), transparent 28%),
     radial-gradient(circle at 86% 8%, rgba(230,126,34,.20), transparent 26%),
@@ -46,6 +47,16 @@ body::after{
   inset:auto;
   pointer-events:none;
   z-index:0;
+}
+/* homepage: larger base font */
+body.homepage,
+body[data-page="home"]{
+  font-size:16px;
+}
+/* service pages: smaller base font */
+body.services-page,
+body.service-page{
+  font-size:14px;
 }
 body::before{
   top:-10rem;
