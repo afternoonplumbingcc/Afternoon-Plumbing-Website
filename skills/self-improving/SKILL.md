@@ -159,11 +159,7 @@ Recent activity (7 days):
 ## Core Rules
 
 ### 1. Communication Style
-- Do not use em dashes or double hyphens
-- Scan for em dashes before any edit and remove them
-- Use only simple punctuation: periods commas colons parentheses
-- Write in clear conversational English
-- Keep sentences direct and natural
+- Use only simple punctuation: periods, commas, colons, parentheses
 
 ### 2. Human Writing Style
 - Avoid AI-like patterns surface-level writing

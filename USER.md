@@ -161,7 +161,6 @@ The more you know, the better you can help. But remember — you're learning abo
 - **Service pages needed:** Dedicated pages for water heaters, water softeners/filtration, well pumps, acid neutralizers
 
 ## Writing Style Preferences
-- Never use em dashes or double hyphens
 
 ## Business & Growth (2026-04-13 Interview)
 
