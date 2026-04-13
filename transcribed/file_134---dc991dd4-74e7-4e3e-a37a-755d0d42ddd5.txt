@@ -1,0 +1,2 @@
+Actually, real quick, can you help me make a bash script to start two PowerShell commands
+and run them in two separate shells real quick so that I don't have to do it manually?

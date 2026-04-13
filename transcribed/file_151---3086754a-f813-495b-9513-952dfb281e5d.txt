@@ -1,0 +1,5 @@
+Can you tell me what is new in the 2026 April 5th OpenClaw update and what I
+need to change in order for you to stay the same or work better? Are there any
+API keys I need to give you? Is any permissions going to change? How will this
+update help me work better with you? How big was the update? What are the patch
+notes?

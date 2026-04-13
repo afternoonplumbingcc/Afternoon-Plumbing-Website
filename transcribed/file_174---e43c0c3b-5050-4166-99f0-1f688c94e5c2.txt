@@ -1,0 +1,2 @@
+How can we make purpose-built sub-agents if they're always spawned and randomly?
+Should I have persistent ones for websites?

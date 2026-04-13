@@ -1,0 +1,4 @@
+Okay, can we add it so that the PowerShell
+Terminal automatically minimizes to my Windows
+Taskbar?
+And can you add echo commands to tell me what's going on during the whole process?

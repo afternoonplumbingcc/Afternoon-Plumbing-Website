@@ -1,0 +1,4 @@
+Can you search Reddit and other forms and look at what they use to make sub-agents?
+Like do they have permanent sub-agents?
+What are good practices to do when using sub-agents for open call?
+And how do you think I can best use them for my business?

@@ -1,0 +1,1 @@
+Oh, can you make this a dot-bath script instead of PowerShell script?

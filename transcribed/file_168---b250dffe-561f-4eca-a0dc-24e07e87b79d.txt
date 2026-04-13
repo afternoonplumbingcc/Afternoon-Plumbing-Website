@@ -1,0 +1,3 @@
+If I have a hosting or I have the cheapest hosting or plan, would that be able to
+cover running a local memory embedding via just CPU?
+What do you think? Search it up.

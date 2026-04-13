@@ -1,0 +1,4 @@
+The available permissions I have are actions, administration, artifact metadata, attestations,
+code scanning, code spaces, commits, statuses, contents, custom properties, deployments,
+discussions, environments, issues, march cues, metadata, pages, pull requests,
+secret scanning, secrets, variables, webhooks, workflows, and I have the website selected.

@@ -1,0 +1,1 @@
+Delete the hourly website job and delete the weekly reminder.

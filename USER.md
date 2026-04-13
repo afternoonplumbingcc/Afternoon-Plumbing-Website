@@ -21,21 +21,28 @@ _Learn about the person you're helping. Update this as you go._
 - Key services: well pump replacements; water heater installations/replacements; water softeners; acid neutralizers
 - Current lead sources: ~99% referrals and past customers
 - Previously advertised in Yellow Pages
-- Google Business Profile is active; currently 10 reviews (all 5-star)
-- Gets new reviews when jobs happen, but total job volume is low
-- Website exists but is currently one-page only; needs dedicated service pages
-- Monthly marketing budget: up to $400
-- Also does personal training 1x/week
+- Google Business Profile is active; 16 reviews, currently in map pack
+- Goal: Rank higher, generate more calls
+- Service page strategy: Flush out pages with stories, photos, videos
+- Monthly marketing budget: Up to $400
+- Lead sources: ~99% referrals and past customers; Thumbtack Pro ($30 spent, 2 jobs)
+- Three-year goal: $300K/year revenue, community recognition
+- Ideal customer: Affordable, no haggling, knows what they want
 
-## Health & Fitness
+## Health & Fitness (2026-04-13 Update)
 
-- Goal: reduce body weight to **196 lbs** (currently ~270 lbs)
+- Goal: Reduce body weight to **196 lbs** (currently ~270 lbs)
 - Prioritizes body fat % over scale weight
-- Chronic lower back pain (worsened by Accutane use as a teen) has improved recently after discontinuing strenuous exercise
+- Chronic lower back pain (worsened by Accutane use as a teen) has improved after discontinuing strenuous exercise
 - Mobility work eliminates pain when done consistently
 - Training target: 2–3x/week, prefers morning/afternoon; recently only 0–1x/week
 - Responds better to external motivation and small goals
 - Most successful with visible metrics and streak-based tracking
+- Motivation: Improve quality of life, feel better physically
+- Past: Lost 70 pounds with a buddy in high school
+- Current approach: Personal training as a hobby, not a full-time job
+- Ideal training time: Morning or afternoon
+- Current barrier: Variable hours due to part-time job and apprenticeship class
 
 ## Nutrition
 
@@ -86,10 +93,13 @@ _Learn about the person you're helping. Update this as you go._
 
 - Target wake (work days): 7:00–8:30 AM
 - Actual wake (no jobs): 11:00 AM–1:00 PM
-- Bedtime: usually 2:00–4:00 AM
+- Bedtime: Usually 2:00–4:00 AM
 - Uses 10mg melatonin gummies sometimes
 - Snoozes alarm 2–4 times; morning grogginess common
 - Plumbing class: Mondays and Wednesdays, 6:00 PM–9:00 PM
+- Part-time job: Once or twice per week
+- Work hours: Variable, less than 9am-7pm due to other commitments
+- Current challenge: Balance family time with business progress
 
 ## Behavior
 
@@ -97,6 +107,8 @@ _Learn about the person you're helping. Update this as you go._
 - Interested in habit tracking (whiteboards/streaks)
 - Stress coping pattern: vent → distract (gaming/scrolling) → food
 - Downtime: Apex Legends, working with AI tools
+- Late-night snacking triggers: Relationship issues, boredom, hunger at bedtime
+- Current focus: Preventing slow seasons, generating consistent calls
 
 ## Reminder Cadence
 
@@ -110,14 +122,25 @@ _Learn about the person you're helping. Update this as you go._
 - Make mobility non-negotiable
 - Lean into measurable tracking systems
 - Support business marketing when relevant
+- Update files regularly with new learnings
+- Help research and implement content strategies
 
-### Business Priorities (Interview 2026-04-12)
+## Business Priorities (Interview 2026-04-13)
 
 - **#1 barrier to leads:** Visibility (not trust, pricing, or follow-up—those are already strong)
 - **Top revenue service:** Water heater installations/replacements (easiest workflow + best margins)
 - **Current intro script:** "Afternoon Plumbing, this is Christopher" → keep it natural, conversation-first
 - **Growth lever priority:** Boost visibility (local SEO, service pages, Google Business Profile)
 - **Current marketing budget:** Up to $400/mo
+- **Google Business Profile:** 16 reviews, currently in map pack, want to rank higher and get more calls
+- **Service pages priority:** Water heater (easy jobs, good margins) then well pump, softeners, hose bib, acid neutralizers
+- **Ideal customer:** Affordable, no haggling, knows what they want
+- **Lead sources:** 99% referrals and past customers; using Thumbtack Pro ($30 spent, 2 jobs)
+- **Three-year goal:** $300K/year revenue, community recognition as someone who helps
+- **Success metric:** Preventing slow seasons, generating consistent calls
+- **VPS:** Hostinger, no specific needs
+
+---
 
 ---
 
@@ -138,4 +161,50 @@ The more you know, the better you can help. But remember — you're learning abo
 - **Service pages needed:** Dedicated pages for water heaters, water softeners/filtration, well pumps, acid neutralizers
 
 ## Writing Style Preferences
-- Never use em dashes
+- Never use em dashes or double hyphens
+
+## Business & Growth (2026-04-13 Interview)
+
+**Three-Year Vision:**
+- Revenue: $300K/year (currently ~$150K)
+- Success definition: Community recognition, being known as someone who helps
+
+**Lead Sources:**
+- Referrals are the best source (trust-based, best customers)
+- Thumbtack Pro: $30 spent, 2 jobs, 1 lost to price
+- Dream next lead source: Something scalable with good ROI
+
+**Service Pages Priority:**
+- Water heater (easy jobs, good margins)
+- Well pump
+- Water softeners
+- Hose bib
+- Acid neutralizers
+
+**Marketing & Content:**
+- Google Business Profile: 16 reviews, currently in map pack
+- Goal: Rank higher and get more calls
+- Content strategy: Service pages with stories, photos, videos
+- Blog: 2-3 posts/week on Google profile
+- Video strategy: Research what works best for plumbing leads
+
+**Tool Stack:**
+- Calendar: In use
+- Email: afternoonplumbingcc at gmail.com
+- CRM: None (too expensive)
+- OpenClaw: Primary agent tool
+
+**Team & Growth:**
+- Current: You and your dad (team of two)
+- Future: Years out from hiring
+- Master plumber license timeline: 3.5 years (six-year program, already in progress)
+
+**Work-Life Balance:**
+- Ideal: Maximize family time without hurting business
+- Current reality: Less than 9am-7pm due to part-time job and apprenticeship class
+
+**Stress & Habits:**
+- Late-night snacking triggers: Relationship issues, boredom, hunger at bedtime
+- Current hours: Variable, often 9am-7pm
+- Plumbing class: Mondays and Wednesdays, 6pm-9pm
+- Part-time job: Once or twice per week

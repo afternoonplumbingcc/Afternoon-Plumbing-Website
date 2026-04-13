@@ -1,0 +1,3 @@
+So to run my business better, should I have separate bots on OpenClaw, like you have one
+main bot and then you have many sub agents, should I actually switch to Discord instead
+of Telegram so I can actually have you spawn them? What do you think?

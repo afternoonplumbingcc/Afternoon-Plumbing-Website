@@ -1,0 +1,9 @@
+Act as an invoice creator for afternoon plumbing LLC.
+This is for...
+The address is 3349 Greenmount Avenue.
+There was a flood there and we found a disconnected pipe at a 90 that looks like it froze and broke.
+We will repair it by taking out the old 90 using two couplings and a new 90 to repair the
+leak.
+The total price is $275.
+This does not account for any extra leaks we may find after restoring water to the building.
+My name is Christopher.

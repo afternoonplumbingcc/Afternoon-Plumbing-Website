@@ -1,0 +1,2 @@
+On the main page, can you fix the water heater image in the water heater card?
+It is not cropped correctly. It needs to be standing, but it does not pour on it.

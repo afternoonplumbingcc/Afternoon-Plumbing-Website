@@ -1,0 +1,1 @@
+On the Contact Us page, instead of having clicked to reveal the email address, could you just make a button that takes you to your mail lab and starts an email if you get what I'm saying?

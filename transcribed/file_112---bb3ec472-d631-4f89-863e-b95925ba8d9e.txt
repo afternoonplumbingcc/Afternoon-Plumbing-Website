@@ -1,0 +1,40 @@
+Is there any way to make it so that whenever we edit the website it's a mobile
+first design and would you be able to copy the original webpage very well and what
+I mean by that is on the service page for example there is images with a
+white background but when you go and look at the website the homepage it doesn't
+necessarily have that it uses more so well maybe it does have that I don't know
+you tell me with the design of the home pages like but the service page just
+feels a little bit different in terms of design I kind of want to make it
+consistent across the whole site and I want to make it like a mobile first
+design because that's more important to me now and some of the picture is
+like for example the false image the false it is cut off in the image is there
+any way to make it so that we can properly place the images in the sections
+so that the actual focus is focused on because in the false image it's just
+the countertop or is this just a limitation of I need to edit the image so
+that it fits the placeholders you know for example like the water heaters
+aren't really properly done either because they're so tall in real life but
+the images that we put on the website are like horizontal it's like how can we
+properly do the water heaters is there a way of doing that so they show up
+correctly I don't think this really impacts SEO very much I think this is more
+of just like a user interface thing I just want to be able to give you
+information and you can create a nice looking website without me having to
+like nitpick here and there because like the nav bars are different across each
+web page and I don't give why that is why can't you just use the same nav
+style you know like the text will be different like the text color or size
+like to use the same the same navigation navigation bar across the whole
+website like that's what everybody else does and it makes it much easier or is
+that a limitation of local language models that they have to change it
+every time I don't really know I'm a you tell me can we make a scale or something
+that tries to keep it like the original web page as much as possible I don't
+really know I just want to help I just want to have you help improve my business
+to be honest I'm just looking to get more customers and you know a website's a
+big part of that and constantly updating is important for Google because Google
+sees that we constantly update it and it goes oh these people are super you know
+on top of things I'm almost wondering do I have you once a day like do
+something on the website but I want it to be authentic you know I don't want
+you making like fake AI posts using stuff that I haven't even done is it
+better off if I have you if I give you like images and you like schedule pages to
+go every day I look I'm not sure you know what's the best way of doing it
+because I don't really want to cuddle the algorithm in order to have it run
+properly it means that a cron job you think would be a good idea like you tell
+me to be honest

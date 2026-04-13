@@ -1,0 +1,2 @@
+What I'm asking with the text is if you can create a separate bat file that will have echoes telling you what you're doing.
+And I want you to have that command be the first one and then send OpenClaw status as well.

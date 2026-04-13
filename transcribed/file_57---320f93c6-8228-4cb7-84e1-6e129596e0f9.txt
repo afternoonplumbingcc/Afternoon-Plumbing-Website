@@ -1,0 +1,3 @@
+With each of the extra webpages for the blogs, let the water heater on, for example,
+when I click the text or logo in the top left to take me back to the homepage, it does not let me do that.
+Can you fix that where that is linked to the homepage?

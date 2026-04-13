@@ -1,0 +1,3 @@
+No, what I meant by Broken was that it was still doing the sizing where the afterpicture
+would not fully cover the beforepicture and when you move the slider the afterpicture
+becomes bigger it doesn't actually just reveal like it should.

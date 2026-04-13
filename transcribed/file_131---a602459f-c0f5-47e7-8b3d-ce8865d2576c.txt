@@ -1,0 +1,3 @@
+Okay, so I made it not a public bot. I gave it presence intent, server member
+intent, message content intent. Should I give it every single permission? What
+permissions do I need to give it?

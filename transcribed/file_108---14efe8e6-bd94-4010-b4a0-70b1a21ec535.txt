@@ -1,0 +1,3 @@
+On the phone, on the home page, there is no way to actually access the services page or any other page.
+There is no drop-down menu on the home page.
+Could you just make it a little down arrow in the nav bar, please?

@@ -1,0 +1,4 @@
+The size is still changing on my end, on now both of them are broken.
+The one on the mobile was working, but now the one on the mobile is doing the thing where
+the size increases, instead of just revealing.
+Spawn a sub agent to look at best practices for this and implement.

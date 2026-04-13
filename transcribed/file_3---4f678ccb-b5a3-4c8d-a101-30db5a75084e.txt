@@ -1,0 +1,2 @@
+Also, store the GROC API key in the environment variables so you do not forget this in the future.
+Can you tell me any safety implications that I might have via storing this in the environment variables?

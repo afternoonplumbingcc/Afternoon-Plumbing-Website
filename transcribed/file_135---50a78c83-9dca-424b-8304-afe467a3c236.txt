@@ -1,0 +1,1 @@
+Would you be able to write a bash script that will automatically open PowerShell and type in the SSH root command and then in that same script do another PowerShell session and type in the other command please?

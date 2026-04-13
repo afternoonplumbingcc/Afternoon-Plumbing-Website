@@ -1,0 +1,2 @@
+It is not, every time I edit a bot permission and then go to another tab, it never saves the permissions.
+Although in the OAuth2 code, I gave it all of the permissions.

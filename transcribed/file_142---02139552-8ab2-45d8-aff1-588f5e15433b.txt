@@ -1,0 +1,2 @@
+Now make a separate PowerShell command that SSH is into my tail scale network.
+So what that's going to look like is that's going to look like this.

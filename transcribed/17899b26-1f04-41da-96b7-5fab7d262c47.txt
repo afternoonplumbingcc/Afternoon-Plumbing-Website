@@ -1,0 +1,4 @@
+Do not edit the homepage.
+Only edit the rest of the site.
+But yes, upgrade, standardize the footer and nav, and run a UI cleanup across the whole site.
+Use sub agents for this.

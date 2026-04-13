@@ -1,0 +1,7 @@
+In response of agents to fix all of the pages on my website and make all the pictures
+the right orientation and make sure the copy is good, make sure that there is no plain
+text email, make sure everything's like a button, kind of like the phone number and the
+email.
+Don't let it be plain text.
+And then make sure the footer and the mat bars are all the same and make it that class
+more fit UI.

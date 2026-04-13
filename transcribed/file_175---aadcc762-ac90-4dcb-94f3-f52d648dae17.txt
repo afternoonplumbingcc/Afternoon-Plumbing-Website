@@ -1,0 +1,1 @@
+With the persistent agents do I need to have separate discord bots for each of them or can you orchestrate it via discord to use sub agents that I create?

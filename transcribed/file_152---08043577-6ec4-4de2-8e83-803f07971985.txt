@@ -1,0 +1,2 @@
+What is new in the 2026 April 5 open call update and what I need to change in order for you to stay the same or work better?
+Are there any API keys I need to give you? Is any permissions going to change?

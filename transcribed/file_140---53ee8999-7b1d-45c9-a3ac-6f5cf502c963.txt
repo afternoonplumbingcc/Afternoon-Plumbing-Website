@@ -1,0 +1,1 @@
+It's not working properly, what this needs to do is this needs to open PowerShell and then type in the command as well.
