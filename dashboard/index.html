@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#0f172a" />
+  <title>Chris Daily Scoreboard</title>
+  <link rel="manifest" href="manifest.json" />
+  <style>
+    :root{--bg:#0b1020;--card:#121a31;--text:#e6ecff;--muted:#9fb0d8;--ok:#22c55e;--bad:#ef4444;--accent:#60a5fa}
+    *{box-sizing:border-box} body{margin:0;font-family:system-ui,-apple-system,Segoe UI,Roboto,sans-serif;background:var(--bg);color:var(--text)}
+    .wrap{max-width:760px;margin:0 auto;padding:16px}
+    h1{font-size:1.35rem;margin:4px 0 6px} .sub{color:var(--muted);font-size:.95rem;margin-bottom:16px}
+    .card{background:var(--card);border:1px solid #22315f;border-radius:14px;padding:14px;margin-bottom:12px}
+    .row{display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap}
+    .btns{display:flex;gap:8px}
+    button{border:1px solid #35508f;background:#1d2a4f;color:var(--text);padding:8px 12px;border-radius:10px;font-weight:600}
+    button.active.ok{background:rgba(34,197,94,.2);border-color:var(--ok)}
+    button.active.bad{background:rgba(239,68,68,.2);border-color:var(--bad)}
+    textarea{width:100%;min-height:90px;background:#0f1730;color:var(--text);border:1px solid #2f447e;border-radius:10px;padding:10px}
+    .score{font-size:1.05rem;color:#cfe0ff;margin:10px 0} .tiny{font-size:.85rem;color:var(--muted)}
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <h1>Chris Daily Scoreboard</h1>
+    <div class="sub" id="dateLine"></div>
+
+    <div class="card" data-key="mobility">
+      <div class="row"><strong>Mobility</strong><div class="btns"><button data-val="yes">✅ Done</button><button data-val="no">❌ Missed</button></div></div>
+    </div>
+    <div class="card" data-key="workout">
+      <div class="row"><strong>Workout</strong><div class="btns"><button data-val="yes">✅ Done</button><button data-val="no">❌ Missed</button></div></div>
+    </div>
+    <div class="card" data-key="snacks">
+      <div class="row"><strong>Night Snacks</strong><div class="btns"><button data-val="yes">✅ Win</button><button data-val="no">❌ Lost</button></div></div>
+    </div>
+
+    <div class="card">
+      <strong>Notes</strong>
+      <textarea id="notes" placeholder="Quick note: what helped or what tripped you up?"></textarea>
+    </div>
+
+    <div class="card">
+      <div class="score" id="scoreLine">Score: --/3</div>
+      <div class="tiny" id="streakLine">Current streak: 0 days</div>
+    </div>
+  </div>
+
+<script src="app.js"></script>
+</body>
+</html>

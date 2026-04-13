@@ -1,0 +1,5 @@
+Form should POST
+
+Make sure your form has the method="POST" attribute
+
+You are using

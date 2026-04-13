@@ -1,0 +1,16 @@
+{
+  "name": "site-consistency",
+  "version": "1.0.0",
+  "description": "Automated quality assurance and consistency checks for web projects",
+  "main": "scripts/main.js",
+  "bin": {
+    "site-consistency": "./scripts/main.js"
+  },
+  "scripts": {
+    "review": "node scripts/review.js",
+    "audit": "node scripts/review.js --all"
+  },
+  "keywords": ["quality", "review", "audit", "html", "css", "accessibility", "seo"],
+  "author": "Afternoon Plumbing",
+  "license": "MIT"
+}

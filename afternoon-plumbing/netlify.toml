@@ -1,0 +1,37 @@
+[build]
+  command = "npm run build"
+  publish = "dist"
+  functions = "functions"
+
+[build.environment]
+  NODE_VERSION = "20"
+
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
+
+[forms]
+  # Netlify will auto-detect forms from the HTML
+  # You can manually configure form handling here if needed
+  # For example, to add spam filtering or custom notifications:
+  # [forms.contact-form]
+  #   email = "info@afternoonplumbing.com"
+  #   subject = "New Quote Request"
+
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Frame-Options = "DENY"
+    X-Content-Type-Options = "nosniff"
+    Referrer-Policy = "strict-origin-when-cross-origin"
+
+[context.production]
+  # Production-specific settings
+  [context.production.processing]
+    skip_processing = false
+
+[context.deploy-preview]
+  # Deploy preview settings
+  [context.deploy-preview.processing]
+    skip_processing = false

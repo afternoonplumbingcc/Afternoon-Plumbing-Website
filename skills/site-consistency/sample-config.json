@@ -1,0 +1,57 @@
+{
+  "project": "Afternoon Plumbing",
+  "designSystem": {
+    "primaryColor": "#0f4c81",
+    "secondaryColor": "#1f7a3f",
+    "fontFamily": "Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif",
+    "maxWidth": "1200px",
+    "borderRadius": "12px",
+    "spacingScale": [0, 4, 8, 12, 16, 20, 24, 32, 48, 64]
+  },
+  "seo": {
+    "requiredMeta": ["title", "description", "viewport", "charset"],
+    "maxTitleLength": 70,
+    "maxDescriptionLength": 160,
+    "titleTemplate": "{service} in {location} | Afternoon Plumbing LLC",
+    "location": "Westminster, MD"
+  },
+  "accessibility": {
+    "requireAltText": true,
+    "minContrastRatio": 4.5,
+    "requireAria": false,
+    "requireH1": true,
+    "maxH1PerPage": 1,
+    "minLinkSize": "44px"
+  },
+  "performance": {
+    "maxImageSizeKB": 150,
+    "requireLazyLoading": true,
+    "allowedFormats": ["jpg", "jpeg", "png", "webp", "svg", "gif"],
+    "warnOnLargeImages": true,
+    "maxScriptsPerPage": 5
+  },
+  "content": {
+    "phoneNumber": "443-789-2897",
+    "phonePattern": "^\\d{3}-\\d{3}-\\d{4}$",
+    "serviceTowns": [
+      "Westminster",
+      "Taneytown",
+      "Manchester",
+      "Hampstead",
+      "Finksburg",
+      "New Windsor",
+      "Union Bridge",
+      "Sykesville",
+      "Keymar",
+      "Marriottsville"
+    ],
+    "tone": "professional, friendly, trustworthy",
+    "avoidTerms": ["#1", "best", "guaranteed", "cheap", "free"],
+    "requiredSections": ["service description", "contact CTA", "service area"]
+  },
+  "branding": {
+    "companyName": "Afternoon Plumbing LLC",
+    "logoAlt": "Afternoon Plumbing logo",
+    "tagline": "Reliable plumbing service in Westminster, MD"
+  }
+}

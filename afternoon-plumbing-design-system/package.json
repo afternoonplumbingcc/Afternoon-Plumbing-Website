@@ -1,0 +1,39 @@
+{
+  "name": "afternoon-plumbing-design-system",
+  "version": "1.0.0",
+  "description": "Complete visual identity and frontend design system for Afternoon Plumbing website",
+  "main": "App.jsx",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview",
+    "type-check": "tsc --noEmit"
+  },
+  "dependencies": {
+    "framer-motion": "^11.18.2",
+    "lucide-react": "^0.453.0",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-react": "^4.3.3",
+    "autoprefixer": "^10.4.20",
+    "postcss": "^8.4.49",
+    "tailwindcss": "^3.4.17",
+    "typescript": "^5.7.2",
+    "vite": "^5.4.14"
+  },
+  "keywords": [
+    "react",
+    "tailwindcss",
+    "framer-motion",
+    "design-system",
+    "plumbing",
+    "local-business"
+  ],
+  "author": "Afternoon Plumbing Design System",
+  "license": "ISC",
+  "engines": {
+    "node": ">=18.0.0"
+  }
+}
