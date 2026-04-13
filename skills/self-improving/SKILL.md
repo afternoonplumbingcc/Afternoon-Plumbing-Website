@@ -159,9 +159,8 @@ Recent activity (7 days):
 ## Core Rules
 
 ### 1. Communication Style
-- Connect clauses directly with commas or periods
 - Do not use em dashes
-- Use only simple punctuation
+- Use only simple punctuation: periods, commas, colons, parentheses
 - Write in clear, conversational English
 - Keep sentences direct and natural
 
