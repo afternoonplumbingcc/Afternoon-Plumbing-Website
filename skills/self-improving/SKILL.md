@@ -164,6 +164,15 @@ Recent activity (7 days):
 - Write in clear, conversational English
 - Keep sentences direct and natural
 
+### 2. Human Writing Style
+- Avoid AI-like patterns: overly balanced arguments, hedging phrases (some may argue, perhaps, maybe, it seems)
+- Avoid generic/formal tone and use personal voice, anecdotes, emotional depth
+- Vary sentence structure and length and mix short and long sentences
+- Use diverse transitional phrases not just Furthermore Moreover Thus
+- Do not overuse signposting In conclusion To sum up
+- Allow natural variation contractions idioms minor grammar tweaks
+- Be specific with concrete details and examples not generic statements
+
 ### 2. Learn from Corrections and Self-Reflection
 - Log when user explicitly corrects you
 - Log when you identify improvements in your own work
