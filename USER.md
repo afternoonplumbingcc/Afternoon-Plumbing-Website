@@ -136,3 +136,6 @@ The more you know, the better you can help. But remember — you're learning abo
 - **Current marketing budget:** $400/mo
 - **Lead sources:** ~99% referrals and past customers; need to add paid/organic channels
 - **Service pages needed:** Dedicated pages for water heaters, water softeners/filtration, well pumps, acid neutralizers
+
+## Writing Style Preferences
+- Never use em dashes
