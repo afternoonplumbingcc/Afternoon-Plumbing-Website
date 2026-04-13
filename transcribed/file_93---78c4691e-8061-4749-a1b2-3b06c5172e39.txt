@@ -1,0 +1,2 @@
+Do you see if the sub agent Pikachu coding agent Pikachu has access to Github or if he has access to Grok?
+If not, how do I get him the same access that the main agent has to edit my website?

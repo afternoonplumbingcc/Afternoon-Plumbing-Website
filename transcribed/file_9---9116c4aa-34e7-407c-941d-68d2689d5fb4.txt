@@ -1,0 +1,10 @@
+So I see SSH and GPG keys and an under developer. I see Github apps.
+Oh, no, I do see personal access tokens never mind. You want
+fine-grained tokens generate new token verify
+token name open claw
+expiration 90 days
+permissions
+content
+I
+don't see those
+permissions

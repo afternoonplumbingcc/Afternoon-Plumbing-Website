@@ -188,23 +188,40 @@ The more you know, the better you can help. But remember — you're learning abo
 - Blog: 2-3 posts/week on Google profile
 - Video strategy: Research what works best for plumbing leads
 
-**Tool Stack:**
-- Calendar: In use
-- Email: afternoonplumbingcc at gmail.com
-- CRM: None (too expensive)
-- OpenClaw: Primary agent tool
+**Tool Stack (2026-04-13 Interview):**
+- Calendar: In use — OpenClaw can manage it
+- Email: afternoonplumbingcc at gmail.com — not sharing Gmail with OpenClaw
+- CRM: None — manual with OpenClaw help for invoicing
+- Notion: Willing to try — good for notes
+- OpenClaw: Primary agent tool — prioritize research, storytelling, implementation
+
+**OpenClaw Priorities:**
+1. Research (SEO, content, best practices)
+2. Storytelling (you have many stories, want help writing them)
+3. Implementation (website updates, feature-rich while still fast and SEO focused)
+4. Reminders (health, business, tasks)
+5. Memory (important facts, long-term data — no need to remember quotes/jobs)
+
+**Notification Preferences:**
+- Discord: Good for updates
+- Notion: Interesting for notes
 
 **Team & Growth:**
 - Current: You and your dad (team of two)
 - Future: Years out from hiring
 - Master plumber license timeline: 3.5 years (six-year program, already in progress)
 
-**Work-Life Balance:**
-- Ideal: Maximize family time without hurting business
+**Growth Metrics (2026-04-13 Interview):**
+- $15K/month consistent revenue
+- More calls without more hours
+- Better Google visibility
+- Fewer slow seasons
+- Ideal: Maximize family time without hurting business progress
 - Current reality: Less than 9am-7pm due to part-time job and apprenticeship class
+- Current hours: Variable
 
 **Stress & Habits:**
 - Late-night snacking triggers: Relationship issues, boredom, hunger at bedtime
-- Current hours: Variable, often 9am-7pm
+- Current hours: Variable
 - Plumbing class: Mondays and Wednesdays, 6pm-9pm
 - Part-time job: Once or twice per week
