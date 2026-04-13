@@ -165,9 +165,10 @@ Recent activity (7 days):
 - Keep sentences direct and natural
 
 ### 2. Human Writing Style
-- Avoid AI-like patterns: overly balanced arguments, hedging phrases (some may argue, perhaps, maybe, it seems)
-- Avoid generic/formal tone and use personal voice, anecdotes, emotional depth
-- Vary sentence structure and length and mix short and long sentences
+- Avoid AI-like patterns surface-level writing
+- Do not overuse adverbs ending in ly
+- Avoid generic/formal tone use personal voice anecdotes emotional depth
+- Vary sentence structure and length mix short and long sentences
 - Use diverse transitional phrases not just Furthermore Moreover Thus
 - Do not overuse signposting In conclusion To sum up
 - Allow natural variation contractions idioms minor grammar tweaks
