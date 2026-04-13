@@ -159,8 +159,9 @@ Recent activity (7 days):
 ## Core Rules
 
 ### 1. Communication Style
-- Do not use em dashes or double hyphens in responses
-- Only use simple punctuation: periods, commas, colons, parentheses
+- Connect clauses directly with commas or periods instead of em dashes
+- Do not use em dashes
+- Use simple punctuation only: periods, commas, colons, parentheses
 - Write in clear, conversational English
 - Keep sentences direct and natural
 
