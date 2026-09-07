@@ -1,0 +1,196 @@
+/* service-pages.css
+   Scoped styles for local SEO service pages only.
+   index.html (homepage) does NOT load this file and must not change.
+   Built on glass-site.css tokens: loaded AFTER glass-site.css on service pages. */
+
+/* ---- Sticky mobile call bar (mobile only) ---- */
+.sticky-call-bar{
+  position:fixed;
+  bottom:0;
+  left:0;
+  right:0;
+  z-index:90;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:12px;
+  padding:10px 14px;
+  padding-bottom:calc(10px + env(safe-area-inset-bottom, 0px));
+  background:linear-gradient(90deg, var(--brand), var(--brand-2));
+  box-shadow:0 -8px 24px rgba(22,56,87,.28);
+}
+.sticky-call-bar .btn{min-height:44px}
+.sticky-call-bar .sticky-note{
+  color:rgba(255,255,255,.92);
+  font-size:.8rem;
+  line-height:1.35;
+  font-family:"Sora",sans-serif;
+}
+body.service-page{padding-bottom:78px}
+@media (min-width:761px){
+  .sticky-call-bar{display:none}
+  body.service-page{padding-bottom:0}
+}
+
+/* ---- Hero trust bar ---- */
+.trust-bar{
+  display:flex;
+  flex-wrap:wrap;
+  gap:8px 10px;
+  margin-top:18px;
+}
+.trust-item{
+  display:inline-flex;
+  align-items:center;
+  gap:6px;
+  min-height:44px;
+  padding:8px 14px;
+  border-radius:999px;
+  border:1px solid var(--line);
+  background:var(--surface);
+  font-family:"Sora",sans-serif;
+  font-size:.85rem;
+  color:var(--ink);
+  box-shadow:var(--shadow-soft);
+  white-space:nowrap;
+}
+.trust-item .trust-ico{
+  color:var(--accent);
+  font-size:1rem;
+  line-height:1;
+}
+@media (max-width:760px){
+  .service-hero .trust-bar{
+    flex-wrap:nowrap;
+    overflow-x:auto;
+    -webkit-overflow-scrolling:touch;
+    scrollbar-width:none;
+    padding-bottom:4px;
+  }
+  .service-hero .trust-bar::-webkit-scrollbar{display:none}
+}
+
+/* ---- Process timeline ---- */
+.process-timeline{
+  display:grid;
+  gap:16px;
+  grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+  margin-top:20px;
+}
+.process-step{
+  position:relative;
+  padding:20px;
+  border-radius:var(--radius-md);
+  border:1px solid var(--line);
+  border-left:3px solid var(--accent);
+  background:linear-gradient(180deg, rgba(255,255,255,.72), rgba(255,255,255,.46));
+  box-shadow:var(--shadow-soft);
+}
+.step-number{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  width:34px;
+  height:34px;
+  border-radius:50%;
+  background:linear-gradient(135deg, var(--brand), var(--brand-2));
+  color:#fff;
+  font-family:"Sora",sans-serif;
+  font-size:.95rem;
+  font-weight:600;
+  margin-bottom:12px;
+}
+.process-step h3{
+  font-family:"Sora",sans-serif;
+  font-size:1.05rem;
+  color:var(--brand);
+  margin-bottom:8px;
+}
+.process-step p{
+  margin:0;
+  color:var(--ink-soft);
+  font-size:.95rem;
+  line-height:1.6;
+}
+
+/* ---- Areas we serve chips ---- */
+.area-chips{
+  display:flex;
+  flex-wrap:wrap;
+  gap:10px;
+  margin-top:18px;
+}
+.area-chip{
+  display:inline-flex;
+  align-items:center;
+  min-height:44px;
+  padding:8px 14px;
+  border-radius:999px;
+  border:1px solid var(--line-strong);
+  background:var(--surface-soft);
+  color:var(--ink);
+  font-size:.85rem;
+  font-family:"Sora",sans-serif;
+  text-decoration:none;
+  transition:transform .15s ease, background .15s ease;
+}
+.area-chip:hover{transform:translateY(-1px);background:var(--surface-strong)}
+
+/* ---- Proof / job photo grid ---- */
+.proof-grid{
+  display:grid;
+  gap:16px;
+  grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+  margin-top:20px;
+}
+.proof-card{
+  padding:14px;
+  border-radius:var(--radius-md);
+  border:1px solid var(--line);
+  background:linear-gradient(180deg, rgba(255,255,255,.72), rgba(255,255,255,.46));
+  box-shadow:var(--shadow-soft);
+}
+.proof-card img{
+  width:100%;
+  height:auto;
+  display:block;
+  border-radius:calc(var(--radius-md) - 6px);
+  object-fit:cover;
+}
+.proof-caption{
+  margin-top:10px;
+  font-size:.88rem;
+  color:var(--ink-soft);
+  line-height:1.5;
+}
+.proof-caption strong{
+  color:var(--brand);
+  font-family:"Sora",sans-serif;
+}
+
+/* ---- FAQ section tweaks (service pages) ---- */
+.faq-section .faq-item summary{min-height:48px}
+.faq-section{margin-top:20px}
+
+/* ---- Final CTA band variant ---- */
+.cta-band.service-final-cta{text-align:center}
+.service-final-cta .actions{justify-content:center}
+.cta-urgency{
+  display:block;
+  color:var(--accent-soft);
+  font-family:"Sora",sans-serif;
+  font-size:.85rem;
+  letter-spacing:.08em;
+  text-transform:uppercase;
+}
+
+/* ---- Small screens ---- */
+@media (max-width:760px){
+  .process-timeline{grid-template-columns:1fr}
+  .proof-grid{grid-template-columns:1fr}
+}
+@media (max-width:560px){
+  .sticky-call-bar{justify-content:stretch}
+  .sticky-call-bar .sticky-note{display:none}
+  .sticky-call-bar .btn{flex:1}
+}
