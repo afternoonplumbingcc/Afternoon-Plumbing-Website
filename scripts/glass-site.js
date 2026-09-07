@@ -47,9 +47,13 @@
   });
 
   document.querySelectorAll('[data-compare]').forEach((root)=>{
-    const afterBg = root.querySelector('.compare-after-bg');
+    const legacyAfter = root.querySelector('.compare-after-bg');
+    const imgWrap = root.querySelector('.compare-after-wrap');
     const handle = root.querySelector('.compare-handle');
-    if(!afterBg || !handle) return;
+    if(!(legacyAfter || imgWrap) || !handle) return;
+    // imgWrap mode: clip the after-image layer (real <img> tags)
+    // legacyAfter mode: clip the background-image layer
+    const clipTarget = imgWrap || legacyAfter;
     let dragging = false;
 
     const setPosition = (clientX)=>{
@@ -57,7 +61,7 @@
       let x = clientX - rect.left;
       x = Math.max(0, Math.min(rect.width, x));
       const percent = (x / rect.width) * 100;
-      afterBg.style.clipPath = `inset(0 ${100 - percent}% 0 0)`;
+      clipTarget.style.clipPath = `inset(0 ${100 - percent}% 0 0)`;
       handle.style.left = percent + '%';
       root.setAttribute('aria-valuenow', Math.round(percent));
     };
