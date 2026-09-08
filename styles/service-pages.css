@@ -208,6 +208,12 @@ body.service-page{padding-bottom:78px}
 .compare .compare-instruction{z-index:4}
 .compare .compare-label{z-index:4}
 
+/* ---- Portrait job photos in hero asides: crop to a sensible height ---- */
+.service-hero .proof-card img{
+  height:420px;
+  object-fit:cover;
+}
+
 /* ---- Email chip: match .btn metrics on service pages ---- */
 .footer-email-chip{
   font-size:15px;
