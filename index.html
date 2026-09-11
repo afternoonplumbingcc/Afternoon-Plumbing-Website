@@ -8,6 +8,16 @@
 
   <link rel="canonical" href="https://afternoonplumbing.com/" />
     <meta name="description" content="Afternoon Plumbing serves Westminster, MD with water heater replacement, well pump repair, water softener installation, filtration, and other residential plumbing services. Call for an estimate." />
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Afternoon Plumbing" />
+    <meta property="og:title" content="Afternoon Plumbing | Westminster MD Plumber" />
+    <meta property="og:description" content="Water heater replacement, well pump repair, water softeners and more. Family-owned, same-day service, free estimates. Call (443) 789-2897." />
+    <meta property="og:url" content="https://afternoonplumbing.com/" />
+    <meta property="og:image" content="https://afternoonplumbing.com/images/logo.png" />
+    <meta property="og:locale" content="en_US" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="preload" as="image" href="/images/Kitchen%20remodel%20in%20elderburg,%20marble%20countertop%20with%20half%20moon%20backsplash%20and%20gold%20faucet%20trim.webp" fetchpriority="high" />
     <script type="module" crossorigin src="./assets/index-K8REV02.js"></script>
     <link rel="stylesheet" crossorigin href="./assets/index-CDFYR2ld.css">
   
@@ -72,8 +82,19 @@
   }
 }
 </script>
-<!-- Meta Pixel Code -->
+<!-- Meta Pixel Code (deferred to idle so it never blocks first paint; still fires PageView) -->
 <script>
+window.addEventListener('load', function() {
+  setTimeout(function() {
+    if (!window.__fbqLoaded) {
+      window.__fbqLoaded = true;
+      var s = document.createElement('script');
+      s.async = true;
+      s.src = 'https://connect.facebook.net/en_US/fbevents.js';
+      document.head.appendChild(s);
+    }
+  }, 2500);
+});
 !function(f,b,e,v,n,t,s)
 {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
 n.callMethod.apply(n,arguments):n.queue.push(arguments)};
