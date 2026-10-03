@@ -46,6 +46,58 @@
     }
   });
 
+  // Desktop hover dropdowns (Services / FAQ / Contact)
+  const dropItems = document.querySelectorAll('.site-nav-item');
+  dropItems.forEach((item)=>{
+    const trigger = item.querySelector('.site-nav-drop-trigger');
+    const panel = item.querySelector('.site-nav-drop');
+    if(!trigger || !panel) return;
+
+    trigger.setAttribute('aria-haspopup', 'true');
+    trigger.setAttribute('aria-expanded', 'false');
+
+    const setOpen = (open)=>{
+      item.classList.toggle('open', open);
+      trigger.setAttribute('aria-expanded', open ? 'true' : 'false');
+    };
+
+    // Keep aria-expanded honest while the user hovers or tabs through.
+    item.addEventListener('mouseenter', ()=> setOpen(true));
+    item.addEventListener('mouseleave', ()=> setOpen(false));
+
+    item.addEventListener('focusout', (event)=>{
+      if(!item.contains(event.relatedTarget)) setOpen(false);
+    });
+
+    // Escape closes and returns focus to the trigger.
+    item.addEventListener('keydown', (event)=>{
+      if(event.key === 'Escape') {
+        setOpen(false);
+        trigger.focus();
+      }
+    });
+  });
+
+  document.addEventListener('click', (event)=>{
+    dropItems.forEach((item)=>{
+      if(!item.contains(event.target)) {
+        item.classList.remove('open');
+        const t = item.querySelector('.site-nav-drop-trigger');
+        if(t) t.setAttribute('aria-expanded', 'false');
+      }
+    });
+  });
+
+  document.addEventListener('keydown',(event)=>{
+    if(event.key === 'Escape') {
+      dropItems.forEach((item)=>{
+        item.classList.remove('open');
+        const t = item.querySelector('.site-nav-drop-trigger');
+        if(t) t.setAttribute('aria-expanded', 'false');
+      });
+    }
+  });
+
   document.querySelectorAll('[data-compare]').forEach((root)=>{
     const legacyAfter = root.querySelector('.compare-after-bg');
     const imgWrap = root.querySelector('.compare-after-wrap');
