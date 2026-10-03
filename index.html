@@ -47,6 +47,8 @@
     .home-nav-drop a:hover{background:#eef6fc;color:#1a3a5c}
     .home-nav-drop.wide{min-width:520px}
     .home-nav-drop.wide.open{grid-template-columns:1fr 1fr}
+    .home-nav-caret{display:inline-block;margin-left:5px;font-size:9px;transition:transform .2s ease}
+    button[aria-expanded="true"] .home-nav-caret{transform:rotate(180deg)}
     @media (max-width:1020px){.home-nav-drop.wide{min-width:260px}.home-nav-drop.wide.open{grid-template-columns:1fr}}
     .water-heater-card-fix{display:flex;align-items:center;justify-content:center;padding:14px 18px;background:linear-gradient(180deg,#f8fbfd 0%,#eef4f8 100%)}
     .water-heater-card-fix img{width:auto !important;max-width:100% !important;height:100% !important;object-fit:contain !important;object-position:center center !important;transform:rotate(90deg) !important;margin:0 auto}
@@ -230,7 +232,7 @@ src="https://www.facebook.com/tr?id=4424110844582646&ev=PageView&noscript=1"
     if(!navButtons.length) return;
     let contactBtn=null;
     navButtons.forEach(btn=>{
-      const txt=(btn.textContent||'').trim().toLowerCase();
+      const txt=(btn.textContent||'').replace(/\u25BE/g,'').trim().toLowerCase();
       if(txt==='services') btn.onclick=()=>{ window.location.href='/services.html'; };
       if(txt==='contact') { btn.onclick=()=>{ window.location.href='/contact.html'; }; contactBtn=btn; }
       if(txt==='gallery' || txt==='portfolio') btn.onclick=()=>{ window.location.href='/services.html'; };
@@ -287,23 +289,45 @@ src="https://www.facebook.com/tr?id=4424110844582646&ev=PageView&noscript=1"
     }
   };
 
+  function labelOf(btn){
+    // Button label excluding the injected caret span, so lookups keep
+    // matching after the caret is added (retries, remap, clone relabel).
+    var t = '';
+    for (var i = 0; i < btn.childNodes.length; i++) {
+      var n = btn.childNodes[i];
+      if (n.nodeType === 1 && n.classList && n.classList.contains('home-nav-caret')) continue;
+      t += n.textContent || '';
+    }
+    return t.trim().toLowerCase();
+  }
+
   function findRow(){
     // The desktop nav buttons share one flex row inside <nav>.
     var buttons = document.querySelectorAll('nav button');
     for (var i = 0; i < buttons.length; i++) {
-      var t = (buttons[i].textContent || '').trim().toLowerCase();
+      var t = labelOf(buttons[i]);
       if (t === 'services' || t === 'contact') return buttons[i].parentElement;
     }
     return null;
   }
 
   function attach(row){
-    var nav = row.closest('nav');
+    // Panels are position:absolute; anchor them to the button row itself
+    // so they do not latch onto some arbitrary positioned ancestor.
+    if (getComputedStyle(row).position === 'static') row.style.position = 'relative';
     var buttons = Array.prototype.slice.call(row.querySelectorAll(':scope > button'));
     buttons.forEach(function(btn){
-      var name = (btn.textContent || '').trim().toLowerCase();
+      var name = labelOf(btn);
       var def = DROP_DEFS[name];
       if (!def) return;
+      // Caret indicator, same glyph as the static pages; idempotent across retries.
+      if (!btn.querySelector('.home-nav-caret')) {
+        var caret = document.createElement('span');
+        caret.className = 'home-nav-caret';
+        caret.setAttribute('aria-hidden', 'true');
+        caret.textContent = '\u25BE';
+        btn.appendChild(caret);
+      }
       // Clone-safe idempotency: a relabeled clone (FAQ) carries stale attrs.
       if (btn.getAttribute('data-nav-drop') === name && row.querySelector('[data-nav-panel-for="' + name + '"]')) return;
 
@@ -328,14 +352,14 @@ src="https://www.facebook.com/tr?id=4424110844582646&ev=PageView&noscript=1"
       var closeTimer = null;
       function position(){
         var br = btn.getBoundingClientRect();
-        var nr = nav.getBoundingClientRect();
+        var rr = row.getBoundingClientRect();
         var pw = panel.offsetWidth || 280;
-        var x = br.left - nr.left + br.width / 2 - pw / 2;
-        var maxX = Math.max(8, nr.width - pw - 8);
+        var x = br.left - rr.left + br.width / 2 - pw / 2;
+        var maxX = Math.max(8, rr.width - pw - 8);
         if (x > maxX) x = maxX;
         if (x < 8) x = 8;
         panel.style.left = x + 'px';
-        panel.style.top = (br.bottom - nr.top + 6) + 'px';
+        panel.style.top = (br.bottom - rr.top + 6) + 'px';
       }
       function setOpen(open){
         panel.classList.toggle('open', open);
