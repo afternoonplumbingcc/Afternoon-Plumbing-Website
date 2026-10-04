@@ -36,11 +36,30 @@
     /* home-mobile-dropdown */
     .home-mobile-menu{display:none;position:relative;flex:0 0 auto}
     .home-mobile-menu-btn{display:inline-flex;align-items:center;justify-content:center;width:38px;height:38px;background:#0f4c81;color:#fff;border:0;border-radius:10px;padding:0;font-weight:700;line-height:1;box-shadow:0 8px 20px rgba(15,76,129,.18)}
-    .home-mobile-menu-list{display:none;position:absolute;right:0;top:46px;background:#fff;border:1px solid #e2e8f0;border-radius:12px;box-shadow:0 12px 28px rgba(2,6,23,.14);min-width:190px;z-index:60;max-height:calc(100vh - 120px);overflow-y:auto}
-    .home-mobile-menu-list a{display:block;padding:11px 13px;text-decoration:none;color:#0f4c81;font-weight:600}
-    .home-mobile-menu-list a + a{border-top:1px solid #eef2f7}
-    .home-mobile-menu.open .home-mobile-menu-list{display:block}
-    .home-mobile-menu-list a.site-nav-menu-sub{padding-left:26px;font-size:13px;font-weight:600;color:#0f4c81}
+    /* Mobile slide-in drawer (mirrors the static pages' drawer in glass-site.css) */
+    .site-nav-drawer-lock{overflow:hidden}
+    .site-nav-drawer-scrim{position:fixed;inset:0;background:rgba(2,6,23,.5);opacity:0;visibility:hidden;pointer-events:none;z-index:10000;transition:opacity .25s ease, visibility 0s linear .25s}
+    .site-nav-drawer-scrim.open{opacity:1;visibility:visible;pointer-events:auto;transition:opacity .25s ease, visibility 0s linear 0s}
+    .site-nav-drawer{position:fixed;top:0;right:0;width:min(86vw,340px);height:100vh;height:100dvh;display:flex;flex-direction:column;background:#fff;box-shadow:-18px 0 48px rgba(22,56,87,.2);transform:translateX(100%);visibility:hidden;overflow-y:auto;z-index:10001;transition:transform .25s ease, visibility 0s linear .25s}
+    .site-nav-drawer.open{transform:translateX(0);visibility:visible;transition:transform .25s ease, visibility 0s linear 0s}
+    .site-nav-drawer-head{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:13px 14px 13px 20px;border-bottom:1px solid rgba(203,223,238,.65)}
+    .site-nav-drawer-brand{font-family:"Poppins",system-ui,-apple-system,"Segoe UI",sans-serif;font-weight:700;font-size:1.02rem;letter-spacing:-.02em;color:#1a3a5c}
+    .site-nav-drawer-close{flex:0 0 auto;width:44px;height:44px;border:0;border-radius:12px;background:rgba(238,246,252,.9);color:#1a3a5c;font-size:1.1rem;line-height:1;cursor:pointer}
+    .site-nav-drawer-close:hover{background:rgba(224,236,246,1)}
+    .site-nav-drawer-actions{display:grid;gap:10px;padding:16px 16px 6px}
+    .site-nav-drawer-call{display:flex;align-items:center;justify-content:center;min-height:52px;border-radius:14px;background:linear-gradient(180deg,#e67e22,#c96a1c);color:#fff;font-weight:800;font-size:16px;text-decoration:none;border:1px solid rgba(255,255,255,.25);box-shadow:0 12px 28px rgba(22,56,87,.35)}
+    .site-nav-drawer-text{display:flex;align-items:center;justify-content:center;min-height:52px;border-radius:14px;background:#fff;color:#1a3a5c;border:2px solid rgba(43,105,153,.45);font-weight:700;font-size:16px;text-decoration:none}
+    .site-nav-drawer-nav{display:flex;flex-direction:column;padding:10px 12px 8px;flex:1 1 auto}
+    .site-nav-drawer-sub-btn,.site-nav-drawer-row{display:flex;align-items:center;width:100%;min-height:48px;padding:12px 14px;border:0;border-radius:12px;background:transparent;color:#1a3a5c;font-size:15px;font-weight:700;text-decoration:none;text-align:left;cursor:pointer}
+    .site-nav-drawer-sub-btn{justify-content:space-between}
+    .site-nav-drawer-sub-btn:hover,.site-nav-drawer-row:hover,.site-nav-drawer-subpanel a:hover{background:rgba(238,246,252,.9)}
+    .site-nav-drawer-row.active,.site-nav-drawer-subpanel a.active{background:rgba(238,246,252,.95)}
+    .site-nav-drawer-caret{display:inline-block;margin-left:8px;font-size:10px;transition:transform .2s ease}
+    .site-nav-drawer-sub.open .site-nav-drawer-caret{transform:rotate(180deg)}
+    .site-nav-drawer-subpanel{display:none;padding:2px 0 6px}
+    .site-nav-drawer-sub.open .site-nav-drawer-subpanel{display:grid;gap:2px}
+    .site-nav-drawer-subpanel a{display:flex;align-items:center;min-height:48px;padding:11px 14px 11px 28px;border-radius:12px;color:#1a3a5c;font-size:15px;font-weight:600;text-decoration:none}
+    .site-nav-drawer-foot{margin-top:auto;padding:14px 20px 18px;border-top:1px solid rgba(203,223,238,.65);color:#6b88a3;font-size:13.5px;font-weight:600}
     .home-nav-drop{display:none;position:absolute;background:#fff;border:1px solid #e2e8f0;border-radius:12px;box-shadow:0 12px 28px rgba(2,6,23,.14);min-width:260px;padding:8px;z-index:70}
     .home-nav-drop.open{display:grid;gap:2px}
     .home-nav-drop a{display:block;padding:10px 12px;border-radius:10px;text-decoration:none;color:#0f4c81;font-weight:600;font-size:14px;white-space:nowrap}
@@ -411,10 +430,8 @@ src="https://www.facebook.com/tr?id=4424110844582646&ev=PageView&noscript=1"
         const mobileTitle=navRoot.querySelector('.md\\:hidden.flex-1');
         const menu=document.createElement('div');
         menu.className='home-mobile-menu';
-        menu.innerHTML='<button class="home-mobile-menu-btn" type="button" aria-label="Open menu">▾</button><div class="home-mobile-menu-list"><a href="/services.html">Services</a><a class="site-nav-menu-sub" href="/water-heater-replacement-westminster-md.html">Water heater replacement</a><a class="site-nav-menu-sub" href="/well-pump-repair-westminster-md.html">Well pump repair</a><a class="site-nav-menu-sub" href="/water-softener-installation-westminster-md.html">Water softener installation</a><a class="site-nav-menu-sub" href="/acid-neutralizer-installation-westminster-md.html">Acid neutralizer</a><a class="site-nav-menu-sub" href="/hose-bib-replacement-westminster-md.html">Hose bib replacement</a><a class="site-nav-menu-sub" href="/gas-leak-safety-westminster-md.html">Gas leak safety</a><a class="site-nav-menu-sub" href="/gas-appliance-hookups.html">Gas appliance hookups</a><a class="site-nav-menu-sub" href="/well-pumps.html">Well pumps overview</a><a class="site-nav-menu-sub" href="/service-area.html">Service area</a><a href="/faq.html">FAQ</a><a class="site-nav-menu-sub" href="/service-area.html">Service area and towns</a><a class="site-nav-menu-sub" href="/contact.html">Contact and request estimate</a><a href="/contact.html">Contact</a><a class="site-nav-menu-sub" href="tel:4437892897">Call 443-789-2897</a><a class="site-nav-menu-sub" href="sms:4437892897">Text 443-789-2897</a><a class="site-nav-menu-sub" href="mailto:afternoonplumbingcc@gmail.com">Email us</a></div>';
+        menu.innerHTML='<button class="home-mobile-menu-btn" type="button" aria-label="Open menu" aria-expanded="false">☰</button>';
         const btn=menu.querySelector('.home-mobile-menu-btn');
-        btn.addEventListener('click',(e)=>{ e.stopPropagation(); menu.classList.toggle('open'); });
-        document.addEventListener('click',(e)=>{ if(!menu.contains(e.target)) menu.classList.remove('open'); });
 
         if(window.innerWidth <= 900){
           navRoot.style.display='grid';
@@ -440,6 +457,102 @@ src="https://www.facebook.com/tr?id=4424110844582646&ev=PageView&noscript=1"
         } else {
           navRoot.appendChild(menu);
         }
+
+        addMobileDrawer(btn);
+      }
+
+      function addMobileDrawer(btn){
+        if(!btn || btn.dataset.drawerBound) return;
+        btn.dataset.drawerBound='1';
+        btn.setAttribute('aria-expanded','false');
+        const row=(href,label)=>{return '<a class="site-nav-drawer-row" href="'+href+'">'+label+'</a>';};
+        const sub=(href,label)=>{return '<a href="'+href+'">'+label+'</a>';};
+        let drawer=document.querySelector('.site-nav-drawer');
+        let scrim=document.querySelector('.site-nav-drawer-scrim');
+        if(!drawer){
+          const servicesLinks=[
+            ['/services.html','Services overview'],
+            ['/water-heater-replacement-westminster-md.html','Water heater replacement'],
+            ['/well-pump-repair-westminster-md.html','Well pump repair'],
+            ['/water-softener-installation-westminster-md.html','Water softener installation'],
+            ['/acid-neutralizer-installation-westminster-md.html','Acid neutralizer'],
+            ['/hose-bib-replacement-westminster-md.html','Hose bib replacement'],
+            ['/gas-leak-safety-westminster-md.html','Gas leak safety'],
+            ['/gas-appliance-hookups.html','Gas appliance hookups'],
+            ['/well-pumps.html','Well pumps overview']
+          ].map(function(pair){ return sub(pair[0], pair[1]); }).join('');
+          const wrap=document.createElement('div');
+          wrap.innerHTML=''
+            +'<div class="site-nav-drawer-scrim" aria-hidden="true"></div>'
+            +'<aside class="site-nav-drawer" role="dialog" aria-modal="true" aria-label="Site menu">'
+            +  '<div class="site-nav-drawer-head">'
+            +    '<span class="site-nav-drawer-brand">Afternoon Plumbing</span>'
+            +    '<button class="site-nav-drawer-close" type="button" aria-label="Close menu">✕</button>'
+            +  '</div>'
+            +  '<div class="site-nav-drawer-actions">'
+            +    '<a class="site-nav-drawer-call" href="tel:4437892897">Call 443-789-2897</a>'
+            +    '<a class="site-nav-drawer-text" href="sms:4437892897">Text 443-789-2897</a>'
+            +  '</div>'
+            +  '<nav class="site-nav-drawer-nav">'
+            +    '<div class="site-nav-drawer-sub">'
+            +      '<button class="site-nav-drawer-sub-btn" type="button" aria-expanded="false" aria-controls="site-nav-drawer-services">Services<span class="site-nav-drawer-caret" aria-hidden="true">▾</span></button>'
+            +      '<div class="site-nav-drawer-subpanel" id="site-nav-drawer-services">'+servicesLinks+'</div>'
+            +    '</div>'
+            +    row('/faq.html','FAQ')
+            +    row('/service-area.html','Service Area')
+            +    row('/contact.html','Contact')
+            +  '</nav>'
+            +  '<div class="site-nav-drawer-foot">Free estimates</div>'
+            +'</aside>';
+          scrim=wrap.querySelector('.site-nav-drawer-scrim');
+          drawer=wrap.querySelector('.site-nav-drawer');
+          document.body.appendChild(scrim);
+          document.body.appendChild(drawer);
+
+          const path=(location.pathname||'/').replace(/\/+$/,'')||'/';
+          drawer.querySelectorAll('a.site-nav-drawer-row').forEach(function(aRow){
+            const href=aRow.getAttribute('href')||'';
+            if(href.indexOf('/')===0 && (href.replace(/\/+$/,'')||'/')===path){
+              aRow.classList.add('active');
+              if(!aRow.hasAttribute('aria-current')) aRow.setAttribute('aria-current','page');
+            }
+          });
+
+          drawer.querySelector('.site-nav-drawer-close').addEventListener('click',function(){ closeDrawerFor(drawer, scrim, document.querySelector('.home-mobile-menu-btn'), true); });
+          scrim.addEventListener('click',function(){ closeDrawerFor(drawer, scrim, document.querySelector('.home-mobile-menu-btn'), true); });
+          document.addEventListener('keydown',function(e){
+            if(e.key==='Escape') closeDrawerFor(drawer, scrim, document.querySelector('.home-mobile-menu-btn'), true);
+          });
+          const subBtn=drawer.querySelector('.site-nav-drawer-sub-btn');
+          const subPanel=drawer.querySelector('.site-nav-drawer-sub');
+          subBtn.addEventListener('click',function(){
+            const open=subPanel.classList.toggle('open');
+            subBtn.setAttribute('aria-expanded', open?'true':'false');
+          });
+        }
+        btn.addEventListener('click',function(e){
+          e.stopPropagation();
+          if(drawer.classList.contains('open')) closeDrawerFor(drawer, scrim, btn, true);
+          else openDrawerFor(drawer, scrim, btn);
+        });
+      }
+      function openDrawerFor(drawer, scrim, trigger){
+        drawer.classList.add('open');
+        scrim.classList.add('open');
+        document.documentElement.classList.add('site-nav-drawer-lock');
+        document.body.classList.add('site-nav-drawer-lock');
+        if(trigger) trigger.setAttribute('aria-expanded','true');
+        const closeBtn=drawer.querySelector('.site-nav-drawer-close');
+        if(closeBtn) closeBtn.focus();
+      }
+      function closeDrawerFor(drawer, scrim, trigger, focusTrigger){
+        if(!drawer.classList.contains('open')) return;
+        drawer.classList.remove('open');
+        scrim.classList.remove('open');
+        document.documentElement.classList.remove('site-nav-drawer-lock');
+        document.body.classList.remove('site-nav-drawer-lock');
+        if(trigger) trigger.setAttribute('aria-expanded','false');
+        if(focusTrigger && trigger){ try{ trigger.focus(); }catch(e){} }
       }
       if(document.readyState==='loading') document.addEventListener('DOMContentLoaded', addMobileMenu);
       setTimeout(addMobileMenu,300); setTimeout(addMobileMenu,1000); setTimeout(addMobileMenu,2200); setTimeout(addMobileMenu,4000);
