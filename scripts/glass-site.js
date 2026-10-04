@@ -1,4 +1,37 @@
 (function(){
+  // Hide the header when scrolling down, show it again on scroll up or near the top.
+  // Mirrors the behavior the homepage React nav had, now applied to the unified static nav.
+  const navBar = document.querySelector('.site-nav');
+  if (navBar) {
+    let lastY = window.scrollY || 0;
+    let ticking = false;
+    const onScroll = ()=>{
+      const y = window.scrollY || 0;
+      if (y < 100) {
+        navBar.classList.remove('nav-hidden');
+      } else if (y > lastY + 4) {
+        navBar.classList.add('nav-hidden');
+      } else if (y < lastY - 4) {
+        navBar.classList.remove('nav-hidden');
+      }
+      lastY = y;
+      ticking = false;
+    };
+    window.addEventListener('scroll', ()=>{
+      if (!ticking) {
+        ticking = true;
+        window.requestAnimationFrame(onScroll);
+      }
+    }, {passive:true});
+  }
+
+  // Homepage only: the frozen React bundle renders its own nav. Tag it so CSS can
+  // suppress it without touching anything else the app mounts (hero, sections, footer).
+  if (document.body.classList.contains('home-page')) {
+    const reactNav = document.querySelector('#root nav.fixed');
+    if (reactNav) reactNav.setAttribute('data-react-nav','');
+  }
+
   const menus = document.querySelectorAll('.site-nav-menu');
 
   const closeMenu = (menu)=>{
