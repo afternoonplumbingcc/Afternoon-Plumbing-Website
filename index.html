@@ -22,10 +22,12 @@
     <link rel="stylesheet" crossorigin href="./assets/index-CDFYR2ld.css">
   
     <style>
-      .featured-project-chip{position:fixed;right:16px;bottom:16px;z-index:1050;background:#0f4c81;color:#fff;text-decoration:none;padding:12px 14px;border-radius:12px;box-shadow:0 8px 24px rgba(0,0,0,.2);font:600 14px/1.2 system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;max-width:280px}
+      .featured-project-chip{position:fixed;right:16px;bottom:16px;z-index:990;background:#0f4c81;color:#fff;text-decoration:none;padding:12px 14px;border-radius:12px;box-shadow:0 8px 24px rgba(0,0,0,.2);font:600 14px/1.2 system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;max-width:280px}
       .featured-project-chip small{display:block;opacity:.9;font-weight:500;margin-top:4px}
       .featured-project-chip:hover{background:#0b3558}
-      @media (max-width:640px){.featured-project-chip{left:12px;right:12px;bottom:12px;max-width:none;text-align:center}}
+      /* Sticky call bar (mobile-call-bar.css) pins to the bottom edge up to 768px wide: 12px margin + 48px tall, top edge at 60px. Keep the chip 16px above it (bottom:76px) and below it in stacking order (z-index:990 < 1000) so the Call button always stays visible and tappable. */
+      @media (max-width:768px){.featured-project-chip{bottom:76px}}
+      @media (max-width:640px){.featured-project-chip{left:12px;right:12px;bottom:76px;max-width:none;text-align:center}}
     </style>
 
   
