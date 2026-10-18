@@ -55,11 +55,17 @@
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
-  "@type": "Plumber",
+  "@type": ["Plumber", "LocalBusiness"],
+  "@id": "https://afternoonplumbing.com/#plumber",
   "name": "Afternoon Plumbing",
+  "legalName": "Afternoon Plumbing LLC",
   "url": "https://afternoonplumbing.com/",
+  "logo": "https://afternoonplumbing.com/images/logo.png",
   "sameAs": [
-    "https://maps.google.com/?cid=18227209709633935350"
+    "https://maps.google.com/?cid=18227209709633935350",
+    "https://www.facebook.com/afternoonplumbing",
+    "https://youtube.com/@afternoonplumbing",
+    "https://www.instagram.com/afternoonplumbing"
   ],
   "telephone": "+1-443-789-2897",
   "address": {
@@ -74,7 +80,60 @@
     "@type": "GeoCoordinates",
     "latitude": 39.607776,
     "longitude": -76.9476267
+  },
+  "priceRange": "$$",
+  "openingHoursSpecification": [
+    {
+      "@type": "OpeningHoursSpecification",
+      "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"],
+      "opens": "00:00",
+      "closes": "23:59"
+    }
+  ],
+  "areaServed": [
+    { "@type": "City", "name": "Westminster" },
+    { "@type": "AdministrativeArea", "name": "Carroll County" },
+    { "@type": "AdministrativeArea", "name": "Baltimore County" },
+    { "@type": "AdministrativeArea", "name": "Frederick County" },
+    { "@type": "AdministrativeArea", "name": "Howard County" }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "@id": "https://afternoonplumbing.com/#organization",
+  "name": "Afternoon Plumbing",
+  "legalName": "Afternoon Plumbing LLC",
+  "url": "https://afternoonplumbing.com/",
+  "logo": "https://afternoonplumbing.com/images/logo.png",
+  "sameAs": [
+    "https://maps.google.com/?cid=18227209709633935350",
+    "https://www.facebook.com/afternoonplumbing",
+    "https://youtube.com/@afternoonplumbing",
+    "https://www.instagram.com/afternoonplumbing"
+  ],
+  "telephone": "+1-443-789-2897",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "1315 Conquistador Dr",
+    "addressLocality": "Westminster",
+    "addressRegion": "MD",
+    "postalCode": "21157",
+    "addressCountry": "US"
   }
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "@id": "https://afternoonplumbing.com/#website",
+  "name": "Afternoon Plumbing",
+  "url": "https://afternoonplumbing.com/",
+  "publisher": { "@id": "https://afternoonplumbing.com/#organization" },
+  "inLanguage": "en-US"
 }
 </script>
 <!-- Meta Pixel Code (deferred to idle so it never blocks first paint; still fires PageView) -->
