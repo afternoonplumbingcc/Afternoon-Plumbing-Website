@@ -1,7 +1,8 @@
 #!/bin/bash
 # Afternoon Plumbing Website Audit
+# Resolves paths relative to this script, so it runs from any directory.
 
-BASE_DIR="/root/.openclaw/workspace/Afternoon-Plumbing-Website"
+BASE_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 PASS=0
 FAIL=0
 
@@ -15,24 +16,49 @@ check_fail() {
   ((FAIL++))
 }
 
+# Pages that must exist and be valid HTML
+REQUIRED_PAGES=(
+  "water-softener-installation-westminster-md.html"
+  "water-heater-replacement-westminster-md.html"
+  "well-pump-repair-westminster-md.html"
+  "acid-neutralizer-installation-westminster-md.html"
+  "hose-bib-replacement-westminster-md.html"
+  "contact.html"
+  "index.html"
+)
+
+# Pages that carry Service schema
+SERVICE_PAGES=(
+  "water-softener-installation-westminster-md.html"
+  "water-heater-replacement-westminster-md.html"
+  "well-pump-repair-westminster-md.html"
+  "acid-neutralizer-installation-westminster-md.html"
+  "hose-bib-replacement-westminster-md.html"
+)
+
+# Pages that are checked for nav links, images, and console error patterns
+AUDITED_PAGES=(
+  "water-softener-installation-westminster-md.html"
+  "water-heater-replacement-westminster-md.html"
+  "well-pump-repair-westminster-md.html"
+  "acid-neutralizer-installation-westminster-md.html"
+  "hose-bib-replacement-westminster-md.html"
+  "contact.html"
+  "index.html"
+  "services.html"
+  "faq.html"
+)
+
 echo "============================================================"
 echo "WEBSITE AUDIT: Afternoon Plumbing"
 echo "============================================================"
 
-# 1. Check all required pages exist
+# 1. Page existence and readability
 echo ""
 echo "📄 Page Existence & Readability:"
-for page in \
-  "water-softener-installation-westminster-md.html" \
-  "water-heater-replacement-westminster-md.html" \
-  "well-pump-repair-westminster-md.html" \
-  "acid-neutralizer-installation-westminster-md.html" \
-  "hose-bib-replacement-westminster-md.html" \
-  "contact.html" \
-  "index.html"
-do
+for page in "${REQUIRED_PAGES[@]}"; do
   if [ -f "$BASE_DIR/$page" ]; then
-    if grep -q "<!doctype html>" "$BASE_DIR/$page"; then
+    if grep -qi "<!doctype html>" "$BASE_DIR/$page"; then
       check_pass "$page exists and is valid HTML"
     else
       check_fail "$page exists but missing doctype"
@@ -42,34 +68,19 @@ do
   fi
 done
 
-# 2. Navigation consistency (all pages must have Services, FAQ, Contact links)
+# 2. Navigation consistency
 echo ""
 echo "🧭 Navigation Consistency:"
 nav_issues=0
-for page in \
-  "water-softener-installation-westminster-md.html" \
-  "water-heater-replacement-westminster-md.html" \
-  "well-pump-repair-westminster-md.html" \
-  "acid-neutralizer-installation-westminster-md.html" \
-  "hose-bib-replacement-westminster-md.html" \
-  "contact.html" \
-  "index.html"
-do
-  if [ -f "$BASE_DIR/$page" ]; then
-    file="$BASE_DIR/$page"
-    if grep -q 'services\.html' "$file"; then :; else
-      echo "  ⚠️  $page missing Services link"
+for page in "${REQUIRED_PAGES[@]}"; do
+  [ -f "$BASE_DIR/$page" ] || continue
+  file="$BASE_DIR/$page"
+  for link in "services\.html" "faq\.html" "contact\.html"; do
+    if ! grep -q "$link" "$file"; then
+      echo "  ⚠️  $page missing $link link"
       ((nav_issues++))
     fi
-    if grep -q 'faq\.html' "$file"; then :; else
-      echo "  ⚠️  $page missing FAQ link"
-      ((nav_issues++))
-    fi
-    if grep -q 'contact\.html' "$file"; then :; else
-      echo "  ⚠️  $page missing Contact link"
-      ((nav_issues++))
-    fi
-  fi
+  done
 done
 if [ $nav_issues -eq 0 ]; then
   check_pass "All pages include Services, FAQ, Contact links"
@@ -77,25 +88,18 @@ else
   check_fail "Some pages missing navigation links"
 fi
 
-# 3. Structured data on service pages
+# 3. Structured data
 echo ""
 echo "🔎 Structured Data (schema.org):"
-for page in \
-  "water-softener-installation-westminster-md.html" \
-  "water-heater-replacement-westminster-md.html" \
-  "well-pump-repair-westminster-md.html" \
-  "acid-neutralizer-installation-westminster-md.html" \
-  "hose-bib-replacement-westminster-md.html"
-do
+for page in "${SERVICE_PAGES[@]}"; do
   file="$BASE_DIR/$page"
-  if grep -q 'type="application/ld+json"' "$file" && grep -q '"@type": "Service"' "$file"; then
+  if grep -q 'type="application/ld+json"' "$file" && grep -q '"@type": *"Service"' "$file"; then
     check_pass "$page has Service schema"
   else
     check_fail "$page missing Service schema"
   fi
 done
 
-# Contact and index have LDJSON but different type
 for page in "contact.html" "index.html"; do
   file="$BASE_DIR/$page"
   if grep -q 'type="application/ld+json"' "$file"; then
@@ -105,61 +109,44 @@ for page in "contact.html" "index.html"; do
   fi
 done
 
-# 4. CSS - Service pages use inline CSS, index.html uses external
+# 4. CSS loading
+# index.html loads a compiled bundle stylesheet; other pages load shared
+# stylesheets from /styles/. A page is styled if it links a stylesheet
+# or carries an embedded <style> block.
 echo ""
 echo "🎨 CSS Loading:"
-# Check index.html uses external CSS
 if grep -q 'index-CDFYR2ld.css' "$BASE_DIR/index.html"; then
   check_pass "index.html references main CSS"
 else
   check_fail "index.html missing main CSS reference"
 fi
-# Check contact.html uses inline CSS only (no external reference required)
-if grep -q '<style>' "$BASE_DIR/contact.html"; then
-  check_pass "contact.html has embedded CSS (self-contained)"
-else
-  check_fail "contact.html missing CSS"
-fi
-# Check service pages - they use embedded CSS
-for page in \
-  "water-softener-installation-westminster-md.html" \
-  "water-heater-replacement-westminster-md.html" \
-  "well-pump-repair-westminster-md.html" \
-  "acid-neutralizer-installation-westminster-md.html" \
-  "hose-bib-replacement-westminster-md.html"
-do
+
+for page in "contact.html" "${SERVICE_PAGES[@]}"; do
   file="$BASE_DIR/$page"
-  if grep -q '<style>' "$file"; then
-    check_pass "$page has embedded CSS (self-contained)"
+  if grep -qE '<link[^>]+href="[^"]*\.css' "$file" || grep -q '<style>' "$file"; then
+    check_pass "$page has CSS"
   else
     check_fail "$page missing CSS"
   fi
 done
 
 # 5. Images
+# Extract /images/... references, URL-decode them, and confirm the file
+# exists on disk.
 echo ""
 echo "🖼️ Images:"
-# Build list of image files (lowercase)
-image_files=$(ls "$BASE_DIR/images" | tr '[:upper:]' '[:lower:]')
 missing_count=0
-for page in \
-  "water-softener-installation-westminster-md.html" \
-  "water-heater-replacement-westminster-md.html" \
-  "well-pump-repair-westminster-md.html" \
-  "acid-neutralizer-installation-westminster-md.html" \
-  "hose-bib-replacement-westminster-md.html" \
-  "contact.html" \
-  "index.html"
-do
+for page in "${AUDITED_PAGES[@]}"; do
   file="$BASE_DIR/$page"
-  # Extract src="/images/FILE" patterns
-  grep -oE 'src=["'"'"']\/images\/[^"'"'"']+' "$file" 2>/dev/null | while read -r img; do
-    img_file=$(echo "$img" | sed "s/src=[\"']\\/images\\///" | tr '[:upper:]' '[:lower:]')
-    if ! echo "$image_files" | grep -q "^$img_file$"; then
-      echo "  ⚠️  $page references missing image: /images/$img_file"
+  [ -f "$file" ] || continue
+  while IFS= read -r img_path; do
+    [ -z "$img_path" ] && continue
+    decoded=$(printf '%s' "$img_path" | sed -e 's/%20/ /g' -e 's/%2B/+/g' -e 's/%28/(/g' -e 's/%29/)/g')
+    if [ ! -f "$BASE_DIR/images/$decoded" ]; then
+      echo "  ⚠️  $page references missing image: /images/$decoded"
       ((missing_count++))
     fi
-  done
+  done < <(grep -oE "src=[\"']/images/[^\"']+" "$file" 2>/dev/null | sed -E "s/src=[\"']\/images\///")
 done
 if [ $missing_count -eq 0 ]; then
   check_pass "All referenced images exist in /images/"
@@ -171,40 +158,25 @@ fi
 echo ""
 echo "🔗 Internal Links:"
 broken_count=0
-# Check each page for links to other .html files
-for page in \
-  "water-softener-installation-westminster-md.html" \
-  "water-heater-replacement-westminster-md.html" \
-  "well-pump-repair-westminster-md.html" \
-  "acid-neutralizer-installation-westminster-md.html" \
-  "hose-bib-replacement-westminster-md.html" \
-  "contact.html" \
-  "index.html" \
-  "services.html" \
-  "faq.html"
-do
-  if [ ! -f "$BASE_DIR/$page" ]; then continue; fi
+for page in "${AUDITED_PAGES[@]}"; do
   file="$BASE_DIR/$page"
-  # Extract href to .html files (not external)
-  grep -oE 'href=["'"'"']([^"'"'"]+\.html)["'"'"]' "$file" 2>/dev/null | while read -r href_attr; do
-    href=$(echo "$href_attr" | sed -E "s/href=[\"']//;s/[\"']$//")
+  [ -f "$file" ] || continue
+  while IFS= read -r href; do
+    [ -z "$href" ] && continue
     # Skip external, tel, mailto, anchors
-    if [[ "$href" =~ ^https?:// ]] || [[ "$href" =~ ^tel: ]] || [[ "$href" =~ ^mailto: ]] || [[ "$href" =~ ^# ]] || [[ -z "$href" ]]; then
-      continue
-    fi
-    # Resolve relative
-    if [[ "$href" =~ ^/ ]]; then
+    case "$href" in
+      http://*|https://*|tel:*|mailto:*|\#*) continue ;;
+    esac
+    if [[ "$href" == /* ]]; then
       target="$BASE_DIR$href"
     else
-      dir=$(dirname "$file")
-      target="$dir/$href"
+      target="$(dirname "$file")/$href"
     fi
-    target=$(echo "$target" | sed 's/\/\//\//g')
     if [ ! -f "$target" ]; then
       echo "  ⚠️  $page -> $href (broken)"
       ((broken_count++))
     fi
-  done
+  done < <(grep -oE "href=[\"']([^\"']+\.html)[\"']" "$file" 2>/dev/null | sed -E "s/^href=[\"']//; s/[\"']$//")
 done
 if [ $broken_count -eq 0 ]; then
   check_pass "No broken internal links"
@@ -221,20 +193,13 @@ else
   check_fail "contact.html missing email button"
 fi
 
-# 8. Console errors (basic pattern check)
+# 8. Console error patterns
 echo ""
 echo "⚠️  Console Error Patterns:"
 console_issues=0
-for page in \
-  "water-softener-installation-westminster-md.html" \
-  "water-heater-replacement-westminster-md.html" \
-  "well-pump-repair-westminster-md.html" \
-  "acid-neutralizer-installation-westminster-md.html" \
-  "hose-bib-replacement-westminster-md.html" \
-  "contact.html" \
-  "index.html"
-do
+for page in "${AUDITED_PAGES[@]}"; do
   file="$BASE_DIR/$page"
+  [ -f "$file" ] || continue
   if grep -qE 'console\.error|throw new Error|uncaught|ReferenceError|TypeError' "$file"; then
     echo "  ⚠️  $page contains potential error code"
     ((console_issues++))
