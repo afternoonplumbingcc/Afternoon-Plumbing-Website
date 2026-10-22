@@ -46,11 +46,9 @@ A page is live once it is on `main` and listed in `sitemap.xml`.
 │   ├── service-pages.css      Service page styling
 │   └── mobile-call-bar.css    Sticky mobile call bar
 ├── scripts/
-│   ├── glass-site.js          Shared site behaviour
-│   └── notify_commit.sh       Post-push Discord notification
+│   └── glass-site.js          Shared site behaviour
 ├── images/                    Job photos and product images
-├── assets/                    Compiled homepage bundle (see below)
-└── memory/                    Site consistency logs
+└── assets/                    Compiled homepage bundle (see below)
 ```
 
 The repo root also holds 13 short HTML files such as `faq.html` and `contact.html`.
@@ -106,12 +104,10 @@ already been published.
 
 ## Auditing
 
-```bash
-bash audit.sh
-```
-
-Checks page existence, required meta tags, image alt text, and link integrity. The script resolves
-paths relative to its own location, so it can run from any directory.
+The audit scripts and the site consistency log are kept outside this public
+repository. GitHub Pages publishes the repository directly with no build step,
+so anything tracked here becomes a public URL. The repository is intended to
+contain only the website itself.
 
 ## Local preview
 
