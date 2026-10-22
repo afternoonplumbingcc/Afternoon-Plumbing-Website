@@ -49,8 +49,7 @@ A page is live once it is on `main` and listed in `sitemap.xml`.
 │   ├── glass-site.js          Shared site behaviour
 │   └── notify_commit.sh       Post-push Discord notification
 ├── images/                    Job photos and product images
-├── assets/                    Compiled homepage bundle (see below)
-└── memory/                    Site consistency logs
+└── assets/                    Compiled homepage bundle (see below)
 ```
 
 The repo root also holds 13 short HTML files such as `faq.html` and `contact.html`.
@@ -106,12 +105,8 @@ already been published.
 
 ## Auditing
 
-```bash
-bash audit.sh
-```
-
-Checks page existence, required meta tags, image alt text, and link integrity. The script resolves
-paths relative to its own location, so it can run from any directory.
+The QA scripts and the consistency log are kept outside the public repository, because the site is
+published directly from the repo with no build step. The repository holds only the site itself.
 
 ## Local preview
 
