@@ -46,7 +46,6 @@ A page is live once it is on `main` and listed in `sitemap.xml`.
 │   └── notify_commit.sh       Post-push Discord notification
 ├── images/                    Job photos and product images
 ├── assets/                    Compiled homepage bundle (see below)
-├── docs/                      Supporting content
 └── memory/                    Site consistency logs
 ```
 
