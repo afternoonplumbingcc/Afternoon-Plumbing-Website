@@ -65,10 +65,12 @@ REQUIRED_PAGES.forEach(page => {
 
 // 2. Check navigation consistency
 console.log('\\n🔍 Checking navigation consistency...');
+// Each required page's nav must link to the current home of each key page,
+// not merely mention the words "Services", "FAQ", or "Contact".
 const navLinkPatterns = {
   services: /services\.html/,
-  faq: /faq\.html/,
-  contact: /contact\.html/
+  faq: /faq\/faq\.html/,
+  contact: /contact\/contact\.html/
 };
 
 function extractNavLinks(html) {
@@ -78,6 +80,7 @@ function extractNavLinks(html) {
   if (navText.includes('Services')) links.services = true;
   if (navText.includes('FAQ')) links.faq = true;
   if (navText.includes('Contact')) links.contact = true;
+  links.navText = navText;
   return links;
 }
 
@@ -88,6 +91,12 @@ REQUIRED_PAGES.forEach(page => {
   if (!nav.services) results.navigation.issues.push(`${page} missing Services link`);
   if (!nav.faq) results.navigation.issues.push(`${page} missing FAQ link`);
   if (!nav.contact) results.navigation.issues.push(`${page} missing Contact link`);
+  Object.entries(navLinkPatterns).forEach(([key, pattern]) => {
+    if (!pattern.test(nav.navText)) {
+      results.navigation.issues.push(`${page} nav does not link to the current ${key} page`);
+      results.overall.pass = false;
+    }
+  });
 });
 
 if (results.navigation.issues.length > 0) results.navigation.consistent = false;

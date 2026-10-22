@@ -26,14 +26,18 @@ A page is live once it is on `main` and listed in `sitemap.xml`.
 ├── index.html                 Home (React bundle, see below)
 ├── services.html              Service hub
 ├── service-area.html          Service area and towns covered
-├── contact.html               Contact
-├── faq.html                   General FAQ
 ├── privacy.html               Privacy policy
 ├── 404.html                   Not found
-├── well-pumps.html            Well pump hub
-├── gas-appliance-hookups.html Gas appliance hub
+├── gallery.html               Job photo gallery
 │
-├── <service>-<town>-md.html   Service + location landing pages
+├── contact/
+│   └── contact.html           Contact
+├── faq/
+│   └── faq.html               General FAQ
+├── service-pages/             Service pages (11 files)
+│   ├── <service>-<town>-md.html  Service and location landing pages
+│   ├── well-pumps.html        Well pump hub
+│   └── gas-appliance-hookups.html  Gas appliance hub
 ├── gas-appliance-hookups/     Gas service sub-pages
 ├── jobs/                      Individual job write-ups
 │
@@ -48,6 +52,11 @@ A page is live once it is on `main` and listed in `sitemap.xml`.
 ├── assets/                    Compiled homepage bundle (see below)
 └── memory/                    Site consistency logs
 ```
+
+The repo root also holds 13 short HTML files such as `faq.html` and `contact.html`.
+These are redirect stubs for the old root URLs: each forwards visitors and search
+engines to the new folder path, so old links keep working. They are not the real
+pages; the live content lives at the folder paths listed above.
 
 ## Adding a page
 

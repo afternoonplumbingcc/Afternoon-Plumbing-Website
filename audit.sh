@@ -75,7 +75,7 @@ nav_issues=0
 for page in "${REQUIRED_PAGES[@]}"; do
   [ -f "$BASE_DIR/$page" ] || continue
   file="$BASE_DIR/$page"
-  for link in "services\.html" "faq\.html" "contact\.html"; do
+  for link in "services\.html" "faq/faq\.html" "contact/contact\.html"; do
     if ! grep -q "$link" "$file"; then
       echo "  ⚠️  $page missing $link link"
       ((nav_issues++))
