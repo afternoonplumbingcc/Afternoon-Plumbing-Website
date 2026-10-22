@@ -39,3 +39,8 @@ memory/
 
 # OS temp
 .DS_Store
+
+# Internal tooling kept outside the repo. The site is published directly
+# from this repo with no build step, so tracked helper scripts become public
+# URLs. Kept outside the repository.
+scripts/notify_commit.sh
