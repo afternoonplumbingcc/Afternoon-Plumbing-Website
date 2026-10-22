@@ -18,35 +18,35 @@ check_fail() {
 
 # Pages that must exist and be valid HTML
 REQUIRED_PAGES=(
-  "water-softener-installation-westminster-md.html"
-  "water-heater-replacement-westminster-md.html"
-  "well-pump-repair-westminster-md.html"
-  "acid-neutralizer-installation-westminster-md.html"
-  "hose-bib-replacement-westminster-md.html"
-  "contact.html"
+  "service-pages/water-softener-installation-westminster-md.html"
+  "service-pages/water-heater-replacement-westminster-md.html"
+  "service-pages/well-pump-repair-westminster-md.html"
+  "service-pages/acid-neutralizer-installation-westminster-md.html"
+  "service-pages/hose-bib-replacement-westminster-md.html"
+  "contact/contact.html"
   "index.html"
 )
 
 # Pages that carry Service schema
 SERVICE_PAGES=(
-  "water-softener-installation-westminster-md.html"
-  "water-heater-replacement-westminster-md.html"
-  "well-pump-repair-westminster-md.html"
-  "acid-neutralizer-installation-westminster-md.html"
-  "hose-bib-replacement-westminster-md.html"
+  "service-pages/water-softener-installation-westminster-md.html"
+  "service-pages/water-heater-replacement-westminster-md.html"
+  "service-pages/well-pump-repair-westminster-md.html"
+  "service-pages/acid-neutralizer-installation-westminster-md.html"
+  "service-pages/hose-bib-replacement-westminster-md.html"
 )
 
 # Pages that are checked for nav links, images, and console error patterns
 AUDITED_PAGES=(
-  "water-softener-installation-westminster-md.html"
-  "water-heater-replacement-westminster-md.html"
-  "well-pump-repair-westminster-md.html"
-  "acid-neutralizer-installation-westminster-md.html"
-  "hose-bib-replacement-westminster-md.html"
-  "contact.html"
+  "service-pages/water-softener-installation-westminster-md.html"
+  "service-pages/water-heater-replacement-westminster-md.html"
+  "service-pages/well-pump-repair-westminster-md.html"
+  "service-pages/acid-neutralizer-installation-westminster-md.html"
+  "service-pages/hose-bib-replacement-westminster-md.html"
+  "contact/contact.html"
   "index.html"
   "services.html"
-  "faq.html"
+  "faq/faq.html"
 )
 
 echo "============================================================"
@@ -75,7 +75,7 @@ nav_issues=0
 for page in "${REQUIRED_PAGES[@]}"; do
   [ -f "$BASE_DIR/$page" ] || continue
   file="$BASE_DIR/$page"
-  for link in "services\.html" "faq\.html" "contact\.html"; do
+  for link in "services\.html" "faq/faq\.html" "contact/contact\.html"; do
     if ! grep -q "$link" "$file"; then
       echo "  ⚠️  $page missing $link link"
       ((nav_issues++))
@@ -100,7 +100,7 @@ for page in "${SERVICE_PAGES[@]}"; do
   fi
 done
 
-for page in "contact.html" "index.html"; do
+for page in "contact/contact.html" "index.html"; do
   file="$BASE_DIR/$page"
   if grep -q 'type="application/ld+json"' "$file"; then
     check_pass "$page has structured data"
@@ -121,7 +121,7 @@ else
   check_fail "index.html missing main CSS reference"
 fi
 
-for page in "contact.html" "${SERVICE_PAGES[@]}"; do
+for page in "contact/contact.html" "${SERVICE_PAGES[@]}"; do
   file="$BASE_DIR/$page"
   if grep -qE '<link[^>]+href="[^"]*\.css' "$file" || grep -q '<style>' "$file"; then
     check_pass "$page has CSS"
@@ -187,7 +187,7 @@ fi
 # 7. Contact email button
 echo ""
 echo "📧 Contact Email Button:"
-if grep -q 'mailto:afternoonplumbingcc@gmail.com' "$BASE_DIR/contact.html"; then
+if grep -q 'mailto:afternoonplumbingcc@gmail.com' "$BASE_DIR/contact/contact.html"; then
   check_pass "contact.html has email button (mailto)"
 else
   check_fail "contact.html missing email button"

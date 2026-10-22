@@ -11,14 +11,14 @@ const BASE_DIR = '/root/.openclaw/workspace/Afternoon-Plumbing-Website';
 
 // Required service pages
 const SERVICE_PAGES = [
-  'water-softener-installation-westminster-md.html',
-  'water-heater-replacement-westminster-md.html',
-  'well-pump-repair-westminster-md.html',
-  'acid-neutralizer-installation-westminster-md.html',
-  'hose-bib-replacement-westminster-md.html'
+  'service-pages/water-softener-installation-westminster-md.html',
+  'service-pages/water-heater-replacement-westminster-md.html',
+  'service-pages/well-pump-repair-westminster-md.html',
+  'service-pages/acid-neutralizer-installation-westminster-md.html',
+  'service-pages/hose-bib-replacement-westminster-md.html'
 ];
 
-const REQUIRED_PAGES = [...SERVICE_PAGES, 'contact.html', 'index.html'];
+const REQUIRED_PAGES = [...SERVICE_PAGES, 'contact/contact.html', 'index.html'];
 
 // Results collector
 const results = {
@@ -65,10 +65,12 @@ REQUIRED_PAGES.forEach(page => {
 
 // 2. Check navigation consistency
 console.log('\\n🔍 Checking navigation consistency...');
+// Each required page's nav must link to the current home of each key page,
+// not merely mention the words "Services", "FAQ", or "Contact".
 const navLinkPatterns = {
   services: /services\.html/,
-  faq: /faq\.html/,
-  contact: /contact\.html/
+  faq: /faq\/faq\.html/,
+  contact: /contact\/contact\.html/
 };
 
 function extractNavLinks(html) {
@@ -78,6 +80,7 @@ function extractNavLinks(html) {
   if (navText.includes('Services')) links.services = true;
   if (navText.includes('FAQ')) links.faq = true;
   if (navText.includes('Contact')) links.contact = true;
+  links.navText = navText;
   return links;
 }
 
@@ -88,6 +91,12 @@ REQUIRED_PAGES.forEach(page => {
   if (!nav.services) results.navigation.issues.push(`${page} missing Services link`);
   if (!nav.faq) results.navigation.issues.push(`${page} missing FAQ link`);
   if (!nav.contact) results.navigation.issues.push(`${page} missing Contact link`);
+  Object.entries(navLinkPatterns).forEach(([key, pattern]) => {
+    if (!pattern.test(nav.navText)) {
+      results.navigation.issues.push(`${page} nav does not link to the current ${key} page`);
+      results.overall.pass = false;
+    }
+  });
 });
 
 if (results.navigation.issues.length > 0) results.navigation.consistent = false;
@@ -108,7 +117,7 @@ SERVICE_PAGES.forEach(page => {
 });
 
 // Also confirm contact and index have schema
-['contact.html', 'index.html'].forEach(page => {
+['contact/contact.html', 'index.html'].forEach(page => {
   const content = readHTML(path.join(BASE_DIR, page));
   if (content && content.includes('type="application/ld+json"')) {
     results.structuredData.present.push(page);
@@ -195,7 +204,7 @@ REQUIRED_PAGES.forEach(page => {
 
 // 7. Check contact page for email button (mailto link)
 console.log('\\n🔍 Checking email button on contact page...');
-const contactContent = readHTML(path.join(BASE_DIR, 'contact.html'));
+const contactContent = readHTML(path.join(BASE_DIR, 'contact/contact.html'));
 const hasEmailButton = contactContent && contactContent.includes('mailto:afternoonplumbingcc@gmail.com');
 results.contactEmailButton = hasEmailButton;
 if (!hasEmailButton) {
@@ -247,7 +256,7 @@ SERVICE_PAGES.forEach(page => {
   const has = results.structuredData.present.includes(page);
   console.log(`  ${passFail(has)} ${page} (Service)`);
 });
-['contact.html', 'index.html'].forEach(page => {
+['contact/contact.html', 'index.html'].forEach(page => {
   const has = results.structuredData.present.includes(page);
   console.log(`  ${passFail(has)} ${page} (Other)`);
 });

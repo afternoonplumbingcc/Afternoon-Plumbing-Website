@@ -15,13 +15,13 @@ GITHUB_URL="https://github.com/${GITHUB_REPO}/commit/${COMMIT_HASH}"
 # Map file argument to page URL
 case "${FILE_ARG}" in
     water-heater)
-        PAGE_URL="${BASE_URL}/water-heater-replacement-westminster-md.html"
+        PAGE_URL="${BASE_URL}/service-pages/water-heater-replacement-westminster-md.html"
         ;;
     well-pump)
-        PAGE_URL="${BASE_URL}/well-pump-repair-westminster-md.html"
+        PAGE_URL="${BASE_URL}/service-pages/well-pump-repair-westminster-md.html"
         ;;
     hose-bib)
-        PAGE_URL="${BASE_URL}/hose-bib-replacement-westminster-md.html"
+        PAGE_URL="${BASE_URL}/service-pages/hose-bib-replacement-westminster-md.html"
         ;;
     comparison-slider)
         PAGE_URL="${BASE_URL}/"

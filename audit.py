@@ -9,13 +9,13 @@ BASE_DIR = Path(__file__).resolve().parent
 
 # Required pages
 SERVICE_PAGES = [
-    'water-softener-installation-westminster-md.html',
-    'water-heater-replacement-westminster-md.html',
-    'well-pump-repair-westminster-md.html',
-    'acid-neutralizer-installation-westminster-md.html',
-    'hose-bib-replacement-westminster-md.html'
+    'service-pages/water-softener-installation-westminster-md.html',
+    'service-pages/water-heater-replacement-westminster-md.html',
+    'service-pages/well-pump-repair-westminster-md.html',
+    'service-pages/acid-neutralizer-installation-westminster-md.html',
+    'service-pages/hose-bib-replacement-westminster-md.html'
 ]
-REQUIRED_PAGES = SERVICE_PAGES + ['contact.html', 'index.html']
+REQUIRED_PAGES = SERVICE_PAGES + ['contact/contact.html', 'index.html']
 
 results = {
     'pages': {},
@@ -61,9 +61,9 @@ for page in REQUIRED_PAGES:
     issues = []
     if 'services.html' not in content:
         issues.append('Services')
-    if 'faq.html' not in content:
+    if 'faq/faq.html' not in content:
         issues.append('FAQ')
-    if 'contact.html' not in content:
+    if 'contact/contact.html' not in content:
         issues.append('Contact')
     if issues:
         results['navigation_issues'].append(f'{page} missing: {", ".join(issues)}')
@@ -82,7 +82,7 @@ for page in SERVICE_PAGES:
     else:
         results['structured_missing'].append(page)
         print(f'❌ FAIL: {page} missing Service schema')
-for page in ['contact.html', 'index.html']:
+for page in ['contact/contact.html', 'index.html']:
     content = read_html(page)
     if content and 'type="application/ld+json"' in content:
         print(f'✅ PASS: {page} has structured data')
@@ -99,7 +99,7 @@ if index_content and 'index-CDFYR2ld.css' in index_content:
 else:
     print('❌ FAIL: index.html missing main CSS reference')
 # Contact and service pages use embedded CSS
-for page in ['contact.html'] + SERVICE_PAGES:
+for page in ['contact/contact.html'] + SERVICE_PAGES:
     content = read_html(page)
     if content and '<style>' in content:
         print(f'✅ PASS: {page} has embedded CSS')
@@ -130,7 +130,7 @@ else:
 # 6. Internal links
 print('\n🔗 Internal Links:')
 broken_links = []
-for page in REQUIRED_PAGES + ['services.html', 'faq.html']:
+for page in REQUIRED_PAGES + ['services.html', 'faq/faq.html']:
     content = read_html(page)
     if not content:
         continue
@@ -159,7 +159,7 @@ else:
 
 # 7. Contact email button
 print('\n📧 Contact Email Button:')
-contact_content = read_html('contact.html')
+contact_content = read_html('contact/contact.html')
 if contact_content and 'mailto:afternoonplumbingcc@gmail.com' in contact_content:
     print('✅ PASS: contact.html has email button (mailto)')
 else:
