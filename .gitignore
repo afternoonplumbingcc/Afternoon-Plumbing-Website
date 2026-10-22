@@ -24,5 +24,10 @@ Thumbs.db
 *.log
 npm-debug.log*
 
+# One-off internal reorg tooling. Kept outside the repo on purpose, so a
+# stray branch cannot reintroduce them into the public site.
+reorg_folders.py
+rename_services_folder.py
+
 # OS temp
 .DS_Store
