@@ -5,7 +5,7 @@ import os
 import re
 from pathlib import Path
 
-BASE_DIR = Path('/root/.openclaw/workspace/Afternoon-Plumbing-Website')
+BASE_DIR = Path(__file__).resolve().parent
 
 # Required pages
 SERVICE_PAGES = [
