@@ -29,5 +29,13 @@ npm-debug.log*
 reorg_folders.py
 rename_services_folder.py
 
+# Internal QA tooling and consistency logs. The site is published directly
+# from this repo with no build step, so these must never be tracked here.
+# Kept outside the repository.
+audit.sh
+audit.py
+audit.js
+memory/
+
 # OS temp
 .DS_Store
