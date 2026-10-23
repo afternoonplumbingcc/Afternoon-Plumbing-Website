@@ -123,6 +123,15 @@ Then open `http://localhost:8123`. There is no build step to run first.
 - Historical work is preserved in the private `afternoon-plumbing-legacy-archive` repository.
 - The `pre-wipe-2025-08-10` tag marks the original small static site, before the current design.
 
+## Redirect stubs
+
+The small HTML files at the repository root are intentional client redirect
+stubs from before the service pages moved into the `/services/` folder. Each
+one sends the browser to the matching current page in `/services/` and carries
+a canonical tag pointing at that page. They keep historic external URLs
+resolving instead of 404ing. Do not delete them without a plan for redirecting
+the old URLs.
+
 ## License
 
 Proprietary. Copyright Afternoon Plumbing LLC. All rights reserved.
