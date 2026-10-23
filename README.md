@@ -34,7 +34,7 @@ A page is live once it is on `main` and listed in `sitemap.xml`.
 │   └── contact.html           Contact
 ├── faq/
 │   └── faq.html               General FAQ
-├── service-pages/             Service pages (11 files)
+├── services/                  Service pages (11 files)
 │   ├── <service>-<town>-md.html  Service and location landing pages
 │   ├── well-pumps.html        Well pump hub
 │   └── gas-appliance-hookups.html  Gas appliance hub
