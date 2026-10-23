@@ -24,6 +24,14 @@ Thumbs.db
 *.log
 npm-debug.log*
 
+# Internal QA tooling and consistency log. Kept outside the repo
+# on purpose: the site is published directly from this repo with no
+# build step, so anything tracked here is a live public URL.
+audit.sh
+audit.py
+audit.js
+memory/
+
 # One-off internal reorg tooling. Kept outside the repo on purpose, so a
 # stray branch cannot reintroduce them into the public site.
 reorg_folders.py
