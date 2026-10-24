@@ -26,6 +26,7 @@ A page is live once it is on `main` and listed in `sitemap.xml`.
 ├── index.html                 Home (React bundle, see below)
 ├── services.html              Service hub
 ├── service-area.html          Service area and towns covered
+├── towns/                     Town landing pages (11 towns, plus 25 redirect stubs)
 ├── privacy.html               Privacy policy
 ├── 404.html                   Not found
 ├── gallery.html               Job photo gallery
@@ -127,6 +128,26 @@ Then open `http://localhost:8123`. There is no build step to run first.
 
 Root-level redirect stubs were removed; old root URLs now 404 instead of forwarding.
 Search engines should drop them over time. Internal links already point to folder URLs.
+
+## Town pages and redirect stubs (consolidated 2026-10-24)
+
+The site carries 11 full town landing pages: Westminster, Manchester, Hampstead,
+Finksburg, New Windsor, Union Bridge, Sykesville, Eldersburg, Upperco, Owings Mills,
+and Ellicott City. Each carries genuinely local content: water type, freeze risk,
+well vs sewer, permit handling, and arrival windows.
+
+The other 25 former town pages (Taneytown, Reisterstown, Frederick, Columbia, etc.)
+are short redirect stubs in `towns/` following the repo's redirect convention:
+`meta refresh` plus a `window.location.replace` fallback, a canonical pointing at
+the destination, and no noindex. Most forward to the nearest keep-list town
+(Taneytown → Union Bridge, Columbia → Ellicott City, Reisterstown → Owings Mills);
+far-flung ones (Towson, Frederick, Hunt Valley) forward to `/service-area.html`.
+Keep stub URLs out of `sitemap.xml`. If real 301 redirects are configured at the
+hosting/CDN layer later, these stub files can be deleted at the same time.
+
+The homepage React bundle's coverage-area text still names all 35 towns. It is
+plain text with no links, so nothing 404s; editing the frozen bundle is a separate
+decision.
 
 
 The small HTML files at the repository root are intentional client redirect

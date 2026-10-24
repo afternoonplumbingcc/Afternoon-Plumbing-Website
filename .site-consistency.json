@@ -6,10 +6,26 @@
     "fontFamily": "Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif",
     "maxWidth": "1200px",
     "borderRadius": "12px",
-    "spacingScale": [0, 4, 8, 12, 16, 20, 24, 32, 48, 64]
+    "spacingScale": [
+      0,
+      4,
+      8,
+      12,
+      16,
+      20,
+      24,
+      32,
+      48,
+      64
+    ]
   },
   "seo": {
-    "requiredMeta": ["title", "description", "viewport", "charset"],
+    "requiredMeta": [
+      "title",
+      "description",
+      "viewport",
+      "charset"
+    ],
     "maxTitleLength": 70,
     "maxDescriptionLength": 160,
     "titleTemplate": "{service} in {location} | Afternoon Plumbing LLC",
@@ -26,7 +42,14 @@
   "performance": {
     "maxImageSizeKB": 150,
     "requireLazyLoading": true,
-    "allowedFormats": ["jpg", "jpeg", "png", "webp", "svg", "gif"],
+    "allowedFormats": [
+      "jpg",
+      "jpeg",
+      "png",
+      "webp",
+      "svg",
+      "gif"
+    ],
     "warnOnLargeImages": true,
     "maxScriptsPerPage": 5
   },
@@ -35,19 +58,30 @@
     "phonePattern": "^\\d{3}-\\d{3}-\\d{4}$",
     "serviceTowns": [
       "Westminster",
-      "Taneytown",
       "Manchester",
       "Hampstead",
       "Finksburg",
       "New Windsor",
       "Union Bridge",
       "Sykesville",
-      "Keymar",
-      "Marriottsville"
+      "Eldersburg",
+      "Upperco",
+      "Owings Mills",
+      "Ellicott City"
     ],
     "tone": "professional, friendly, trustworthy",
-    "avoidTerms": ["#1", "best", "guaranteed", "cheap", "free"],
-    "requiredSections": ["service description", "contact CTA", "service area"]
+    "avoidTerms": [
+      "#1",
+      "best",
+      "guaranteed",
+      "cheap",
+      "free"
+    ],
+    "requiredSections": [
+      "service description",
+      "contact CTA",
+      "service area"
+    ]
   },
   "branding": {
     "companyName": "Afternoon Plumbing LLC",
