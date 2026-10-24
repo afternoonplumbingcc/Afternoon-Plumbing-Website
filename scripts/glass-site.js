@@ -183,24 +183,29 @@
 
     // Keep aria-expanded honest while the user hovers or tabs through.
     // Global queue so overlapping open/closes don't pile up.
-    const closeAllExceptThis = ()=>{
-      const now = Date.now();
-      dropItems.forEach((other)=>{
-        if(other !== item && other.classList.contains('open')){
-          other.classList.remove('open');
-          const t = other.querySelector('.site-nav-drop-trigger');
-          if(t) t.setAttribute('aria-expanded', 'false');
-        }
-      });
+    // closeTimers is keyed by item so opening a new panel can cancel every
+    // other panel's in-flight fade-out timer instead of letting it linger.
+    const closeTimers = new Map();
+    const clearClose = (el)=>{ if(closeTimers.has(el)){ clearTimeout(closeTimers.get(el)); closeTimers.delete(el); } };
+    const closeItem = (other)=>{
+      clearClose(other);
+      other.classList.remove('open');
+      const t = other.querySelector('.site-nav-drop-trigger');
+      if(t) t.setAttribute('aria-expanded','false');
     };
-    let closeTimer = null;
-    const cancelClose = ()=> { if(closeTimer){ clearTimeout(closeTimer); closeTimer = null; } };
-    const scheduleClose = ()=> { cancelClose(); closeTimer = setTimeout(()=>{ closeTimer = null; setOpen(false); }, 250); };
+    const closeAllExceptThis = ()=>{
+      dropItems.forEach((other)=>{ if(other !== item) closeItem(other); });
+    };
+    const scheduleClose = ()=>{
+      clearClose(item);
+      const t = setTimeout(()=>{ closeTimers.delete(item); setOpen(false); }, 150);
+      closeTimers.set(item, t);
+    };
 
-    item.addEventListener('mouseenter', ()=> { closeAllExceptThis(); cancelClose(); setOpen(true); });
+    item.addEventListener('mouseenter', ()=> { closeAllExceptThis(); clearClose(item); setOpen(true); });
     item.addEventListener('mouseleave', scheduleClose);
 
-    item.addEventListener('focusin', cancelClose);
+    item.addEventListener('focusin', clearClose);
     item.addEventListener('focusout', (event)=>{
       if(!item.contains(event.relatedTarget)) scheduleClose();
     });
