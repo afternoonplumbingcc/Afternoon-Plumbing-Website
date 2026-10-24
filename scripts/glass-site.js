@@ -182,11 +182,16 @@
     };
 
     // Keep aria-expanded honest while the user hovers or tabs through.
-    item.addEventListener('mouseenter', ()=> setOpen(true));
-    item.addEventListener('mouseleave', ()=> setOpen(false));
+    let closeTimer = null;
+    const cancelClose = ()=> { if(closeTimer){ clearTimeout(closeTimer); closeTimer = null; } };
+    const scheduleClose = ()=> { cancelClose(); closeTimer = setTimeout(()=>{ closeTimer = null; setOpen(false); }, 400); };
 
+    item.addEventListener('mouseenter', ()=> { cancelClose(); setOpen(true); });
+    item.addEventListener('mouseleave', scheduleClose);
+
+    item.addEventListener('focusin', cancelClose);
     item.addEventListener('focusout', (event)=>{
-      if(!item.contains(event.relatedTarget)) setOpen(false);
+      if(!item.contains(event.relatedTarget)) scheduleClose();
     });
 
     // Escape closes and returns focus to the trigger.
