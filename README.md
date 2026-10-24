@@ -26,7 +26,7 @@ A page is live once it is on `main` and listed in `sitemap.xml`.
 ├── index.html                 Home (React bundle, see below)
 ├── services.html              Service hub
 ├── service-area.html          Service area and towns covered
-├── towns/                     Town landing pages (11 towns, plus 25 redirect stubs)
+├── towns/                     Town landing pages (11 towns)
 ├── privacy.html               Privacy policy
 ├── 404.html                   Not found
 ├── gallery.html               Job photo gallery
@@ -51,11 +51,6 @@ A page is live once it is on `main` and listed in `sitemap.xml`.
 ├── images/                    Job photos and product images
 └── assets/                    Compiled homepage bundle (see below)
 ```
-
-The repo root also holds 13 short HTML files such as `faq.html` and `contact.html`.
-These are redirect stubs for the old root URLs: each forwards visitors and search
-engines to the new folder path, so old links keep working. They are not the real
-pages; the live content lives at the folder paths listed above.
 
 ## Adding a page
 
@@ -129,7 +124,7 @@ Then open `http://localhost:8123`. There is no build step to run first.
 Root-level redirect stubs were removed; old root URLs now 404 instead of forwarding.
 Search engines should drop them over time. Internal links already point to folder URLs.
 
-## Town pages and redirect stubs (consolidated 2026-10-24)
+## Town pages (consolidated 2026-10-24)
 
 The site carries 11 full town landing pages: Westminster, Manchester, Hampstead,
 Finksburg, New Windsor, Union Bridge, Sykesville, Eldersburg, Upperco, Owings Mills,
@@ -137,25 +132,16 @@ and Ellicott City. Each carries genuinely local content: water type, freeze risk
 well vs sewer, permit handling, and arrival windows.
 
 The other 25 former town pages (Taneytown, Reisterstown, Frederick, Columbia, etc.)
-are short redirect stubs in `towns/` following the repo's redirect convention:
-`meta refresh` plus a `window.location.replace` fallback, a canonical pointing at
-the destination, and no noindex. Most forward to the nearest keep-list town
-(Taneytown → Union Bridge, Columbia → Ellicott City, Reisterstown → Owings Mills);
-far-flung ones (Towson, Frederick, Hunt Valley) forward to `/service-area.html`.
-Keep stub URLs out of `sitemap.xml`. If real 301 redirects are configured at the
-hosting/CDN layer later, these stub files can be deleted at the same time.
+were consolidated out: first converted to redirect stubs, then the stub files were
+removed entirely on 2026-10-24. Old town URLs now 404, and search engines should
+drop them over time. `sitemap.xml` lists only the 11 keep-list pages, and internal
+links point only at keep-list towns. If historic town URLs ever need to resolve
+again, real 301 redirects at the hosting/CDN layer are the right place, not stub
+files in this repo.
 
 The homepage React bundle's coverage-area text still names all 35 towns. It is
 plain text with no links, so nothing 404s; editing the frozen bundle is a separate
 decision.
-
-
-The small HTML files at the repository root are intentional client redirect
-stubs from before the service pages moved into the `/services/` folder. Each
-one sends the browser to the matching current page in `/services/` and carries
-a canonical tag pointing at that page. They keep historic external URLs
-resolving instead of 404ing. Do not delete them without a plan for redirecting
-the old URLs.
 
 ## License
 
