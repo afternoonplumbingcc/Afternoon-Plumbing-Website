@@ -182,11 +182,22 @@
     };
 
     // Keep aria-expanded honest while the user hovers or tabs through.
+    // Global queue so overlapping open/closes don't pile up.
+    const closeAllExceptThis = ()=>{
+      const now = Date.now();
+      dropItems.forEach((other)=>{
+        if(other !== item && other.classList.contains('open')){
+          other.classList.remove('open');
+          const t = other.querySelector('.site-nav-drop-trigger');
+          if(t) t.setAttribute('aria-expanded', 'false');
+        }
+      });
+    };
     let closeTimer = null;
     const cancelClose = ()=> { if(closeTimer){ clearTimeout(closeTimer); closeTimer = null; } };
-    const scheduleClose = ()=> { cancelClose(); closeTimer = setTimeout(()=>{ closeTimer = null; setOpen(false); }, 400); };
+    const scheduleClose = ()=> { cancelClose(); closeTimer = setTimeout(()=>{ closeTimer = null; setOpen(false); }, 250); };
 
-    item.addEventListener('mouseenter', ()=> { cancelClose(); setOpen(true); });
+    item.addEventListener('mouseenter', ()=> { closeAllExceptThis(); cancelClose(); setOpen(true); });
     item.addEventListener('mouseleave', scheduleClose);
 
     item.addEventListener('focusin', cancelClose);
