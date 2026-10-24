@@ -123,7 +123,11 @@ Then open `http://localhost:8123`. There is no build step to run first.
 - Historical work is preserved in the private `afternoon-plumbing-legacy-archive` repository.
 - The `pre-wipe-2025-08-10` tag marks the original small static site, before the current design.
 
-## Redirect stubs
+## Redirect stubs (removed 2026-10-24)
+
+Root-level redirect stubs were removed; old root URLs now 404 instead of forwarding.
+Search engines should drop them over time. Internal links already point to folder URLs.
+
 
 The small HTML files at the repository root are intentional client redirect
 stubs from before the service pages moved into the `/services/` folder. Each
