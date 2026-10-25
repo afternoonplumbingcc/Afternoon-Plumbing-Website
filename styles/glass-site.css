@@ -845,3 +845,26 @@ details.faq-item{
   html{scroll-behavior:auto}
   *,*::before,*::after{animation:none!important;transition:none!important}
 }
+
+/* Visible breadcrumb trail under the H1 on inner pages */
+.breadcrumbs{
+  margin:10px 0 2px;
+  font-size:13px;
+  line-height:1.55;
+  color:#5a6b7b;
+}
+.breadcrumbs a{
+  color:#5a6b7b;
+  text-decoration:underline;
+  text-decoration-color:rgba(90,107,123,.38);
+  text-underline-offset:3px;
+}
+.breadcrumbs a:hover,
+.breadcrumbs a:focus-visible{
+  color:var(--brand);
+  text-decoration-color:var(--brand);
+}
+.breadcrumbs .bc-sep{
+  margin:0 6px;
+  color:#8296a8;
+}

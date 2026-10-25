@@ -19,7 +19,9 @@
   Fill-in checklist:
   [ ] <title> and meta description (include town + ZIP)
   [ ] canonical URL with the new file name
-  [ ] crumb line, pill/eyebrow, h1
+  [ ] breadcrumb trail under the H1 (Home, then Job Photo Gallery only if gallery.html links to
+      this page, then the job name) plus the matching BreadcrumbList JSON-LD
+  [ ] pill/eyebrow, h1
   [ ] meta line: Town, Maryland ZIP
   [ ] problem paragraph and what-was-done paragraph
   [ ] before/after photo src + alt text (put photos in /images/)
@@ -47,7 +49,7 @@
   <meta property="og:url" content="https://afternoonplumbing.com/jobs/[YOUR-FILE-SLUG].html" />
   <meta name="description" content="[One-sentence job description including the town and ZIP, what the problem was, and what Afternoon Plumbing did.]" />
   <link rel="stylesheet" crossorigin href="/assets/index-CDFYR2ld.css" />
-  <link rel="stylesheet" href="/styles/glass-site.css?v=4" />
+  <link rel="stylesheet" href="/styles/glass-site.css?v=5" />
   <style>
     :root { --ap-blue:#0f4c81; --ap-green:#1f7a3f; --ap-text:#1f2937; --ap-muted:#64748b; --ap-bg:#f8fafc; }
     body{margin:0;background:var(--ap-bg);color:var(--ap-text)}
@@ -124,6 +126,33 @@
   "@id": "https://afternoonplumbing.com/#plumber"
 }
 </script>
+<!-- BreadcrumbList: fill in the names below; if gallery.html will not link to this job page, delete the gallery ListItem and make the job name position 2. -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Home",
+      "item": "https://afternoonplumbing.com/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Job Photo Gallery",
+      "item": "https://afternoonplumbing.com/gallery.html"
+    },
+    {
+      "@type": "ListItem",
+      "position": 3,
+      "name": "[JOB NAME] in [TOWN], MD",
+      "item": "https://afternoonplumbing.com/jobs/[YOUR-FILE-SLUG].html"
+    }
+  ]
+}
+</script>
 <!-- Meta Pixel Code -->
 <script>
 !function(f,b,e,v,n,t,s)
@@ -159,6 +188,7 @@ src="https://www.facebook.com/tr?id=4424110844582646&ev=PageView&noscript=1"
           <a href="/services/water-softener-installation-westminster-md.html">Water softener installation</a>
           <a href="/services/acid-neutralizer-installation-westminster-md.html">Acid neutralizer</a>
           <a href="/services/hose-bib-replacement-westminster-md.html">Hose bib replacement</a>
+          <a href="/services/sump-pump-replacement-westminster-md.html">Sump pump replacement</a>
           <a href="/services/winterization-westminster-md.html">Winterization</a>
           <a href="/services/gas-leak-safety-westminster-md.html">Gas leak safety</a>
           <a href="/services/gas-appliance-hookups.html">Gas appliance hookups</a>
@@ -208,6 +238,7 @@ src="https://www.facebook.com/tr?id=4424110844582646&ev=PageView&noscript=1"
             <a href="/services/water-softener-installation-westminster-md.html">Water softener installation</a>
             <a href="/services/acid-neutralizer-installation-westminster-md.html">Acid neutralizer</a>
             <a href="/services/hose-bib-replacement-westminster-md.html">Hose bib replacement</a>
+            <a href="/services/sump-pump-replacement-westminster-md.html">Sump pump replacement</a>
             <a href="/services/winterization-westminster-md.html">Winterization</a>
             <a href="/services/gas-leak-safety-westminster-md.html">Gas leak safety</a>
             <a href="/services/gas-appliance-hookups.html">Gas appliance hookups</a>
@@ -227,13 +258,14 @@ src="https://www.facebook.com/tr?id=4424110844582646&ev=PageView&noscript=1"
     </aside>
 
   <main class="ap-wrap">
-    <p class="ap-crumb"><a href="/">Home</a> / [JOB NAME] in [TOWN], MD</p>
 
     <section class="ap-hero">
       <article class="ap-card ap-copy">
         <!-- Pill label: short job type, e.g. "Recent Westminster replacement" or "Safety Warning" -->
         <span class="ap-pill">[PILL LABEL]</span>
         <h1>[JOB NAME] in [TOWN], MD [ZIP]</h1>
+        <!-- Breadcrumb trail: keep the Job Photo Gallery step only if gallery.html links to this job page; otherwise delete the gallery link and separator. -->
+        <nav class="breadcrumbs" aria-label="Breadcrumb"><a href="/">Home</a><span class="bc-sep" aria-hidden="true">&#8250;</span><a href="/gallery.html">Job Photo Gallery</a><span class="bc-sep" aria-hidden="true">&#8250;</span><span aria-current="page">[JOB NAME] in [TOWN], MD</span></nav>
         <p class="ap-meta"><strong>Location:</strong> [TOWN], Maryland [ZIP]</p>
         <p>
           [PROBLEM: what the homeowner noticed or called about, what was wrong, and
