@@ -25,8 +25,9 @@ A page is live once it is on `main` and listed in `sitemap.xml`.
 ```
 ├── index.html                 Home (React bundle, see below)
 ├── services.html              Service hub
-├── service-area.html          Service area and towns covered
-├── towns/                     Town landing pages (11 towns)
+├── service-area/              Service area hub and town pages (moved 2026-10-28)
+│   ├── index.html             Service area hub, served at /service-area/
+│   └── <town>-plumber.html    Town landing pages (11 towns)
 ├── privacy.html               Privacy policy
 ├── 404.html                   Not found
 ├── gallery.html               Job photo gallery
@@ -146,3 +147,17 @@ decision.
 ## License
 
 Proprietary. Copyright Afternoon Plumbing LLC. All rights reserved.
+
+## Service-area reorg (2026-10-28)
+
+The service area hub and all 11 town pages moved under `/service-area/`:
+
+- `service-area.html` -> `service-area/index.html`, served at `/service-area/`
+- `towns/<town>-plumber.html` -> `service-area/<town>-plumber.html`
+- Old paths were removed entirely, so the old URLs 404. This follows the same
+  no-redirect policy as the 2026-10-24 root stub cleanup: search engines drop
+  dead URLs over time, and hosting-layer 301 redirects are the right tool if
+  historic URLs ever need to resolve again. No stub files were kept.
+- Internal links, canonicals, og:urls, breadcrumb JSON-LD, `llms.txt`, `README.md`,
+  and `sitemap.xml` all point at the new `/service-area/` URLs. No old-path URLs
+  are listed in the sitemap.
