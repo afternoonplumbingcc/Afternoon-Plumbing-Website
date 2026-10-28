@@ -39,7 +39,6 @@ A page is live once it is on `main` and listed in `sitemap.xml`.
 │   ├── <service>-<town>-md.html  Service and location landing pages
 │   ├── well-pumps.html        Well pump hub
 │   └── gas-appliance-hookups.html  Gas appliance hub
-├── gas-appliance-hookups/     Redirect stubs: old gas sub-page URLs now live in services/
 ├── jobs/                      Individual job write-ups
 │
 ├── styles/
