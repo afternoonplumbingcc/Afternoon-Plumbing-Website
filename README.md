@@ -160,3 +160,20 @@ The service area hub and all 11 town pages moved under `/service-area/`:
 - Internal links, canonicals, og:urls, breadcrumb JSON-LD, `llms.txt`, `README.md`,
   and `sitemap.xml` all point at the new `/service-area/` URLs. No old-path URLs
   are listed in the sitemap.
+
+## Gas service sub-pages reorg (2026-10-28)
+
+The two gas appliance hookup sub-pages moved out of their own top-level folder
+and into `services/`, joining the other full service pages:
+
+- `gas-appliance-hookups/gas-water-heater-installation-westminster-md.html` ->
+  `services/gas-water-heater-installation-westminster-md.html`
+- `gas-appliance-hookups/regulator-replacement-westminster-md.html` ->
+  `services/regulator-replacement-westminster-md.html`
+- The old sub-page URLs were removed entirely (no redirect stubs), so they 404 on
+  purpose under the same no-redirect policy: search engines drop dead URLs over
+  time, and hosting-layer 301 redirects are the right tool if historic URLs ever
+  need to resolve again.
+- The gas appliance hub remains at `services/gas-appliance-hookups.html`; nav,
+  `sitemap.xml`, and internal links point at the `services/` URLs. No old-path
+  URLs are listed in the sitemap.
