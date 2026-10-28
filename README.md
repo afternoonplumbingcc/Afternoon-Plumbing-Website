@@ -35,11 +35,10 @@ A page is live once it is on `main` and listed in `sitemap.xml`.
 │   └── contact.html           Contact
 ├── faq/
 │   └── faq.html               General FAQ
-├── services/                  Service pages (11 files)
+├── services/                  Service pages (14 files)
 │   ├── <service>-<town>-md.html  Service and location landing pages
 │   ├── well-pumps.html        Well pump hub
 │   └── gas-appliance-hookups.html  Gas appliance hub
-├── gas-appliance-hookups/     Gas service sub-pages
 ├── jobs/                      Individual job write-ups
 │
 ├── styles/
