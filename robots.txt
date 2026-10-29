@@ -1,4 +1,5 @@
 User-agent: *
 Allow: /
+Disallow: /new-design/
 
 Sitemap: https://afternoonplumbing.com/sitemap.xml

@@ -1,0 +1,36 @@
+/* New Design sandbox index page. */
+
+.nd-index-main{
+  background:#f4f9fd;
+}
+.nd-index-hero{
+  background:linear-gradient(180deg,#ffffff 0%,#eef4f9 100%);
+  padding:52px 0 44px;
+  border-bottom:1px solid #dbe6ef;
+}
+.nd-index-hero h1{
+  font-size:40px;
+  line-height:1.16;
+  margin:0 0 16px;
+  color:#12212f;
+  letter-spacing:-.025em;
+  max-width:22ch;
+}
+.nd-index-hero .nd-lede{
+  max-width:74ch;
+  margin-bottom:14px;
+}
+.nd-index-meta{
+  margin:0;
+  font-size:14.5px;
+  color:#5d7387;
+}
+.nd-index-meta a{
+  color:#1f6ea8;
+  font-weight:600;
+}
+.nd-index-main .nd-h2{font-size:20px}
+
+@media (max-width:900px){
+  .nd-index-hero h1{font-size:29px}
+}
