@@ -1,22 +1,42 @@
-/* New Design v4: Single page conversion, problem to contact in one scroll. */
+/* New Design v4: PUNCHY DIRECT RESPONSE.
+   Solid high-contrast panels, thick 2px+ borders, one jolt accent (jolt red),
+   comic-strip section breaks, flat hard offset shadow only (4px 4px 0),
+   CTA as a solid slab. No glass, no blur, no soft shadows. */
+
+:root{
+  --nd-paper:#fffdf7;
+  --nd-surface:#ffffff;
+  --nd-surface-2:#f6d66b;
+  --nd-ink:#14110f;
+  --nd-ink-soft:#3b3733;
+  --nd-rule:#14110f;
+  --nd-rule-strong:#14110f;
+  --nd-accent:#d92d20;
+  --nd-accent-ink:#ffffff;
+  --nd-accent-soft:#f6d66b;
+  --nd-radius:0;
+  --nd-display:system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif;
+}
 
 .v4-main{
-  background:#fff;
-  color:#17324f;
+  background:#fffdf7;
+  color:#14110f;
 }
 .v4-main h1{
-  font-size:42px;
-  line-height:1.14;
-  margin:0 0 18px;
-  letter-spacing:-.025em;
-  color:#12212f;
-  max-width:18ch;
+  font-size:46px;
+  line-height:1.04;
+  margin:0 0 20px;
+  letter-spacing:-.03em;
+  color:#14110f;
+  font-weight:900;
+  max-width:17ch;
 }
 .v4-problem{
   padding:56px 0;
-  background:linear-gradient(180deg,#fff4ea 0%,#ffffff 70%);
-  border-bottom:1px solid #f0e0d0;
+  background:#fffdf7;
+  border-bottom:8px solid #14110f;
 }
+.v4-problem .nd-eyebrow{color:#d92d20}
 .v4-problem-grid{
   display:grid;
   grid-template-columns:1.1fr .9fr;
@@ -32,27 +52,26 @@
   gap:10px;
 }
 .v4-problem-list li{
-  background:#fff;
-  border:1px solid #f0dcc8;
-  border-radius:10px;
-  padding:13px 15px;
-  color:#4a3a2a;
+  background:#ffffff;
+  border:3px solid #14110f;
+  border-radius:0;
+  padding:13px 15px 13px 40px;
+  color:#14110f;
   font-size:14.5px;
-  font-weight:600;
+  font-weight:700;
   position:relative;
-  padding-left:36px;
 }
 .v4-problem-list li::before{
   content:"\00D7";
   position:absolute;
-  left:15px;
+  left:12px;
   top:11px;
-  width:16px;
-  height:16px;
-  border-radius:50%;
-  background:#e67e22;
-  color:#fff;
-  font-size:12px;
+  width:20px;
+  height:20px;
+  border-radius:0;
+  background:#d92d20;
+  color:#ffffff;
+  font-size:14px;
   font-weight:900;
   display:flex;
   align-items:center;
@@ -60,9 +79,10 @@
 }
 .v4-problem-photo{
   margin:0;
-  border-radius:16px;
+  border-radius:0;
   overflow:hidden;
-  border:1px solid #f0dcc8;
+  border:4px solid #14110f;
+  background:#ffffff;
 }
 .v4-problem-photo img{
   height:440px;
@@ -70,9 +90,10 @@
 .v4-problem-photo figcaption{
   padding:11px 15px;
   font-size:13.5px;
-  color:#6b543c;
-  background:#fff;
-  border-top:1px solid #f0dcc8;
+  color:#14110f;
+  background:#f6d66b;
+  border-top:4px solid #14110f;
+  font-weight:700;
 }
 
 /* Solution */
@@ -82,83 +103,92 @@
 .v4-solution-grid{
   display:grid;
   grid-template-columns:repeat(auto-fit,minmax(230px,1fr));
-  gap:18px;
+  gap:16px;
   margin-top:6px;
 }
 .v4-solution-card{
-  background:#f7fafc;
-  border:1px solid #e0eaf2;
-  border-radius:14px;
+  background:#ffffff;
+  border:3px solid #14110f;
+  border-radius:0;
   padding:24px 22px;
+  box-shadow:4px 4px 0 #14110f;
 }
 .v4-solution-ico{
   display:inline-flex;
   align-items:center;
   justify-content:center;
-  width:46px;
-  height:46px;
-  border-radius:12px;
-  background:#0f4c81;
-  color:#fff;
+  width:48px;
+  height:48px;
+  border-radius:0;
+  background:#d92d20;
+  color:#ffffff;
   margin-bottom:12px;
 }
 .v4-solution-card h3{
   margin:0 0 8px;
-  font-size:18px;
-  color:#12212f;
+  font-size:19px;
+  color:#14110f;
+  font-weight:900;
+  letter-spacing:-.02em;
 }
 .v4-solution-card p{
   margin:0;
-  color:#4d6a84;
+  color:#3b3733;
   line-height:1.6;
   font-size:15px;
 }
 
-/* Proof */
+/* Proof: comic-strip panel */
 .v4-proof{
   padding:58px 0;
-  background:#12212f;
-  color:#dce9f4;
+  background:#14110f;
+  color:#fffdf7;
+  border-top:8px solid #d92d20;
 }
-.v4-proof .nd-eyebrow{color:#f4a259}
-.v4-proof .nd-h2{color:#fff}
+.v4-proof .nd-eyebrow{color:#f6d66b}
+.v4-proof .nd-h2{color:#ffffff}
 .v4-proof-grid{
   display:grid;
   grid-template-columns:repeat(3,1fr);
-  gap:20px;
+  gap:0;
   margin-bottom:26px;
+  border:3px solid #fffdf7;
 }
 .v4-proof-card{
-  background:#1b2c3c;
-  border:1px solid #2c4155;
-  border-radius:14px;
+  background:#1f1b18;
+  border:0;
+  border-right:3px solid #fffdf7;
+  border-radius:0;
   padding:26px 24px;
 }
+.v4-proof-card:last-child{border-right:0}
 .v4-proof-num{
   display:block;
   font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;
   font-size:13px;
-  color:#f4a259;
-  letter-spacing:.14em;
+  color:#f6d66b;
+  letter-spacing:.16em;
   margin-bottom:10px;
 }
 .v4-proof-card h3{
   margin:0 0 10px;
-  font-size:19px;
-  color:#fff;
-  line-height:1.32;
+  font-size:20px;
+  color:#ffffff;
+  line-height:1.28;
+  font-weight:900;
 }
 .v4-proof-card p{
   margin:0;
-  color:#b8cbdb;
+  color:#cfc9c2;
   line-height:1.62;
   font-size:15px;
 }
 .v4-proof-photo{
   margin:0;
-  border-radius:14px;
+  border-radius:0;
   overflow:hidden;
-  border:1px solid #2c4155;
+  border:4px solid #fffdf7;
+  background:#1f1b18;
 }
 .v4-proof-photo img{
   height:340px;
@@ -166,50 +196,55 @@
 .v4-proof-photo figcaption{
   padding:12px 16px;
   font-size:13.5px;
-  color:#a9c0d4;
-  background:#1b2c3c;
-  border-top:1px solid #2c4155;
+  color:#14110f;
+  background:#f6d66b;
+  border-top:4px solid #fffdf7;
+  font-weight:700;
 }
 
 /* Reviews */
 .v4-reviews{
   padding:58px 0;
-  background:#f4f8fb;
-  border-top:1px solid #e2ebf2;
-  border-bottom:1px solid #e2ebf2;
+  background:#f6d66b;
+  border-top:8px solid #14110f;
+  border-bottom:8px solid #14110f;
 }
+.v4-reviews .nd-eyebrow{color:#14110f}
+.v4-reviews .nd-h2{color:#14110f}
+.v4-reviews .nd-copy{color:#3b3733}
 .v4-review-grid{
   display:grid;
   grid-template-columns:repeat(3,1fr);
-  gap:18px;
+  gap:16px;
   margin-top:6px;
 }
 .v4-review{
-  background:#fff;
-  border:1px solid #e0eaf2;
-  border-radius:14px;
+  background:#ffffff;
+  border:3px solid #14110f;
+  border-radius:0;
   padding:24px 22px;
   display:flex;
   flex-direction:column;
   gap:10px;
+  box-shadow:4px 4px 0 #14110f;
 }
 .v4-review-stars{
-  color:#f0a637;
+  color:#d92d20;
   letter-spacing:2px;
 }
 .v4-review p{
   margin:0;
-  color:#2b4a68;
+  color:#262220;
   line-height:1.62;
   font-size:16px;
   flex:1 1 auto;
 }
 .v4-review-name{
-  font-size:13px;
-  font-weight:800;
-  letter-spacing:.08em;
+  font-size:12px;
+  font-weight:900;
+  letter-spacing:.12em;
   text-transform:uppercase;
-  color:#7b91a6;
+  color:#14110f;
 }
 
 /* Contact */
@@ -223,19 +258,20 @@
   align-items:start;
 }
 .v4-form{
-  background:#f7fafc;
-  border:1px solid #e0eaf2;
-  border-radius:16px;
+  background:#ffffff;
+  border:4px solid #14110f;
+  border-radius:0;
   padding:26px 24px;
   display:grid;
   gap:8px;
+  box-shadow:8px 8px 0 #d92d20;
 }
 .v4-form label{
   font-size:13px;
-  font-weight:800;
-  letter-spacing:.06em;
+  font-weight:900;
+  letter-spacing:.08em;
   text-transform:uppercase;
-  color:#4d6a84;
+  color:#14110f;
   margin-top:8px;
 }
 .v4-form input,
@@ -244,11 +280,11 @@
   width:100%;
   min-height:48px;
   padding:12px 14px;
-  border:1px solid #cfdcea;
-  border-radius:10px;
-  background:#fff;
+  border:3px solid #14110f;
+  border-radius:0;
+  background:#fffdf7;
   font-size:16px;
-  color:#17324f;
+  color:#14110f;
 }
 .v4-form textarea{resize:vertical}
 .v4-form .nd-btn{
@@ -258,19 +294,32 @@
 .v4-form-note{
   margin:6px 0 0;
   font-size:13px;
-  color:#7b91a6;
+  color:#5c5652;
   line-height:1.55;
 }
 
 /* FAQ */
 .v4-faq{
   padding:56px 0;
-  background:#f4f8fb;
-  border-top:1px solid #e2ebf2;
+  background:#fffdf7;
+  border-top:8px solid #14110f;
+}
+.v4-faq .nd-faq details{
+  border:3px solid #14110f;
+  border-radius:0;
+  box-shadow:4px 4px 0 #14110f;
+}
+.v4-faq .nd-faq summary{
+  font-weight:900;
+  color:#14110f;
+}
+.v4-faq .nd-faq-answer{color:#3b3733}
+.v4-faq .nd-btn-ghost{
+  border-width:3px;
 }
 
 @media (max-width:900px){
-  .v4-main h1{font-size:31px}
+  .v4-main h1{font-size:33px}
   .v4-problem-grid,
   .v4-contact-grid{grid-template-columns:1fr}
   .v4-problem-list{grid-template-columns:1fr}
@@ -278,4 +327,6 @@
   .v4-review-grid{grid-template-columns:1fr}
   .v4-problem-photo img,
   .v4-proof-photo img{height:280px}
+  .v4-proof-card{border-right:0;border-bottom:3px solid #fffdf7}
+  .v4-proof-card:last-child{border-bottom:0}
 }
