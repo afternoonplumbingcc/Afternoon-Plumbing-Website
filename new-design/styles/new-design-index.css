@@ -36,7 +36,35 @@
 .nd-index-main .nd-section{
   background:#f4f5f6;
 }
+.nd-index-group{
+  margin:0 0 6px;
+  font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;
+  font-size:12px;
+  font-weight:700;
+  letter-spacing:.16em;
+  text-transform:uppercase;
+  color:#a85400;
+}
+.nd-index-group-title{
+  margin:0 0 10px;
+  font-size:26px;
+  line-height:1.24;
+  letter-spacing:-.02em;
+  font-weight:800;
+  color:#14171c;
+}
+.nd-index-group-note{
+  margin:0 0 22px;
+  font-size:15px;
+  line-height:1.6;
+  color:#4d545d;
+  max-width:74ch;
+}
+.nd-index-section+.nd-index-section{
+  border-top:3px solid #14171c;
+}
 
 @media (max-width:900px){
   .nd-index-hero h1{font-size:30px}
+  .nd-index-group-title{font-size:22px}
 }

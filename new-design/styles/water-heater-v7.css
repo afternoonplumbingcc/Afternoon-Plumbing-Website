@@ -1,0 +1,393 @@
+/* New Design v7: MUNICIPAL UTILITY POSTER.
+   Midnight navy ground, flat (non-glow) accent lines, street-sign aesthetic,
+   blueprint grid drawn with flat 1px rules, uppercase SERVICE AREA header.
+   Solid opaque surfaces only. No glass, no blur, no gradients, no rgba. */
+
+:root{
+  --nd-paper:#0b1f3a;
+  --nd-surface:#12294a;
+  --nd-surface-2:#17355c;
+  --nd-ink:#f2f6fb;
+  --nd-ink-soft:#a9c2dd;
+  --nd-rule:#2f5480;
+  --nd-rule-strong:#7fd1e8;
+  --nd-accent:#7fd1e8;
+  --nd-accent-ink:#06131f;
+  --nd-accent-soft:#16324f;
+  --nd-radius:0;
+  --nd-display:"Helvetica Neue",Helvetica,Arial,system-ui,sans-serif;
+}
+
+.v7-main{
+  background:#0b1f3a;
+  color:#f2f6fb;
+}
+.v7-main h1{
+  font-size:54px;
+  line-height:1.02;
+  margin:0 0 18px;
+  color:#ffffff;
+  letter-spacing:-.02em;
+  font-weight:800;
+}
+.v7-kicker{
+  display:inline-block;
+  margin:0 0 18px;
+  padding:9px 16px;
+  background:#7fd1e8;
+  color:#06131f;
+  font-size:12px;
+  font-weight:800;
+  letter-spacing:.16em;
+  text-transform:uppercase;
+}
+.v7-hero{
+  background:#0b1f3a;
+  padding:46px 0 0;
+  border-bottom:4px solid #7fd1e8;
+}
+.v7-hero-top{
+  display:grid;
+  grid-template-columns:1.12fr .88fr;
+  gap:34px;
+  align-items:start;
+}
+.v7-hero .nd-eyebrow{color:#7fd1e8}
+.v7-hero .nd-lede{color:#c3d7ec}
+.v7-hero .nd-btn-primary{
+  background:#7fd1e8;
+  color:#06131f;
+  border-color:#7fd1e8;
+}
+.v7-hero .nd-btn-primary:hover{
+  background:#ffffff;
+  border-color:#ffffff;
+}
+.v7-hero .nd-btn-ghost{
+  color:#f2f6fb;
+  border-color:#7fd1e8;
+}
+.v7-hero .nd-btn-ghost:hover{
+  background:#7fd1e8;
+  color:#06131f;
+}
+.v7-hero-photo{
+  margin:0;
+  border:3px solid #7fd1e8;
+  background:#12294a;
+}
+.v7-hero-photo img{height:330px}
+.v7-hero-photo figcaption{
+  padding:10px 14px;
+  font-size:13px;
+  color:#a9c2dd;
+  background:#12294a;
+  border-top:3px solid #7fd1e8;
+  font-weight:700;
+}
+
+/* Street sign chips */
+.v7-sign-strip{
+  display:flex;
+  flex-wrap:wrap;
+  gap:12px;
+  margin-top:34px;
+}
+.v7-sign-chip{
+  display:inline-flex;
+  align-items:center;
+  padding:10px 18px;
+  border:2px solid #7fd1e8;
+  border-radius:0;
+  background:#12294a;
+  color:#f2f6fb;
+  font-size:13px;
+  font-weight:800;
+  letter-spacing:.14em;
+  text-transform:uppercase;
+}
+
+/* Trust band */
+.v7-trust{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(170px,1fr));
+  gap:0;
+  margin-top:28px;
+  background:#12294a;
+  border:2px solid #7fd1e8;
+}
+.v7-trust-item{
+  color:#a9c2dd;
+  font-size:13.5px;
+  line-height:1.4;
+  padding:18px 22px;
+  border-right:1px solid #2f5480;
+}
+.v7-trust-item:last-child{border-right:0}
+.v7-trust-item strong{
+  color:#7fd1e8;
+  font-weight:800;
+  display:block;
+  font-size:19px;
+  margin-bottom:1px;
+}
+
+/* Town panels: blueprint fields with flat grid rules */
+.v7-towns{background:#0b1f3a}
+.v7-copy{color:#c3d7ec;max-width:70ch}
+.v7-sign-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+  gap:18px;
+  margin-top:26px;
+}
+.v7-sign{
+  display:flex;
+  flex-direction:column;
+  gap:10px;
+  background:#12294a;
+  border:2px solid #2f5480;
+  border-top:5px solid #7fd1e8;
+  padding:22px 22px 20px;
+  text-decoration:none;
+  color:inherit;
+  transition:border-color .15s ease;
+}
+.v7-sign:hover{border-color:#7fd1e8}
+.v7-sign-name{
+  font-size:29px;
+  font-weight:800;
+  color:#ffffff;
+  letter-spacing:.01em;
+  line-height:1.05;
+  text-transform:uppercase;
+}
+.v7-sign-note{
+  font-size:15px;
+  line-height:1.55;
+  color:#a9c2dd;
+  flex:1 1 auto;
+}
+.v7-sign-link{
+  font-size:12px;
+  font-weight:800;
+  letter-spacing:.12em;
+  text-transform:uppercase;
+  color:#7fd1e8;
+  border-top:1px solid #2f5480;
+  padding-top:10px;
+}
+
+/* Service notice rows */
+.v7-services{
+  background:#12294a;
+  padding:58px 0;
+  border-top:4px solid #7fd1e8;
+  border-bottom:4px solid #7fd1e8;
+}
+.v7-services .nd-eyebrow{color:#7fd1e8}
+.v7-services .nd-h2{color:#ffffff}
+.v7-notice-list{
+  margin-top:8px;
+  border-top:1px solid #2f5480;
+}
+.v7-notice-row{
+  display:grid;
+  grid-template-columns:minmax(200px,.7fr) 1.5fr auto;
+  gap:18px;
+  align-items:center;
+  padding:18px 4px;
+  border-bottom:1px solid #2f5480;
+  text-decoration:none;
+  color:inherit;
+}
+.v7-notice-row:hover{background:#17355c}
+.v7-notice-title{
+  margin:0;
+  font-size:19px;
+  font-weight:800;
+  color:#ffffff;
+  text-transform:uppercase;
+  letter-spacing:.02em;
+}
+.v7-notice-text{
+  margin:0;
+  font-size:14.5px;
+  line-height:1.55;
+  color:#a9c2dd;
+}
+.v7-notice-link{
+  font-size:12px;
+  font-weight:800;
+  letter-spacing:.12em;
+  text-transform:uppercase;
+  color:#7fd1e8;
+  white-space:nowrap;
+}
+
+/* Reviews */
+.v7-reviews{background:#0b1f3a}
+.v7-reviews-head{
+  display:flex;
+  flex-wrap:wrap;
+  gap:18px;
+  align-items:flex-end;
+  justify-content:space-between;
+  margin-bottom:24px;
+}
+.v7-reviews .nd-btn-ghost{
+  color:#f2f6fb;
+  border-color:#7fd1e8;
+}
+.v7-reviews .nd-btn-ghost:hover{background:#7fd1e8;color:#06131f}
+.v7-quote-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+  gap:18px;
+}
+.v7-quote{
+  display:flex;
+  flex-direction:column;
+  gap:10px;
+  background:#12294a;
+  border:2px solid #2f5480;
+  border-left:5px solid #7fd1e8;
+  padding:22px 22px 18px;
+}
+.v7-stars{
+  color:#7fd1e8;
+  font-size:19px;
+  letter-spacing:2px;
+}
+.v7-review-quote{
+  margin:0;
+  font-size:15.5px;
+  line-height:1.6;
+  color:#f2f6fb;
+  flex:1 1 auto;
+}
+.v7-review-name{
+  font-size:12px;
+  font-weight:800;
+  letter-spacing:.12em;
+  text-transform:uppercase;
+  color:#a9c2dd;
+}
+
+/* Map */
+.v7-map{
+  background:#12294a;
+  padding:58px 0;
+  border-top:4px solid #7fd1e8;
+  border-bottom:4px solid #7fd1e8;
+}
+.v7-map .nd-eyebrow{color:#7fd1e8}
+.v7-map .nd-h2{color:#ffffff}
+.v7-map .nd-copy{color:#c3d7ec}
+.v7-map .nd-link-list a{
+  color:#7fd1e8;
+  border-bottom-color:#7fd1e8;
+}
+.v7-map-grid{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:32px;
+  align-items:center;
+}
+.v7-map-pin-box{
+  background:#0b1f3a;
+  border:2px solid #7fd1e8;
+  min-height:280px;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  gap:6px;
+  text-align:center;
+  color:#f2f6fb;
+  padding:26px;
+}
+.v7-map-pin{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  width:52px;
+  height:52px;
+  border:2px solid #7fd1e8;
+  background:#17355c;
+  color:#7fd1e8;
+  margin-bottom:6px;
+}
+.v7-map-pin-box strong{font-size:20px}
+.v7-map-pin-box span{font-size:15px;color:#a9c2dd}
+.v7-map-label{
+  margin-top:12px;
+  font-size:12px;
+  letter-spacing:.16em;
+  text-transform:uppercase;
+  font-weight:800;
+  color:#7fd1e8;
+}
+
+/* FAQ */
+.v7-faq .nd-faq details{
+  background:#12294a;
+  border:1px solid #2f5480;
+  border-left:4px solid #7fd1e8;
+  border-radius:0;
+  margin-bottom:10px;
+}
+.v7-faq .nd-faq summary{color:#ffffff}
+.v7-faq .nd-faq summary::after{color:#7fd1e8}
+.v7-faq .nd-faq-answer{color:#c3d7ec}
+.v7-faq .nd-btn-ghost{
+  color:#f2f6fb;
+  border-color:#7fd1e8;
+}
+.v7-faq .nd-btn-ghost:hover{background:#7fd1e8;color:#06131f}
+
+/* CTA */
+.v7-cta{
+  background:#06131f;
+  color:#f2f6fb;
+  padding:50px 0;
+}
+.v7-cta-inner{
+  display:grid;
+  grid-template-columns:1.4fr .6fr;
+  gap:24px;
+  align-items:center;
+}
+.v7-cta h2{
+  margin:0 0 10px;
+  font-size:31px;
+  line-height:1.16;
+  color:#ffffff;
+  text-transform:uppercase;
+  letter-spacing:.01em;
+}
+.v7-cta p{
+  margin:0;
+  font-size:17px;
+  color:#a9c2dd;
+  line-height:1.6;
+}
+.v7-cta .nd-btn-primary{
+  background:#7fd1e8;
+  color:#06131f;
+  border-color:#7fd1e8;
+}
+.v7-cta .nd-btn-primary:hover{
+  background:#ffffff;
+  border-color:#ffffff;
+}
+
+@media (max-width:900px){
+  .v7-main h1{font-size:36px}
+  .v7-hero-top,
+  .v7-map-grid,
+  .v7-cta-inner{grid-template-columns:1fr}
+  .v7-hero-photo img{height:270px}
+  .v7-notice-row{grid-template-columns:1fr;gap:6px}
+  .v7-cta h2{font-size:25px}
+}

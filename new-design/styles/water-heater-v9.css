@@ -1,0 +1,399 @@
+/* New Design v9: FARMERS MARKET.
+   Barn red, field green, and wheat yellow on a white ground, rounded sticker
+   badges, gingham tablecloth accent strips, printed and friendly.
+   Solid opaque surfaces only. No glass, no blur, no gradients, no rgba. */
+
+:root{
+  --nd-paper:#ffffff;
+  --nd-surface:#ffffff;
+  --nd-surface-2:#f6f1e4;
+  --nd-ink:#2f2a24;
+  --nd-ink-soft:#5f564a;
+  --nd-rule:#e0d7c4;
+  --nd-rule-strong:#2f2a24;
+  --nd-accent:#a8342a;
+  --nd-accent-ink:#ffffff;
+  --nd-accent-soft:#f6efdc;
+  --nd-radius:14px;
+  --nd-display:system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif;
+}
+
+.v9-main{
+  background:#ffffff;
+  color:#2f2a24;
+}
+.v9-main h1{
+  font-size:52px;
+  line-height:1.04;
+  margin:0 0 18px;
+  color:#a8342a;
+  letter-spacing:-.025em;
+  font-weight:800;
+}
+.v9-kicker{
+  display:inline-block;
+  margin:0 0 18px;
+  padding:8px 16px;
+  background:#4d7c3f;
+  color:#ffffff;
+  font-size:12px;
+  font-weight:800;
+  letter-spacing:.14em;
+  text-transform:uppercase;
+  border-radius:14px;
+}
+.v9-hero{
+  background:#ffffff;
+  padding:42px 0 36px;
+  border-bottom:3px solid #2f2a24;
+}
+.v9-hero-top{
+  display:grid;
+  grid-template-columns:1.1fr .9fr;
+  gap:34px;
+  align-items:start;
+}
+.v9-hero .nd-eyebrow{color:#4d7c3f}
+.v9-hero .nd-lede{color:#5f564a}
+.v9-hero .nd-btn-primary{
+  background:#a8342a;
+  color:#ffffff;
+  border-color:#a8342a;
+  border-radius:14px;
+}
+.v9-hero .nd-btn-primary:hover{
+  background:#4d7c3f;
+  border-color:#4d7c3f;
+}
+.v9-hero .nd-btn-ghost{
+  color:#2f2a24;
+  border-color:#2f2a24;
+  border-radius:14px;
+}
+.v9-hero .nd-btn-ghost:hover{
+  background:#2f2a24;
+  color:#ffffff;
+}
+.v9-hero-photo{
+  margin:0;
+  border:3px solid #2f2a24;
+  border-radius:14px;
+  overflow:hidden;
+  background:#f6f1e4;
+}
+.v9-hero-photo img{height:330px}
+.v9-hero-photo figcaption{
+  padding:10px 16px;
+  font-size:13px;
+  color:#5f564a;
+  background:#f6f1e4;
+  border-top:3px solid #2f2a24;
+  font-weight:700;
+}
+
+/* Sticker badges */
+.v9-stickers{
+  display:flex;
+  flex-wrap:wrap;
+  gap:12px;
+  margin-top:24px;
+}
+.v9-sticker{
+  display:inline-flex;
+  align-items:center;
+  padding:10px 18px;
+  border:3px solid #2f2a24;
+  border-radius:14px;
+  font-size:14px;
+  font-weight:800;
+  letter-spacing:.04em;
+}
+.v9-sticker-red{background:#a8342a;color:#ffffff}
+.v9-sticker-green{background:#4d7c3f;color:#ffffff}
+.v9-sticker-wheat{background:#f0c75e;color:#2f2a24}
+
+/* Trust band on a gingham strip */
+.v9-trust{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(170px,1fr));
+  gap:0;
+  margin-top:32px;
+  background:#f6f1e4;
+  border:3px solid #2f2a24;
+  border-radius:14px;
+  overflow:hidden;
+}
+.v9-trust-item{
+  color:#5f564a;
+  font-size:13.5px;
+  line-height:1.4;
+  padding:18px 22px;
+  border-right:2px solid #e0d7c4;
+}
+.v9-trust-item:last-child{border-right:0}
+.v9-trust-item strong{
+  color:#a8342a;
+  font-weight:800;
+  display:block;
+  font-size:19px;
+  margin-bottom:1px;
+}
+
+/* Town stalls */
+.v9-towns{background:#ffffff}
+.v9-copy{color:#5f564a;max-width:70ch}
+.v9-stall-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+  gap:20px;
+  margin-top:26px;
+}
+.v9-stall{
+  display:flex;
+  flex-direction:column;
+  gap:10px;
+  background:#ffffff;
+  border:3px solid #2f2a24;
+  border-radius:14px;
+  padding:24px 22px 20px;
+  text-decoration:none;
+  color:inherit;
+  transition:background .15s ease;
+}
+.v9-stall:hover{background:#f6efdc}
+.v9-stall-name{
+  font-size:28px;
+  font-weight:800;
+  color:#4d7c3f;
+  letter-spacing:-.02em;
+  line-height:1.08;
+}
+.v9-stall-note{
+  font-size:15px;
+  line-height:1.55;
+  color:#5f564a;
+  flex:1 1 auto;
+}
+.v9-stall-link{
+  font-size:12px;
+  font-weight:800;
+  letter-spacing:.1em;
+  text-transform:uppercase;
+  color:#a8342a;
+  border-top:2px dashed #e0d7c4;
+  padding-top:10px;
+}
+
+/* Service crates */
+.v9-services{
+  background:#f6f1e4;
+  padding:58px 0;
+  border-top:3px solid #2f2a24;
+  border-bottom:3px solid #2f2a24;
+}
+.v9-services .nd-eyebrow{color:#a8342a}
+.v9-services .nd-h2{color:#2f2a24}
+.v9-crate-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+  gap:20px;
+}
+.v9-crate{
+  display:flex;
+  flex-direction:column;
+  gap:8px;
+  background:#ffffff;
+  border:3px solid #2f2a24;
+  border-radius:14px;
+  padding:22px 22px 18px;
+  text-decoration:none;
+  color:inherit;
+}
+.v9-crate:hover{background:#f0c75e}
+.v9-crate-title{
+  margin:0 0 4px;
+  font-size:19px;
+  font-weight:800;
+  color:#2f2a24;
+}
+.v9-crate-text{
+  margin:0 0 10px;
+  font-size:14.5px;
+  line-height:1.55;
+  color:#5f564a;
+  flex:1 1 auto;
+}
+.v9-crate-link{
+  font-size:12px;
+  font-weight:800;
+  letter-spacing:.1em;
+  text-transform:uppercase;
+  color:#4d7c3f;
+}
+
+/* Reviews as market cards */
+.v9-reviews{background:#ffffff}
+.v9-reviews-head{
+  display:flex;
+  flex-wrap:wrap;
+  gap:18px;
+  align-items:flex-end;
+  justify-content:space-between;
+  margin-bottom:24px;
+}
+.v9-reviews .nd-btn-ghost{
+  color:#2f2a24;
+  border-color:#2f2a24;
+  border-radius:14px;
+}
+.v9-reviews .nd-btn-ghost:hover{background:#2f2a24;color:#ffffff}
+.v9-card-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+  gap:20px;
+}
+.v9-card{
+  display:flex;
+  flex-direction:column;
+  gap:10px;
+  background:#f6f1e4;
+  border:3px solid #2f2a24;
+  border-radius:14px;
+  padding:22px 22px 18px;
+}
+.v9-stars{
+  color:#f0c75e;
+  font-size:20px;
+  letter-spacing:2px;
+}
+.v9-review-quote{
+  margin:0;
+  font-size:15.5px;
+  line-height:1.6;
+  color:#2f2a24;
+  flex:1 1 auto;
+}
+.v9-review-name{
+  font-size:12px;
+  font-weight:800;
+  letter-spacing:.12em;
+  text-transform:uppercase;
+  color:#4d7c3f;
+}
+
+/* Map */
+.v9-map{
+  background:#f6f1e4;
+  padding:58px 0;
+  border-top:3px solid #2f2a24;
+  border-bottom:3px solid #2f2a24;
+}
+.v9-map .nd-eyebrow{color:#4d7c3f}
+.v9-map .nd-h2{color:#2f2a24}
+.v9-map .nd-copy{color:#5f564a}
+.v9-map .nd-link-list a{
+  color:#a8342a;
+  border-bottom-color:#a8342a;
+}
+.v9-map-grid{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:32px;
+  align-items:center;
+}
+.v9-map-pin-box{
+  background:#ffffff;
+  border:3px solid #2f2a24;
+  border-radius:14px;
+  min-height:280px;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  gap:6px;
+  text-align:center;
+  color:#2f2a24;
+  padding:26px;
+}
+.v9-map-pin{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  width:52px;
+  height:52px;
+  border:3px solid #2f2a24;
+  border-radius:50%;
+  background:#a8342a;
+  color:#ffffff;
+  margin-bottom:6px;
+}
+.v9-map-pin-box strong{font-size:20px}
+.v9-map-pin-box span{font-size:15px;color:#5f564a}
+.v9-map-label{
+  margin-top:12px;
+  font-size:12px;
+  letter-spacing:.16em;
+  text-transform:uppercase;
+  font-weight:800;
+  color:#4d7c3f;
+}
+
+/* FAQ */
+.v9-faq .nd-faq details{
+  background:#ffffff;
+  border:2px solid #e0d7c4;
+  border-radius:14px;
+  margin-bottom:10px;
+}
+.v9-faq .nd-faq summary{color:#2f2a24}
+.v9-faq .nd-faq summary::after{color:#a8342a}
+.v9-faq .nd-faq-answer{color:#5f564a}
+.v9-faq .nd-btn-ghost{
+  color:#2f2a24;
+  border-color:#2f2a24;
+  border-radius:14px;
+}
+.v9-faq .nd-btn-ghost:hover{background:#2f2a24;color:#ffffff}
+
+/* CTA */
+.v9-cta{
+  background:#4d7c3f;
+  color:#ffffff;
+  padding:50px 0;
+}
+.v9-cta-inner{
+  display:grid;
+  grid-template-columns:1.4fr .6fr;
+  gap:24px;
+  align-items:center;
+}
+.v9-cta h2{
+  margin:0 0 10px;
+  font-size:31px;
+  line-height:1.16;
+  color:#ffffff;
+}
+.v9-cta p{
+  margin:0;
+  font-size:17px;
+  color:#eaf0e4;
+  line-height:1.6;
+}
+.v9-cta .nd-btn-primary{
+  background:#f0c75e;
+  color:#2f2a24;
+  border-color:#f0c75e;
+}
+.v9-cta .nd-btn-primary:hover{
+  background:#ffffff;
+  border-color:#ffffff;
+}
+
+@media (max-width:900px){
+  .v9-main h1{font-size:35px}
+  .v9-hero-top,
+  .v9-map-grid,
+  .v9-cta-inner{grid-template-columns:1fr}
+  .v9-hero-photo img{height:270px}
+  .v9-cta h2{font-size:25px}
+}

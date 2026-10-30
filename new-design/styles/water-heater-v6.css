@@ -1,0 +1,445 @@
+/* New Design v6: COMMUNITY BULLETIN BOARD.
+   Tan cork field, pinned cream paper notices, small colored thumb tags,
+   hand-style headings (web font, no emoji), corkboard grid of notices.
+   Solid opaque surfaces only. No glass, no blur, no gradients, no rgba. */
+
+:root{
+  --nd-paper:#d9ab73;
+  --nd-surface:#fdf6e6;
+  --nd-surface-2:#f2e3c6;
+  --nd-ink:#3a2a18;
+  --nd-ink-soft:#6b543a;
+  --nd-rule:#b1803f;
+  --nd-rule-strong:#3a2a18;
+  --nd-accent:#a8342a;
+  --nd-accent-ink:#fdf6e6;
+  --nd-accent-soft:#f6dfae;
+  --nd-radius:2px;
+  --nd-display:"Caveat","Segoe Print",system-ui,-apple-system,sans-serif;
+}
+
+.v6-main{
+  background:#d9ab73;
+  color:#3a2a18;
+}
+.v6-main h1{
+  font-family:"Caveat","Segoe Print",system-ui,sans-serif;
+  font-size:64px;
+  line-height:1;
+  margin:0 0 16px;
+  color:#3a2a18;
+  font-weight:700;
+}
+.v6-kicker{
+  display:inline-block;
+  margin:0 0 14px;
+  padding:6px 14px;
+  background:#3a2a18;
+  color:#fdf6e6;
+  font-size:12px;
+  font-weight:800;
+  letter-spacing:.12em;
+  text-transform:uppercase;
+}
+.v6-hero{
+  background:#d9ab73;
+  padding:40px 0 34px;
+  border-bottom:4px solid #3a2a18;
+}
+.v6-hero-grid{
+  display:grid;
+  grid-template-columns:1.05fr .95fr;
+  gap:28px;
+  align-items:start;
+}
+.v6-board-panel{
+  position:relative;
+  margin:0;
+  background:#fdf6e6;
+  border:2px solid #3a2a18;
+  border-radius:2px;
+  padding:30px 28px 26px;
+  box-shadow:5px 5px 0 #3a2a18;
+}
+/* Small colored thumb tag that pins the notice to the cork. */
+.v6-thumb{
+  position:absolute;
+  top:-11px;
+  left:50%;
+  margin-left:-13px;
+  width:26px;
+  height:22px;
+  border:2px solid #3a2a18;
+  border-radius:2px;
+  background:#a8342a;
+}
+.v6-thumb-green{background:#4d7c3f}
+.v6-board-photo{
+  padding:14px;
+}
+.v6-board-photo img{
+  height:320px;
+}
+.v6-board-photo figcaption{
+  padding:10px 2px 2px;
+  font-size:13px;
+  color:#6b543a;
+  font-weight:700;
+}
+.v6-hero .nd-lede{color:#4a3620}
+.v6-hero .nd-btn-primary{
+  background:#a8342a;
+  color:#fdf6e6;
+  border-color:#a8342a;
+}
+.v6-hero .nd-btn-primary:hover{
+  background:#3a2a18;
+  border-color:#3a2a18;
+  color:#fdf6e6;
+}
+.v6-hero .nd-btn-ghost{
+  color:#3a2a18;
+  border-color:#3a2a18;
+}
+.v6-hero .nd-btn-ghost:hover{
+  background:#3a2a18;
+  color:#fdf6e6;
+}
+.v6-hand{
+  margin:18px 0 0;
+  font-family:"Caveat","Segoe Print",system-ui,sans-serif;
+  font-size:30px;
+  line-height:1.1;
+  color:#a8342a;
+}
+
+/* Trust strip, pinned like a band of index cards */
+.v6-trust{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(170px,1fr));
+  gap:0;
+  margin-top:30px;
+  background:#fdf6e6;
+  border:2px solid #3a2a18;
+  border-radius:2px;
+  box-shadow:5px 5px 0 #3a2a18;
+}
+.v6-trust-item{
+  display:block;
+  padding:16px 20px;
+  font-size:13.5px;
+  line-height:1.4;
+  color:#6b543a;
+  border-right:1px dashed #b1803f;
+}
+.v6-trust-item:last-child{border-right:0}
+.v6-trust-item strong{
+  display:block;
+  color:#a8342a;
+  font-size:22px;
+  font-weight:800;
+  margin-bottom:2px;
+}
+
+/* Town notices on the corkboard */
+.v6-towns{background:#d9ab73}
+.v6-copy{color:#4a3620;max-width:70ch}
+.v6-notice-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+  gap:26px;
+  margin-top:26px;
+}
+.v6-notice{
+  position:relative;
+  display:flex;
+  flex-direction:column;
+  gap:10px;
+  background:#fdf6e6;
+  border:2px solid #3a2a18;
+  border-radius:2px;
+  padding:26px 22px 20px;
+  text-decoration:none;
+  color:inherit;
+  box-shadow:5px 5px 0 #3a2a18;
+  transition:transform .15s ease;
+}
+.v6-notice:hover{transform:translate(-2px,-2px)}
+.v6-notice::before{
+  content:"";
+  position:absolute;
+  top:-10px;
+  left:22px;
+  width:22px;
+  height:18px;
+  border:2px solid #3a2a18;
+  border-radius:2px;
+  background:#4d7c3f;
+}
+.v6-notice:nth-child(2)::before{background:#a8342a}
+.v6-notice:nth-child(3)::before{background:#3d6d8a}
+.v6-notice:nth-child(4)::before{background:#c98a2b}
+.v6-notice-name{
+  font-family:"Caveat","Segoe Print",system-ui,sans-serif;
+  font-size:38px;
+  line-height:1;
+  color:#3a2a18;
+  font-weight:700;
+}
+.v6-notice-note{
+  font-size:15px;
+  line-height:1.55;
+  color:#4a3620;
+  flex:1 1 auto;
+}
+.v6-notice-link{
+  font-size:12px;
+  font-weight:800;
+  letter-spacing:.1em;
+  text-transform:uppercase;
+  color:#a8342a;
+  border-top:2px dashed #b1803f;
+  padding-top:10px;
+}
+.v6-chips{
+  display:flex;
+  flex-wrap:wrap;
+  gap:10px;
+  list-style:none;
+  padding:0;
+  margin:26px 0 0;
+}
+.v6-chip{
+  background:#f2e3c6;
+  border:2px solid #3a2a18;
+  border-radius:2px;
+  padding:7px 14px;
+  font-size:13.5px;
+  font-weight:700;
+  color:#4a3620;
+}
+
+/* Service slips on the board */
+.v6-services{
+  background:#c2935c;
+  padding:58px 0;
+  border-top:4px solid #3a2a18;
+  border-bottom:4px solid #3a2a18;
+}
+.v6-services .nd-eyebrow{color:#fdf6e6}
+.v6-services .nd-h2{color:#3a2a18}
+.v6-tagline{
+  margin:0 0 18px;
+  font-family:"Caveat","Segoe Print",system-ui,sans-serif;
+  font-size:28px;
+  color:#fdf6e6;
+}.v6-slip-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+  gap:22px;
+}
+.v6-slip{
+  display:flex;
+  flex-direction:column;
+  gap:8px;
+  background:#fdf6e6;
+  border:2px solid #3a2a18;
+  border-radius:2px;
+  padding:20px 20px 16px;
+  text-decoration:none;
+  color:inherit;
+  box-shadow:4px 4px 0 #3a2a18;
+}
+.v6-slip:hover{background:#f6dfae}
+.v6-slip-title{
+  margin:0 0 4px;
+  font-size:19px;
+  font-weight:800;
+  color:#3a2a18;
+  font-family:var(--nd-display);
+}
+.v6-slip-text{
+  margin:0 0 10px;
+  font-size:14.5px;
+  line-height:1.55;
+  color:#4a3620;
+  flex:1 1 auto;
+}
+.v6-slip-link{
+  font-size:12px;
+  font-weight:800;
+  letter-spacing:.1em;
+  text-transform:uppercase;
+  color:#a8342a;
+}
+
+/* Reviews as pinned cards */
+.v6-reviews{background:#d9ab73}
+.v6-reviews-head{
+  display:flex;
+  flex-wrap:wrap;
+  gap:18px;
+  align-items:flex-end;
+  justify-content:space-between;
+  margin-bottom:24px;
+}
+.v6-reviews .nd-btn-ghost{
+  color:#3a2a18;
+  border-color:#3a2a18;
+}
+.v6-reviews .nd-btn-ghost:hover{background:#3a2a18;color:#fdf6e6}
+.v6-review-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+  gap:22px;
+}
+.v6-review{
+  display:flex;
+  flex-direction:column;
+  gap:10px;
+  background:#fdf6e6;
+  border:2px solid #3a2a18;
+  border-radius:2px;
+  padding:22px 22px 18px;
+  box-shadow:4px 4px 0 #3a2a18;
+}
+.v6-stars{
+  color:#c98a2b;
+  font-size:20px;
+  letter-spacing:2px;
+}
+.v6-review-quote{
+  margin:0;
+  font-size:15.5px;
+  line-height:1.6;
+  color:#3a2a18;
+  flex:1 1 auto;
+}
+.v6-review-name{
+  font-size:12px;
+  font-weight:800;
+  letter-spacing:.12em;
+  text-transform:uppercase;
+  color:#4d7c3f;
+}
+
+/* Map pinned on the board */
+.v6-map{
+  background:#c2935c;
+  padding:58px 0;
+  border-top:4px solid #3a2a18;
+  border-bottom:4px solid #3a2a18;
+}
+.v6-map .nd-eyebrow{color:#fdf6e6}
+.v6-map .nd-h2{color:#3a2a18}
+.v6-map .nd-copy{color:#4a3620}
+.v6-map .nd-link-list a{
+  color:#a8342a;
+  border-bottom-color:#a8342a;
+}
+.v6-map-grid{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:30px;
+  align-items:center;
+}
+.v6-map-pin-box{
+  background:#fdf6e6;
+  border:2px solid #3a2a18;
+  border-radius:2px;
+  min-height:280px;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  gap:6px;
+  text-align:center;
+  color:#3a2a18;
+  padding:26px;
+  box-shadow:5px 5px 0 #3a2a18;
+}
+.v6-map-pin{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  width:52px;
+  height:52px;
+  border:2px solid #3a2a18;
+  border-radius:2px;
+  background:#a8342a;
+  color:#fdf6e6;
+  margin-bottom:6px;
+}
+.v6-map-pin-box strong{font-size:20px}
+.v6-map-pin-box span{font-size:15px;color:#6b543a}
+.v6-map-label{
+  margin-top:12px;
+  font-size:12px;
+  letter-spacing:.16em;
+  text-transform:uppercase;
+  font-weight:800;
+  color:#4d7c3f;
+}
+
+/* FAQ */
+.v6-faq .nd-faq details{
+  background:#fdf6e6;
+  border:2px solid #3a2a18;
+  border-radius:2px;
+  margin-bottom:10px;
+  box-shadow:4px 4px 0 #3a2a18;
+}
+.v6-faq .nd-faq summary{color:#3a2a18}
+.v6-faq .nd-faq summary::after{color:#a8342a}
+.v6-faq .nd-faq-answer{color:#4a3620}
+.v6-faq .nd-btn-ghost{
+  color:#3a2a18;
+  border-color:#3a2a18;
+}
+.v6-faq .nd-btn-ghost:hover{background:#3a2a18;color:#fdf6e6}
+
+/* CTA */
+.v6-cta{
+  background:#3a2a18;
+  color:#fdf6e6;
+  padding:50px 0;
+}
+.v6-cta-inner{
+  display:grid;
+  grid-template-columns:1.4fr .6fr;
+  gap:24px;
+  align-items:center;
+}
+.v6-cta h2{
+  margin:0 0 10px;
+  font-size:31px;
+  line-height:1.16;
+  color:#fdf6e6;
+  font-family:"Caveat","Segoe Print",system-ui,sans-serif;
+  font-size:42px;
+}
+.v6-cta p{
+  margin:0;
+  font-size:17px;
+  color:#e6d3ae;
+  line-height:1.6;
+}
+.v6-cta .nd-btn-primary{
+  background:#fdf6e6;
+  color:#3a2a18;
+  border-color:#fdf6e6;
+}
+.v6-cta .nd-btn-primary:hover{
+  background:#a8342a;
+  border-color:#a8342a;
+  color:#fdf6e6;
+}
+
+@media (max-width:900px){
+  .v6-main h1{font-size:44px}
+  .v6-hero-grid,
+  .v6-map-grid,
+  .v6-cta-inner{grid-template-columns:1fr}
+  .v6-board-photo img{height:260px}
+  .v6-cta h2{font-size:34px}
+}
