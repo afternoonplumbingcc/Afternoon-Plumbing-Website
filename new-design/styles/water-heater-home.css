@@ -332,10 +332,75 @@ body.nd-homepage-match p{margin:0}
   font-weight:700;
   margin:0 0 12px;
 }
-.nd-hm-review-grid{
+/* Reviews carousel.
+   No-JS default: a plain wrapping grid, so all five reviews are visible
+   and reachable for readers and for users without JavaScript.
+   The script adds .nd-hm-review-carousel-ready, which switches the track to
+   a horizontal scroll-snap track and reveals the prev/next buttons. */
+.nd-hm-review-track{
   display:grid;
   grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
   gap:20px;
+}
+.nd-hm-review-controls{
+  display:none;
+  gap:12px;
+  margin-top:24px;
+}
+.nd-hm-review-btn{
+  width:48px;
+  height:48px;
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  background:var(--home-white);
+  color:var(--home-navy);
+  border:1px solid var(--home-navy);
+  border-radius:var(--home-r-xs);
+  cursor:pointer;
+  padding:0;
+  transition:background .2s ease,color .2s ease,opacity .2s ease;
+}
+.nd-hm-review-btn:hover:not(:disabled){
+  background:var(--home-navy);
+  color:#fff;
+}
+.nd-hm-review-btn:disabled{
+  opacity:.4;
+  cursor:default;
+}
+.nd-hm-review-btn:focus-visible,
+.nd-hm-review-track:focus-visible{
+  outline:2px solid var(--home-accent);
+  outline-offset:3px;
+}
+
+/* Carousel state, applied by the script once the track is live. */
+.nd-hm-review-carousel-ready .nd-hm-review-track{
+  display:flex;
+  grid-template-columns:none;
+  overflow-x:auto;
+  scroll-snap-type:x mandatory;
+  scroll-behavior:smooth;
+  scrollbar-width:none;
+  -ms-overflow-style:none;
+  padding-bottom:2px;
+}
+.nd-hm-review-carousel-ready .nd-hm-review-track::-webkit-scrollbar{
+  display:none;
+}
+.nd-hm-review-carousel-ready .nd-hm-review-card{
+  flex:0 0 calc((100% - 40px) / 3);
+  scroll-snap-align:start;
+}
+.nd-hm-review-carousel-ready .nd-hm-review-controls{
+  display:flex;
+}
+
+@media (prefers-reduced-motion:reduce){
+  .nd-hm-review-carousel-ready .nd-hm-review-track{
+    scroll-behavior:auto;
+  }
 }
 .nd-hm-review-card{
   background:var(--home-surface);
@@ -350,7 +415,7 @@ body.nd-homepage-match p{margin:0}
   display:flex;
   color:var(--home-star);
 }
-.nd-hm-stars svg{width:16px;height:16px}
+.nd-hm-stars svg{width:16px;height:16px;fill:currentColor}
 .nd-hm-review-card p{
   font-size:15px;
   line-height:1.6;
@@ -358,9 +423,11 @@ body.nd-homepage-match p{margin:0}
   flex:1 1 auto;
 }
 .nd-hm-review-name{
+  font-family:var(--home-display);
   font-size:15px;
   font-weight:600;
   color:var(--home-navy);
+  letter-spacing:-.02em;
 }
 
 /* Map and service area: flat two column block. */
@@ -519,6 +586,29 @@ body.nd-homepage-match p{margin:0}
   justify-content:space-between;
 }
 .nd-hm-snapshot-note a{color:#fff}
+
+@media (max-width:1023px){
+  .nd-hm-review-carousel-ready .nd-hm-review-card{
+    flex:0 0 calc((100% - 20px) / 2);
+  }
+}
+
+@media (max-width:767px){
+  .nd-hm-review-carousel-ready .nd-hm-review-card{
+    flex:0 0 100%;
+  }
+  .nd-hm-review-btn{
+    width:44px;
+    height:44px;
+  }
+  /* The Google reviews link stacks under the header text on small screens. */
+  .nd-hm-reviews-head{
+    align-items:flex-start;
+  }
+  .nd-hm-reviews-head .nd-hm-btn{
+    width:100%;
+  }
+}
 
 @media (max-width:1024px){
   :root{--home-section-pad:72px}

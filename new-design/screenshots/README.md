@@ -32,3 +32,14 @@ Captured 2026-10-30 with a headless Chromium at 1440x900 (desktop) and 390x844 (
   brushed nickle trim .webp`, reports as not decoded under headless lazy
   loading. It behaves the same way on the live homepage, so this is a
   pre-existing quirk of that asset and not a defect in the snapshot.
+
+## Reviews carousel (Option C service page)
+
+Captured 2026-10-30 with a headless Chromium from
+`/new-design/water-heater-home.html`, scrolled to the Reviews section.
+
+| File | What it shows |
+| --- | --- |
+| `reviews-carousel-desktop-1440.png` | Desktop, first position. Three review cards visible, prev button dimmed because the track is at the start, next button active. |
+| `reviews-carousel-desktop-1440-midscroll.png` | Desktop after one "next" click. Cards two to four are showing, next button filled navy on hover state. |
+| `reviews-carousel-mobile-390.png` | Mobile 390. One card visible, the "Read all reviews on Google" button stacked under the header text, both arrow buttons reachable below the track. |
