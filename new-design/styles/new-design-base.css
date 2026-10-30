@@ -1,5 +1,61 @@
-/* New Design sandbox: shared base for the 5 water heater redesign variants.
+/* New Design sandbox: shared base for the 5 water heater redesign concepts.
+   Visual system: SOLID PRINT. Flat opaque surfaces, hairline rules, square
+   corners, no glassmorphism, no backdrop blur, no translucent panels.
+   Each variant overrides the token block below to push a different look.
    Temporary. Loaded only by /new-design/ pages. */
+
+:root{
+  --nd-paper:#ffffff;
+  --nd-surface:#ffffff;
+  --nd-surface-2:#f1f2f4;
+  --nd-ink:#14171c;
+  --nd-ink-soft:#4d545d;
+  --nd-rule:#d2d6db;
+  --nd-rule-strong:#14171c;
+  --nd-accent:#a85400;
+  --nd-accent-ink:#ffffff;
+  --nd-accent-soft:#f5e6d2;
+  --nd-radius:3px;
+  --nd-font:system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif;
+  --nd-display:var(--nd-font);
+  --nd-mono:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;
+}
+
+/* Sandbox pages sit on flat paper, no glass body treatment. */
+body.nd-page{
+  background:var(--nd-paper);
+  color:var(--nd-ink);
+  font-family:var(--nd-font);
+}
+body.nd-page::before,
+body.nd-page::after{
+  display:none;
+}
+/* The shared site nav and drawer keep their markup, behavior, and layout.
+   Only the frosted glass treatment is neutralized on the sandbox pages so
+   the variants read as solid print. Scoped to body.nd-page, so every live
+   page keeps the shared glass nav untouched. */
+body.nd-page .site-nav{
+  background:#ffffff;
+  backdrop-filter:none;
+  -webkit-backdrop-filter:none;
+  border-bottom:1px solid #c8cdd3;
+}
+body.nd-page .site-nav-drawer-close{
+  background:#eceff2;
+}
+body.nd-page .site-nav-drawer-sub-btn:hover,
+body.nd-page .site-nav-drawer-row:hover,
+body.nd-page .site-nav-drawer-subpanel a:hover{background:#eceff2}
+body.nd-page .site-nav-drawer-row.active,
+body.nd-page .site-nav-drawer-subpanel a.active{background:#e2e7ec}
+/* Headings inherit the variant display face instead of the shared Sora face. */
+body.nd-page h1,
+body.nd-page h2,
+body.nd-page h3,
+body.nd-page h4{
+  font-family:var(--nd-display);
+}
 
 .nd-wrap{
   max-width:1120px;
@@ -14,8 +70,8 @@
 
 /* Sandbox banner, links back to the variant index only */
 .nd-sandbox-bar{
-  background:#12212f;
-  color:#dce9f4;
+  background:#14171c;
+  color:#e8eaed;
   font-size:13px;
   letter-spacing:.02em;
 }
@@ -29,13 +85,13 @@
   padding-bottom:9px;
 }
 .nd-sandbox-bar strong{
-  color:#f4a259;
+  color:#f0a44a;
   text-transform:uppercase;
   letter-spacing:.12em;
   font-size:12px;
 }
 .nd-sandbox-bar a{
-  color:#cfe3f5;
+  color:#cfd4da;
   text-decoration:underline;
   text-underline-offset:3px;
 }
@@ -44,19 +100,19 @@
 /* Sandbox breadcrumb strip */
 .nd-crumbs{
   font-size:13px;
-  color:#5d7387;
+  color:var(--nd-ink-soft);
 }
 .nd-crumbs a{
-  color:#2b6999;
+  color:var(--nd-ink);
   text-decoration:none;
 }
 .nd-crumbs a:hover{text-decoration:underline}
 .nd-crumbs span.nd-sep{
   padding:0 8px;
-  color:#9fb4c6;
+  color:var(--nd-rule);
 }
 
-/* Buttons */
+/* Buttons: solid fills, hard edges, no glow */
 .nd-btn{
   display:inline-flex;
   align-items:center;
@@ -64,26 +120,32 @@
   gap:10px;
   min-height:52px;
   padding:14px 26px;
-  border-radius:12px;
+  border-radius:var(--nd-radius);
   font-weight:800;
   font-size:16px;
   text-decoration:none;
-  border:1px solid transparent;
-  transition:transform .18s ease, box-shadow .18s ease, background .18s ease;
+  border:2px solid transparent;
+  transition:background .15s ease, color .15s ease, border-color .15s ease;
 }
-.nd-btn:hover{transform:translateY(-1px)}
 .nd-btn-primary{
-  background:#e67e22;
+  background:var(--nd-accent);
+  color:var(--nd-accent-ink);
+  border-color:var(--nd-accent);
+}
+.nd-btn-primary:hover{
+  background:var(--nd-ink);
+  border-color:var(--nd-ink);
   color:#fff;
-  box-shadow:0 12px 26px rgba(22,56,87,.2);
 }
-.nd-btn-primary:hover{background:#d35400}
 .nd-btn-ghost{
-  background:#fff;
-  color:#1a3a5c;
-  border-color:#c3d7e6;
+  background:transparent;
+  color:var(--nd-ink);
+  border-color:var(--nd-rule-strong);
 }
-.nd-btn-ghost:hover{border-color:#1a3a5c}
+.nd-btn-ghost:hover{
+  background:var(--nd-ink);
+  color:var(--nd-paper);
+}
 .nd-btn-row{
   display:flex;
   flex-wrap:wrap;
@@ -96,13 +158,13 @@
   font-weight:800;
   letter-spacing:.16em;
   text-transform:uppercase;
-  color:#e67e22;
+  color:var(--nd-accent);
   margin:0 0 10px;
 }
 .nd-lede{
   font-size:18px;
   line-height:1.62;
-  color:#3b5b79;
+  color:var(--nd-ink-soft);
   margin:0 0 20px;
 }
 
@@ -119,7 +181,7 @@
   gap:9px;
   font-size:14px;
   font-weight:700;
-  color:#26445f;
+  color:var(--nd-ink);
 }
 .nd-trust-item .nd-trust-ico{
   display:inline-flex;
@@ -127,9 +189,9 @@
   justify-content:center;
   width:26px;
   height:26px;
-  border-radius:50%;
-  background:#eaf3fa;
-  color:#0f4c81;
+  border-radius:var(--nd-radius);
+  background:var(--nd-accent);
+  color:var(--nd-accent-ink);
   font-size:13px;
   font-weight:900;
   flex:0 0 auto;
@@ -138,12 +200,12 @@
 /* FAQ accordion, shared markup */
 .nd-faq{
   display:grid;
-  gap:12px;
+  gap:0;
 }
 .nd-faq details{
-  background:#fff;
-  border:1px solid #d8e6f0;
-  border-radius:12px;
+  background:var(--nd-surface);
+  border:1px solid var(--nd-rule);
+  border-radius:var(--nd-radius);
   overflow:hidden;
 }
 .nd-faq summary{
@@ -152,7 +214,7 @@
   padding:18px 20px;
   font-weight:700;
   font-size:17px;
-  color:#17324f;
+  color:var(--nd-ink);
   position:relative;
   padding-right:46px;
 }
@@ -164,13 +226,13 @@
   top:14px;
   font-size:24px;
   line-height:1;
-  color:#e67e22;
+  color:var(--nd-accent);
   font-weight:800;
 }
 .nd-faq details[open] summary::after{content:"\2212"}
 .nd-faq-answer{
   padding:0 20px 20px;
-  color:#3b5b79;
+  color:var(--nd-ink-soft);
   line-height:1.66;
 }
 .nd-faq-answer p{margin:0 0 12px}
@@ -193,6 +255,9 @@
     z-index:1000;
     gap:10px;
     align-items:center;
+    background:var(--nd-paper);
+    border:2px solid var(--nd-rule-strong);
+    padding:8px;
   }
   .nd-sticky-cta .nd-btn{
     flex:1 1 auto;
@@ -213,23 +278,27 @@
   font-size:30px;
   line-height:1.24;
   margin:0 0 16px;
-  color:#17324f;
+  font-family:var(--nd-display);
+  color:var(--nd-ink);
 }
 .nd-h3{
   font-size:20px;
   line-height:1.3;
   margin:0 0 10px;
-  color:#17324f;
+  font-family:var(--nd-display);
+  color:var(--nd-ink);
 }
 .nd-copy{
   line-height:1.66;
-  color:#3b5b79;
+  color:var(--nd-ink-soft);
   margin:0 0 14px;
 }
 .nd-copy a,
 .nd-faq-answer a{
-  color:#1f6ea8;
-  font-weight:600;
+  color:var(--nd-ink);
+  font-weight:700;
+  text-decoration:underline;
+  text-underline-offset:3px;
 }
 .nd-link-list{
   display:flex;
@@ -240,12 +309,12 @@
   list-style:none;
 }
 .nd-link-list a{
-  color:#1f6ea8;
+  color:var(--nd-ink);
   font-weight:700;
   text-decoration:none;
-  border-bottom:2px solid rgba(31,110,168,.25);
+  border-bottom:2px solid var(--nd-accent);
 }
-.nd-link-list a:hover{border-bottom-color:#1f6ea8}
+.nd-link-list a:hover{border-bottom-color:var(--nd-ink)}
 
 /* Real photo framing */
 .nd-photo{
@@ -257,7 +326,7 @@
 .nd-photo-cap{
   margin:10px 0 0;
   font-size:13px;
-  color:#5d7387;
+  color:var(--nd-ink-soft);
 }
 .nd-figure{
   margin:0;
@@ -270,25 +339,24 @@
   gap:22px;
 }
 .nd-index-card{
-  background:#fff;
-  border:1px solid #dbe7f0;
-  border-radius:16px;
+  background:var(--nd-surface);
+  border:2px solid var(--nd-rule-strong);
+  border-radius:var(--nd-radius);
   overflow:hidden;
   display:flex;
   flex-direction:column;
   text-decoration:none;
   color:inherit;
-  box-shadow:0 14px 34px rgba(22,56,87,.08);
-  transition:transform .18s ease, box-shadow .18s ease;
+  transition:border-color .15s ease;
 }
 .nd-index-card:hover{
-  transform:translateY(-3px);
-  box-shadow:0 20px 44px rgba(22,56,87,.14);
+  border-color:var(--nd-accent);
 }
 .nd-index-thumb{
   aspect-ratio:16/9;
   overflow:hidden;
-  background:#eaf1f7;
+  background:var(--nd-surface-2);
+  border-bottom:2px solid var(--nd-rule-strong);
 }
 .nd-index-thumb img{
   width:100%;
@@ -306,11 +374,12 @@
 .nd-index-body h2{
   margin:0;
   font-size:20px;
-  color:#17324f;
+  font-family:var(--nd-display);
+  color:var(--nd-ink);
 }
 .nd-index-body p{
   margin:0;
-  color:#4d6a84;
+  color:var(--nd-ink-soft);
   line-height:1.58;
   font-size:15px;
 }
@@ -321,26 +390,26 @@
   font-weight:800;
   letter-spacing:.1em;
   text-transform:uppercase;
-  color:#e67e22;
+  color:var(--nd-accent);
 }
 .nd-index-note{
-  background:#fff7ed;
-  border:1px solid #f6d7b4;
-  border-radius:14px;
+  background:var(--nd-accent-soft);
+  border:2px solid var(--nd-rule-strong);
+  border-radius:var(--nd-radius);
   padding:18px 22px;
-  color:#6b4a26;
+  color:var(--nd-ink);
   line-height:1.6;
 }
 
 /* Footer used on the sandbox pages */
 .nd-footer{
-  background:#12212f;
-  color:#c4d6e5;
+  background:#14171c;
+  color:#c9ced4;
   padding:40px 0 54px;
   margin-top:40px;
 }
 .nd-footer a{
-  color:#9fc6e6;
+  color:#9fb6cc;
 }
 .nd-footer-grid{
   display:grid;
@@ -365,8 +434,8 @@
 .nd-footer li{margin-bottom:7px}
 .nd-footer-note{
   font-size:13px;
-  color:#7e96aa;
+  color:#8d959e;
   margin-top:22px;
-  border-top:1px solid rgba(255,255,255,.12);
+  border-top:1px solid #39414a;
   padding-top:16px;
 }
