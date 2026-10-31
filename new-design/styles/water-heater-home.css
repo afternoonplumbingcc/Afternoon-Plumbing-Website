@@ -20,10 +20,28 @@
 :root{
   --home-navy:#1a3a5c;
   --home-navy-deep:#0f2438;
+  /* Accent orange.
+     Three steps of the same brand orange.
+     --home-accent        #e67e22  decorative only, never text. It reads at
+                                   2.85:1 on white, which fails WCAG AA for
+                                   text and fails the 3:1 floor for large
+                                   text and icons.
+     --home-accent-fill   #c14e00  the orange button fill. White on it
+                                   measures 4.82:1, so the 16px button label
+                                   passes AA for normal text and the fill
+                                   passes 3:1 against a white page.
+     --home-accent-text   #a84300  orange used as text or as an icon on a
+                                   light background. It measures 6.06:1 on
+                                   white, 5.79:1 on #f9fafb, and 5.55:1 on
+                                   the #f5f5f5 hero band. */
   --home-accent:#e67e22;
-  --home-accent-dark:#d35400;
+  --home-accent-fill:#c14e00;
+  --home-accent-text:#a84300;
+  --home-accent-dark:#a84300;
   --home-ink:#29333d;
-  --home-muted:#6b7280;
+  /* Muted ink nudged from #6b7280 so it clears 4.5:1 on the #f5f5f5 and
+     #f9fafb section backgrounds as well as on white. */
+  --home-muted:#656e7c;
   --home-line:#e5e7eb;
   --home-line-soft:#f3f4f6;
   --home-surface:#f9fafb;
@@ -68,6 +86,14 @@ body.nd-homepage-match h4{
   margin:0;
 }
 body.nd-homepage-match p{margin:0}
+/* Balanced heading line breaks so a single word never strands on its own
+   line at the narrow widths. */
+body.nd-homepage-match h1,
+body.nd-homepage-match h2,
+body.nd-homepage-match h3,
+body.nd-homepage-match h4{
+  text-wrap:balance;
+}
 
 /* Container: the homepage uses max-w-7xl (80rem) with px-6 gutters. */
 .nd-hm-wrap{
@@ -93,7 +119,7 @@ body.nd-homepage-match p{margin:0}
   font-weight:600;
   letter-spacing:.08em;
   text-transform:uppercase;
-  color:var(--home-accent);
+  color:var(--home-accent-text);
   margin:0 0 16px;
 }
 
@@ -114,9 +140,9 @@ body.nd-homepage-match p{margin:0}
   transition:background .2s ease,color .2s ease,border-color .2s ease;
 }
 .nd-hm-btn-primary{
-  background:var(--home-accent);
+  background:var(--home-accent-fill);
   color:#fff;
-  border-color:var(--home-accent);
+  border-color:var(--home-accent-fill);
 }
 .nd-hm-btn-primary:hover{
   background:var(--home-accent-dark);
@@ -154,12 +180,17 @@ body.nd-homepage-match p{margin:0}
 }
 .nd-hm-hero-grid{
   display:grid;
-  grid-template-columns:1fr 1fr;
+  grid-template-columns:1.2fr .8fr;
   gap:48px;
   align-items:center;
 }
 .nd-hm-hero h1{
-  font-size:60px;
+  /* Fluid between the narrow phone size and the desktop size.
+     The hard 46px step at 1024 was the worst of both worlds: the text column
+     narrows at the same point, so a single word got stranded on its own
+     line right above 1024. A fluid size keeps the line breaks steady
+     through the breakpoint. */
+  font-size:clamp(28px,5.2vw,60px);
   line-height:1.05;
   font-weight:700;
   margin:0 0 20px;
@@ -174,10 +205,19 @@ body.nd-homepage-match p{margin:0}
 .nd-hm-hero-figure{
   margin:0;
 }
+/* Hero photo.
+   The source is a 591x1280 portrait shot of a freshly piped water heater.
+   The old frame was a 592x500 landscape slice, which showed only 39 percent
+   of the photo and cut the tank in half. A 3:4 frame shows about 62 percent
+   of the photo and keeps the tank, its label, the control panel, and the
+   pipework above it in view. The crop is anchored a little below centre so
+   the tank body stays in frame. */
 .nd-hm-hero-figure img{
   width:100%;
-  height:500px;
+  height:auto;
+  aspect-ratio:3/4;
   object-fit:cover;
+  object-position:50% 50%;
   border-radius:var(--home-r-card);
   display:block;
 }
@@ -187,7 +227,12 @@ body.nd-homepage-match p{margin:0}
   margin-top:12px;
 }
 
-/* Trust band: flat strip with hairline rules, not a glass panel. */
+/* Trust band: flat strip with hairline rules, not a glass panel.
+   Five items. At the wide end they sit five across. Below 1100px the band
+   switches to a six column track where the first three items take two
+   columns each and the last two take three columns each, so both rows are
+   completely filled. The old two column switch left the fifth item alone in
+   the left half with a hole beside it. */
 .nd-hm-trust{
   border-top:1px solid var(--home-line);
   border-bottom:1px solid var(--home-line);
@@ -211,7 +256,7 @@ body.nd-homepage-match p{margin:0}
 }
 .nd-hm-trust-item svg{
   flex:0 0 auto;
-  color:#22c55e;
+  color:#15803d;
 }
 .nd-hm-trust-item strong{
   display:block;
@@ -243,9 +288,13 @@ body.nd-homepage-match p{margin:0}
 }
 
 /* Town tiles: flat cards with 1px borders, homepage radius. */
+/* Town tiles: flat cards with 1px borders, homepage radius.
+   Four cards, so the grid steps 4 across, then 2 by 2, then 1 up. An
+   auto-fit track used to land on 3 columns around 1024px and strand the
+   fourth card in the left third with a hole beside it. */
 .nd-hm-town-grid{
   display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+  grid-template-columns:repeat(4,minmax(0,1fr));
   gap:var(--home-grid-gap);
 }
 .nd-hm-town-card{
@@ -277,7 +326,7 @@ body.nd-homepage-match p{margin:0}
 .nd-hm-town-link{
   font-size:14px;
   font-weight:600;
-  color:var(--home-accent);
+  color:var(--home-accent-text);
 }
 .nd-hm-town-card:hover .nd-hm-town-link{text-decoration:underline}
 
@@ -286,23 +335,29 @@ body.nd-homepage-match p{margin:0}
   border-top:1px solid var(--home-line);
 }
 .nd-hm-service-row{
-  display:grid;
-  grid-template-columns:minmax(0,1fr) auto;
-  gap:24px;
-  align-items:center;
+  display:block;
   padding:24px 0;
   border-bottom:1px solid var(--home-line);
   text-decoration:none;
   color:inherit;
 }
 .nd-hm-service-row:hover .nd-hm-service-title{color:var(--home-accent-dark)}
+/* The arrow sits at the end of the title line so it never falls onto its
+   own line under the description, at any width. */
+.nd-hm-service-titlerow{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:16px;
+  margin:0 0 6px;
+}
 .nd-hm-service-title{
   font-family:var(--home-display);
   font-size:22px;
   font-weight:700;
   color:var(--home-navy);
   letter-spacing:-.03em;
-  margin:0 0 6px;
+  margin:0;
   transition:color .2s ease;
 }
 .nd-hm-service-row p{
@@ -312,19 +367,23 @@ body.nd-homepage-match p{margin:0}
   max-width:60ch;
 }
 .nd-hm-service-arrow{
-  color:var(--home-accent);
+  color:var(--home-accent-text);
   flex:0 0 auto;
 }
 
 /* Reviews: flat cards matching the homepage review card shape. */
+/* Reviews header.
+   The header used to carry its own 72rem max-width with margin auto, which
+   pushed it 40px to the right of the carousel track below it. It now spans
+   the same content column as the track and the cards. */
 .nd-hm-reviews-head{
   display:flex;
   flex-wrap:wrap;
   align-items:flex-end;
   justify-content:space-between;
   gap:24px;
-  margin:0 auto 40px;
-  max-width:72rem;
+  margin:0 0 40px;
+  max-width:none;
 }
 .nd-hm-reviews-head h2{
   font-size:48px;
@@ -337,10 +396,21 @@ body.nd-homepage-match p{margin:0}
    and reachable for readers and for users without JavaScript.
    The script adds .nd-hm-review-carousel-ready, which switches the track to
    a horizontal scroll-snap track and reveals the prev/next buttons. */
+/* No-JS fallback: five reviews in a two column grid with the last card
+   spanning the full width, so every row is filled and no card is left
+   stranded on its own. Below 640px it drops to a single column. */
 .nd-hm-review-track{
   display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+  grid-template-columns:repeat(2,minmax(0,1fr));
   gap:20px;
+}
+.nd-hm-review-track > .nd-hm-review-card:last-child{
+  grid-column:1 / -1;
+}
+@media (max-width:639px){
+  .nd-hm-review-track{
+    grid-template-columns:1fr;
+  }
 }
 .nd-hm-review-controls{
   display:none;
@@ -371,7 +441,7 @@ body.nd-homepage-match p{margin:0}
 }
 .nd-hm-review-btn:focus-visible,
 .nd-hm-review-track:focus-visible{
-  outline:2px solid var(--home-accent);
+  outline:2px solid var(--home-accent-text);
   outline-offset:3px;
 }
 
@@ -580,16 +650,17 @@ body.nd-homepage-match p{margin:0}
 .nd-hm-faq summary::-webkit-details-marker{display:none}
 .nd-hm-faq summary:hover{background:var(--home-line-soft)}
 .nd-hm-faq-plus{
-  color:var(--home-accent);
+  color:var(--home-accent-text);
   line-height:1;
   flex:0 0 auto;
   font-weight:400;
 }
-.nd-hm-faq-plus::before{content:"+";font-size:26px}
+.nd-hm-faq-plus::before{content:"+";font-size:22px}
 .nd-hm-faq details[open] .nd-hm-faq-plus::before{content:"\2212"}
 .nd-hm-faq-answer{
-  padding:0 24px 24px;
+  padding:20px 24px 24px;
   background:var(--home-white);
+  border-top:1px solid var(--home-line);
 }
 .nd-hm-faq-answer p{
   font-size:16px;
@@ -622,7 +693,7 @@ body.nd-homepage-match p{margin:0}
   display:none;
 }
 @media (max-width:768px){
-  body.nd-homepage-match{padding-bottom:96px}
+  body.nd-homepage-match{padding-bottom:104px}
   .nd-hm-sticky{
     display:flex;
     position:fixed;
@@ -631,16 +702,28 @@ body.nd-homepage-match p{margin:0}
     bottom:12px;
     z-index:1000;
     gap:10px;
-    align-items:center;
+    align-items:stretch;
     padding:8px;
     background:var(--home-white);
     border:1px solid var(--home-line);
     border-radius:var(--home-r-xs);
   }
   .nd-hm-sticky .nd-hm-btn{
-    flex:1 1 auto;
-    padding:14px 16px;
+    flex:1 1 0;
+    min-width:0;
+    padding:14px 12px;
     font-size:15px;
+    white-space:nowrap;
+  }
+}
+
+@media (max-width:380px){
+  /* At 320px the two labels no longer fit side by side at 15px, so the
+     type steps down a notch and the padding tightens. Both buttons keep
+     the same height and the gap stays clear. */
+  .nd-hm-sticky .nd-hm-btn{
+    padding:13px 8px;
+    font-size:14px;
   }
 }
 
@@ -689,38 +772,82 @@ body.nd-homepage-match p{margin:0}
   }
 }
 
+@media (max-width:1100px){
+  /* Five trust items across six tracks: items one to three take two tracks
+     each, items four and five take three tracks each. Both rows fill. */
+  .nd-hm-trust-list{
+    grid-template-columns:repeat(6,minmax(0,1fr));
+    justify-items:center;
+    gap:20px;
+  }
+  .nd-hm-trust-item:nth-child(1),
+  .nd-hm-trust-item:nth-child(2),
+  .nd-hm-trust-item:nth-child(3){
+    grid-column:span 2;
+  }
+  .nd-hm-trust-item:nth-child(4),
+  .nd-hm-trust-item:nth-child(5){
+    grid-column:span 3;
+  }
+  /* Each item centers inside its own tracks, so the first row spreads three
+     across the full width and the second row spreads two across the full
+     width. No half empty band on either row. */
+  .nd-hm-trust-item{
+    justify-content:center;
+    text-align:left;
+  }
+}
+
 @media (max-width:1024px){
   :root{--home-section-pad:72px}
-  .nd-hm-hero h1{font-size:46px}
   .nd-hm-head h2,
   .nd-hm-reviews-head h2{font-size:38px}
   .nd-hm-cta-inner h2{font-size:34px}
   .nd-hm-map-grid h2{font-size:34px}
+  /* Four town cards become a clean 2 by 2 instead of 3 plus an orphan. */
+  .nd-hm-town-grid{
+    grid-template-columns:repeat(2,minmax(0,1fr));
+  }
 }
 
 @media (max-width:900px){
   .nd-hm-hero-grid{grid-template-columns:1fr;gap:32px}
-  .nd-hm-hero-figure img{height:340px}
+  /* The photo keeps a 4:5 frame on one column so it does not run away in
+     height, and it is capped so the hero does not eat the whole screen. */
+  .nd-hm-hero-figure img{
+    aspect-ratio:4/5;
+    object-position:50% 38%;
+    max-width:420px;
+    margin:0 auto;
+  }
   .nd-hm-map-grid{grid-template-columns:1fr;gap:32px}
-  .nd-hm-trust-list{grid-template-columns:repeat(2,1fr);gap:20px}
   .nd-hm-link-list{grid-template-columns:1fr}
-  .nd-hm-service-row{grid-template-columns:1fr;gap:10px}
 }
 
 @media (max-width:640px){
   :root{--home-section-pad:56px}
   .nd-hm-wrap{padding:0 20px}
   .nd-hm-hero{padding:56px 0 44px}
-  .nd-hm-hero h1{font-size:34px}
   .nd-hm-hero-lede{font-size:17px}
-  .nd-hm-hero-figure img{height:260px}
   .nd-hm-head h2,
-  .nd-hm-reviews-head h2{font-size:30px}
-  .nd-hm-cta-inner h2{font-size:28px}
-  .nd-hm-map-grid h2{font-size:28px}
-  .nd-hm-trust-list{grid-template-columns:1fr;gap:16px;padding:22px 0}
+  .nd-hm-reviews-head h2{font-size:28px}
+  .nd-hm-cta-inner h2{font-size:26px}
+  .nd-hm-map-grid h2{font-size:26px}
+  .nd-hm-trust-list{grid-template-columns:1fr;justify-items:stretch;gap:16px;padding:22px 0}
+  .nd-hm-trust-item:nth-child(n){grid-column:auto;justify-content:flex-start}
   .nd-hm-faq summary{padding:18px;font-size:17px}
-  .nd-hm-faq-answer{padding:0 18px 18px}
+  .nd-hm-faq-answer{padding:16px 18px 18px}
   .nd-hm-btn{width:100%}
   .nd-hm-btn-row{width:100%}
+}
+
+@media (max-width:400px){
+  /* Two columns of town cards get cramped at this width, so they stack. */
+  .nd-hm-town-grid{
+    grid-template-columns:1fr;
+  }
+  .nd-hm-head h2,
+  .nd-hm-reviews-head h2{font-size:26px}
+  .nd-hm-cta-inner h2{font-size:24px}
+  .nd-hm-map-grid h2{font-size:24px}
 }
