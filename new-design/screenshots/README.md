@@ -43,3 +43,17 @@ Captured 2026-10-30 with a headless Chromium from
 | `reviews-carousel-desktop-1440.png` | Desktop, first position. Three review cards visible, prev button dimmed because the track is at the start, next button active. |
 | `reviews-carousel-desktop-1440-midscroll.png` | Desktop after one "next" click. Cards two to four are showing, next button filled navy on hover state. |
 | `reviews-carousel-mobile-390.png` | Mobile 390. One card visible, the "Read all reviews on Google" button stacked under the header text, both arrow buttons reachable below the track. |
+
+## Carousel polish: hover revealed arrows and autoplay
+
+Captured 2026-10-31 with a headless Chromium from
+`/new-design/water-heater-home.html`, scrolled to the Reviews section.
+
+| File | What it shows |
+| --- | --- |
+| `reviews-carousel-desktop-1440-arrows-visible.png` | Desktop 1440 with the pointer over the carousel, so the left and right arrows are faded in. Prev is dimmed because the track is at the start. The Pause button sits in the same control row. |
+| `reviews-carousel-desktop-1440-arrows-hidden.png` | Desktop 1440 with the pointer away, so the arrows are faded out and only the Pause button shows. |
+| `reviews-carousel-mobile-390.png` | Mobile 390 after the polish. One card visible, the Pause button sized to its label, no overflow. |
+| `reviews-carousel-desktop-1440-pause-button.png` | Close crop of the control row while the rotation is running. The button reads "Pause" with `aria-pressed="true"`. |
+| `reviews-carousel-desktop-1440-paused.png` | Close crop of the control row after pressing the button. It reads "Play" with `aria-pressed="false"`. |
+
