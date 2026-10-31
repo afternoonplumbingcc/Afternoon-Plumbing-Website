@@ -94,6 +94,18 @@ body.nd-homepage-match h3,
 body.nd-homepage-match h4{
   text-wrap:balance;
 }
+/* Body paragraphs get text-wrap:pretty instead of balance. Balance is for
+   short headings, and on a long paragraph it evens the lines out but still
+   allows a single word to strand on the last line. The hero lede ended
+   with "invoice." alone on its own line. Pretty keeps the last line from
+   being a lone short word. */
+body.nd-homepage-match .nd-hm-hero-lede,
+body.nd-homepage-match .nd-hm-reviews-lede,
+body.nd-homepage-match .nd-hm-town-note,
+body.nd-homepage-match .nd-hm-service-row p,
+body.nd-homepage-match .nd-hm-faq-answer p{
+  text-wrap:pretty;
+}
 
 /* Container: the homepage uses max-w-7xl (80rem) with px-6 gutters. */
 .nd-hm-wrap{
@@ -111,11 +123,24 @@ body.nd-homepage-match h4{
 }
 .nd-hm-section-dark h2,
 .nd-hm-section-dark h3{color:#fff}
+/* The body-level heading rule above carries the body class, so it outranks
+   the plain .nd-hm-section-dark selector. The closing band heading was
+   rendering navy on navy and was effectively invisible. These two rules
+   match the body rule and win the cascade. */
+body.nd-homepage-match .nd-hm-section-dark h2,
+body.nd-homepage-match .nd-hm-section-dark h3{color:#fff}
 
-/* Eyebrow: the homepage's small uppercase accent label. */
-.nd-hm-eyebrow{
+/* Eyebrow: the homepage's small uppercase accent label.
+   The selector carries the body class on purpose. The section head and
+   map rules style every paragraph inside them, so a plain .nd-hm-eyebrow
+   lost the cascade and three of the six eyebrows rendered as large grey
+   body copy instead of a small orange label. */
+body.nd-homepage-match .nd-hm-eyebrow{
   display:inline-block;
   font-size:14px;
+  /* A fixed line height keeps the geometry of the eyebrow predictable, so
+     the reviews action button can be aligned to the heading below it. */
+  line-height:20px;
   font-weight:600;
   letter-spacing:.08em;
   text-transform:uppercase;
@@ -189,17 +214,33 @@ body.nd-homepage-match h4{
      The hard 46px step at 1024 was the worst of both worlds: the text column
      narrows at the same point, so a single word got stranded on its own
      line right above 1024. A fluid size keeps the line breaks steady
-     through the breakpoint. */
-  font-size:clamp(28px,5.2vw,60px);
-  line-height:1.05;
+     through the breakpoint.
+     The upper bound dropped from 60px to 54px. At 60px the heading ran
+     710px wide in a 710px column, so the line breaks were set by the
+     column edge and the second line was a near single word. At 54px the
+     heading breaks into two even lines and the text block sits closer to
+     the photo, which is how the homepage hero reads. */
+  font-size:clamp(28px,4.6vw,54px);
+  line-height:1.08;
   font-weight:700;
   margin:0 0 20px;
+  /* A measure cap on the heading. Without it the heading fits the whole
+     phrase on one line at 640px and above, which left a single very long
+     line above the paragraph and looked nothing like the homepage hero.
+     At 12.5em the phrase always breaks after "neighborhood", so the
+     heading reads as two even lines at every width, and the heading block
+     stays wider than the lede under it. */
+  max-width:12.5em;
 }
 .nd-hm-hero-lede{
   font-size:18px;
   line-height:1.65;
   color:var(--home-muted);
-  max-width:34rem;
+  /* The measure was 34rem, which is wider than the heading and made the
+     lede read as a separate, wider block under a tight heading. 32rem
+     matches the homepage hero lede (max-w-lg) and keeps the paragraph to
+     about 62 characters. */
+  max-width:32rem;
   margin:0 0 28px;
 }
 .nd-hm-hero-figure{
@@ -232,12 +273,16 @@ body.nd-homepage-match h4{
 
 /* Hero trust row: the homepage check chips and the badge pills.
    These are the two homepage hero trust rows that were missing here.
-   They are FLAT: solid fills, 1px borders, no glass, no blur. */
+   They are FLAT: solid fills, 1px borders, no glass, no blur.
+   The checks row sits directly under the buttons with no space, and the
+   badges row is a different gap rhythm from the checks row. Both rows
+   now use the homepage spacing: a clear step down from the buttons, then
+   a tighter step between the two rows. */
 .nd-hm-hero-checks{
   display:flex;
   flex-wrap:wrap;
-  gap:12px 24px;
-  margin:0 0 12px;
+  gap:10px 24px;
+  margin:20px 0 0;
 }
 .nd-hm-hero-check{
   display:inline-flex;
@@ -255,6 +300,7 @@ body.nd-homepage-match h4{
   display:flex;
   flex-wrap:wrap;
   gap:8px 10px;
+  margin:14px 0 0;
 }
 .nd-hm-hero-badge{
   display:inline-flex;
@@ -362,7 +408,12 @@ body.nd-homepage-match h4{
    switches to a six column track where the first three items take two
    columns each and the last two take three columns each, so both rows are
    completely filled. The old two column switch left the fifth item alone in
-   the left half with a hole beside it. */
+   the left half with a hole beside it.
+
+   Each item is a two line stack: a bold first line and a muted second
+   line. The text span is a block, so the plain text after the bold first
+   line drops to its own line without any extra markup. The band now reads
+   as five equal two line blocks. */
 .nd-hm-trust{
   border-top:1px solid var(--home-line);
   border-bottom:1px solid var(--home-line);
@@ -393,6 +444,13 @@ body.nd-homepage-match h4{
   color:var(--home-navy);
   font-weight:700;
   font-size:15px;
+}
+/* The second line of each trust item sits under the bold first line. The
+   strong is already a block, so the plain text that follows it drops to
+   its own line without any extra markup. */
+.nd-hm-trust-item > span{
+  display:block;
+  min-width:0;
 }
 
 /* Section head: the homepage centers most section heads. */
@@ -442,10 +500,19 @@ body.nd-homepage-match h4{
 .nd-hm-town-card:hover{border-color:var(--home-navy)}
 .nd-hm-town-name{
   font-family:var(--home-display);
-  font-size:22px;
+  font-size:20px;
   font-weight:700;
   color:var(--home-navy);
   letter-spacing:-.03em;
+  line-height:1.2;
+  /* Every town name reserves the height of two lines so the note under it
+     starts at the same height in all four cards. "Taneytown and nearby" is
+     the only long name and it wraps to two lines in the narrower columns,
+     which used to push that card's note 27px lower than the other three.
+     The name is not set to nowrap, because the two column layout at phone
+     widths leaves only about 156px of text room and a nowrap name pushed
+     the whole page sideways. */
+  min-height:2.4em;
 }
 .nd-hm-town-note{
   font-size:15px;
@@ -505,13 +572,17 @@ body.nd-homepage-match h4{
 /* Reviews header.
    The header used to carry its own 72rem max-width with margin auto, which
    pushed it 40px to the right of the carousel track below it. It now spans
-   the same content column as the track and the cards. */
+   the same content column as the track and the cards.
+   The head is centered, like the other three section heads on the page and
+   like the homepage reviews block. The button used to hang off the bottom
+   right corner of a left aligned block, which read as an afterthought next
+   to a centered heading. */
 .nd-hm-reviews-head{
   display:flex;
-  flex-wrap:wrap;
-  align-items:flex-end;
-  justify-content:space-between;
-  gap:24px;
+  flex-direction:column;
+  align-items:center;
+  text-align:center;
+  gap:0;
   margin:0 0 40px;
   max-width:none;
 }
@@ -520,6 +591,13 @@ body.nd-homepage-match h4{
   line-height:1.1;
   font-weight:700;
   margin:0 0 12px;
+}
+.nd-hm-reviews-lede{
+  font-size:18px;
+  line-height:1.65;
+  color:var(--home-muted);
+  max-width:62ch;
+  margin:0 0 24px;
 }
 /* Reviews carousel.
    No-JS default: a plain wrapping grid, so all five reviews are visible
@@ -596,6 +674,7 @@ body.nd-homepage-match h4{
 .nd-hm-review-carousel-ready .nd-hm-review-controls{
   display:flex;
   align-items:center;
+  justify-content:center;
   flex-wrap:wrap;
 }
 
@@ -784,8 +863,13 @@ body.nd-homepage-match h4{
   line-height:1;
   flex:0 0 auto;
   font-weight:400;
+  /* The glyph is drawn by the ::before rule, so the span itself carries no
+     text. The box is given an explicit width so the plus and the minus
+     sit in the same column and the open and closed rows line up. */
+  width:14px;
+  text-align:center;
 }
-.nd-hm-faq-plus::before{content:"+";font-size:22px}
+.nd-hm-faq-plus::before{content:"+";font-size:22px;display:block}
 .nd-hm-faq details[open] .nd-hm-faq-plus::before{content:"\2212"}
 .nd-hm-faq-answer{
   padding:20px 24px 24px;
@@ -798,13 +882,20 @@ body.nd-homepage-match h4{
   color:var(--home-muted);
 }
 
-/* Closing CTA band: navy, matching the homepage dark sections. */
+/* Closing CTA band: navy, matching the homepage dark sections.
+   The heading is white. The body heading rule carries the body class and
+   used to win the cascade over the plain .nd-hm-section-dark selector, so
+   this band rendered navy text on a navy background. The white rule lives
+   with the body class so it matches and wins.
+   The band is centered, like the homepage "Ready to Get Started" block and
+   like every other section head on this page. The button used to sit hard
+   against the right edge, far from the words it belongs to. */
 .nd-hm-cta-inner{
   display:flex;
-  flex-wrap:wrap;
+  flex-direction:column;
   align-items:center;
-  justify-content:space-between;
-  gap:32px;
+  text-align:center;
+  gap:24px;
 }
 .nd-hm-cta-inner h2{
   font-size:40px;
@@ -816,6 +907,8 @@ body.nd-homepage-match h4{
   font-size:18px;
   line-height:1.6;
   color:rgba(255,255,255,.8);
+  margin:0;
+  max-width:56ch;
 }
 
 /* Sticky mobile CTA, kept consistent with the shared mobile call bar. */
@@ -902,9 +995,16 @@ body.nd-homepage-match h4{
   }
 }
 
-@media (max-width:1100px){
+@media (max-width:1220px){
   /* Five trust items across six tracks: items one to three take two tracks
-     each, items four and five take three tracks each. Both rows fill. */
+     each, items four and five take three tracks each. Both rows fill.
+
+     The switch point moved up from 1100px. Five items across need at least
+     213px per column for the longest label, "Family owned and operated",
+     to stay on one line. At 1200px the five column track was only 211px
+     wide, so that one label wrapped to a third line and made the whole
+     band uneven. Below 1220px the six track layout gives every item the
+     room it needs. */
   .nd-hm-trust-list{
     grid-template-columns:repeat(6,minmax(0,1fr));
     justify-items:center;
