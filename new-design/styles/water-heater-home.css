@@ -67,18 +67,19 @@
 body.nd-homepage-match{
   margin:0;
   background:var(--home-white);
-  color:var(--home-ink);
   overflow-x:hidden;
 }
 body.nd-homepage-match::before,
 body.nd-homepage-match::after{display:none}
 
-/* The page content font is scoped to the page content, not to the body.
-   The body also wraps the shared nav and the shared footer chrome from
+/* The page content font and ink are scoped to the page content, not to the
+   body. The body also wraps the shared nav and the shared footer chrome from
    glass-site.css, and those must keep the site chrome font (Manrope 15px)
-   so the chrome matches the live site exactly. A body level font override
-   bled into the shared footer and made the footer buttons stack. */
+   and the site ink so the chrome matches the live site exactly. A body level
+   font override bled into the shared footer and made the footer buttons
+   stack. A body level colour override bled into the shared footer text. */
 body.nd-homepage-match main{
+  color:var(--home-ink);
   font-family:var(--home-body);
   font-size:16px;
 }

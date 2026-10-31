@@ -27,14 +27,16 @@
 }
 
 /* Sandbox pages sit on flat white paper.
-   The page content font is scoped to the page content, not to the body. The
-   body also wraps the shared nav and footer chrome from glass-site.css, and
-   those must keep the site chrome font so the chrome matches the live site. */
+   The page content font and ink are scoped to the page content, not to the
+   body. The body also wraps the shared nav and footer chrome from
+   glass-site.css, and those must keep the site chrome font and the site ink
+   so the chrome matches the live site exactly. A body level font or colour
+   override bled into the shared footer. */
 body.nd-page{
   background:var(--nd-paper);
-  color:var(--nd-ink);
 }
 body.nd-page main{
+  color:var(--nd-ink);
   font-family:var(--nd-font);
   font-size:16px;
 }
