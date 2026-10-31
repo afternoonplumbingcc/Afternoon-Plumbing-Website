@@ -12,7 +12,7 @@
      max width   80rem (1280px) with px-6 gutters
      rhythm      py-24 (96px) section padding, 32px grid gaps
    Page body surfaces are FLAT and PRINT-STYLE: solid fills, 1px borders,
-   no backdrop-filter, no glass translucency, no gradient meshes, no
+   no glass filter, no glass translucency, no gradient meshes, no
    floating shadows. Shared nav/footer chrome is imported untouched so the
    page chrome stays identical to the rest of the site.
    Temporary. Loaded only by /new-design/water-heater-home.html. */
@@ -212,6 +212,9 @@ body.nd-homepage-match h4{
    of the photo and keeps the tank, its label, the control panel, and the
    pipework above it in view. The crop is anchored a little below centre so
    the tank body stays in frame. */
+.nd-hm-hero-photo{
+  position:relative;
+}
 .nd-hm-hero-figure img{
   width:100%;
   height:auto;
@@ -224,7 +227,134 @@ body.nd-homepage-match h4{
 .nd-hm-hero-figure figcaption{
   font-size:14px;
   color:var(--home-muted);
-  margin-top:12px;
+  margin-top:36px;
+}
+
+/* Hero trust row: the homepage check chips and the badge pills.
+   These are the two homepage hero trust rows that were missing here.
+   They are FLAT: solid fills, 1px borders, no glass, no blur. */
+.nd-hm-hero-checks{
+  display:flex;
+  flex-wrap:wrap;
+  gap:12px 24px;
+  margin:0 0 12px;
+}
+.nd-hm-hero-check{
+  display:inline-flex;
+  align-items:center;
+  gap:6px;
+  font-size:14px;
+  font-weight:500;
+  color:var(--home-muted);
+}
+.nd-hm-hero-check svg{
+  flex:0 0 auto;
+  color:#15803d;
+}
+.nd-hm-hero-badges{
+  display:flex;
+  flex-wrap:wrap;
+  gap:8px 10px;
+}
+.nd-hm-hero-badge{
+  display:inline-flex;
+  align-items:center;
+  gap:6px;
+  padding:5px 12px;
+  border-radius:999px;
+  background:#e7f6ec;
+  border:1px solid #bfe3cb;
+  color:#14632f;
+  font-size:13px;
+  font-weight:600;
+}
+.nd-hm-hero-badge svg{
+  flex:0 0 auto;
+}
+
+/* Hero stat cards.
+   FLAT treatment, matched to the homepage hero cards that overlap the
+   photo: the "23+ years in business" award card sits at the lower left,
+   the "5.0 Top-rated on Google" rating card at the upper right.
+   Flat means solid white fill, a 1px hairline border, and one soft
+   shadow for lift. No glass filter, no translucent fill, no blur, no
+   gradient mesh. */
+.nd-hm-stat{
+  position:absolute;
+  background:var(--home-white);
+  border:1px solid var(--home-line);
+  border-radius:var(--home-r-sm);
+  box-shadow:0 6px 20px #1a3a5c24;
+  padding:16px;
+}
+.nd-hm-stat-years{
+  left:-16px;
+  bottom:-20px;
+  display:flex;
+  align-items:center;
+  gap:12px;
+}
+.nd-hm-stat-icon{
+  flex:0 0 auto;
+  width:44px;
+  height:44px;
+  border-radius:999px;
+  background:#fdf1e6;
+  color:var(--home-accent-text);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+}
+.nd-hm-stat-icon svg{
+  width:22px;
+  height:22px;
+}
+.nd-hm-stat-text{
+  display:block;
+}
+.nd-hm-stat-number{
+  display:block;
+  font-family:var(--home-display);
+  font-size:28px;
+  font-weight:700;
+  line-height:1.1;
+  letter-spacing:-.04em;
+  color:var(--home-navy);
+}
+.nd-hm-stat-label{
+  display:block;
+  font-size:13px;
+  line-height:1.4;
+  color:var(--home-muted);
+}
+.nd-hm-stat-rating{
+  right:-16px;
+  top:-16px;
+  padding:14px 16px;
+}
+.nd-hm-stat-row{
+  display:flex;
+  align-items:center;
+  gap:8px;
+}
+.nd-hm-stat-stars{
+  display:flex;
+  color:var(--home-star);
+}
+.nd-hm-stat-stars svg{
+  width:16px;
+  height:16px;
+  fill:currentColor;
+}
+.nd-hm-stat-score{
+  font-family:var(--home-display);
+  font-size:16px;
+  font-weight:700;
+  letter-spacing:-.02em;
+  color:var(--home-navy);
+}
+.nd-hm-stat-rating .nd-hm-stat-label{
+  margin-top:4px;
 }
 
 /* Trust band: flat strip with hairline rules, not a glass panel.
@@ -820,6 +950,21 @@ body.nd-homepage-match h4{
     max-width:420px;
     margin:0 auto;
   }
+  /* The photo wrapper is capped to the same width as the image so the stat
+     cards stay anchored to the edges of the photo instead of drifting out
+     to the edges of the full width column. */
+  .nd-hm-hero-photo{
+    max-width:420px;
+    margin:0 auto;
+  }
+  .nd-hm-hero-figure img{
+    max-width:none;
+    margin:0;
+  }
+  /* Pull the overlapping cards back inside the photo edges so they cannot
+     push the page sideways. */
+  .nd-hm-stat-years{left:8px;bottom:-16px}
+  .nd-hm-stat-rating{right:8px;top:-12px}
   .nd-hm-map-grid{grid-template-columns:1fr;gap:32px}
   .nd-hm-link-list{grid-template-columns:1fr}
 }
@@ -829,6 +974,17 @@ body.nd-homepage-match h4{
   .nd-hm-wrap{padding:0 20px}
   .nd-hm-hero{padding:56px 0 44px}
   .nd-hm-hero-lede{font-size:17px}
+  /* On phones the stat cards sit below the photo in normal flow instead of
+     overlapping it, so they never cover the tank or push the layout
+     sideways. The two cards stack, each full width. */
+  .nd-hm-stat{
+    position:static;
+    width:100%;
+    margin-top:12px;
+  }
+  .nd-hm-stat-years{left:auto;bottom:auto}
+  .nd-hm-stat-rating{right:auto;top:auto}
+  .nd-hm-hero-figure figcaption{margin-top:12px}
   .nd-hm-head h2,
   .nd-hm-reviews-head h2{font-size:28px}
   .nd-hm-cta-inner h2{font-size:26px}
