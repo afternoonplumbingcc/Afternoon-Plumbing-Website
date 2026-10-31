@@ -85,6 +85,13 @@ body.nd-homepage-match main{
 body.nd-homepage-match .nd-hm-snapshot-note{
   font-family:var(--home-body);
 }
+/* The nav and drawer sit outside main and are page chrome, not page content.
+   They keep the sandbox page font so only the shared footer changes. */
+body.nd-homepage-match .site-nav,
+body.nd-homepage-match .site-nav-drawer{
+  font-family:var(--home-body);
+  font-size:16px;
+}
 
 /* Headings use the homepage display face, matching the live site. */
 body.nd-homepage-match main h1,
