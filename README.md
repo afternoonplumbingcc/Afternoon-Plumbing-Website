@@ -102,13 +102,38 @@ To change the footer:
 
 1. Edit the markup between the `BEGIN FOOTER MARKUP` and `END FOOTER MARKUP` markers in
    `partials/footer.part`.
-2. Run the sync script (kept out of the repo on purpose, see below):
-   `python3 partials/sync_footer.py --repo <repo-path>`
+2. Regenerate the per-page copies with the one-liner below.
 3. Commit both the partial and the regenerated pages, so the repo stays self-contained.
 
-`partials/sync_footer.py` is gitignored. GitHub Pages publishes every tracked file as a public
-URL, so a tracked helper script would become a live endpoint. The script is kept in the working
-copy only; if it is missing, copy it from the change that introduced it.
+The regeneration is a single inline Python command, run from the repo root. It rewrites every
+page that carries the shared footer, so the copy stays byte identical to the partial:
+
+```bash
+python3 - <<'PY'
+import pathlib, re
+root = pathlib.Path('.')
+part = (root / 'partials' / 'footer.part').read_text(encoding='utf-8')
+footer = re.sub(r'<!--.*?-->', '', part, flags=re.S).strip()
+block = re.compile(r'<footer class="site-footer site-footer-shared".*?</footer>', re.S)
+for page in sorted(root.rglob('*.html')):
+    if 'new-design' in page.parts:
+        continue
+    html = page.read_text(encoding='utf-8')
+    if 'site-footer-shared' not in html:
+        continue
+    new, n = block.subn(lambda m: footer, html)
+    if n != 1:
+        raise SystemExit('%s: expected one shared footer, found %d' % (page, n))
+    if new != html:
+        page.write_text(new, encoding='utf-8')
+        print('updated', page)
+PY
+```
+
+The command lives in the README rather than in a tracked script on purpose: GitHub Pages publishes
+every tracked file as a public URL, so a tracked helper script would become a live endpoint. It
+skips `new-design/`, which keeps the legacy footer markup, and it fails loudly if a page ends up
+with more than one shared footer instead of silently mangling it.
 
 The homepage (`index.html`) is the exception: it is the React bundle, and its footer lives inside
 `assets/index-*.js`, which is frozen.
