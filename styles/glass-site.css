@@ -801,13 +801,87 @@ details.faq-item{
   border-color:rgba(138,177,206,.9);
 }
 
+/* Shared site footer.
+   The markup is generated from partials/footer.part and is byte identical on
+   every static page, so all footer styling lives here.
+
+   The new rules are scoped under .site-footer-shared so the new-design/
+   sandbox pages, which still carry the legacy footer markup, keep the legacy
+   rendering below. */
 .site-footer{padding:0 16px 28px}
 .site-footer-inner{max-width:var(--max);margin:0 auto}
-.footer-grid{grid-template-columns:1.3fr .85fr .85fr}
+.footer-panel{padding:22px}
 .footer-panel h3{margin-bottom:10px}
 .footer-panel ul{margin:0;padding-left:18px}
 .footer-panel li+li{margin-top:8px}
+
+/* Legacy footer rules, still used by the new-design/ sandbox pages. */
+.footer-grid{grid-template-columns:1.3fr .85fr .85fr}
 .footer-note{margin-top:12px;color:#6b88a3;font-size:.92rem}
+
+/* Canonical shared footer. */
+.site-footer-shared .footer-grid{
+  grid-template-columns:1.15fr .85fr .9fr;
+  align-items:start;
+}
+/* Footer links: explicit colour plus a visible focus ring. */
+.site-footer-shared .footer-panel ul a{color:var(--brand);text-decoration:none}
+.site-footer-shared .footer-panel ul a:hover{text-decoration:underline}
+.site-footer-shared .footer-panel ul a:focus-visible,
+.site-footer-shared .footer-email-chip:focus-visible{
+  outline:2px solid var(--brand);
+  outline-offset:3px;
+  border-radius:6px;
+}
+/* Service area sentence. Kept in one class so a later town consolidation is
+   a single find and replace in partials/footer.part.
+   Contrast: #656e7c on the light footer panel is about 4.9:1, above the
+   4.5:1 body text floor. The old #6b88a3 was about 3.5:1 and failed. */
+.site-footer-shared .footer-service-area-note{margin-top:12px;color:#656e7c;font-size:.92rem}
+.footer-subhead{margin-top:18px}
+.footer-services{
+  margin-top:24px;
+  padding-top:18px;
+  border-top:1px solid var(--line);
+}
+.footer-service-groups{
+  display:grid;
+  gap:18px;
+  grid-template-columns:repeat(4,minmax(0,1fr));
+}
+.footer-service-group h4{
+  margin:0 0 8px;
+  font-size:.98rem;
+  line-height:1.35;
+}
+.footer-btn{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  gap:8px;
+  min-height:44px;
+  padding:12px 18px;
+  border-radius:999px;
+  border:1px solid transparent;
+  font-weight:800;
+  text-decoration:none;
+  box-shadow:var(--shadow-soft);
+  transition:transform .2s ease,box-shadow .2s ease,border-color .2s ease;
+}
+.footer-btn:hover{
+  transform:translateY(-1px);
+  box-shadow:var(--shadow);
+}
+.footer-btn-call{
+  color:#fff;
+  background:linear-gradient(135deg,var(--accent),var(--accent-soft));
+  box-shadow:0 18px 34px rgba(230,126,34,.22);
+}
+.footer-btn-text{
+  color:var(--brand);
+  background:rgba(255,255,255,.82);
+  border-color:rgba(156,190,215,.75);
+}
 
 .noindex-note{font-size:.9rem;color:#6b88a3}
 .centered{text-align:center}
@@ -819,7 +893,20 @@ details.faq-item{
 }
 
 @media (max-width:980px){
-  .hero-grid,.split-grid,.dual-grid,.service-grid,.tile-grid,.stats-grid,.quick-grid,.links-grid,.contact-grid,.compare-grid,.footer-grid,.detail-grid{grid-template-columns:1fr}
+  .hero-grid,.split-grid,.dual-grid,.service-grid,.tile-grid,.stats-grid,.quick-grid,.links-grid,.contact-grid,.compare-grid,.detail-grid{grid-template-columns:1fr}
+  /* Legacy footer stays single column in the new-design/ sandbox. */
+  .footer-grid{grid-template-columns:1fr}
+  /* Canonical shared footer: two columns on tablet, not one long thin stack. */
+  .site-footer-shared .footer-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .site-footer-shared .footer-about{grid-column:1 / -1}
+  .site-footer-shared .footer-service-groups{grid-template-columns:repeat(2,minmax(0,1fr))}
+}
+
+@media (max-width:640px){
+  /* Phone footer: single column. */
+  .site-footer-shared .footer-grid{grid-template-columns:1fr}
+  .site-footer-shared .footer-about{grid-column:auto}
+  .site-footer-shared .footer-service-groups{grid-template-columns:1fr}
 }
 
 @media (max-width:760px){

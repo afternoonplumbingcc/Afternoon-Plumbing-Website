@@ -42,6 +42,9 @@ A page is live once it is on `main` and listed in `sitemap.xml`.
 │   └── gas-appliance-hookups.html  Gas appliance hub
 ├── jobs/                      Individual job write-ups
 │
+├── partials/
+│   └── footer.part            Canonical shared footer markup (source of truth)
+│
 ├── styles/
 │   ├── glass-site.css         Shared site styling
 │   ├── service-pages.css      Service page styling
@@ -88,6 +91,30 @@ React fills at runtime. Verify the deployed bundle by fetching its bytes, runnin
 When `styles/glass-site.css` or `scripts/glass-site.js` change, bump the `?v=N` query on **every**
 page that references it. Read the current version numbers first and never reuse a number that has
 already been published.
+
+## Shared footer
+
+`partials/footer.part` is the canonical source of the shared site footer. The site has no build
+step, so the markup is still copied into every static page; the copy is byte identical across all
+36 footered pages and can be regenerated from the partial.
+
+To change the footer:
+
+1. Edit the markup between the `BEGIN FOOTER MARKUP` and `END FOOTER MARKUP` markers in
+   `partials/footer.part`.
+2. Run the sync script (kept out of the repo on purpose, see below):
+   `python3 partials/sync_footer.py --repo <repo-path>`
+3. Commit both the partial and the regenerated pages, so the repo stays self-contained.
+
+`partials/sync_footer.py` is gitignored. GitHub Pages publishes every tracked file as a public
+URL, so a tracked helper script would become a live endpoint. The script is kept in the working
+copy only; if it is missing, copy it from the change that introduced it.
+
+The homepage (`index.html`) is the exception: it is the React bundle, and its footer lives inside
+`assets/index-*.js`, which is frozen.
+
+The service area sentence lives in one element with the class `footer-service-area-note`, so a
+later consolidation of the town pages is a single find and replace in `partials/footer.part`.
 
 ## Content rules
 

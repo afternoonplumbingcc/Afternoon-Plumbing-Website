@@ -52,3 +52,9 @@ memory/
 # from this repo with no build step, so tracked helper scripts become public
 # URLs. Kept outside the repository.
 scripts/notify_commit.sh
+
+# Footer sync generator. Kept out of the published site on purpose: the site
+# is published directly from this repo with no build step, so a tracked helper
+# script becomes a public URL. The canonical footer markup is committed in
+# partials/footer.part; this script only copies it into the pages.
+partials/sync_footer.py
