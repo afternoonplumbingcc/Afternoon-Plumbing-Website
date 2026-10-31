@@ -395,11 +395,83 @@ body.nd-homepage-match p{margin:0}
 }
 .nd-hm-review-carousel-ready .nd-hm-review-controls{
   display:flex;
+  align-items:center;
+  flex-wrap:wrap;
+}
+
+/* Arrow reveal.
+   The arrows stay out of the way until the reader reaches for them.
+   They are faded out with opacity, never display:none, so they stay in the
+   tab order and can still be reached with a keyboard. Hovering the carousel
+   (track or control row) fades them back in, and :focus-within fades them in
+   for keyboard users who tab into the carousel without a pointer. */
+.nd-hm-review-carousel-ready .nd-hm-review-arrow{
+  opacity:0;
+  transition:opacity .25s ease,background .2s ease,color .2s ease;
+}
+.nd-hm-review-carousel-ready:hover .nd-hm-review-arrow,
+.nd-hm-review-carousel-ready:focus-within .nd-hm-review-arrow{
+  opacity:1;
+}
+.nd-hm-review-carousel-ready:hover .nd-hm-review-arrow:disabled,
+.nd-hm-review-carousel-ready:focus-within .nd-hm-review-arrow:disabled{
+  opacity:.45;
+}
+/* Touch screens have no hover, so the arrows stay visible there. They are
+   still only faded in and out with a transition everywhere else. */
+@media (hover:none){
+  .nd-hm-review-carousel-ready .nd-hm-review-arrow{
+    opacity:1;
+  }
+  .nd-hm-review-carousel-ready .nd-hm-review-arrow:disabled{
+    opacity:.45;
+  }
+}
+
+/* Pause and play toggle. Same flat treatment as the arrows: white fill,
+   1px navy border, no glass, no gradient, no shadow. */
+.nd-hm-review-btn.nd-hm-review-toggle{
+  width:auto;
+  min-width:48px;
+  height:48px;
+  gap:8px;
+  padding:0 16px;
+  font-family:var(--home-body);
+  font-size:14px;
+  font-weight:600;
+  letter-spacing:0;
+  white-space:nowrap;
+}
+.nd-hm-review-btn.nd-hm-review-toggle:hover{
+  background:var(--home-navy);
+  color:#fff;
+}
+.nd-hm-review-toggle-icon{
+  flex:0 0 auto;
+}
+.nd-hm-review-icon-play{
+  display:none;
+}
+.nd-hm-review-toggle[aria-pressed="false"] .nd-hm-review-icon-pause{
+  display:none;
+}
+.nd-hm-review-toggle[aria-pressed="false"] .nd-hm-review-icon-play{
+  display:block;
+}
+.nd-hm-review-toggle[aria-disabled="true"]{
+  opacity:.55;
+  cursor:default;
 }
 
 @media (prefers-reduced-motion:reduce){
   .nd-hm-review-carousel-ready .nd-hm-review-track{
     scroll-behavior:auto;
+  }
+  /* Reduced motion means no automatic rotation, so the pause control has
+     nothing to pause. It stays visible but reads as unavailable, which the
+     .nd-hm-review-toggle[aria-disabled="true"] rule above already covers. */
+  .nd-hm-review-carousel-ready .nd-hm-review-arrow{
+    transition:opacity .25s ease;
   }
 }
 .nd-hm-review-card{
@@ -600,6 +672,13 @@ body.nd-homepage-match p{margin:0}
   .nd-hm-review-btn{
     width:44px;
     height:44px;
+  }
+  .nd-hm-review-btn.nd-hm-review-toggle{
+    width:auto;
+    min-width:44px;
+    height:44px;
+    padding:0 12px;
+    font-size:13px;
   }
   /* The Google reviews link stacks under the header text on small screens. */
   .nd-hm-reviews-head{
