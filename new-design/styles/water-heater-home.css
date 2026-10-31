@@ -68,30 +68,41 @@ body.nd-homepage-match{
   margin:0;
   background:var(--home-white);
   color:var(--home-ink);
-  font-family:var(--home-body);
-  font-size:16px;
   overflow-x:hidden;
 }
 body.nd-homepage-match::before,
 body.nd-homepage-match::after{display:none}
 
+/* The page content font is scoped to the page content, not to the body.
+   The body also wraps the shared nav and the shared footer chrome from
+   glass-site.css, and those must keep the site chrome font (Manrope 15px)
+   so the chrome matches the live site exactly. A body level font override
+   bled into the shared footer and made the footer buttons stack. */
+body.nd-homepage-match main{
+  font-family:var(--home-body);
+  font-size:16px;
+}
+body.nd-homepage-match .nd-hm-snapshot-note{
+  font-family:var(--home-body);
+}
+
 /* Headings use the homepage display face, matching the live site. */
-body.nd-homepage-match h1,
-body.nd-homepage-match h2,
-body.nd-homepage-match h3,
-body.nd-homepage-match h4{
+body.nd-homepage-match main h1,
+body.nd-homepage-match main h2,
+body.nd-homepage-match main h3,
+body.nd-homepage-match main h4{
   font-family:var(--home-display);
   color:var(--home-navy);
   letter-spacing:-.04em;
   margin:0;
 }
-body.nd-homepage-match p{margin:0}
+body.nd-homepage-match main p{margin:0}
 /* Balanced heading line breaks so a single word never strands on its own
    line at the narrow widths. */
-body.nd-homepage-match h1,
-body.nd-homepage-match h2,
-body.nd-homepage-match h3,
-body.nd-homepage-match h4{
+body.nd-homepage-match main h1,
+body.nd-homepage-match main h2,
+body.nd-homepage-match main h3,
+body.nd-homepage-match main h4{
   text-wrap:balance;
 }
 /* Body paragraphs get text-wrap:pretty instead of balance. Balance is for

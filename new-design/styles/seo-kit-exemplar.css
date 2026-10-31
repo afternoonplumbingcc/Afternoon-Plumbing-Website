@@ -26,10 +26,15 @@
   --nd-display:"Sora","Inter",system-ui,-apple-system,"Segoe UI",sans-serif;
 }
 
-/* Sandbox pages sit on flat white paper. */
+/* Sandbox pages sit on flat white paper.
+   The page content font is scoped to the page content, not to the body. The
+   body also wraps the shared nav and footer chrome from glass-site.css, and
+   those must keep the site chrome font so the chrome matches the live site. */
 body.nd-page{
   background:var(--nd-paper);
   color:var(--nd-ink);
+}
+body.nd-page main{
   font-family:var(--nd-font);
   font-size:16px;
 }

@@ -21,10 +21,15 @@
   --nd-mono:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;
 }
 
-/* Sandbox pages sit on flat paper, no glass body treatment. */
+/* Sandbox pages sit on flat paper, no glass body treatment.
+   The sandbox font is scoped to the page content, not to the body. The body
+   also wraps the shared nav and drawer chrome from glass-site.css, and those
+   must keep the site chrome font so the chrome matches the live site. */
 body.nd-page{
   background:var(--nd-paper);
   color:var(--nd-ink);
+}
+body.nd-page main{
   font-family:var(--nd-font);
 }
 body.nd-page::before,
@@ -35,6 +40,10 @@ body.nd-page::after{
    Only the frosted glass treatment is neutralized on the sandbox pages so
    the variants read as solid print. Scoped to body.nd-page, so every live
    page keeps the shared glass nav untouched. */
+body.nd-page .site-nav,
+body.nd-page .site-nav-drawer{
+  font-family:var(--nd-font);
+}
 body.nd-page .site-nav{
   background:#ffffff;
   backdrop-filter:none;
@@ -50,10 +59,10 @@ body.nd-page .site-nav-drawer-subpanel a:hover{background:#eceff2}
 body.nd-page .site-nav-drawer-row.active,
 body.nd-page .site-nav-drawer-subpanel a.active{background:#e2e7ec}
 /* Headings inherit the variant display face instead of the shared Sora face. */
-body.nd-page h1,
-body.nd-page h2,
-body.nd-page h3,
-body.nd-page h4{
+body.nd-page main h1,
+body.nd-page main h2,
+body.nd-page main h3,
+body.nd-page main h4{
   font-family:var(--nd-display);
 }
 
@@ -72,6 +81,7 @@ body.nd-page h4{
 .nd-sandbox-bar{
   background:#14171c;
   color:#e8eaed;
+  font-family:var(--nd-font);
   font-size:13px;
   letter-spacing:.02em;
 }
@@ -241,6 +251,7 @@ body.nd-page h4{
 /* Sticky mobile CTA, shared behavior */
 .nd-sticky-cta{
   display:none;
+  font-family:var(--nd-font);
 }
 @media (max-width:768px){
   body.nd-page{
@@ -405,6 +416,7 @@ body.nd-page h4{
 .nd-footer{
   background:#14171c;
   color:#c9ced4;
+  font-family:var(--nd-font);
   padding:40px 0 54px;
   margin-top:40px;
 }
