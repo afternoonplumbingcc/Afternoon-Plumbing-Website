@@ -92,7 +92,7 @@ Required keys, in this order:
   "provider": { "@id": "https://afternoonplumbing.com/#plumber" },
   "areaServed": [ { "@type": "City", "name": "<Town>" }, ... ],
   "offers": { "@type": "Offer", "priceRange": "<no dollar amount>" },
-  "aggregateRating": { "@type": "AggregateRating", "ratingValue": "5.0", "reviewCount": "44" },
+  "aggregateRating": { "@type": "AggregateRating", "ratingValue": "5.0", "reviewCount": "46" },
   "dateModified": "YYYY-MM-DD"
 }
 ```
@@ -105,7 +105,7 @@ Rules:
   `"Free estimate, varies by job, quoted upfront"`. Never `"$"`, `"$$"`, or a number.
 - **`provider` is a reference to the site-level `#plumber` node**, not a duplicate
   inline `LocalBusiness`. The business node lives once, on the homepage.
-- **`aggregateRating` uses the real numbers**: 5.0 stars across 44 Google reviews.
+- **`aggregateRating` uses the real numbers**: 5.0 stars across 46 Google reviews.
   Only include this if the business has real reviews. It does.
 - **`dateModified` is the date the copy was last reviewed**, ISO `YYYY-MM-DD`. It must
   match the visible "Reviewed by" line. If the visible line says a different date than
@@ -200,13 +200,16 @@ page copy, so they do not need to vary.
 | Licensed Master Plumber #17734 | Maryland state licensed |
 | Family owned since 2003 | Bryant and Christopher |
 | Fully insured | On every job we take |
-| 5.0 stars, 44 Google reviews | Rated by homeowners |
+| 5.0 stars, 46 Google reviews | Rated by homeowners |
 | 1 year labor warranty | On the work we do |
 
 Plus the "Reviewed by" line with the review date.
 
 If any of these facts changes, change them on every service page in the same pass.
-A trust band that says 42 reviews on one page and 44 on another is a credibility leak.
+A trust band that says one review count on one page and a different one on another is a
+credibility leak. Until 2026-10-31 production carried 42 in the visible bands while
+the structured data said 44. The live Google Business Profile count is 46, and it
+must read 46 in the visible band and in the structured data on every page.
 
 ---
 
@@ -369,6 +372,6 @@ does not rediscover them:
   string is customer-facing in the sense that Google can display it. If Google ever
   complains about the missing price, the fix is a single keyword range, not a dollar
   amount.
-- **`aggregateRating` is a liability if the review count goes stale.** It says 44
+- **`aggregateRating` is a liability if the review count goes stale.** It says 46
   right now. Every service page has to be updated when the real count changes, or the
   structured data starts contradicting the live profile.

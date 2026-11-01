@@ -12,7 +12,7 @@
      max width   80rem (1280px) with px-6 gutters
      rhythm      py-24 (96px) section padding, 32px grid gaps
    Page body surfaces are FLAT and PRINT-STYLE: solid fills, 1px borders,
-   no backdrop-filter, no glass translucency, no gradient meshes, no
+   no glass filter, no glass translucency, no gradient meshes, no
    floating shadows. Shared nav/footer chrome is imported untouched so the
    page chrome stays identical to the rest of the site.
    Temporary. Loaded only by /new-design/water-heater-home.html. */
@@ -67,32 +67,63 @@
 body.nd-homepage-match{
   margin:0;
   background:var(--home-white);
-  color:var(--home-ink);
-  font-family:var(--home-body);
-  font-size:16px;
   overflow-x:hidden;
 }
 body.nd-homepage-match::before,
 body.nd-homepage-match::after{display:none}
 
+/* The page content font and ink are scoped to the page content, not to the
+   body. The body also wraps the shared nav and the shared footer chrome from
+   glass-site.css, and those must keep the site chrome font (Manrope 15px)
+   and the site ink so the chrome matches the live site exactly. A body level
+   font override bled into the shared footer and made the footer buttons
+   stack. A body level colour override bled into the shared footer text. */
+body.nd-homepage-match main{
+  color:var(--home-ink);
+  font-family:var(--home-body);
+  font-size:16px;
+}
+body.nd-homepage-match .nd-hm-snapshot-note{
+  font-family:var(--home-body);
+}
+/* The nav and drawer sit outside main and are page chrome, not page content.
+   They keep the sandbox page font so only the shared footer changes. */
+body.nd-homepage-match .site-nav,
+body.nd-homepage-match .site-nav-drawer{
+  font-family:var(--home-body);
+  font-size:16px;
+}
+
 /* Headings use the homepage display face, matching the live site. */
-body.nd-homepage-match h1,
-body.nd-homepage-match h2,
-body.nd-homepage-match h3,
-body.nd-homepage-match h4{
+body.nd-homepage-match main h1,
+body.nd-homepage-match main h2,
+body.nd-homepage-match main h3,
+body.nd-homepage-match main h4{
   font-family:var(--home-display);
   color:var(--home-navy);
   letter-spacing:-.04em;
   margin:0;
 }
-body.nd-homepage-match p{margin:0}
+body.nd-homepage-match main p{margin:0}
 /* Balanced heading line breaks so a single word never strands on its own
    line at the narrow widths. */
-body.nd-homepage-match h1,
-body.nd-homepage-match h2,
-body.nd-homepage-match h3,
-body.nd-homepage-match h4{
+body.nd-homepage-match main h1,
+body.nd-homepage-match main h2,
+body.nd-homepage-match main h3,
+body.nd-homepage-match main h4{
   text-wrap:balance;
+}
+/* Body paragraphs get text-wrap:pretty instead of balance. Balance is for
+   short headings, and on a long paragraph it evens the lines out but still
+   allows a single word to strand on the last line. The hero lede ended
+   with "invoice." alone on its own line. Pretty keeps the last line from
+   being a lone short word. */
+body.nd-homepage-match .nd-hm-hero-lede,
+body.nd-homepage-match .nd-hm-reviews-lede,
+body.nd-homepage-match .nd-hm-town-note,
+body.nd-homepage-match .nd-hm-service-row p,
+body.nd-homepage-match .nd-hm-faq-answer p{
+  text-wrap:pretty;
 }
 
 /* Container: the homepage uses max-w-7xl (80rem) with px-6 gutters. */
@@ -111,11 +142,24 @@ body.nd-homepage-match h4{
 }
 .nd-hm-section-dark h2,
 .nd-hm-section-dark h3{color:#fff}
+/* The body-level heading rule above carries the body class, so it outranks
+   the plain .nd-hm-section-dark selector. The closing band heading was
+   rendering navy on navy and was effectively invisible. These two rules
+   match the body rule and win the cascade. */
+body.nd-homepage-match .nd-hm-section-dark h2,
+body.nd-homepage-match .nd-hm-section-dark h3{color:#fff}
 
-/* Eyebrow: the homepage's small uppercase accent label. */
-.nd-hm-eyebrow{
+/* Eyebrow: the homepage's small uppercase accent label.
+   The selector carries the body class on purpose. The section head and
+   map rules style every paragraph inside them, so a plain .nd-hm-eyebrow
+   lost the cascade and three of the six eyebrows rendered as large grey
+   body copy instead of a small orange label. */
+body.nd-homepage-match .nd-hm-eyebrow{
   display:inline-block;
   font-size:14px;
+  /* A fixed line height keeps the geometry of the eyebrow predictable, so
+     the reviews action button can be aligned to the heading below it. */
+  line-height:20px;
   font-weight:600;
   letter-spacing:.08em;
   text-transform:uppercase;
@@ -189,17 +233,33 @@ body.nd-homepage-match h4{
      The hard 46px step at 1024 was the worst of both worlds: the text column
      narrows at the same point, so a single word got stranded on its own
      line right above 1024. A fluid size keeps the line breaks steady
-     through the breakpoint. */
-  font-size:clamp(28px,5.2vw,60px);
-  line-height:1.05;
+     through the breakpoint.
+     The upper bound dropped from 60px to 54px. At 60px the heading ran
+     710px wide in a 710px column, so the line breaks were set by the
+     column edge and the second line was a near single word. At 54px the
+     heading breaks into two even lines and the text block sits closer to
+     the photo, which is how the homepage hero reads. */
+  font-size:clamp(28px,4.6vw,54px);
+  line-height:1.08;
   font-weight:700;
   margin:0 0 20px;
+  /* A measure cap on the heading. Without it the heading fits the whole
+     phrase on one line at 640px and above, which left a single very long
+     line above the paragraph and looked nothing like the homepage hero.
+     At 12.5em the phrase always breaks after "neighborhood", so the
+     heading reads as two even lines at every width, and the heading block
+     stays wider than the lede under it. */
+  max-width:12.5em;
 }
 .nd-hm-hero-lede{
   font-size:18px;
   line-height:1.65;
   color:var(--home-muted);
-  max-width:34rem;
+  /* The measure was 34rem, which is wider than the heading and made the
+     lede read as a separate, wider block under a tight heading. 32rem
+     matches the homepage hero lede (max-w-lg) and keeps the paragraph to
+     about 62 characters. */
+  max-width:32rem;
   margin:0 0 28px;
 }
 .nd-hm-hero-figure{
@@ -212,6 +272,9 @@ body.nd-homepage-match h4{
    of the photo and keeps the tank, its label, the control panel, and the
    pipework above it in view. The crop is anchored a little below centre so
    the tank body stays in frame. */
+.nd-hm-hero-photo{
+  position:relative;
+}
 .nd-hm-hero-figure img{
   width:100%;
   height:auto;
@@ -224,7 +287,139 @@ body.nd-homepage-match h4{
 .nd-hm-hero-figure figcaption{
   font-size:14px;
   color:var(--home-muted);
-  margin-top:12px;
+  margin-top:36px;
+}
+
+/* Hero trust row: the homepage check chips and the badge pills.
+   These are the two homepage hero trust rows that were missing here.
+   They are FLAT: solid fills, 1px borders, no glass, no blur.
+   The checks row sits directly under the buttons with no space, and the
+   badges row is a different gap rhythm from the checks row. Both rows
+   now use the homepage spacing: a clear step down from the buttons, then
+   a tighter step between the two rows. */
+.nd-hm-hero-checks{
+  display:flex;
+  flex-wrap:wrap;
+  gap:10px 24px;
+  margin:20px 0 0;
+}
+.nd-hm-hero-check{
+  display:inline-flex;
+  align-items:center;
+  gap:6px;
+  font-size:14px;
+  font-weight:500;
+  color:var(--home-muted);
+}
+.nd-hm-hero-check svg{
+  flex:0 0 auto;
+  color:#15803d;
+}
+.nd-hm-hero-badges{
+  display:flex;
+  flex-wrap:wrap;
+  gap:8px 10px;
+  margin:14px 0 0;
+}
+.nd-hm-hero-badge{
+  display:inline-flex;
+  align-items:center;
+  gap:6px;
+  padding:5px 12px;
+  border-radius:999px;
+  background:#e7f6ec;
+  border:1px solid #bfe3cb;
+  color:#14632f;
+  font-size:13px;
+  font-weight:600;
+}
+.nd-hm-hero-badge svg{
+  flex:0 0 auto;
+}
+
+/* Hero stat cards.
+   FLAT treatment, matched to the homepage hero cards that overlap the
+   photo: the "23+ years in business" award card sits at the lower left,
+   the "5.0 Top-rated on Google" rating card at the upper right.
+   Flat means solid white fill, a 1px hairline border, and one soft
+   shadow for lift. No glass filter, no translucent fill, no blur, no
+   gradient mesh. */
+.nd-hm-stat{
+  position:absolute;
+  background:var(--home-white);
+  border:1px solid var(--home-line);
+  border-radius:var(--home-r-sm);
+  box-shadow:0 6px 20px #1a3a5c24;
+  padding:16px;
+}
+.nd-hm-stat-years{
+  left:-16px;
+  bottom:-20px;
+  display:flex;
+  align-items:center;
+  gap:12px;
+}
+.nd-hm-stat-icon{
+  flex:0 0 auto;
+  width:44px;
+  height:44px;
+  border-radius:999px;
+  background:#fdf1e6;
+  color:var(--home-accent-text);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+}
+.nd-hm-stat-icon svg{
+  width:22px;
+  height:22px;
+}
+.nd-hm-stat-text{
+  display:block;
+}
+.nd-hm-stat-number{
+  display:block;
+  font-family:var(--home-display);
+  font-size:28px;
+  font-weight:700;
+  line-height:1.1;
+  letter-spacing:-.04em;
+  color:var(--home-navy);
+}
+.nd-hm-stat-label{
+  display:block;
+  font-size:13px;
+  line-height:1.4;
+  color:var(--home-muted);
+}
+.nd-hm-stat-rating{
+  right:-16px;
+  top:-16px;
+  padding:14px 16px;
+}
+.nd-hm-stat-row{
+  display:flex;
+  align-items:center;
+  gap:8px;
+}
+.nd-hm-stat-stars{
+  display:flex;
+  color:var(--home-star);
+}
+.nd-hm-stat-stars svg{
+  width:16px;
+  height:16px;
+  fill:currentColor;
+}
+.nd-hm-stat-score{
+  font-family:var(--home-display);
+  font-size:16px;
+  font-weight:700;
+  letter-spacing:-.02em;
+  color:var(--home-navy);
+}
+.nd-hm-stat-rating .nd-hm-stat-label{
+  margin-top:4px;
 }
 
 /* Trust band: flat strip with hairline rules, not a glass panel.
@@ -232,7 +427,12 @@ body.nd-homepage-match h4{
    switches to a six column track where the first three items take two
    columns each and the last two take three columns each, so both rows are
    completely filled. The old two column switch left the fifth item alone in
-   the left half with a hole beside it. */
+   the left half with a hole beside it.
+
+   Each item is a two line stack: a bold first line and a muted second
+   line. The text span is a block, so the plain text after the bold first
+   line drops to its own line without any extra markup. The band now reads
+   as five equal two line blocks. */
 .nd-hm-trust{
   border-top:1px solid var(--home-line);
   border-bottom:1px solid var(--home-line);
@@ -263,6 +463,13 @@ body.nd-homepage-match h4{
   color:var(--home-navy);
   font-weight:700;
   font-size:15px;
+}
+/* The second line of each trust item sits under the bold first line. The
+   strong is already a block, so the plain text that follows it drops to
+   its own line without any extra markup. */
+.nd-hm-trust-item > span{
+  display:block;
+  min-width:0;
 }
 
 /* Section head: the homepage centers most section heads. */
@@ -312,10 +519,19 @@ body.nd-homepage-match h4{
 .nd-hm-town-card:hover{border-color:var(--home-navy)}
 .nd-hm-town-name{
   font-family:var(--home-display);
-  font-size:22px;
+  font-size:20px;
   font-weight:700;
   color:var(--home-navy);
   letter-spacing:-.03em;
+  line-height:1.2;
+  /* Every town name reserves the height of two lines so the note under it
+     starts at the same height in all four cards. "Taneytown and nearby" is
+     the only long name and it wraps to two lines in the narrower columns,
+     which used to push that card's note 27px lower than the other three.
+     The name is not set to nowrap, because the two column layout at phone
+     widths leaves only about 156px of text room and a nowrap name pushed
+     the whole page sideways. */
+  min-height:2.4em;
 }
 .nd-hm-town-note{
   font-size:15px;
@@ -375,13 +591,17 @@ body.nd-homepage-match h4{
 /* Reviews header.
    The header used to carry its own 72rem max-width with margin auto, which
    pushed it 40px to the right of the carousel track below it. It now spans
-   the same content column as the track and the cards. */
+   the same content column as the track and the cards.
+   The head is centered, like the other three section heads on the page and
+   like the homepage reviews block. The button used to hang off the bottom
+   right corner of a left aligned block, which read as an afterthought next
+   to a centered heading. */
 .nd-hm-reviews-head{
   display:flex;
-  flex-wrap:wrap;
-  align-items:flex-end;
-  justify-content:space-between;
-  gap:24px;
+  flex-direction:column;
+  align-items:center;
+  text-align:center;
+  gap:0;
   margin:0 0 40px;
   max-width:none;
 }
@@ -390,6 +610,13 @@ body.nd-homepage-match h4{
   line-height:1.1;
   font-weight:700;
   margin:0 0 12px;
+}
+.nd-hm-reviews-lede{
+  font-size:18px;
+  line-height:1.65;
+  color:var(--home-muted);
+  max-width:62ch;
+  margin:0 0 24px;
 }
 /* Reviews carousel.
    No-JS default: a plain wrapping grid, so all five reviews are visible
@@ -466,6 +693,7 @@ body.nd-homepage-match h4{
 .nd-hm-review-carousel-ready .nd-hm-review-controls{
   display:flex;
   align-items:center;
+  justify-content:center;
   flex-wrap:wrap;
 }
 
@@ -654,8 +882,13 @@ body.nd-homepage-match h4{
   line-height:1;
   flex:0 0 auto;
   font-weight:400;
+  /* The glyph is drawn by the ::before rule, so the span itself carries no
+     text. The box is given an explicit width so the plus and the minus
+     sit in the same column and the open and closed rows line up. */
+  width:14px;
+  text-align:center;
 }
-.nd-hm-faq-plus::before{content:"+";font-size:22px}
+.nd-hm-faq-plus::before{content:"+";font-size:22px;display:block}
 .nd-hm-faq details[open] .nd-hm-faq-plus::before{content:"\2212"}
 .nd-hm-faq-answer{
   padding:20px 24px 24px;
@@ -668,13 +901,20 @@ body.nd-homepage-match h4{
   color:var(--home-muted);
 }
 
-/* Closing CTA band: navy, matching the homepage dark sections. */
+/* Closing CTA band: navy, matching the homepage dark sections.
+   The heading is white. The body heading rule carries the body class and
+   used to win the cascade over the plain .nd-hm-section-dark selector, so
+   this band rendered navy text on a navy background. The white rule lives
+   with the body class so it matches and wins.
+   The band is centered, like the homepage "Ready to Get Started" block and
+   like every other section head on this page. The button used to sit hard
+   against the right edge, far from the words it belongs to. */
 .nd-hm-cta-inner{
   display:flex;
-  flex-wrap:wrap;
+  flex-direction:column;
   align-items:center;
-  justify-content:space-between;
-  gap:32px;
+  text-align:center;
+  gap:24px;
 }
 .nd-hm-cta-inner h2{
   font-size:40px;
@@ -686,6 +926,8 @@ body.nd-homepage-match h4{
   font-size:18px;
   line-height:1.6;
   color:rgba(255,255,255,.8);
+  margin:0;
+  max-width:56ch;
 }
 
 /* Sticky mobile CTA, kept consistent with the shared mobile call bar. */
@@ -772,9 +1014,16 @@ body.nd-homepage-match h4{
   }
 }
 
-@media (max-width:1100px){
+@media (max-width:1220px){
   /* Five trust items across six tracks: items one to three take two tracks
-     each, items four and five take three tracks each. Both rows fill. */
+     each, items four and five take three tracks each. Both rows fill.
+
+     The switch point moved up from 1100px. Five items across need at least
+     213px per column for the longest label, "Family owned and operated",
+     to stay on one line. At 1200px the five column track was only 211px
+     wide, so that one label wrapped to a third line and made the whole
+     band uneven. Below 1220px the six track layout gives every item the
+     room it needs. */
   .nd-hm-trust-list{
     grid-template-columns:repeat(6,minmax(0,1fr));
     justify-items:center;
@@ -820,6 +1069,21 @@ body.nd-homepage-match h4{
     max-width:420px;
     margin:0 auto;
   }
+  /* The photo wrapper is capped to the same width as the image so the stat
+     cards stay anchored to the edges of the photo instead of drifting out
+     to the edges of the full width column. */
+  .nd-hm-hero-photo{
+    max-width:420px;
+    margin:0 auto;
+  }
+  .nd-hm-hero-figure img{
+    max-width:none;
+    margin:0;
+  }
+  /* Pull the overlapping cards back inside the photo edges so they cannot
+     push the page sideways. */
+  .nd-hm-stat-years{left:8px;bottom:-16px}
+  .nd-hm-stat-rating{right:8px;top:-12px}
   .nd-hm-map-grid{grid-template-columns:1fr;gap:32px}
   .nd-hm-link-list{grid-template-columns:1fr}
 }
@@ -829,6 +1093,17 @@ body.nd-homepage-match h4{
   .nd-hm-wrap{padding:0 20px}
   .nd-hm-hero{padding:56px 0 44px}
   .nd-hm-hero-lede{font-size:17px}
+  /* On phones the stat cards sit below the photo in normal flow instead of
+     overlapping it, so they never cover the tank or push the layout
+     sideways. The two cards stack, each full width. */
+  .nd-hm-stat{
+    position:static;
+    width:100%;
+    margin-top:12px;
+  }
+  .nd-hm-stat-years{left:auto;bottom:auto}
+  .nd-hm-stat-rating{right:auto;top:auto}
+  .nd-hm-hero-figure figcaption{margin-top:12px}
   .nd-hm-head h2,
   .nd-hm-reviews-head h2{font-size:28px}
   .nd-hm-cta-inner h2{font-size:26px}
