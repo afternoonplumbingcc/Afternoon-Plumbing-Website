@@ -335,3 +335,179 @@
     window.fbq('track', 'PageView');
   }
 })();
+// ---------------------------------------------------------------------------
+// Homepage accessibility repair (React-hydrated state).
+//
+// The homepage ships a prerendered static shell inside #root, then React's
+// bundle (assets/index-*.js) replaces those children with the live app. All
+// homepage a11y defects exist only in the React-rendered DOM, so a one-shot
+// patch at load time would be discarded when React commits. We therefore
+// observe #root and repair each defect as React creates it, plus run a few
+// timed repair passes for late lazy-loading images.
+//
+// All repairs are additive and non-visual:
+//   - aria-label on the six social icon links
+//   - role="heading" + aria-level="3" on the five h4s that follow an h2
+//   - a unique id on the second #about section
+//   - width/height on images that lack them
+//   - a <main> landmark around the React app root
+//
+// SCOPE GATE (mandatory): scripts/glass-site.js is loaded by all 37
+// production pages AND by the new-design/ sandbox pages. The sandbox includes
+// new-design/homepage-reference.html, which ALSO has id="root" and ALSO has
+// class "home-page" on <body> - so a body-class or #root-presence test alone
+// would leak these repairs into the sandbox. The production homepage is
+// served at "/" or "/index.html" and nowhere else, so we require that
+// pathname AND exclude /new-design/ explicitly.
+// ---------------------------------------------------------------------------
+(function () {
+  if (window.__apA11yPatched) return;
+
+  // --- scope gate: production homepage only -------------------------------
+  var path = (location.pathname || '/').replace(/\/+$/, '') || '/';
+  if (path.indexOf('/new-design') === 0) return;   // design sandbox
+  if (path !== '/' && path !== '/index.html') return; // homepage only
+
+  window.__apA11yPatched = true;
+
+  var SOCIAL = [
+    ['facebook.com', 'Afternoon Plumbing on Facebook'],
+    ['instagram.com', 'Afternoon Plumbing on Instagram'],
+    ['youtube.com', 'Afternoon Plumbing on YouTube'],
+    ['yelp.com', 'Afternoon Plumbing on Yelp'],
+    ['linkedin.com', 'Afternoon Plumbing on LinkedIn']
+  ];
+
+  function socialLabel(href) {
+    if (!href) return null;
+    var h = href.toLowerCase();
+    for (var i = 0; i < SOCIAL.length; i++) {
+      if (h.indexOf(SOCIAL[i][0]) !== -1) return SOCIAL[i][1];
+    }
+    return null;
+  }
+
+  // Run fn(el) for el and every descendant matching sel.
+  function each(scope, sel, fn) {
+    if (!scope || scope.nodeType !== 1) return;
+    try {
+      if (scope.matches && scope.matches(sel)) fn(scope);
+      scope.querySelectorAll(sel).forEach(fn);
+    } catch (e) { /* never let a repair break the page */ }
+  }
+
+  // 1) Six social icon anchors have no discernible text. Give each a name.
+  function labelSocial(scope) {
+    each(scope, 'a', function (a) {
+      if (a.dataset.apA11yLabeled === '1') return;
+      if ((a.textContent || '').trim().length > 0) return;
+      if (a.getAttribute('aria-label') || a.getAttribute('aria-labelledby') || a.getAttribute('title')) return;
+      var lbl = socialLabel(a.getAttribute('href'));
+      if (!lbl) return;
+      a.setAttribute('aria-label', lbl);
+      a.dataset.apA11yLabeled = '1';
+    });
+  }
+
+  // 2) Five h4 elements follow an h2 (heading-order skip). The prerendered
+  //    shell already renders these as <h3 class="ap-h4">, so level 3 is the
+  //    correct target. Element.tagName is getter-only, so use ARIA.
+  function fixHeadings(scope) {
+    each(scope, 'h4', function (h) {
+      if (h.dataset.apA11yLevel === '1') return;
+      var all = document.querySelectorAll('h1,h2,h3,h4,h5,h6');
+      var prev = null;
+      for (var i = 0; i < all.length; i++) { if (all[i] === h) break; prev = all[i]; }
+      if (!prev) return;
+      var prevLevel = Number(prev.tagName[1]);
+      // Demote when the nearest preceding heading is an h2 (the skip case),
+      // or when it is an h4 we already demoted (siblings in the same group).
+      if (prevLevel !== 2 && !(prev.tagName === 'H4' && prev.dataset.apA11yLevel === '1')) return;
+      h.dataset.apA11yLevel = '1';
+      h.setAttribute('role', 'heading');
+      h.setAttribute('aria-level', '3');
+    });
+  }
+
+  // 3) Two sections share id="about". Rename the second one (Transformations).
+  //    Nothing links to #about and no CSS targets it, so this is safe.
+  function renameAbout() {
+    try {
+      var abouts = document.querySelectorAll('#about');
+      if (abouts.length < 2) return;
+      for (var i = 1; i < abouts.length; i++) {
+        var el = abouts[i];
+        if (el.dataset.apA11yRenamed === '1') continue;
+        el.dataset.apA11yRenamed = '1';
+        el.id = 'about-transformations';
+      }
+    } catch (e) {}
+  }
+
+  // 4) 20 of 21 React images lack width/height. Use the intrinsic size once
+  //    the image has loaded; lazy images report naturalWidth 0 until then.
+  function sizeImgs(scope) {
+    each(scope, 'img', function (im) {
+      if (im.dataset.apA11ySized === '1') return;
+      if (im.hasAttribute('width') && im.hasAttribute('height')) return;
+      if (!im.naturalWidth || !im.naturalHeight) {
+        if (im.dataset.apA11yPending !== '1') {
+          im.dataset.apA11yPending = '1';
+          im.addEventListener('load', function () {
+            delete im.dataset.apA11yPending;
+            sizeImgs(im);
+          }, { once: true });
+        }
+        return;
+      }
+      im.dataset.apA11ySized = '1';
+      im.setAttribute('width', im.naturalWidth);
+      im.setAttribute('height', im.naturalHeight);
+    });
+  }
+
+  // 5) No <main> landmark. Wrap the React app root in a real <main> element
+  //    so it matches the other 37 pages, which each have exactly one <main>.
+  //    Idempotent: the observer fires many times.
+  function ensureMain() {
+    var root = document.getElementById('root');
+    if (!root) return;
+    var app = root.firstElementChild;
+    if (!app) return;
+    if (document.querySelector('main')) return;
+    if (app.getAttribute('role') === 'main') return;
+    if (app.parentElement && app.parentElement.tagName === 'MAIN') return;
+    var main = document.createElement('main');
+    main.id = 'ap-main';
+    try {
+      root.insertBefore(main, app);
+      main.appendChild(app);
+    } catch (e) {}
+  }
+
+  function run() {
+    labelSocial(document);
+    fixHeadings(document);
+    sizeImgs(document);
+    renameAbout();
+    ensureMain();
+  }
+
+  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', run);
+  run();
+  [200, 600, 1200, 2000, 3200, 5000].forEach(function (t) { setTimeout(run, t); });
+
+  // The key part: observe React's commit into #root.
+  (function startObserver() {
+    var root = document.getElementById('root');
+    if (!root) { setTimeout(startObserver, 0); return; }
+    new MutationObserver(function (muts) {
+      muts.forEach(function (m) {
+        m.addedNodes.forEach(function (n) {
+          if (n.nodeType === 1) { labelSocial(n); fixHeadings(n); sizeImgs(n); }
+        });
+        renameAbout();
+      });
+    }).observe(root, { childList: true, subtree: true });
+  })();
+})();

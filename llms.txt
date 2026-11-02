@@ -1,32 +1,65 @@
 # Afternoon Plumbing LLC
 
-- Website: https://afternoonplumbing.com
-- Business type: Residential plumbing services
-- Primary location: Westminster, MD 21157
-- Phone: 443-789-2897
-- Email: afternoonplumbingcc@gmail.com
+> Afternoon Plumbing LLC is an owner-operated residential plumbing business based in Westminster, Maryland, focused on water heaters, well pump problems, water treatment equipment, and everyday residential repair work.
 
-## Core Services
-- Water heater replacement and installation
-- Heat pump and hybrid water heater installation
-- Well pump services
-- Water softener, filtration, acid neutralizer, and whole-house water treatment
-- Leak diagnostics and repair
-- Faucet, valve, and fixture installs
-- Frost-free hose bib replacement
-- Winterization before the cold season
-- Gas appliance hookups, gas line repairs, and regulator replacement (house side only)
+Afternoon Plumbing LLC serves homeowners across Carroll, Baltimore, Frederick, and Howard County, generally within about 20 miles of Westminster. Estimates are free, the full quote is provided upfront before work starts, and labor carries a 1 year warranty. Maryland State Licensed Master Plumber #17734. Fully insured.
 
-## Services hub
-- https://afternoonplumbing.com/services.html
+Phone: 443-789-2897. Email: afternoonplumbingcc@gmail.com. Base: Westminster, MD 21157.
 
-## FAQ Hub
-- FAQ page: https://afternoonplumbing.com/faq/faq.html
-- Includes common questions about estimates, scheduling, water heaters, well pumps, water treatment, hose bib and exterior plumbing issues, emergency leaks, and service area coverage.
+Core services include water heater replacement and installation, heat pump and hybrid water heater installation, gas water heater installation, well pump repair and replacement, water softener, filtration, acid neutralizer, and whole house water treatment, sump pump replacement, frost free hose bib replacement, seasonal winterization, house side gas appliance hookups, gas line repairs, and regulator replacement, leak diagnostics, and faucet, valve, and fixture work.
 
-## Service Area
-- Carroll County: Westminster (21157, 21158), Manchester (21102), Hampstead (21074), Finksburg (21048), New Windsor (21776), Union Bridge (21791), Sykesville (21784), Eldersburg (21784)
-- Baltimore County: Upperco (21155), Owings Mills (21117)
-- Howard County: Ellicott City (21042, 21043)
-- Other nearby communities within about 20 miles of Westminster are served too; call to confirm.
-- Town pages: https://afternoonplumbing.com/service-area/
+## Key pages
+
+- [Home](https://afternoonplumbing.com/): Company overview, service highlights, and common residential plumbing calls.
+- [Services overview](https://afternoonplumbing.com/services.html): Hub for every service page, with a short summary of each job type.
+- [Service area](https://afternoonplumbing.com/service-area/): Where the business works, including towns outside the listed areas.
+- [FAQ](https://afternoonplumbing.com/faq/faq.html): Common questions about estimates, leaks, water heaters, well pumps, water treatment, hose bibs, and service area coverage.
+- [Contact and request an estimate](https://afternoonplumbing.com/contact/contact.html): Phone, text, and email contact details and what to send for a faster quote.
+- [Job photo gallery](https://afternoonplumbing.com/gallery.html): Photos from completed work, organized by job type.
+
+## Water heater services
+
+- [Water heater replacement](https://afternoonplumbing.com/services/water-heater-replacement-westminster-md.html): Leaking tanks, no hot water, and replacement options including tank, tankless, gas, and electric units.
+- [Heat pump water heater installation](https://afternoonplumbing.com/services/heat-pump-water-heater-installation-westminster-md.html): Hybrid and heat pump tank units, with guidance on fit and condensate setup.
+- [Gas water heater installation](https://afternoonplumbing.com/services/gas-water-heater-installation-westminster-md.html): Gas water heater replacement and installation for Westminster and nearby towns.
+
+## Well pumps and water treatment
+
+- [Well pumps overview](https://afternoonplumbing.com/services/well-pumps.html): Hub for well system work, including no water calls, pressure issues, and pressure tanks.
+- [Well pump repair and replacement](https://afternoonplumbing.com/services/well-pump-repair-westminster-md.html): Troubleshooting, repair versus replacement decisions, and full pump replacement.
+- [Water softener installation](https://afternoonplumbing.com/services/water-softener-installation-westminster-md.html): Hard water testing and right sized softener installs for well water homes.
+- [Water treatment system replacement](https://afternoonplumbing.com/services/water-treatment-replacement-westminster-md.html): Replacing aging softeners, filters, and neutralizers, or swapping a full whole house treatment system.
+- [Acid neutralizer installation](https://afternoonplumbing.com/services/acid-neutralizer-installation-westminster-md.html): Low pH well water treatment that protects copper lines, fixtures, and appliances.
+
+## Exterior, seasonal, and everyday repair
+
+- [Hose bib replacement](https://afternoonplumbing.com/services/hose-bib-replacement-westminster-md.html): Frost free hose bib and outdoor faucet replacement.
+- [Winterization](https://afternoonplumbing.com/services/winterization-westminster-md.html): Seasonal check of hose bibs, water heaters, well systems, treatment equipment, and gas appliances before the first hard freeze.
+- [Sump pump replacement](https://afternoonplumbing.com/services/sump-pump-replacement-westminster-md.html): Failing sump pumps, constant running, noisy cycling, and battery backup options.
+
+## Gas work
+
+- [Gas appliance hookups](https://afternoonplumbing.com/services/gas-appliance-hookups.html): House side regulator replacement, gas appliance hookups, and house side gas line leak repairs.
+- [Gas leak safety](https://afternoonplumbing.com/services/gas-leak-safety-westminster-md.html): What to do and who to call if a gas smell is suspected.
+- [Regulator replacement](https://afternoonplumbing.com/services/regulator-replacement-westminster-md.html): Propane and natural gas regulator replacement on the house side of the meter.
+
+## Town pages
+
+- [Westminster plumber](https://afternoonplumbing.com/service-area/westminster-plumber.html): Home base for the service area, covering Westminster 21157 and 21158.
+- [Manchester plumber](https://afternoonplumbing.com/service-area/manchester-plumber.html): Plumbing service in Manchester 21102.
+- [Hampstead plumber](https://afternoonplumbing.com/service-area/hampstead-plumber.html): Plumbing service in Hampstead 21074.
+- [Finksburg plumber](https://afternoonplumbing.com/service-area/finksburg-plumber.html): Plumbing service in Finksburg 21048.
+- [New Windsor plumber](https://afternoonplumbing.com/service-area/new-windsor-plumber.html): Plumbing service in New Windsor 21776.
+- [Union Bridge plumber](https://afternoonplumbing.com/service-area/union-bridge-plumber.html): Plumbing service in Union Bridge 21791.
+- [Sykesville plumber](https://afternoonplumbing.com/service-area/sykesville-plumber.html): Plumbing service in Sykesville 21784.
+- [Eldersburg plumber](https://afternoonplumbing.com/service-area/eldersburg-plumber.html): Plumbing service in Eldersburg 21784.
+- [Upperco plumber](https://afternoonplumbing.com/service-area/upperco-plumber.html): Plumbing service in Upperco 21155.
+- [Owings Mills plumber](https://afternoonplumbing.com/service-area/owings-mills-plumber.html): Plumbing service in Owings Mills 21117.
+- [Ellicott City plumber](https://afternoonplumbing.com/service-area/ellicott-city-plumber.html): Plumbing service in Ellicott City 21042 and 21043.
+
+## Optional
+
+- [Recent job: laundry room faucet and utility sink drain upgrade](https://afternoonplumbing.com/jobs/laundry-faucet.html): Job write up for a faucet and drain upgrade in Westminster.
+- [Recent job: water heater replacement in Westminster](https://afternoonplumbing.com/jobs/water-heater-replacement-westminster.html): Job write up for a Westminster water heater replacement.
+- [Recent job: water heater electrical leak warning](https://afternoonplumbing.com/jobs/water-heater-electrical-leak-westminster.html): Job write up about an electrical leak warning on a water heater.
+- [Privacy policy](https://afternoonplumbing.com/privacy.html): How contact and job information is handled.

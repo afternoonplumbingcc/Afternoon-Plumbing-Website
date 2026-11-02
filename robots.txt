@@ -1,3 +1,29 @@
+# robots.txt for https://afternoonplumbing.com
+#
+# AI crawler policy: ALL AI crawlers are allowed, including foundation-model
+# training crawlers (GPTBot, ClaudeBot, CCBot, Google-Extended, Bytespider,
+# Amazonbot, Applebot-Extended, meta-externalagent). Search and AI-assistant
+# crawlers are also allowed (OAI-SearchBot, ChatGPT-User, Claude-SearchBot,
+# Claude-User, PerplexityBot, Perplexity-User, Amzn-SearchBot, Amzn-User,
+# Applebot, meta-externalfetcher, MistralAI-User, DuckAssistBot).
+#
+# The token names above are listed as COMMENTS only. They are deliberately NOT
+# active "User-agent:" groups. Under RFC 9309 sec 2.2.1 a crawler matches only
+# its most specific group, and groups are never merged with the "*" wildcard
+# group, so adding per-bot groups would each need their own
+# "Disallow: /new-design/" line. Keeping the policy as comments means the
+# design sandbox below can only ever be governed by this one wildcard group,
+# which is the simplest and safest form of the file.
+#
+# Tokens confirmed from first-party vendor documentation:
+#   OpenAI     https://developers.openai.com/api/docs/bots
+#   Anthropic  https://support.claude.com/en/articles/8896518
+#   Perplexity https://docs.perplexity.ai/docs/resources/perplexity-crawlers
+#   Google     https://developers.google.com/crawling/docs/crawlers-fetchers/google-common-crawlers
+#   Apple      https://support.apple.com/en-us/119829
+#   Amazon     https://developer.amazon.com/docs/amazonbot/amazonbot.html
+#   CommonCrawl https://commoncrawl.org/ccbot
+
 User-agent: *
 Allow: /
 Disallow: /new-design/
