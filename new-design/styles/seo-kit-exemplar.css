@@ -18,7 +18,8 @@
   --nd-ink-soft:#6b7280;
   --nd-rule:#e5e7eb;
   --nd-rule-strong:#1a3a5c;
-  --nd-accent:#e67e22;
+  --nd-accent:#B35A10;
+  --nd-accent-solid:#9C530C;
   --nd-accent-ink:#ffffff;
   --nd-accent-soft:#fdf1e6;
   --nd-radius:8px;
@@ -65,13 +66,13 @@ body.nd-page .btn:hover{
   box-shadow:none;
 }
 body.nd-page .btn-accent{
-  background:var(--nd-accent);
+  background:var(--nd-accent-solid);
   color:#fff;
   border:1px solid var(--nd-accent);
 }
 body.nd-page .btn-accent:hover{
-  background:#d35400;
-  border-color:#d35400;
+  background:#87470A;
+  border-color:#87470A;
 }
 body.nd-page .btn-secondary{
   background:var(--nd-surface);
@@ -200,13 +201,13 @@ body.nd-page .footer-email-chip:hover{
   transition:background .15s ease,color .15s ease,border-color .15s ease;
 }
 .sk-btn-primary{
-  background:var(--nd-accent);
+  background:var(--nd-accent-solid);
   color:#fff;
-  border-color:var(--nd-accent);
+  border-color:var(--nd-accent-solid);
 }
 .sk-btn-primary:hover{
-  background:#d35400;
-  border-color:#d35400;
+  background:#87470A;
+  border-color:#87470A;
 }
 .sk-btn-outline{
   background:transparent;
@@ -396,7 +397,7 @@ body.nd-page .footer-email-chip:hover{
   width:8px;
   height:8px;
   border-radius:50%;
-  background:var(--nd-accent);
+  background:var(--nd-accent-solid);
 }
 .sk-fork-panel .sk-btn{margin-top:auto;align-self:flex-start}
 .sk-fork-alt,
@@ -421,7 +422,7 @@ body.nd-page .footer-email-chip:hover{
   width:38px;
   height:38px;
   border-radius:50%;
-  background:var(--nd-accent);
+  background:var(--nd-accent-solid);
   color:#fff;
   font-family:var(--nd-display);
   font-weight:700;
@@ -594,8 +595,8 @@ body.nd-page .footer-email-chip:hover{
   padding-bottom:2px;
 }
 .sk-faq-hub:hover{
-  color:#d35400;
-  border-bottom-color:#d35400;
+  color:#B35A10;
+  border-bottom-color:#B35A10;
 }
 
 /* Sticky mobile CTA ------------------------------------------------ */
