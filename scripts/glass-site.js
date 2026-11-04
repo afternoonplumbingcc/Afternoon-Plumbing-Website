@@ -248,9 +248,16 @@
     // legacyAfter mode: clip the background-image layer
     const clipTarget = imgWrap || legacyAfter;
     let dragging = false;
+    // Cache the root rect instead of measuring it on every pointer move.
+    // getBoundingClientRect() forces a layout, so reading it per move made the
+    // slider reflow the page on each step.  The cached rect is refreshed when
+    // a drag starts, on resize, and on scroll, so a layout change still
+    // tracks while the pointer is down.
+    let rootRect = root.getBoundingClientRect();
+    const refreshRect = ()=>{ rootRect = root.getBoundingClientRect(); };
 
     const setPosition = (clientX)=>{
-      const rect = root.getBoundingClientRect();
+      const rect = rootRect;
       let x = clientX - rect.left;
       x = Math.max(0, Math.min(rect.width, x));
       const percent = (x / rect.width) * 100;
@@ -266,6 +273,7 @@
 
     const start = (event)=>{
       dragging = true;
+      refreshRect();
       setPosition(getX(event));
       if(event.cancelable) event.preventDefault();
     };
@@ -292,7 +300,7 @@
       else if(event.key === 'Home') next = 0;
       else if(event.key === 'End') next = 100;
       else return;
-      const rect = root.getBoundingClientRect();
+      const rect = rootRect;
       setPosition(rect.left + (rect.width * next / 100));
       event.preventDefault();
     });
@@ -302,37 +310,84 @@
     root.setAttribute('aria-valuemin','0');
     root.setAttribute('aria-valuemax','100');
     root.setAttribute('aria-valuenow','50');
-    setPosition(root.getBoundingClientRect().left + (root.getBoundingClientRect().width / 2));
+    refreshRect();
+    setPosition(rootRect.left + (rootRect.width / 2));
+    window.addEventListener('resize', refreshRect, {passive:true});
+    window.addEventListener('scroll', refreshRect, {passive:true});
   });
 
-  if(!window.__afternoonTrackingLoaded){
-    window.__afternoonTrackingLoaded = true;
-
-    const gtagScript = document.createElement('script');
-    gtagScript.async = true;
-    gtagScript.src = 'https://www.googletagmanager.com/gtag/js?id=G-NY5V19HE72';
-    document.head.appendChild(gtagScript);
-    window.dataLayer = window.dataLayer || [];
-    window.gtag = window.gtag || function(){ window.dataLayer.push(arguments); };
-    window.gtag('js', new Date());
-    window.gtag('config', 'G-NY5V19HE72');
-
-    !(function(f,b,e,v,n,t,s){
-      if(f.fbq) return;
-      n = f.fbq = function(){ n.callMethod ? n.callMethod.apply(n,arguments) : n.queue.push(arguments); };
+  // Analytics stubs are defined immediately so any early gtag()/fbq() call
+  // from another script queues safely instead of throwing.  The tag scripts
+  // themselves are deferred until the visitor first interacts with the page,
+  // so they never compete with page content for bandwidth on first paint.
+  window.dataLayer = window.dataLayer || [];
+  window.gtag = window.gtag || function(){ window.dataLayer.push(arguments); };
+  if(!window.fbq){
+    (function(f){
+      const n = f.fbq = function(){ n.callMethod ? n.callMethod.apply(n,arguments) : n.queue.push(arguments); };
       if(!f._fbq) f._fbq = n;
       n.push = n;
       n.loaded = true;
       n.version = '2.0';
       n.queue = [];
-      t = b.createElement(e);
-      t.async = true;
-      t.src = v;
-      s = b.getElementsByTagName(e)[0];
-      s.parentNode.insertBefore(t,s);
-    })(window, document, 'script', 'https://connect.facebook.net/en_US/fbevents.js');
-    window.fbq('init', '4424110844582646');
-    window.fbq('track', 'PageView');
+    })(window);
+  }
+
+  if(!window.__afternoonTrackingLoaded){
+    window.__afternoonTrackingLoaded = true;
+
+    const loadTracking = ()=>{
+      if(window.__afternoonTrackingFired) return;
+      window.__afternoonTrackingFired = true;
+      document.removeEventListener('pointerdown', loadTracking, true);
+      document.removeEventListener('keydown', loadTracking, true);
+      document.removeEventListener('touchstart', loadTracking, true);
+
+      const gtagScript = document.createElement('script');
+      gtagScript.async = true;
+      gtagScript.src = 'https://www.googletagmanager.com/gtag/js?id=G-NY5V19HE72';
+      document.head.appendChild(gtagScript);
+      window.gtag('js', new Date());
+      window.gtag('config', 'G-NY5V19HE72');
+
+      // The Meta pixel script is injected only now, on first interaction.
+      if(!window.__afternoonFbScriptLoaded){
+        window.__afternoonFbScriptLoaded = true;
+        const fbScript = document.createElement('script');
+        fbScript.async = true;
+        fbScript.src = 'https://connect.facebook.net/en_US/fbevents.js';
+        const first = document.getElementsByTagName('script')[0];
+        if(first && first.parentNode) first.parentNode.insertBefore(fbScript, first);
+        else document.head.appendChild(fbScript);
+      }
+      window.fbq('init', '4424110844582646');
+      window.fbq('track', 'PageView');
+    };
+
+    // First interaction wins.  The idle fallback guarantees the tags still
+    // load for visitors who never click, no later than idle.
+    document.addEventListener('pointerdown', loadTracking, {once:true, passive:true, capture:true});
+    document.addEventListener('keydown', loadTracking, {once:true, passive:true, capture:true});
+    document.addEventListener('touchstart', loadTracking, {once:true, passive:true, capture:true});
+
+    // The idle fallback is scheduled from the load event, not from script
+    // execution.  A requestIdleCallback issued while the page is still
+    // loading resolves immediately, which would put the tag requests back on
+    // the critical path ahead of LCP.  Waiting for load keeps the tags off
+    // the critical path while still guaranteeing they fire no later than
+    // idle once the page has settled.
+    const scheduleIdleFallback = ()=>{
+      if(typeof window.requestIdleCallback === 'function'){
+        window.requestIdleCallback(loadTracking, {timeout:4000});
+      } else {
+        window.setTimeout(loadTracking, 4000);
+      }
+    };
+    if(document.readyState === 'complete'){
+      scheduleIdleFallback();
+    } else {
+      window.addEventListener('load', scheduleIdleFallback, {once:true});
+    }
   }
 })();
 // ---------------------------------------------------------------------------
