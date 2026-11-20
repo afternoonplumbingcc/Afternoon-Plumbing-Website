@@ -11,6 +11,7 @@
 # LICENSE stays public. The new-design/ sandbox pages stay published; they
 # are already noindex,nofollow and Disallowed in robots.txt.
 exclude:
+  - CNAME
   - .sass-cache
   - .jekyll-cache
   - gemfiles
