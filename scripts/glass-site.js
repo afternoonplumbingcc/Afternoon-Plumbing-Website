@@ -102,6 +102,9 @@
 
   function openDrawer(drawer){
     if(!drawer) return;
+    // The closed drawer is inert, so a keyboard or screen reader user never
+    // lands in a menu that is off screen.
+    drawer.removeAttribute('inert');
     drawerTrigger = document.activeElement && document.activeElement.closest('.site-nav-menu')
       ? document.activeElement : (drawerTrigger || document.querySelector('.site-nav-menu-btn'));
     drawer.classList.add('open');
@@ -116,6 +119,7 @@
 
   function closeDrawer(drawer, focusTrigger){
     if(!drawer || !drawer.classList.contains('open')) return;
+    drawer.setAttribute('inert','');
     drawer.classList.remove('open');
     const scrim = document.querySelector('.site-nav-drawer-scrim');
     if(scrim) scrim.classList.remove('open');
@@ -129,6 +133,8 @@
 
   const drawer = document.querySelector('.site-nav-drawer');
   if(drawer){
+    // Start closed, so start hidden and out of the tab order.
+    drawer.setAttribute('inert','');
     const scrim = document.querySelector('.site-nav-drawer-scrim');
     const subBtn = drawer.querySelector('.site-nav-drawer-sub-btn');
     const sub = drawer.querySelector('.site-nav-drawer-sub');
@@ -198,16 +204,41 @@
     };
     const scheduleClose = ()=>{
       clearClose(item);
-      const t = setTimeout(()=>{ closeTimers.delete(item); setOpen(false); }, 150);
+      const t = setTimeout(()=>{
+        closeTimers.delete(item);
+        // Never close a panel that still holds keyboard focus.
+        if(item.contains(document.activeElement)){ setOpen(true); return; }
+        setOpen(false);
+      }, 150);
       closeTimers.set(item, t);
     };
 
     item.addEventListener('mouseenter', ()=> { closeAllExceptThis(); clearClose(item); setOpen(true); });
-    item.addEventListener('mouseleave', scheduleClose);
+    item.addEventListener('mouseleave', ()=>{
+      // Leaving with the pointer must not close a panel the keyboard is in.
+      if(item.contains(document.activeElement)) return;
+      scheduleClose();
+    });
 
-    item.addEventListener('focusin', clearClose);
+    // Keyboard parity with hover: the panel is revealed by :focus-within, so
+    // aria-expanded has to track focus too. Without this the trigger reported
+    // aria-expanded="false" while the menu was visibly open.
+    item.addEventListener('focusin', ()=>{
+      clearClose(item);
+      setOpen(true);
+    });
     item.addEventListener('focusout', (event)=>{
       if(!item.contains(event.relatedTarget)) scheduleClose();
+    });
+
+    // ArrowDown opens the panel and moves focus into it, the usual way a
+    // keyboard user expects a dropdown to behave.
+    trigger.addEventListener('keydown', (event)=>{
+      if(event.key !== 'ArrowDown') return;
+      event.preventDefault();
+      setOpen(true);
+      const first = panel.querySelector('a');
+      if(first) first.focus();
     });
 
     // Escape closes and returns focus to the trigger.
@@ -533,7 +564,10 @@
     if (app.getAttribute('role') === 'main') return;
     if (app.parentElement && app.parentElement.tagName === 'MAIN') return;
     var main = document.createElement('main');
-    main.id = 'ap-main';
+    // Same id the skip link points at, so the skip target resolves on the
+    // homepage too, and the element is focusable so the jump moves focus.
+    main.id = 'main-content';
+    main.setAttribute('tabindex', '-1');
     try {
       root.insertBefore(main, app);
       main.appendChild(app);

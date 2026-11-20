@@ -16,7 +16,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
 <style>
-/* Critical subset of /styles/glass-site.css?v=9, inlined so the nav, drawer and
+/* Critical subset of /styles/glass-site.css?v=10, inlined so the nav, drawer and
    above-the-fold content paint without waiting on the stylesheet request.
    The full sheet still loads below and wins the cascade for equal specificity. */
 :root{--bg:#f4f9fd;
@@ -319,9 +319,25 @@ button,input,textarea,select{font:inherit}
 .page-shell{padding:22px 14px 56px}}
 @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}
 *{animation:none!important;transition:none!important}}
+/* Skip-to-content link: off screen until it takes focus, then it appears in
+   the top-left corner so a keyboard user can jump past the nav. */
+.skip-link{
+  position:absolute;
+  left:-9999px;
+  top:0;
+  z-index:2000;
+  padding:12px 18px;
+  background:#fff;
+  color:#1a3a5c;
+  border-radius:0 0 12px 0;
+  box-shadow:0 10px 30px rgba(22,56,87,.22);
+  font-weight:700;
+  text-decoration:none;
+}
+.skip-link:focus{left:0}
 </style>
-<link rel="preload" href="/styles/glass-site.css?v=9" as="style" onload="this.onload=null;this.rel='stylesheet'" />
-<noscript><link rel="stylesheet" href="/styles/glass-site.css?v=9" /></noscript>
+<link rel="preload" href="/styles/glass-site.css?v=10" as="style" onload="this.onload=null;this.rel='stylesheet'" />
+<noscript><link rel="stylesheet" href="/styles/glass-site.css?v=10" /></noscript>
   <style>
     :root{--bg:#f4f7fb;--ink:#102033;--muted:#5f7388;--line:#d9e4f0;--nav:#0b2842;--brand:#0f4c81;--accent:#9C530C;--card:#ffffff}
     *{box-sizing:border-box}
@@ -365,7 +381,12 @@ button,input,textarea,select{font:inherit}
     .ba-after{clip-path:inset(0 0 0 50%)}
     .ba-divider{position:absolute;top:0;bottom:0;left:50%;width:2px;background:#fff;box-shadow:0 0 0 1px rgba(0,0,0,.24)}
     .ba-handle{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:36px;height:36px;border-radius:50%;background:#fff;border:2px solid var(--brand);display:grid;place-items:center;color:var(--brand);font-weight:800}
-    .ba-range{width:100%;margin-top:12px}
+    .ba-range{width:100%;margin-top:12px;height:44px;background:transparent;-webkit-appearance:none;appearance:none;cursor:pointer}
+    .ba-range::-webkit-slider-runnable-track{height:8px;background:#d4dfeb;border-radius:999px}
+    .ba-range::-webkit-slider-thumb{-webkit-appearance:none;appearance:none;width:32px;height:32px;border-radius:50%;background:#fff;border:3px solid var(--brand);margin-top:-12px;box-shadow:0 2px 8px rgba(11,40,66,.25)}
+    .ba-range::-moz-range-track{height:8px;background:#d4dfeb;border-radius:999px}
+    .ba-range::-moz-range-thumb{width:32px;height:32px;border-radius:50%;background:#fff;border:3px solid var(--brand)}
+    .ba-range:focus-visible{outline:3px solid var(--brand);outline-offset:4px;border-radius:8px}
     .ba-labels{display:flex;justify-content:space-between;color:var(--muted);font-size:.92rem}
 
     .cta{display:flex;justify-content:space-between;align-items:center;gap:12px;padding:18px;border-radius:14px;border:1px solid #cfe0f3;background:linear-gradient(135deg,#e8f3ff,#eefcf2)}
@@ -484,9 +505,10 @@ button,input,textarea,select{font:inherit}
     }
   }
 </style>
-<script src="/scripts/glass-site.js?v=10" defer></script>
+<script src="/scripts/glass-site.js?v=11" defer></script>
 </head>
 <body>
+  <a class="skip-link" href="#main-content">Skip to main content</a>
   <header class="site-nav">
     <div class="site-nav-inner">
       <a class="site-brand" href="/"><img width="306" height="243" decoding="async" loading="eager" src="/images/logo.png" srcset="/images/logo-96.png 96w, /images/logo-192.png 192w" sizes="96px" alt="Afternoon Plumbing logo" /><span>Afternoon Plumbing LLC</span></a>
@@ -534,7 +556,7 @@ button,input,textarea,select{font:inherit}
     </div>
   </header>
     <div class="site-nav-drawer-scrim" aria-hidden="true"></div>
-    <aside class="site-nav-drawer" role="dialog" aria-modal="true" aria-label="Site menu">
+    <aside class="site-nav-drawer" role="dialog" inert aria-modal="true" aria-label="Site menu">
       <div class="site-nav-drawer-head">
         <span class="site-nav-drawer-brand">Afternoon Plumbing</span>
         <button class="site-nav-drawer-close" type="button" aria-label="Close menu">&#10005;</button>
@@ -568,7 +590,7 @@ button,input,textarea,select{font:inherit}
       <div class="site-nav-drawer-foot">Free estimates</div>
     </aside>
 
-  <main class="wrap">
+  <main id="main-content" tabindex="-1" class="wrap">
     <section class="hero">
       <article class="card copy">
         <span class="eyebrow">Recent Westminster replacement</span>
@@ -708,6 +730,8 @@ button,input,textarea,select{font:inherit}
     })();
   </script>
 
-<a class="mobile-call-bar" href="tel:4437892897">Call Afternoon Plumbing</a>
+<aside class="ap-fixed-cta" aria-label="Call Afternoon Plumbing">
+  <a class="mobile-call-bar" href="tel:4437892897">Call Afternoon Plumbing</a>
+</aside>
 </body>
 </html>

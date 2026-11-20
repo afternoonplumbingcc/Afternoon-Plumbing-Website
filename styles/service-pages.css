@@ -60,14 +60,14 @@ body.service-page{padding-bottom:78px}
   line-height:1;
 }
 @media (max-width:760px){
+  /* The trust strip used to scroll sideways on a phone, which hid the last
+     claims behind a swipe no keyboard user could perform. It now wraps, so
+     every claim is visible without any interaction. */
   .service-hero .trust-bar{
-    flex-wrap:nowrap;
-    overflow-x:auto;
-    -webkit-overflow-scrolling:touch;
-    scrollbar-width:none;
+    flex-wrap:wrap;
+    overflow-x:visible;
     padding-bottom:4px;
   }
-  .service-hero .trust-bar::-webkit-scrollbar{display:none}
 }
 
 /* ---- Process timeline ---- */
