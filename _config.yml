@@ -1,0 +1,31 @@
+# Publishing exclusions.
+#
+# The site is published directly from this repository with no build step, so
+# every tracked file is a live public URL. These are the internal documents
+# that have no business being served from the customer domain:
+#
+#   README.md              Repo README: publish pipeline, layout, internal notes
+#   partials/              Raw footer markup source (the pages carry it inline)
+#   new-design/*.md        Internal specs and screenshot changelogs
+#
+# LICENSE stays public. The new-design/ sandbox pages stay published; they
+# are already noindex,nofollow and Disallowed in robots.txt.
+exclude:
+  - .sass-cache
+  - .jekyll-cache
+  - gemfiles
+  - Gemfile
+  - Gemfile.lock
+  - node_modules
+  - vendor/bundle/
+  - vendor/cache/
+  - vendor/gems/
+  - vendor/ruby/
+  - README.md
+  - partials
+  - new-design/SEO-KIT.md
+  - new-design/screenshots/README.md
+  - new-design/screenshots/README-example-page-footer-color.md
+  - new-design/screenshots/README-example-page-polish.md
+  - new-design/screenshots/README-example-page-shared-footer.md
+  - new-design/screenshots/README-water-heater-fixes.md
