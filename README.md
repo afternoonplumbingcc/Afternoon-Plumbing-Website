@@ -40,7 +40,7 @@ A page is live once it is on `main` and listed in `sitemap.xml`.
 │   └── index.html             Canonical alias of faq.html, serves /faq/
 ├── services/                  Service pages (14 files)
 │   ├── <service>-<town>-md.html  Service and location landing pages
-│   ├── well-pumps.html        Well pump hub
+│   ├── well-pump-repair-westminster-md.html  Well pump service page
 │   ├── gas-appliance-hookups.html  Gas appliance hub
 │   └── index.html             Canonical alias of services.html, serves /services/
 ├── jobs/                      Individual job write-ups
