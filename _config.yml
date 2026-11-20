@@ -1,12 +1,16 @@
 # Publishing exclusions.
 #
-# The site is published directly from this repository with no build step, so
-# every tracked file is a live public URL. These are the internal documents
-# that have no business being served from the customer domain:
+# GitHub Pages builds this repository with Jekyll, and Jekyll turns every
+# front-matter-less .md into a page. So these internal documents would be
+# reachable on the customer domain, both as the .md source and as the .html
+# twin Jekyll generates from it. Excluding them here removes both:
 #
 #   README.md              Repo README: publish pipeline, layout, internal notes
 #   partials/              Raw footer markup source (the pages carry it inline)
 #   new-design/*.md        Internal specs and screenshot changelogs
+#
+# Supplying an exclude list replaces Jekyll's default ["CNAME"], so CNAME is
+# listed explicitly below.
 #
 # LICENSE stays public. The new-design/ sandbox pages stay published; they
 # are already noindex,nofollow and Disallowed in robots.txt.
