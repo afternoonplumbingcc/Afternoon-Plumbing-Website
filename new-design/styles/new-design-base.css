@@ -365,6 +365,16 @@ body.nd-page main h4{
 .nd-index-card:hover{
   border-color:var(--nd-accent);
 }
+/* A card that is not a link must not look or behave like one. */
+a.nd-index-card:hover{
+  border-color:var(--nd-accent);
+}
+div.nd-index-card{
+  cursor:default;
+}
+div.nd-index-card:hover{
+  border-color:var(--nd-rule-strong);
+}
 .nd-index-thumb{
   aspect-ratio:16/9;
   overflow:hidden;
