@@ -33,14 +33,18 @@ A page is live once it is on `main` and listed in `sitemap.xml`.
 ├── gallery.html               Job photo gallery
 │
 ├── contact/
-│   └── contact.html           Contact
+│   ├── contact.html           Contact
+│   └── index.html             Canonical alias of contact.html, serves /contact/
 ├── faq/
-│   └── faq.html               General FAQ
+│   ├── faq.html               General FAQ
+│   └── index.html             Canonical alias of faq.html, serves /faq/
 ├── services/                  Service pages (14 files)
 │   ├── <service>-<town>-md.html  Service and location landing pages
 │   ├── well-pumps.html        Well pump hub
-│   └── gas-appliance-hookups.html  Gas appliance hub
+│   ├── gas-appliance-hookups.html  Gas appliance hub
+│   └── index.html             Canonical alias of services.html, serves /services/
 ├── jobs/                      Individual job write-ups
+│   └── index.html             Canonical alias of gallery.html, serves /jobs/
 │
 ├── partials/
 │   └── footer.part            Canonical shared footer markup (source of truth)
@@ -229,3 +233,69 @@ and into `services/`, joining the other full service pages:
 - The gas appliance hub remains at `services/gas-appliance-hookups.html`; nav,
   `sitemap.xml`, and internal links point at the `services/` URLs. No old-path
   URLs are listed in the sitemap.
+
+## Directory index aliases (2026-11-19)
+
+The host serves `<dir>/index.html` at `<dir>/` and redirects `<dir>` to `<dir>/`.
+Four folders had no index file, so the bare directory URLs returned 404:
+
+- `/contact/` -> 404, and `/contact` redirected into that 404
+- `/faq/` -> 404, and `/faq` redirected into that 404
+- `/jobs/` -> 404, and `/jobs` redirected into that 404
+- `/services/` -> 404 (`/services` itself resolves to `services.html`)
+
+Search Console reported these as "Page with redirect" and "Not found (404)". Each folder now has
+an `index.html` that is a byte identical copy of the page that folder is about:
+
+| Directory index | Copy of | Canonical tag points at |
+| --- | --- | --- |
+| `contact/index.html` | `contact/contact.html` | `/contact/contact.html` |
+| `faq/index.html` | `faq/faq.html` | `/faq/faq.html` |
+| `services/index.html` | `services.html` | `/services.html` |
+| `jobs/index.html` | `gallery.html` | `/gallery.html` |
+
+These are not redirect stubs. They return 200, they are not listed in `sitemap.xml` or `llms.txt`,
+and their `rel="canonical"` still points at the real page, so search engines consolidate them onto
+the canonical URL instead of indexing a duplicate.
+
+Keep the copies in sync with their source whenever the source changes. The regeneration is a
+single inline Python command, run from the repo root:
+
+```bash
+python3 - <<'PY'
+import pathlib, shutil
+root = pathlib.Path('.')
+for source, alias in [
+    ('contact/contact.html', 'contact/index.html'),
+    ('faq/faq.html', 'faq/index.html'),
+    ('services.html', 'services/index.html'),
+    ('gallery.html', 'jobs/index.html'),
+]:
+    shutil.copyfile(root / source, root / alias)
+    print('refreshed', alias)
+PY
+```
+
+Commit the refreshed aliases with the page change, so the repo stays self-contained.
+
+## Sitemap maintenance (2026-11-19)
+
+- `sitemap.xml` lists only canonical, indexable URLs. `404.html` was removed: it is the not found
+  handler, it carries `noindex,follow`, and listing a noindex URL in the sitemap asks for a page
+  and then forbids it at the same time.
+- `lastmod` values now match the real production modification date of each file instead of the
+  date a page was created. Unchanged pages carry the deploy date of the current build, and a page
+  that is edited in the same change as the sitemap gets that edit date.
+
+## Request Indexing shortlist (2026-11-19)
+
+Search Console reported pages as "Discovered, currently not indexed". After the internal linking
+and sitemap work above, the five URLs worth pushing first with URL Inspection, Request Indexing:
+
+1. `https://afternoonplumbing.com/services/water-heater-replacement-westminster-md.html`
+2. `https://afternoonplumbing.com/services/well-pump-repair-westminster-md.html`
+3. `https://afternoonplumbing.com/services/water-softener-installation-westminster-md.html`
+4. `https://afternoonplumbing.com/services/heat-pump-water-heater-installation-westminster-md.html`
+5. `https://afternoonplumbing.com/faq/faq.html`
+
+Requesting indexing is done by hand in the Search Console UI, so this list is documentation only.
