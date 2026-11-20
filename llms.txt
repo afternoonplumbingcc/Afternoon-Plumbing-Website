@@ -25,8 +25,7 @@ Core services include water heater replacement and installation, heat pump and h
 
 ## Well pumps and water treatment
 
-- [Well pumps overview](https://afternoonplumbing.com/services/well-pumps.html): Hub for well system work, including no water calls, pressure issues, and pressure tanks.
-- [Well pump repair and replacement](https://afternoonplumbing.com/services/well-pump-repair-westminster-md.html): Troubleshooting, repair versus replacement decisions, and full pump replacement.
+- [Well pump repair and replacement](https://afternoonplumbing.com/services/well-pump-repair-westminster-md.html): The well pump service page, covering no water calls, pressure issues, pressure tanks, troubleshooting, repair versus replacement decisions, and full pump replacement.
 - [Water softener installation](https://afternoonplumbing.com/services/water-softener-installation-westminster-md.html): Hard water testing and right sized softener installs for well water homes.
 - [Water treatment system replacement](https://afternoonplumbing.com/services/water-treatment-replacement-westminster-md.html): Replacing aging softeners, filters, and neutralizers, or swapping a full whole house treatment system.
 - [Acid neutralizer installation](https://afternoonplumbing.com/services/acid-neutralizer-installation-westminster-md.html): Low pH well water treatment that protects copper lines, fixtures, and appliances.
