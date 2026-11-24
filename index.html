@@ -39,6 +39,36 @@
 
   
   <style>
+    /* Hero CTA row: make the "View Our Work" button the same height as the
+       "Call (443) 789-2897" link beside it, so both bottoms line up.
+       Cause: that button is the shadcn Button with variant="outline" size="lg",
+       whose base class pins height to 2.5rem (40px). Its own 12px padding plus
+       the 2px border need 52px, so the rendered box came out 8px shorter than
+       the link (40px vs 48px on desktop, 40px vs 44px on mobile).
+       Fix: release the pinned height and shave the button's 2px border off its
+       vertical padding (12px -> 10px per side), so its border-box vertical
+       space equals the link's 24px of padding at every text size. The padding
+       is expressed in rem minus the border width, so the two stay equal when
+       the browser scales text up (the link's padding is rem based).
+       Scope: the hero CTA row only. The selector is the shadcn data attributes
+       of the single outline/large button in the bundle, inside the homepage
+       hero section. No global anchor or button rules are touched. */
+    #root section:first-of-type button[data-variant="outline"][data-size="lg"] {
+      height: auto;
+      padding-top: calc(0.75rem - 2px);
+      padding-bottom: calc(0.75rem - 2px);
+    }
+    /* Same rule for engines that support :has(), in case the hero stops being
+       the first section after a future bundle rebuild. Kept as a separate
+       rule so an engine without :has() still parses the rule above. */
+    #root div:has(> button[data-variant="outline"][data-size="lg"]) > button[data-variant="outline"][data-size="lg"] {
+      height: auto;
+      padding-top: calc(0.75rem - 2px);
+      padding-bottom: calc(0.75rem - 2px);
+    }
+  </style>
+
+  <style>
     /* Homepage-only card fixes (nav and drawer styles now live in glass-site.css) */
     .water-heater-card-fix{display:flex;align-items:center;justify-content:center;padding:14px 18px;background:linear-gradient(180deg,#f8fbfd 0%,#eef4f8 100%)}
     .water-heater-card-fix img{width:auto !important;max-width:100% !important;height:100% !important;object-fit:contain !important;object-position:center center !important;transform:rotate(90deg) !important;margin:0 auto}
